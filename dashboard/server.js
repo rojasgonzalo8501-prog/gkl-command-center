@@ -7,7 +7,9 @@ const { exec } = require('child_process');
 const PORT       = process.env.PORT || 3737;
 const ROOT       = path.join(__dirname, '..');
 const AGENCY_DIR = path.join(ROOT, 'gkl-agency');
-const DATA       = process.env.DATA_DIR || __dirname;
+const STATIC     = __dirname;  // always read static files (index.html) from here
+// On Render (read-only deploy dir), write JSON data to /tmp unless DATA_DIR is set
+const DATA       = process.env.DATA_DIR || (process.env.NODE_ENV === 'production' ? '/tmp' : __dirname);
 
 const FILES = {
   activity: path.join(DATA, 'activity.json'),
@@ -121,7 +123,7 @@ async function serve(req, res) {
 
   // ── Dashboard HTML ──
   if (url.pathname === '/' || url.pathname === '/index.html') {
-    fs.readFile(path.join(DATA,'index.html'),'utf8',(err,data)=>{
+    fs.readFile(path.join(STATIC,'index.html'),'utf8',(err,data)=>{
       if (err){res.writeHead(500);res.end('not found');return;}
       res.writeHead(200,{'Content-Type':'text/html'}); res.end(data);
     }); return;
