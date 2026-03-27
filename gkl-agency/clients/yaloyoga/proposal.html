@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GKL Agency — Proposal for Yalo Yoga</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:   #13100d;
+      --dark2:  #1e1a15;
+      --terra:  #c4614a;
+      --terra2: #a84e3b;
+      --sage:   #6b8f6b;
+      --sage2:  #4e7050;
+      --sand:   #d4b896;
+      --cream:  #faf7f3;
+      --cream2: #f2ede5;
+      --cream3: #e8e0d4;
+      --text:   #1a1510;
+      --muted:  #7a6e60;
+      --border: #ddd5c8;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); line-height: 1.65; }
+
+    /* ── TYPE ───────────────────────────────────────────── */
+    .serif { font-family: 'Cormorant Garamond', serif; }
+
+    /* ── COVER ──────────────────────────────────────────── */
+    .cover {
+      min-height: 100vh;
+      background: var(--dark);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Organic blob shapes */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(80px);
+    }
+    .blob-1 { width:500px;height:500px;background:rgba(196,97,74,.18);top:-100px;right:-100px; }
+    .blob-2 { width:400px;height:400px;background:rgba(107,143,107,.12);bottom:-80px;left:-80px; }
+    .blob-3 { width:300px;height:300px;background:rgba(212,184,150,.08);top:50%;left:50%;transform:translate(-50%,-50%); }
+
+    /* Grain texture overlay */
+    .cover::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: .4;
+      pointer-events: none;
+    }
+
+    .cover__logo {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 72px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover__eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover__for {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-style: italic;
+      color: var(--sand);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(42px, 7vw, 80px);
+      font-weight: 600;
+      line-height: 1.05;
+      margin-bottom: 28px;
+      max-width: 760px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover h1 em {
+      font-style: italic;
+      color: var(--terra);
+    }
+
+    .cover__sub {
+      font-size: 15px;
+      color: rgba(255,255,255,.45);
+      max-width: 480px;
+      margin-bottom: 64px;
+      position: relative;
+      z-index: 1;
+      line-height: 1.8;
+    }
+
+    .cover__pillars {
+      display: flex;
+      gap: 0;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover__pillar {
+      padding: 22px 36px;
+      border-right: 1px solid rgba(255,255,255,.1);
+      text-align: center;
+    }
+
+    .cover__pillar:last-child { border-right: none; }
+    .cover__pillar strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--terra); margin-bottom: 4px; font-weight: 600; }
+    .cover__pillar span { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,.3); }
+
+    .cover__date { font-size: 11px; color: rgba(255,255,255,.2); letter-spacing: 2px; text-transform: uppercase; position: relative; z-index: 1; }
+
+    .scroll-hint { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 1; color: rgba(255,255,255,.2); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
+    .scroll-arrow { width: 18px; height: 18px; border-right: 1px solid rgba(255,255,255,.2); border-bottom: 1px solid rgba(255,255,255,.2); transform: rotate(45deg); animation: bob 1.5s ease-in-out infinite; }
+    @keyframes bob { 0%,100%{transform:rotate(45deg) translateY(0)} 50%{transform:rotate(45deg) translateY(4px)} }
+
+    /* ── LAYOUT ─────────────────────────────────────────── */
+    .page { max-width: 880px; margin: 0 auto; padding: 80px 32px; }
+    .section { margin-bottom: 80px; }
+
+    .section__label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 12px;
+    }
+
+    .section__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 4.5vw, 46px);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      color: var(--dark);
+    }
+
+    .section__intro {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 640px;
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    .divider { border: none; height: 1px; background: var(--border); margin: 60px 0; }
+
+    /* ── SCORE ──────────────────────────────────────────── */
+    .score-hero {
+      background: var(--dark);
+      border-radius: 16px;
+      padding: 44px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 44px;
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .score-hero .blob-1 { width: 300px; height: 300px; top: -100px; right: -60px; }
+
+    .score-ring {
+      flex-shrink: 0;
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      background: conic-gradient(var(--terra) 0% 40%, rgba(255,255,255,.07) 40% 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+
+    .score-ring::before { content:''; width:82px;height:82px;background:var(--dark);border-radius:50%;position:absolute; }
+    .score-num { position: relative; z-index: 1; font-size: 26px; font-weight: 800; color: var(--terra); line-height: 1; }
+    .score-num small { font-size: 12px; color: rgba(255,255,255,.3); font-weight: 400; }
+    .score-text h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; margin-bottom: 8px; }
+    .score-text p { font-size: 13.5px; color: rgba(255,255,255,.5); line-height: 1.65; max-width: 440px; }
+
+    /* ── AUDIT GRID ─────────────────────────────────────── */
+    .audit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 28px; }
+
+    .audit-card { background: var(--cream2); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+    .audit-card__label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 9px; }
+    .audit-card__score { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; margin-bottom: 4px; }
+    .audit-card__note { font-size: 11.5px; color: var(--muted); line-height: 1.45; }
+    .s-bad  { color: #c0392b; }
+    .s-mid  { color: #d08c3a; }
+    .s-good { color: var(--sage2); }
+
+    /* ── FINDINGS ───────────────────────────────────────── */
+    .findings { display: flex; flex-direction: column; gap: 2px; }
+
+    .finding {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 15px 17px;
+      border-radius: 8px;
+      background: var(--cream2);
+      border: 1px solid var(--border);
+    }
+
+    .finding:hover { background: var(--cream3); }
+
+    .finding__icon { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+    .f-red   .finding__icon { background: rgba(192,57,43,.1);  color: #c0392b; }
+    .f-amber .finding__icon { background: rgba(208,140,58,.1); color: #d08c3a; }
+    .f-green .finding__icon { background: rgba(107,143,107,.15); color: var(--sage2); }
+    .finding__title { font-size: 13.5px; font-weight: 600; margin-bottom: 3px; }
+    .finding__body  { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+
+    /* ── THREE PILLARS ──────────────────────────────────── */
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
+
+    .pillar-card {
+      border-radius: 14px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pillar-card.p1 { background: var(--dark); color: #fff; }
+    .pillar-card.p2 { background: linear-gradient(135deg, #2d4a2e, #1a2e1b); color: #fff; }
+    .pillar-card.p3 { background: linear-gradient(135deg, #4a2518, #2e1610); color: #fff; }
+
+    .pillar-num { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 700; opacity: .15; line-height: 1; position: absolute; top: 12px; right: 20px; }
+    .pillar-icon { font-size: 26px; }
+    .pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; }
+    .pillar-desc { font-size: 12.5px; opacity: .6; line-height: 1.6; }
+    .pillar-revenue { font-size: 18px; font-weight: 700; }
+
+    /* ── MARKET BOX ─────────────────────────────────────── */
+    .market-box {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+      border-radius: 16px;
+      padding: 44px;
+      color: #fff;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .market-box .blob-1 { width:350px;height:350px;top:-80px;right:-60px;background:rgba(107,143,107,.12); }
+    .market-box h3 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; margin-bottom: 12px; position: relative; z-index: 1; }
+    .market-box p { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.75; max-width: 600px; position: relative; z-index: 1; }
+    .market-box em { color: var(--terra); font-style: normal; font-weight: 600; }
+
+    .market-nums { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 32px; }
+
+    .mnum { background: var(--cream2); border: 1px solid var(--border); border-radius: 10px; padding: 18px; text-align: center; }
+    .mnum__val { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; color: var(--terra); line-height: 1; margin-bottom: 5px; }
+    .mnum__lbl { font-size: 11px; color: var(--muted); line-height: 1.4; }
+
+    /* ── APP SECTION ────────────────────────────────────── */
+    .app-card {
+      background: linear-gradient(135deg, #1e2d1e, #0e160e);
+      border-radius: 16px;
+      padding: 44px;
+      color: #fff;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .app-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; margin-bottom: 12px; }
+    .app-card p  { font-size: 13.5px; color: rgba(255,255,255,.5); line-height: 1.7; margin-bottom: 16px; }
+
+    .app-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .app-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; }
+    .app-features li::before { content: '↗'; color: var(--sage); font-weight: 700; flex-shrink: 0; }
+
+    .app-revenue { background: rgba(255,255,255,.06); border-radius: 10px; padding: 18px 20px; }
+    .app-revenue__label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,.3); margin-bottom: 10px; }
+    .app-scenario { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .app-scenario:last-child { border-bottom: none; }
+    .app-scenario span { font-size: 12.5px; color: rgba(255,255,255,.5); }
+    .app-scenario strong { color: var(--sage); font-size: 13.5px; }
+
+    /* ── PHASE PLAN ─────────────────────────────────────── */
+    .phases { display: flex; flex-direction: column; gap: 16px; }
+
+    .phase { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .phase__head { display: flex; align-items: center; gap: 14px; padding: 18px 22px; background: var(--cream2); border-bottom: 1px solid var(--border); }
+    .phase__num { width: 34px; height: 34px; border-radius: 50%; background: var(--dark); color: var(--terra); font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .phase__title { font-size: 14.5px; font-weight: 700; flex: 1; }
+    .phase__time { font-size: 11px; color: var(--muted); background: var(--cream3); padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
+    .phase__body { padding: 18px 22px; }
+    .phase__tasks { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px; }
+    .phase__tasks li { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; line-height: 1.5; }
+    .phase__tasks li::before { content: '→'; color: var(--terra); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .phase__impact { background: rgba(107,143,107,.08); border: 1px solid rgba(107,143,107,.2); border-radius: 7px; padding: 9px 13px; font-size: 12px; color: var(--sage2); font-weight: 500; }
+
+    /* ── CLOTHING ───────────────────────────────────────── */
+    .clothing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px; }
+
+    .clothing-card { background: var(--cream2); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+    .clothing-card__label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 8px; }
+    .clothing-card__title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .clothing-card__body { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+
+    /* ── PRICING ────────────────────────────────────────── */
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
+
+    .price-card { border: 1px solid var(--border); border-radius: 12px; padding: 28px 22px; display: flex; flex-direction: column; position: relative; background: var(--cream2); }
+    .price-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,.06); }
+    .price-card.featured { background: var(--dark); color: #fff; border-color: transparent; }
+
+    .price-badge { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: var(--terra); color: #fff; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 12px; border-radius: 20px; white-space: nowrap; }
+
+    .price-name { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 10px; }
+    .price-card.featured .price-name { color: rgba(255,255,255,.4); }
+
+    .price-amount { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 700; line-height: 1; margin-bottom: 3px; color: var(--dark); }
+    .price-card.featured .price-amount { color: var(--terra); }
+
+    .price-period { font-size: 12px; color: var(--muted); margin-bottom: 18px; }
+    .price-card.featured .price-period { color: rgba(255,255,255,.35); }
+
+    .price-desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; margin-bottom: 18px; flex: 1; }
+    .price-card.featured .price-desc { color: rgba(255,255,255,.5); }
+
+    .price-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .price-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; line-height: 1.4; }
+    .price-list li::before { content: '✓'; color: var(--sage2); font-weight: 700; flex-shrink: 0; }
+    .price-card.featured .price-list li { color: rgba(255,255,255,.75); }
+    .price-card.featured .price-list li::before { color: var(--terra); }
+
+    /* ── WHY ────────────────────────────────────────────── */
+    .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+    .why-card { background: var(--cream2); border: 1px solid var(--border); border-radius: 10px; padding: 18px; display: flex; gap: 13px; }
+    .why-icon { font-size: 20px; flex-shrink: 0; width: 36px; text-align: center; padding-top: 1px; }
+    .why-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+    .why-desc  { font-size: 12px; color: var(--muted); line-height: 1.55; }
+
+    /* ── CTA ────────────────────────────────────────────── */
+    .cta-wrap {
+      background: var(--dark);
+      border-radius: 16px;
+      padding: 56px 44px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-wrap .blob-1 { width: 400px; height: 400px; top: 50%; left: 50%; transform: translate(-50%,-50%); background: rgba(196,97,74,.12); }
+    .cta-wrap h2 { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 600; margin-bottom: 12px; position: relative; z-index: 1; }
+    .cta-wrap p  { font-size: 14px; color: rgba(255,255,255,.45); margin-bottom: 32px; position: relative; z-index: 1; }
+
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--terra);
+      color: #fff; font-size: 14px; font-weight: 700;
+      padding: 14px 32px; border-radius: 8px;
+      text-decoration: none; position: relative; z-index: 1;
+      transition: background .2s, transform .15s;
+    }
+
+    .cta-btn:hover { background: var(--terra2); transform: translateY(-1px); }
+
+    .cta-links { display: flex; justify-content: center; gap: 28px; margin-top: 24px; flex-wrap: wrap; position: relative; z-index: 1; }
+    .cta-links a { font-size: 12.5px; color: rgba(255,255,255,.35); text-decoration: none; transition: color .15s; }
+    .cta-links a:hover { color: var(--terra); }
+
+    /* ── FOOTER ─────────────────────────────────────────── */
+    footer { background: var(--cream2); border-top: 1px solid var(--border); padding: 28px 32px; text-align: center; }
+    footer p { font-size: 12px; color: var(--muted); line-height: 1.7; }
+
+    /* ── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 720px) {
+      .audit-grid, .pillars, .pricing-grid, .market-nums { grid-template-columns: repeat(2, 1fr); }
+      .app-card, .clothing-grid, .why-grid { grid-template-columns: 1fr; }
+      .cover__pillars { flex-direction: column; }
+      .score-hero { flex-direction: column; text-align: center; }
+      .page { padding: 60px 20px; }
+    }
+    @media (max-width: 480px) {
+      .audit-grid, .market-nums, .pricing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="cover__logo">GKL Agency</div>
+  <div class="cover__eyebrow">Growth Strategy & Proposal</div>
+  <div class="cover__for">For Artemis & Yalo Yoga</div>
+
+  <h1>Your story is <em>exceptional.</em><br>Now let's build the empire around it.</h1>
+
+  <p class="cover__sub">A sustainable yoga brand with a founder who left Greece, found yoga in Sweden, and built something beautiful. Here is how we take it from 2,373 followers to a multi-revenue wellness empire.</p>
+
+  <div class="cover__pillars">
+    <div class="cover__pillar"><strong>App</strong><span>Digital revenue</span></div>
+    <div class="cover__pillar"><strong>Courses</strong><span>Knowledge products</span></div>
+    <div class="cover__pillar"><strong>Clothing</strong><span>Brand expansion</span></div>
+    <div class="cover__pillar"><strong>Content</strong><span>Audience engine</span></div>
+    <div class="cover__pillar"><strong>Community</strong><span>Recurring revenue</span></div>
+  </div>
+
+  <div class="cover__date">Presented March 2026</div>
+  <div class="scroll-hint"><div class="scroll-arrow"></div>Scroll</div>
+</section>
+
+<!-- PAGE -->
+<div class="page">
+
+  <!-- ── AUDIT ── -->
+  <section class="section" id="audit">
+    <div class="section__label">Part 1 — The Honest Audit</div>
+    <h2 class="section__title">You have all the ingredients.<br>The recipe just needs work.</h2>
+    <p class="section__intro">We audited your website, social media, product strategy, SEO, and revenue model. Here is exactly where you stand — and where the biggest leverage points are.</p>
+
+    <div class="score-hero">
+      <div class="blob blob-1"></div>
+      <div class="score-ring">
+        <div class="score-num">40<small>/100</small></div>
+      </div>
+      <div class="score-text">
+        <h3>Current digital score: 40 out of 100</h3>
+        <p>Not a reflection of your products or your story — both are genuinely strong. It's a reflection of how much of your potential is sitting untapped. That gap is where we work.</p>
+      </div>
+    </div>
+
+    <div class="audit-grid">
+      <div class="audit-card">
+        <div class="audit-card__label">Website & UX</div>
+        <div class="audit-card__score s-mid">6/10</div>
+        <div class="audit-card__note">Clean Shopify store, but hero product sold out with no waitlist.</div>
+      </div>
+      <div class="audit-card">
+        <div class="audit-card__label">SEO</div>
+        <div class="audit-card__score s-mid">4/10</div>
+        <div class="audit-card__note">Blog exists but not keyword-optimized. Not ranking for cork yoga mat.</div>
+      </div>
+      <div class="audit-card">
+        <div class="audit-card__label">Social Media</div>
+        <div class="audit-card__score s-bad">3/10</div>
+        <div class="audit-card__note">880 posts → 2,373 followers. No TikTok. Growth is stalled.</div>
+      </div>
+      <div class="audit-card">
+        <div class="audit-card__label">Brand & Content</div>
+        <div class="audit-card__score s-mid">5/10</div>
+        <div class="audit-card__note">Beautiful story, totally inconsistent in execution and frequency.</div>
+      </div>
+      <div class="audit-card">
+        <div class="audit-card__label">Product Strategy</div>
+        <div class="audit-card__score s-mid">4/10</div>
+        <div class="audit-card__note">Constant 50% discounting destroys perceived value. Hero sold out.</div>
+      </div>
+      <div class="audit-card">
+        <div class="audit-card__label">Revenue Model</div>
+        <div class="audit-card__score s-bad">2/10</div>
+        <div class="audit-card__note">Physical products only. No app, no courses, no membership. One stream.</div>
+      </div>
+    </div>
+
+    <div class="findings">
+      <div class="finding f-red">
+        <div class="finding__icon">✕</div>
+        <div>
+          <div class="finding__title">Your best product is sold out — with no way to capture the demand</div>
+          <div class="finding__body">The Golden Hour Yoga Mat has a 5-star rating and is the product people come looking for. It's sold out with no back-in-stock notification. Every interested customer who sees "sold out" leaves and buys from a competitor. This is the single most immediate revenue leak to fix.</div>
+        </div>
+      </div>
+      <div class="finding f-red">
+        <div class="finding__icon">✕</div>
+        <div>
+          <div class="finding__title">Permanent 50% discounting is quietly killing the brand</div>
+          <div class="finding__body">Leggings at $26 (was $50). Bra at $24 (was $50). When everything is always on sale, customers learn to never pay full price — and they stop believing in the full price. Lululemon and Alo Yoga built empires by protecting their pricing. Premium yoga brands use scarcity, not permanent discount banners.</div>
+        </div>
+      </div>
+      <div class="finding f-red">
+        <div class="finding__icon">✕</div>
+        <div>
+          <div class="finding__title">880 posts. 2,373 followers. The content isn't reaching new people.</div>
+          <div class="finding__body">If every post brought in just 3 new followers, you've posted 880 times and have 2,373 followers. That means your content is only reaching people who already follow you — it's not discovering new audiences. The format needs to change. Reels, TikTok, SEO content. Static posts alone won't grow you in 2026.</div>
+        </div>
+      </div>
+      <div class="finding f-red">
+        <div class="finding__icon">✕</div>
+        <div>
+          <div class="finding__title">No TikTok. In 2026, that's the biggest growth channel you're ignoring.</div>
+          <div class="finding__body">Yoga content is one of the highest-performing niches on TikTok. A Greek founder who became a figure skater, moved to Sweden, started a sustainable yoga brand after watching plastic destroy Mediterranean beaches, and now makes cork yoga mats? That story goes viral on TikTok. You have everything the algorithm rewards. You're just not there yet.</div>
+        </div>
+      </div>
+      <div class="finding f-amber">
+        <div class="finding__icon">!</div>
+        <div>
+          <div class="finding__title">You are a yoga brand with zero yoga content</div>
+          <div class="finding__body">People follow yoga brands primarily for yoga content — tutorials, breathwork, daily practices, movement inspiration. Your blog is 90% product education. Your Instagram has no classes or practice videos in evidence. Yoga with Adriene built 12M YouTube subscribers on free class content and monetizes through product sales. You have the same model available to you.</div>
+        </div>
+      </div>
+      <div class="finding f-green">
+        <div class="finding__icon">↑</div>
+        <div>
+          <div class="finding__title">The app + courses opportunity is enormous — and perfectly timed</div>
+          <div class="finding__body">The online yoga market is $20 billion and growing at 18% per year. Down Dog, Asana Rebel, and Glo are capturing this with apps. None of them have a physical product ecosystem to reinforce the digital. Yalo Yoga does. "Buy a mat, get 3 months free on the app" is a product-digital flywheel none of them can replicate.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ── THREE PILLARS ── -->
+  <section class="section" id="strategy">
+    <div class="section__label">Part 2 — The Growth Strategy</div>
+    <h2 class="section__title">Three new revenue streams.<br>One coherent brand.</h2>
+    <p class="section__intro">You asked us to think about an app, courses, and the clothing brand. Here's how we see all three working together — and how they reinforce each other rather than compete.</p>
+
+    <div class="pillars">
+      <div class="pillar-card p1">
+        <div class="pillar-num">01</div>
+        <div class="pillar-icon">📱</div>
+        <div class="pillar-title serif">The Yalo App</div>
+        <div class="pillar-desc">A subscription yoga platform with Artemis's classes, breathwork, and community. The biggest long-term revenue multiplier.</div>
+        <div class="pillar-revenue" style="color:var(--terra)">€120K–300K/yr potential</div>
+      </div>
+      <div class="pillar-card p2">
+        <div class="pillar-num">02</div>
+        <div class="pillar-icon">🎓</div>
+        <div class="pillar-title serif">Online Courses</div>
+        <div class="pillar-desc">Self-paced digital courses that monetize Artemis's expertise. Low cost to create, high margin, passive once launched.</div>
+        <div class="pillar-revenue" style="color:var(--sage)">€10K–30K/month at scale</div>
+      </div>
+      <div class="pillar-card p3">
+        <div class="pillar-num">03</div>
+        <div class="pillar-icon">👗</div>
+        <div class="pillar-title serif">Yalo Clothing</div>
+        <div class="pillar-desc">The activewear line repositioned as a premium, sustainable clothing brand — not an afterthought to the mats.</div>
+        <div class="pillar-revenue" style="color:var(--sand)">2× revenue with proper pricing</div>
+      </div>
+    </div>
+
+    <div class="market-box">
+      <div class="blob blob-1"></div>
+      <h3>The market is moving in your direction. Fast.</h3>
+      <p>The global yoga market is <em>$127 billion</em> in 2025. Online yoga alone is <em>$20 billion</em> growing at <em>18% per year</em>. Consumers are moving toward sustainable brands, founder-led stories, and digital-first wellness. Yalo Yoga is positioned exactly where the market is going. We just need to execute before others find the same positioning.</p>
+    </div>
+
+    <div class="market-nums">
+      <div class="mnum"><div class="mnum__val">$127B</div><div class="mnum__lbl">Global yoga market 2025</div></div>
+      <div class="mnum"><div class="mnum__val">$20B</div><div class="mnum__lbl">Online yoga market, growing 18%/yr</div></div>
+      <div class="mnum"><div class="mnum__val">500K</div><div class="mnum__lbl">Registered yoga practitioners in Sweden alone</div></div>
+      <div class="mnum"><div class="mnum__val">38%</div><div class="mnum__lbl">Of yoga revenue shifting to subscriptions by 2025</div></div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ── APP ── -->
+  <section class="section" id="app">
+    <div class="section__label">Part 3 — The App</div>
+    <h2 class="section__title">The Yalo App —<br>your most powerful move.</h2>
+    <p class="section__intro">Physical products have a ceiling. A subscription app grows with every new user and pays you every single month. Here is how we build it.</p>
+
+    <div class="app-card">
+      <div>
+        <h3>What the Yalo App looks like</h3>
+        <p>Artemis's yoga classes on demand. Daily practices, breathwork, meditation, movement challenges. A community space for Yalo members. Integrated with the physical products — buy a mat, unlock 3 months free.</p>
+        <ul class="app-features">
+          <li>On-demand class library (beginner → advanced, 5–60 min)</li>
+          <li>Daily practice suggestions tailored to the user's level</li>
+          <li>Breathwork & meditation tracks</li>
+          <li>Monthly live sessions with Artemis</li>
+          <li>Community feed + challenges</li>
+          <li>Product integration: mat purchase unlocks free trial</li>
+          <li>Freemium model — free tier drives app store discovery</li>
+        </ul>
+      </div>
+      <div class="app-revenue">
+        <div class="app-revenue__label">Revenue projection (€9.99/month subscription)</div>
+        <div class="app-scenario"><span>500 subscribers</span><strong>€60K / year</strong></div>
+        <div class="app-scenario"><span>1,000 subscribers</span><strong>€120K / year</strong></div>
+        <div class="app-scenario"><span>2,500 subscribers</span><strong>€300K / year</strong></div>
+        <div class="app-scenario"><span>Annual plan (€79/yr)</span><strong>Higher margin, lower churn</strong></div>
+      </div>
+    </div>
+
+    <div style="background:var(--cream2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;font-size:13px;color:var(--muted)">
+      <strong style="color:var(--text)">Build approach:</strong> We start with a white-label platform (Uscreen or Kajabi) to launch fast and cheaply, then invest in a native app once the subscription model is validated. Time to launch: 8–12 weeks. No custom development needed at first.
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ── COURSES ── -->
+  <section class="section" id="courses">
+    <div class="section__label">Part 4 — Online Courses</div>
+    <h2 class="section__title">What Artemis knows is worth paying for.</h2>
+    <p class="section__intro">Courses are the fastest way to monetize expertise. Once recorded, they sell 24/7 with no additional time from Artemis.</p>
+
+    <div class="clothing-grid">
+      <div class="clothing-card">
+        <div class="clothing-card__label">Course 1 — Launch First</div>
+        <div class="clothing-card__title">"Foundations of Flow" — 4-Week Beginner Yoga</div>
+        <div class="clothing-card__body">A complete beginner yoga program. 4 weeks, 3 sessions per week, full progression from zero to confident practice. Priced at €97. This is the course that will convert email subscribers and Instagram followers into paying students. Every physical product customer is a warm lead for this course.</div>
+      </div>
+      <div class="clothing-card">
+        <div class="clothing-card__label">Course 2 — The Niche Winner</div>
+        <div class="clothing-card__title">"Yoga for Busy Mothers" — 21-Day Reset</div>
+        <div class="clothing-card__body">Artemis is a mother of two who found yoga as her anchor. This course is autobiographical. It speaks directly to the overwhelmed, stretched-thin mother who knows she needs movement but has 20 minutes at best. Priced at €127. This niche has enormous organic reach potential — "yoga for moms" content performs exceptionally online.</div>
+      </div>
+      <div class="clothing-card">
+        <div class="clothing-card__label">Course 3 — The Premium Offer</div>
+        <div class="clothing-card__title">"Sustainable Movement" — Yoga Teacher Intensive</div>
+        <div class="clothing-card__body">A premium 8-week course for yoga teachers or advanced practitioners who want to integrate sustainability into their teaching and practice. Priced at €297. Lower volume, higher margin — 50 students per year = €14,850 from one course alone.</div>
+      </div>
+      <div class="clothing-card">
+        <div class="clothing-card__label">The Free Lead Magnet</div>
+        <div class="clothing-card__title">"7-Day Morning Yoga Challenge" — Free, Email-Gated</div>
+        <div class="clothing-card__body">A free 7-day challenge that captures email addresses and warms up new followers for the paid courses and app. Delivered via email or hosted on the platform. This sits at the top of every funnel — social ad, TikTok, YouTube video — and converts attention into a database of warm leads.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ── CLOTHING ── -->
+  <section class="section" id="clothing">
+    <div class="section__label">Part 5 — The Clothing Brand</div>
+    <h2 class="section__title">Yalo Clothing deserves to be a brand, not a footnote.</h2>
+    <p class="section__intro">The activewear line is already born. It just needs positioning, pricing confidence, and a launch strategy worthy of the brand.</p>
+
+    <div class="clothing-grid">
+      <div class="clothing-card" style="border-left: 3px solid var(--terra)">
+        <div class="clothing-card__label">Fix This Now</div>
+        <div class="clothing-card__title">End the permanent sale</div>
+        <div class="clothing-card__body">Run one proper 72-hour sale to clear current stock if needed, then restore full pricing permanently. Use scarcity (limited colorways, seasonal drops) instead of ongoing discounts. Lululemon leggings at $128 sell better than Yalo leggings at $26 — not because of quality, but because of perceived value. Price communicates quality.</div>
+      </div>
+      <div class="clothing-card" style="border-left: 3px solid var(--sage)">
+        <div class="clothing-card__label">The Strategy</div>
+        <div class="clothing-card__title">Seasonal drops, not a permanent catalogue</div>
+        <div class="clothing-card__body">Move from "always available, always discounted" to 2–3 seasonal drops per year. Limited colorways, defined launch windows, waitlists. This is how Supreme built hype and how Lululemon keeps full-price integrity. Each drop becomes an event that drives content, email opens, and social media excitement.</div>
+      </div>
+      <div class="clothing-card" style="border-left: 3px solid var(--sand)">
+        <div class="clothing-card__label">The Identity</div>
+        <div class="clothing-card__title">Mediterranean movement — not generic activewear</div>
+        <div class="clothing-card__body">The clothing needs a visual identity tied to Artemis's Greek roots. Ocean blues, sandy neutrals, earthy terracottas — the colors are already there in the product names (Balos Sand, Ocean Blue, Earth Clay). That's the visual language. Make it deliberate. Make it the brand story. Shoot it in Greece if possible.</div>
+      </div>
+      <div class="clothing-card" style="border-left: 3px solid var(--terra)">
+        <div class="clothing-card__label">The Growth Engine</div>
+        <div class="clothing-card__title">Creator collabs → audience crossover</div>
+        <div class="clothing-card__body">The Aleksandra collabs are already proving this works. Expand it. Partner with 5–8 yoga teachers and wellness creators who each have 10K–100K engaged followers. Send them the collection, co-create content, give them a discount code. Each partnership is a content machine and a new audience acquisition. Cost: product samples. ROI: potentially thousands of new customers.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ── CONTENT ── -->
+  <section class="section" id="content">
+    <div class="section__label">Part 6 — Content Creation & Digital Marketing</div>
+    <h2 class="section__title">Content is the engine.<br>Everything else runs on it.</h2>
+    <p class="section__intro">Products, courses, and apps don't sell themselves — content is what drives discovery, trust, and conversion. Artemis has a story, a face, a mission, and a visual world that is genuinely magnetic. Here is how we turn that into a content machine that works 24/7.</p>
+
+    <div class="clothing-grid">
+
+      <div class="clothing-card" style="border-left:3px solid var(--terra)">
+        <div class="clothing-card__label">TikTok — The Growth Engine</div>
+        <div class="clothing-card__title">Artemis goes viral. The algorithm is ready.</div>
+        <div class="clothing-card__body">Yoga is one of TikTok's highest-performing niches. A Greek founder, former figure skater, mother of two, living in Sweden, making cork mats to fight Mediterranean plastic pollution — that is a story the algorithm rewards with millions of views. We create a TikTok content system: weekly posting schedule, scripted hooks for Artemis, POV formats, day-in-the-life yoga routines, cork mat education, and sustainability storytelling. One viral video can bring 50,000 new eyes to the brand overnight.</div>
+      </div>
+
+      <div class="clothing-card" style="border-left:3px solid var(--sage)">
+        <div class="clothing-card__label">YouTube — The Long Game</div>
+        <div class="clothing-card__title">Free classes that compound forever.</div>
+        <div class="clothing-card__body">Yoga with Adriene built 12 million subscribers and a multi-million dollar business on free YouTube content. Every class she uploads is a permanent SEO asset — found by people searching "yoga for beginners", "30-minute yoga flow", "yoga for anxiety". We launch Yalo's YouTube channel with 2 classes per month. Each video links to the app, the courses, and the shop. The content pays dividends for years after posting.</div>
+      </div>
+
+      <div class="clothing-card" style="border-left:3px solid var(--sand)">
+        <div class="clothing-card__label">Instagram Reels — Transformation</div>
+        <div class="clothing-card__title">Stop posting for followers. Post for discovery.</div>
+        <div class="clothing-card__body">880 posts, 2,373 followers means static content isn't working. We completely shift the Instagram strategy: 80% Reels, 20% Stories. Reels formats that work for yoga brands: 60-second practice clips, "cork mat vs. regular mat" comparisons, Greek coastline transitions, behind-the-scenes mat production, morning routine content. Every Reel is designed to reach non-followers first. We also audit and clean up the feed so that first-time visitors instantly understand what Yalo Yoga is and why they want it.</div>
+      </div>
+
+      <div class="clothing-card" style="border-left:3px solid var(--terra)">
+        <div class="clothing-card__label">Email Marketing</div>
+        <div class="clothing-card__title">The audience you own.</div>
+        <div class="clothing-card__body">Unlike Instagram or TikTok, your email list belongs to you — no algorithm can take it away. We build a full email marketing system: a 5-email welcome sequence that tells Artemis's story and introduces the products and courses; a weekly newsletter (The Yalo Letter) with short yoga tips, sustainability facts, and product highlights; automated post-purchase sequences; and launch campaigns for each new course and seasonal clothing drop. Email converts 3–5× better than social media for product sales.</div>
+      </div>
+
+      <div class="clothing-card" style="border-left:3px solid var(--sage)">
+        <div class="clothing-card__label">SEO Content Strategy</div>
+        <div class="clothing-card__title">Rank for searches that have buying intent.</div>
+        <div class="clothing-card__body">The blog exists but isn't working hard enough. We build a keyword-led content cluster strategy: pillar pages for "cork yoga mat", "sustainable yoga mat", "yoga for beginners Sweden" plus supporting articles for each. Every product page gets fully optimized descriptions with target keywords. The goal is organic traffic from people who are already searching for exactly what Yalo sells. 12–18 months of consistent SEO content can generate thousands of visitors per month at zero ongoing cost.</div>
+      </div>
+
+      <div class="clothing-card" style="border-left:3px solid var(--sand)">
+        <div class="clothing-card__label">Brand Photography & Visual Identity</div>
+        <div class="clothing-card__title">One Greece shoot. Months of content.</div>
+        <div class="clothing-card__body">The most powerful content Yalo can produce is Artemis practicing yoga on a Greek coastline — cork mat on golden sand, olive groves in the background, clear Aegean water. Mediterranean aesthetics are having a cultural moment and this brand is uniquely positioned to own it. We coordinate one focused content shoot in Greece (or a Mediterranean-aesthetic location in Sweden as an alternative): 3–4 hours, clothing + mats, multiple locations. Output: 200+ photos and 15–20 short video clips that feed all channels for 3–6 months.</div>
+      </div>
+
+      <div class="clothing-card" style="border-left:3px solid var(--terra)">
+        <div class="clothing-card__label">Pinterest — The Evergreen Discovery Channel</div>
+        <div class="clothing-card__title">The platform that sends buyers, not just viewers.</div>
+        <div class="clothing-card__body">Pinterest users are in "planning" mode — looking for yoga inspiration, sustainable lifestyle ideas, activewear, home gym aesthetics. Yalo's visual world (Mediterranean colors, cork textures, nature) is exactly what performs on Pinterest. Pins have a lifespan measured in months, not hours. We create a Pinterest presence with optimized boards (sustainable yoga, cork yoga mats, Mediterranean lifestyle, yoga for mothers), regular pinning schedule, and direct product links. Low effort, long tail traffic that compounds over time.</div>
+      </div>
+
+      <div class="clothing-card" style="border-left:3px solid var(--sage)">
+        <div class="clothing-card__label">Paid Advertising — When Organic Needs a Boost</div>
+        <div class="clothing-card__title">Targeted reach. Measurable ROI.</div>
+        <div class="clothing-card__body">Once the organic content engine is running, paid advertising amplifies what's working. Meta ads targeting yoga practitioners, sustainable living enthusiasts, and wellness consumers in Europe and North America. Retargeting campaigns for people who visited the store but didn't buy. Course launch ads driving traffic to the free 7-day challenge lead magnet. We don't run ads until the funnel is ready to convert — paid traffic to a broken funnel is money wasted. Done correctly, €500/month in ads can generate €2,000–5,000 in revenue.</div>
+      </div>
+
+    </div>
+
+    <div style="background:var(--dark);color:#fff;border-radius:14px;padding:32px 36px;margin-top:32px;position:relative;overflow:hidden">
+      <div style="position:absolute;inset:0;background:radial-gradient(circle at 70% 50%,rgba(196,97,74,.12),transparent 60%)"></div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;margin-bottom:10px;position:relative;z-index:1">The content flywheel</h3>
+      <p style="font-size:13.5px;color:rgba(255,255,255,.6);max-width:580px;line-height:1.75;position:relative;z-index:1">TikTok video goes viral → people discover Yalo → visit Instagram → follow → see link in bio → sign up for the 7-day free challenge → receive welcome email sequence → buy the course → become app members → buy a mat → share content of themselves using it → new TikTok viewers discover the brand. <strong style="color:rgba(255,255,255,.9)">Every piece of content feeds every other part of the business.</strong></p>
+      <div style="display:flex;gap:28px;margin-top:22px;flex-wrap:wrap;position:relative;z-index:1">
+        <div style="text-align:center"><div style="font-size:22px;font-weight:800;color:var(--terra)">TikTok</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px">Discovery</div></div>
+        <div style="font-size:20px;color:rgba(255,255,255,.2);display:flex;align-items:center">→</div>
+        <div style="text-align:center"><div style="font-size:22px;font-weight:800;color:var(--sage)">YouTube</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px">Trust</div></div>
+        <div style="font-size:20px;color:rgba(255,255,255,.2);display:flex;align-items:center">→</div>
+        <div style="text-align:center"><div style="font-size:22px;font-weight:800;color:var(--sand)">Email</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px">Conversion</div></div>
+        <div style="font-size:20px;color:rgba(255,255,255,.2);display:flex;align-items:center">→</div>
+        <div style="text-align:center"><div style="font-size:22px;font-weight:800;color:#fff">App + Courses</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px">Revenue</div></div>
+        <div style="font-size:20px;color:rgba(255,255,255,.2);display:flex;align-items:center">→</div>
+        <div style="text-align:center"><div style="font-size:22px;font-weight:800;color:var(--terra)">Community</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px">Retention</div></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ── PLAN ── -->
+  <section class="section" id="plan">
+    <div class="section__label">Part 7 — The Execution Plan</div>
+    <h2 class="section__title">Four phases. One year. A completely different business.</h2>
+    <p class="section__intro">App + Courses + Clothing + Content — all four pillars activated in sequence, each building on the last.</p>
+
+    <div class="phases">
+      <div class="phase">
+        <div class="phase__head">
+          <div class="phase__num">1</div>
+          <div class="phase__title">Fix the Foundation — Stop the bleeding</div>
+          <div class="phase__time">Month 1</div>
+        </div>
+        <div class="phase__body">
+          <ul class="phase__tasks">
+            <li>Add "Notify me when back in stock" to the Golden Hour Mat — capture every interested buyer</li>
+            <li>End the permanent sale on activewear — restore full pricing, schedule a real 72hr clearance first</li>
+            <li>Update Instagram bio to make it clear what Yalo Yoga is and sells</li>
+            <li>Add product bundles: Mat + Blocks + Bag — increases average order value</li>
+            <li>Optimize product descriptions for SEO: "cork yoga mat", "sustainable yoga mat Sweden"</li>
+            <li>Set up back-in-stock email automation on Shopify</li>
+          </ul>
+          <div class="phase__impact">🌿 Expected impact: Capture lost demand, raise perceived value, start appearing in search results.</div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase__head">
+          <div class="phase__num">2</div>
+          <div class="phase__title">Launch the Digital Products — First revenue from knowledge</div>
+          <div class="phase__time">Month 1–3</div>
+        </div>
+        <div class="phase__body">
+          <ul class="phase__tasks">
+            <li>Record "7-Day Morning Yoga Challenge" — the free lead magnet that builds the email list</li>
+            <li>Build "Foundations of Flow" 4-week course on Kajabi or Teachable</li>
+            <li>Set up email welcome sequence that introduces Artemis's story and sells the course passively</li>
+            <li>Launch app waitlist with founding-member pricing (€7.99/month locked for first 500)</li>
+            <li>Begin content planning for TikTok — start with Artemis's origin story</li>
+          </ul>
+          <div class="phase__impact">🌿 Expected impact: First digital revenue within 30 days of course launch. Email list begins growing rapidly.</div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase__head">
+          <div class="phase__num">3</div>
+          <div class="phase__title">Social Media Transformation — Find new audiences</div>
+          <div class="phase__time">Month 2–4</div>
+        </div>
+        <div class="phase__body">
+          <ul class="phase__tasks">
+            <li>TikTok launch — Artemis tells her story in 60 seconds (origin story format, high viral potential)</li>
+            <li>YouTube channel — 2 full yoga classes per month (SEO compound interest over time)</li>
+            <li>Instagram pivots to Reels — short practices, sustainability facts, behind-the-scenes content</li>
+            <li>Reach out to 5 yoga micro-influencers (10K–100K) for clothing collaboration and content exchange</li>
+            <li>Greece content shoot — activewear and mats against Mediterranean backdrop</li>
+          </ul>
+          <div class="phase__impact">🌿 Expected impact: First viral TikTok moments. New audiences discovering Yalo. Clothing collabs generating third-party content.</div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase__head">
+          <div class="phase__num">4</div>
+          <div class="phase__title">App Launch & Community — The recurring revenue engine</div>
+          <div class="phase__time">Month 4–8</div>
+        </div>
+        <div class="phase__body">
+          <ul class="phase__tasks">
+            <li>Launch Yalo App MVP on Uscreen — founding member list converts to paid subscriptions</li>
+            <li>Product-app integration: Golden Hour Mat restocked with "3 months app free" bundled</li>
+            <li>Monthly live practice with Artemis for app members — creates retention and community</li>
+            <li>Launch "Yalo Ambassador" program — 20 yoga teachers, free mat + clothing, monthly content</li>
+            <li>Second course: "Yoga for Busy Mothers" — leverages TikTok and YouTube audience built in Phase 3</li>
+            <li>Seasonal clothing drop — limited colorways, waitlist, proper launch campaign</li>
+          </ul>
+          <div class="phase__impact">🌿 Expected impact: Recurring revenue begins. Multi-stream business in operation. Brand is recognizable in its niche.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ── PRICING ── -->
+  <section class="section" id="pricing">
+    <div class="section__label">Part 8 — Investment</div>
+    <h2 class="section__title">Choose your pace.</h2>
+    <p class="section__intro">We've structured three options depending on how fast you want to move and how much you want to delegate. No surprises, no hidden costs.</p>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Seed</div>
+        <div class="price-amount">€2,900</div>
+        <div class="price-period">one-time</div>
+        <div class="price-desc">Fix the immediate product issues and launch your first digital product to validate the model before committing further.</div>
+        <ul class="price-list">
+          <li>Back-in-stock & bundle setup on Shopify</li>
+          <li>Pricing strategy fix + sale wind-down</li>
+          <li>Instagram bio + profile audit</li>
+          <li>"7-Day Challenge" lead magnet production</li>
+          <li>First course outline & platform setup</li>
+          <li>TikTok content plan (5 scripts)</li>
+          <li>Instagram bio + Reels strategy audit</li>
+        </ul>
+      </div>
+
+      <div class="price-card featured">
+        <div class="price-badge">Recommended</div>
+        <div class="price-name">Growth</div>
+        <div class="price-amount">€7,900</div>
+        <div class="price-period">+ €1,900/month management</div>
+        <div class="price-desc">Full digital launch. First course live, content engine running, app waitlist built, clothing strategy executed.</div>
+        <ul class="price-list">
+          <li>Everything in Seed</li>
+          <li>"Foundations of Flow" course — fully produced</li>
+          <li>Email welcome sequence (5 emails) + weekly newsletter setup</li>
+          <li>App waitlist + founding member campaign</li>
+          <li>TikTok launch (first 12 videos — scripted, hooks, formats)</li>
+          <li>YouTube channel setup + first 2 classes produced</li>
+          <li>Instagram Reels strategy + first 8 Reels scripted</li>
+          <li>Pinterest profile setup + 5 optimized boards</li>
+          <li>SEO content: 4 keyword-targeted blog posts + product page optimization</li>
+          <li>5 influencer outreach & collab management</li>
+          <li>Clothing brand positioning + pricing strategy</li>
+          <li>Monthly content calendar + performance reporting</li>
+        </ul>
+      </div>
+
+      <div class="price-card">
+        <div class="price-name">Empire</div>
+        <div class="price-amount">€18,900</div>
+        <div class="price-period">+ €3,900/month management</div>
+        <div class="price-desc">Full brand build across all five pillars — app, courses, clothing, content, and community. Total transformation in 6 months.</div>
+        <ul class="price-list">
+          <li>Everything in Growth</li>
+          <li>Yalo App built and launched (Uscreen)</li>
+          <li>All 3 courses produced and on sale</li>
+          <li>"Yoga for Busy Mothers" full production</li>
+          <li>Ambassador program (20 creators) — full management</li>
+          <li>Greece content shoot coordination (travel brief, shoot plan, editing)</li>
+          <li>Full video production pipeline: 4 YouTube classes/month</li>
+          <li>Paid ads: Meta campaigns for courses + products (strategy + execution)</li>
+          <li>Seasonal clothing drop campaign — launch sequence, email, social</li>
+          <li>SEO content cluster: 12 posts, full keyword strategy</li>
+          <li>Full KPI dashboard + weekly reporting</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="background:var(--cream2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;font-size:13px;color:var(--muted);line-height:1.7">
+      <strong style="color:var(--text)">Note:</strong> Platform costs for Kajabi/Uscreen/Teachable (€100–300/month) are separate. Advertising budget for paid campaigns is additional. All prices exclusive of VAT.
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ── WHY ── -->
+  <section class="section" id="why">
+    <div class="section__label">Part 9 — Why GKL Agency</div>
+    <h2 class="section__title">We are built differently.</h2>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🤖</div>
+        <div>
+          <div class="why-title">AI-powered execution speed</div>
+          <div class="why-desc">We deploy specialized AI agents to work in parallel — content, SEO, design, strategy. What takes traditional agencies 3 months, we deliver in 3 weeks without losing quality.</div>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📊</div>
+        <div>
+          <div class="why-title">Full transparency via live dashboard</div>
+          <div class="why-desc">You have real-time access to our Command Center — see every task, every agent running, every token spent. No black boxes, no mystery about what we're doing or why.</div>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌿</div>
+        <div>
+          <div class="why-title">We understand the wellness brand space</div>
+          <div class="why-desc">Sustainable brands, founder-led storytelling, community-first growth — this is the exact space we specialize in. We know how it works, who the audience is, and what moves the needle.</div>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💡</div>
+        <div>
+          <div class="why-title">We think in business models, not deliverables</div>
+          <div class="why-desc">We don't just build a website or run some ads. We design revenue systems. The app + course + clothing + community model we've laid out here is a compound growth machine, not a one-off project.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="cta-wrap">
+      <div class="blob blob-1"></div>
+      <h2>Artemis, you've built something real.<br>Let's take it to where it deserves to be.</h2>
+      <p>A free 30-minute call with no obligation. We'll walk through the plan, answer every question, and align on next steps — if it's a fit.</p>
+      <a class="cta-btn" href="mailto:info@gklagency.se">Book a call →</a>
+      <div class="cta-links">
+        <a href="mailto:info@gklagency.se">info@gklagency.se</a>
+        <a href="https://yaloyoga.com" target="_blank">yaloyoga.com</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>
+    <strong>GKL Agency</strong> — Growth proposal for Yalo Yoga · March 2026<br>
+    This proposal is valid for 30 days. All prices exclusive of VAT.<br>
+    Questions? <a href="mailto:info@gklagency.se" style="color:var(--terra)">info@gklagency.se</a>
+  </p>
+</footer>
+
+</body>
+</html>

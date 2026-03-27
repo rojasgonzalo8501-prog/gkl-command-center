@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ExhalePLR — Marketing Strategy 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0E1A;
+      --bg2: #141829;
+      --bg3: #1C2235;
+      --gold: #D4A83A;
+      --gold2: #F0C048;
+      --gold-bg: rgba(212,168,58,0.1);
+      --teal: #06B6D4;
+      --teal-bg: rgba(6,182,212,0.1);
+      --purple: #8B5CF6;
+      --purple-bg: rgba(139,92,246,0.1);
+      --green: #10B981;
+      --green-bg: rgba(16,185,129,0.1);
+      --red: #EF4444;
+      --text: #E8ECF4;
+      --muted: rgba(232,236,244,0.5);
+      --border: rgba(255,255,255,0.08);
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── COVER ── */
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(212,168,58,0.12) 0%, transparent 65%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .cover::after {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 65%);
+      bottom: -100px; right: -100px;
+      border-radius: 50%;
+    }
+    .cover__logo { font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 72px; position: relative; }
+    .cover__eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; position: relative; }
+    .cover h1 { font-size: clamp(36px, 6vw, 68px); font-weight: 800; line-height: 1.1; margin-bottom: 24px; position: relative; }
+    .cover h1 span { color: var(--gold); }
+    .cover__sub { font-size: 16px; color: var(--muted); max-width: 500px; margin-bottom: 56px; position: relative; }
+    .cover__pills { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; position: relative; margin-bottom: 72px; }
+    .pill { background: var(--bg3); border: 1px solid var(--border); border-radius: 20px; padding: 6px 16px; font-size: 12px; color: var(--muted); }
+    .pill.gold { border-color: rgba(212,168,58,0.4); color: var(--gold); background: var(--gold-bg); }
+    .cover__footer { font-size: 12px; color: rgba(255,255,255,0.2); position: relative; }
+
+    /* ── LAYOUT ── */
+    .page { max-width: 900px; margin: 0 auto; padding: 80px 32px; }
+    .section { margin-bottom: 80px; }
+    .section__label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    h2 { font-size: 34px; font-weight: 800; color: #fff; margin-bottom: 8px; line-height: 1.2; }
+    h2 span { color: var(--gold); }
+    .section__desc { font-size: 15px; color: var(--muted); max-width: 620px; margin-top: 10px; margin-bottom: 32px; line-height: 1.7; }
+
+    /* ── OPPORTUNITY BOX ── */
+    .opp-box { background: var(--gold-bg); border: 1px solid rgba(212,168,58,0.25); border-radius: 16px; padding: 32px 36px; margin-bottom: 32px; }
+    .opp-box h3 { font-size: 20px; font-weight: 700; color: var(--gold); margin-bottom: 12px; }
+    .opp-box p { font-size: 15px; color: rgba(232,236,244,0.8); line-height: 1.7; }
+
+    /* ── PRODUCT CATALOG ── */
+    .tier-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; margin-top: 40px; }
+    .tier-label.t1 { color: var(--teal); }
+    .tier-label.t2 { color: var(--gold); }
+    .tier-label.t3 { color: var(--purple); }
+    .tier-label.sub { color: var(--green); }
+    .products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .product-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; position: relative; }
+    .product-card--hero { border-color: rgba(212,168,58,0.4); }
+    .product-card--sub { border-color: rgba(16,185,129,0.4); background: var(--green-bg); grid-column: 1 / -1; }
+    .product-card__badge { position: absolute; top: -10px; left: 20px; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 3px 12px; border-radius: 10px; }
+    .badge-hero { background: var(--gold); color: #0A0E1A; }
+    .badge-sub { background: var(--green); color: #fff; }
+    .product-card__price { font-size: 22px; font-weight: 800; color: var(--gold); float: right; margin-top: -4px; }
+    .product-card h4 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .product-card p { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 10px; }
+    .product-card ul { list-style: none; }
+    .product-card ul li { font-size: 12px; color: rgba(232,236,244,0.7); padding: 3px 0; display: flex; align-items: flex-start; gap: 6px; }
+    .product-card ul li::before { content: '→'; color: var(--gold); font-size: 11px; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── CHANNELS ── */
+    .channels-list { display: flex; flex-direction: column; gap: 12px; }
+    .channel { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; display: grid; grid-template-columns: 48px 1fr auto; align-items: start; gap: 16px; }
+    .channel--top { border-color: rgba(212,168,58,0.35); }
+    .channel__icon { font-size: 28px; text-align: center; }
+    .channel__name { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .channel__desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .channel__goal { text-align: right; }
+    .channel__goal strong { display: block; font-size: 14px; font-weight: 700; color: var(--teal); }
+    .channel__goal span { font-size: 11px; color: var(--muted); }
+    .priority-badge { display: inline-flex; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 10px; margin-bottom: 6px; }
+    .p-critical { background: rgba(239,68,68,0.15); color: #F87171; }
+    .p-high { background: var(--gold-bg); color: var(--gold); }
+    .p-medium { background: var(--teal-bg); color: var(--teal); }
+
+    /* ── FIX LIST ── */
+    .fix-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .fix-card { background: var(--bg2); border-radius: 10px; padding: 16px 20px; border-left: 3px solid; }
+    .fix-card.critical { border-color: var(--red); }
+    .fix-card.high { border-color: var(--gold); }
+    .fix-card.medium { border-color: var(--teal); }
+    .fix-card h5 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .fix-card p { font-size: 12px; color: var(--muted); }
+    .fix-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+    .fix-label.critical { color: var(--red); }
+    .fix-label.high { color: var(--gold); }
+    .fix-label.medium { color: var(--teal); }
+
+    /* ── TIMELINE ── */
+    .phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .phase { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px; }
+    .phase__num { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .phase__title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .phase__period { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+    .phase__rev { font-size: 24px; font-weight: 800; color: var(--green); margin-bottom: 16px; }
+    .phase ul { list-style: none; }
+    .phase ul li { font-size: 12px; color: var(--muted); padding: 4px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+    .phase ul li:last-child { border-bottom: none; }
+    .phase ul li::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+    /* ── REVENUE ── */
+    .rev-table { width: 100%; border-collapse: collapse; }
+    .rev-table th { text-align: left; padding: 12px 16px; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .rev-table td { padding: 14px 16px; font-size: 13px; color: var(--text); border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .rev-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .rev-table .highlight td { color: var(--green); font-weight: 700; font-size: 15px; }
+
+    /* ── CROSSELL ── */
+    .cross-box { background: linear-gradient(135deg, rgba(212,168,58,0.12), rgba(6,182,212,0.08)); border: 1px solid rgba(212,168,58,0.25); border-radius: 16px; padding: 36px 40px; }
+    .cross-box h3 { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .cross-box h3 span { color: var(--gold); }
+    .cross-box p { font-size: 14px; color: var(--muted); margin-bottom: 24px; line-height: 1.7; }
+    .cross-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .cross-item { background: rgba(0,0,0,0.3); border-radius: 10px; padding: 16px; }
+    .cross-item__arrow { font-size: 20px; margin-bottom: 8px; }
+    .cross-item h5 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .cross-item p { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+    /* ── LAUNCH ORDER ── */
+    .launch-steps { display: flex; flex-direction: column; gap: 10px; counter-reset: launch; }
+    .launch-step { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 18px 24px; display: flex; align-items: center; gap: 20px; }
+    .launch-step__num { font-size: 28px; font-weight: 900; color: rgba(212,168,58,0.25); flex-shrink: 0; width: 40px; }
+    .launch-step__content h4 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+    .launch-step__content p { font-size: 12px; color: var(--muted); }
+    .launch-step__price { margin-left: auto; font-size: 18px; font-weight: 800; color: var(--gold); flex-shrink: 0; }
+
+    /* ── DIVIDER ── */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 64px 0; }
+
+    @media(max-width: 680px) {
+      .products-grid, .fix-grid, .phases, .cross-items { grid-template-columns: 1fr; }
+      .channel { grid-template-columns: 40px 1fr; }
+      .channel__goal { grid-column: 2; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover__logo">GKL Agency — Internal Strategy</div>
+  <div class="cover__eyebrow">ExhalePLR.com · 2025 Growth Plan</div>
+  <h1>From Store to<br /><span>Passive Machine</span></h1>
+  <p class="cover__sub">The complete product, marketing, and revenue strategy for ExhalePLR — our own digital product business.</p>
+  <div class="cover__pills">
+    <span class="pill gold">8 Products to Build</span>
+    <span class="pill gold">6 Marketing Channels</span>
+    <span class="pill">PLR Vault Subscription</span>
+    <span class="pill">Pinterest as #1 Channel</span>
+    <span class="pill">Etsy Side Store</span>
+    <span class="pill">GKL Cross-Sell Engine</span>
+  </div>
+  <div class="cover__footer">Confidential — GKL Agency Internal Document · March 2025</div>
+</div>
+
+<!-- CONTENT -->
+<div class="page">
+
+  <!-- OPPORTUNITY -->
+  <div class="section">
+    <p class="section__label">The Opportunity</p>
+    <h2>Why ExhalePLR Can Become<br /><span>Our Best Asset</span></h2>
+    <p class="section__desc">This is not just a side project. Done right, ExhalePLR generates passive revenue 24/7, builds an audience of buyers who become GKL clients, and gives us a platform to sell our skills at scale.</p>
+
+    <div class="opp-box">
+      <h3>💡 The Core Insight</h3>
+      <p>Millions of coaches, consultants, and entrepreneurs need professional content to build their business — but they don't have the time or skill to create it. They will pay $27–$297 for done-for-you kits they can use immediately. We already know how to create this content perfectly. We build it once and sell it forever.</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;">
+      <div style="background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:20px; text-align:center;">
+        <div style="font-size:32px; font-weight:800; color:var(--gold);">100%</div>
+        <div style="font-size:12px; color:var(--muted); margin-top:4px;">Profit margin on digital products</div>
+      </div>
+      <div style="background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:20px; text-align:center;">
+        <div style="font-size:32px; font-weight:800; color:var(--green);">$0</div>
+        <div style="font-size:12px; color:var(--muted); margin-top:4px;">Cost per additional sale after launch</div>
+      </div>
+      <div style="background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:20px; text-align:center;">
+        <div style="font-size:32px; font-weight:800; color:var(--teal);">∞</div>
+        <div style="font-size:12px; color:var(--muted); margin-top:4px;">Times each product can be sold</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- PRODUCT CATALOG -->
+  <div class="section">
+    <p class="section__label">Product Strategy</p>
+    <h2>The Product Catalog<br /><span>We're Going to Build</span></h2>
+    <p class="section__desc">8 products across 3 price tiers plus a subscription. Each one is a complete, done-for-you kit targeting the same core customer — coaches and entrepreneurs who need content fast.</p>
+
+    <div class="tier-label t1">Tier 1 — Entry Products ($17–$37) · High volume, easy yes</div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-card__price">$27</div>
+        <h4>📱 Social Media Content Kit</h4>
+        <p>30 captions, 8 Reel scripts, content calendar, hashtag pack. One niche per kit: Business Coach, Wellness, Fitness, Real Estate.</p>
+        <ul>
+          <li>30 Instagram captions with hooks</li>
+          <li>8 Reel/TikTok script outlines</li>
+          <li>30-day content calendar</li>
+          <li>10 Story prompts + hashtag pack</li>
+        </ul>
+      </div>
+      <div class="product-card">
+        <div class="product-card__price">$27</div>
+        <h4>✉️ Lead Magnet Kit</h4>
+        <p>20-page niche ebook + opt-in page copy + 3-email welcome sequence. Plug and launch.</p>
+        <ul>
+          <li>20-page professionally written ebook</li>
+          <li>Opt-in + thank-you page copy</li>
+          <li>3-email welcome sequence</li>
+          <li>Available in 4 niche variants</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tier-label t2">Tier 2 — Core Products ($47–$97) · Main revenue drivers</div>
+    <div class="products-grid">
+      <div class="product-card product-card--hero">
+        <div class="product-card__badge badge-hero">Hero Product</div>
+        <div class="product-card__price">$97</div>
+        <h4>🎓 Course-in-a-Box</h4>
+        <p>Everything needed to launch and sell a complete online course — fully written, ready to record and publish.</p>
+        <ul>
+          <li>6-module curriculum + full lesson scripts</li>
+          <li>6 student worksheets</li>
+          <li>Full sales page copy</li>
+          <li>5-email launch sequence</li>
+          <li>Platform setup guide + pricing advice</li>
+        </ul>
+      </div>
+      <div class="product-card">
+        <div class="product-card__price">$47</div>
+        <h4>📆 90-Day Content Bundle</h4>
+        <p>3 months of social media content in one pack. Best value product on the store — highest perceived value.</p>
+        <ul>
+          <li>90 Instagram captions + hooks</li>
+          <li>24 Reel scripts</li>
+          <li>12 carousel post outlines</li>
+          <li>3-month content calendar</li>
+        </ul>
+      </div>
+      <div class="product-card">
+        <div class="product-card__price">$67</div>
+        <h4>🚀 Business Launch Kit</h4>
+        <p>For coaches and consultants launching their online business from scratch — strategy to copy to content.</p>
+        <ul>
+          <li>Brand voice guide template</li>
+          <li>Ideal client avatar workbook</li>
+          <li>3-page website copy</li>
+          <li>30-day launch content calendar</li>
+        </ul>
+      </div>
+      <div class="product-card">
+        <div class="product-card__price">$17</div>
+        <h4>📬 Email Sequence Pack</h4>
+        <p>7-email welcome sequence + 5-email sales sequence. Best upsell — every customer needs this.</p>
+        <ul>
+          <li>7-email nurture welcome sequence</li>
+          <li>5-email product sales sequence</li>
+          <li>20 subject line swipe file</li>
+          <li>Editable + rebrand-ready</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tier-label t3">Tier 3 — Premium Bundles ($147–$247) · Anchor products</div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-card__price">$147</div>
+        <h4>🎯 Done-for-You Funnel Kit</h4>
+        <p>Complete marketing funnel — lead magnet, landing page, emails, and ads. One purchase = full funnel.</p>
+        <ul>
+          <li>20-page lead magnet ebook</li>
+          <li>Opt-in + sales page copy</li>
+          <li>10-email nurture + sales sequence</li>
+          <li>5 Facebook/Instagram ad copy variants</li>
+        </ul>
+      </div>
+      <div class="product-card">
+        <div class="product-card__price">$247</div>
+        <h4>👑 Niche Authority Pack</h4>
+        <p>Everything to dominate a niche online — content, course, funnel, and SEO. Our biggest, most valuable product.</p>
+        <ul>
+          <li>6 SEO blog posts + full ebook</li>
+          <li>60 social media posts</li>
+          <li>Complete mini-course kit</li>
+          <li>Full email funnel included</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tier-label sub">Subscription — Recurring Revenue</div>
+    <div class="products-grid">
+      <div class="product-card product-card--sub">
+        <div class="product-card__badge badge-sub">Recurring</div>
+        <div class="product-card__price" style="color:var(--green);">$27/mo</div>
+        <h4>🔐 The PLR Vault — Monthly Membership</h4>
+        <p>One new content kit delivered every month. Members-only pricing (20% off everything). Back catalog access after 3 months. Our long-term recurring revenue engine — target 100 members = $2,700/month passive.</p>
+        <ul>
+          <li>New kit every month (rotating niches)</li>
+          <li>20% discount on all store products</li>
+          <li>Back catalog access (month 3+)</li>
+          <li>Early access to new product launches</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- LAUNCH ORDER -->
+  <div class="section">
+    <p class="section__label">Launch Plan</p>
+    <h2>Build in This Order.<br /><span>Revenue from Week 3.</span></h2>
+    <p class="section__desc">Don't build everything at once. Launch with 2 products, prove the model, then scale the catalog.</p>
+    <div class="launch-steps">
+      <div class="launch-step">
+        <div class="launch-step__num">01</div>
+        <div class="launch-step__content">
+          <h4>Social Media Content Kit — Business Coach Edition</h4>
+          <p>Fastest to build · Broad market · Easiest first purchase · Use as template for 3 more niche variants</p>
+        </div>
+        <div class="launch-step__price">$27</div>
+      </div>
+      <div class="launch-step">
+        <div class="launch-step__num">02</div>
+        <div class="launch-step__content">
+          <h4>FREE Mini-Kit Lead Magnet — "10 Done-for-You Captions for Coaches"</h4>
+          <p>Not a product — a list builder. Email capture on site. Every downloader enters our email funnel.</p>
+        </div>
+        <div class="launch-step__price" style="color:var(--teal);">FREE</div>
+      </div>
+      <div class="launch-step">
+        <div class="launch-step__num">03</div>
+        <div class="launch-step__content">
+          <h4>Course-in-a-Box — Coaching Edition</h4>
+          <p>Hero product. Highest value. Email the list from #2 with this offer. First real revenue spike.</p>
+        </div>
+        <div class="launch-step__price">$97</div>
+      </div>
+      <div class="launch-step">
+        <div class="launch-step__num">04</div>
+        <div class="launch-step__content">
+          <h4>90-Day Content Bundle</h4>
+          <p>Best upsell after the Social Media Kit. Offer it immediately after purchase as a one-click upgrade.</p>
+        </div>
+        <div class="launch-step__price">$47</div>
+      </div>
+      <div class="launch-step">
+        <div class="launch-step__num">05</div>
+        <div class="launch-step__content">
+          <h4>Done-for-You Funnel Kit — Premium anchor product</h4>
+          <p>Targets buyers who already purchased #1 or #3. "You have the content — now here's the funnel."</p>
+        </div>
+        <div class="launch-step__price">$147</div>
+      </div>
+      <div class="launch-step">
+        <div class="launch-step__num">06</div>
+        <div class="launch-step__content">
+          <h4>The PLR Vault — Subscription launch</h4>
+          <p>Launch after 4+ products exist. Email all previous buyers. Announce with 2-week early bird pricing.</p>
+        </div>
+        <div class="launch-step__price" style="color:var(--green);">$27/mo</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- CHANNELS -->
+  <div class="section">
+    <p class="section__label">Marketing Channels</p>
+    <h2>Six Channels.<br /><span>One Machine.</span></h2>
+    <p class="section__desc">Each channel has one job. Together they drive a compounding flywheel of traffic, leads, and sales.</p>
+
+    <div class="channels-list">
+      <div class="channel channel--top">
+        <div class="channel__icon">📌</div>
+        <div>
+          <div class="priority-badge p-critical">Must Start First</div>
+          <div class="channel__name">Pinterest</div>
+          <div class="channel__desc">The #1 channel for PLR and digital product businesses. Pins have a 6-month lifespan. Create 5–10 pins per product and link directly to the store. Boards: "PLR Content Kits for Coaches", "Done-for-You Business Templates", "Passive Income Digital Products". This is our organic traffic engine — it compounds every week.</div>
+        </div>
+        <div class="channel__goal"><strong>50k views</strong><span>in 90 days</span></div>
+      </div>
+
+      <div class="channel channel--top">
+        <div class="channel__icon">📱</div>
+        <div>
+          <div class="priority-badge p-high">Week 1</div>
+          <div class="channel__name">Instagram & TikTok</div>
+          <div class="channel__desc">Content pillars: (1) "What's inside this PLR kit" product reveals, (2) "How I make passive income with digital products", (3) "How to rebrand PLR in 10 minutes", (4) "Launch your coaching business this weekend." Faceless brand works perfectly — show screens, mockups, and results. 3–4 Reels per week minimum.</div>
+        </div>
+        <div class="channel__goal"><strong>3-4 Reels</strong><span>per week</span></div>
+      </div>
+
+      <div class="channel channel--top">
+        <div class="channel__icon">✉️</div>
+        <div>
+          <div class="priority-badge p-high">Week 1</div>
+          <div class="channel__name">Email List — "The PLR Drop"</div>
+          <div class="channel__desc">Free mini-kit on site captures emails from day one. Weekly newsletter "The PLR Drop" — new product alerts, tips, and member-only deals. Every email blast to 500 subscribers should generate $300–$1,000+ in sales. This list is our most valuable asset — build it aggressively from the start.</div>
+        </div>
+        <div class="channel__goal"><strong>500 subs</strong><span>in 60 days</span></div>
+      </div>
+
+      <div class="channel">
+        <div class="channel__icon">🛍️</div>
+        <div>
+          <div class="priority-badge p-high">Month 1</div>
+          <div class="channel__name">Etsy Store</div>
+          <div class="channel__desc">Etsy has millions of buyers searching for digital templates and content kits. List Social Media Kits, Course Kits, and Lead Magnet Kits as Etsy products. One-time setup — generates passive discovery and sales with zero ad spend. Etsy's algorithm favors new products, so list often.</div>
+        </div>
+        <div class="channel__goal"><strong>Passive</strong><span>discovery</span></div>
+      </div>
+
+      <div class="channel">
+        <div class="channel__icon">👥</div>
+        <div>
+          <div class="priority-badge p-medium">Month 1</div>
+          <div class="channel__name">Facebook Groups</div>
+          <div class="channel__desc">Huge active communities around PLR and digital products. Join 5–10 groups: "PLR and Digital Products", "Online Business Owners", "Digital Product Sellers". Strategy: be genuinely helpful for 2 weeks, answer questions, share value — then softly promote. Build a reputation first.</div>
+        </div>
+        <div class="channel__goal"><strong>5 groups</strong><span>active in</span></div>
+      </div>
+
+      <div class="channel">
+        <div class="channel__icon">🔍</div>
+        <div>
+          <div class="priority-badge p-medium">After fix</div>
+          <div class="channel__name">SEO / Blog</div>
+          <div class="channel__desc">The site is currently JS-rendered — Google cannot index the content. Fix this first. Once resolved, target long-tail keywords: "PLR course content for coaches", "done-for-you social media content", "private label rights wellness". Blog posts drive free traffic forever.</div>
+        </div>
+        <div class="channel__goal"><strong>Fix SEO</strong><span>first</span></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- WEBSITE FIXES -->
+  <div class="section">
+    <p class="section__label">Technical Fixes</p>
+    <h2>Fix These Before<br /><span>Spending on Marketing</span></h2>
+    <p class="section__desc">No point driving traffic to a site that can't convert or can't be found. These fixes come first.</p>
+    <div class="fix-grid">
+      <div class="fix-card critical">
+        <div class="fix-label critical">🚨 Critical</div>
+        <h5>JavaScript Rendering (Zero SEO)</h5>
+        <p>Site is built on Lovable (React). Google cannot read the content. Add static meta tags per product OR migrate to a static/hybrid setup. Without this, all blog and SEO investment is wasted.</p>
+      </div>
+      <div class="fix-card critical">
+        <div class="fix-label critical">🚨 Critical</div>
+        <h5>No Email Capture on Site</h5>
+        <p>Every visitor who leaves without buying is gone forever unless we have their email. Add a popup: "Get 10 Free Done-for-You Captions → Download Now." This list becomes our most valuable asset.</p>
+      </div>
+      <div class="fix-card high">
+        <div class="fix-label high">⚠ High Priority</div>
+        <h5>Generic Hero Headline</h5>
+        <p>"Launch Your Business Today" says nothing specific. Change to: "Done-for-You Content Kits for Coaches & Entrepreneurs. Buy, Rebrand, Launch — Today." Specific = more conversions.</p>
+      </div>
+      <div class="fix-card high">
+        <div class="fix-label high">⚠ High Priority</div>
+        <h5>Pricing Not Visible</h5>
+        <p>Visitors shouldn't have to hunt for prices. Show prices directly on product cards in the shop. Add a "Best Sellers" section to the homepage with product cards, names, and prices visible immediately.</p>
+      </div>
+      <div class="fix-card medium">
+        <div class="fix-label medium">Medium</div>
+        <h5>No Social Proof</h5>
+        <p>Add a testimonials section. Reach out to early buyers for a quote. Even 2–3 real testimonials with names and results dramatically increase conversion rates for new visitors.</p>
+      </div>
+      <div class="fix-card medium">
+        <div class="fix-label medium">Medium</div>
+        <h5>No Social Links</h5>
+        <p>Pinterest, Instagram, and TikTok links should be in the footer and header. Visitors who don't buy today can follow and become buyers later — don't lose them completely.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- TIMELINE -->
+  <div class="section">
+    <p class="section__label">Revenue Timeline</p>
+    <h2>Three Phases.<br /><span>Scaling to $8k/Month.</span></h2>
+    <div class="phases" style="margin-top:24px;">
+      <div class="phase">
+        <div class="phase__num">Phase 01</div>
+        <div class="phase__title">Launch</div>
+        <div class="phase__period">Month 1–2</div>
+        <div class="phase__rev">$800–$1,500</div>
+        <ul>
+          <li>5 products live</li>
+          <li>Pinterest account launched</li>
+          <li>Instagram/TikTok: first 20 posts</li>
+          <li>Email list: 0 → 200 subs</li>
+          <li>Free mini-kit capturing leads</li>
+          <li>Etsy store open</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase__num">Phase 02</div>
+        <div class="phase__title">Growth</div>
+        <div class="phase__period">Month 3–4</div>
+        <div class="phase__rev">$2,000–$4,000</div>
+        <ul>
+          <li>10+ products in catalog</li>
+          <li>Pinterest: 5k+ monthly views</li>
+          <li>PLR Vault launched</li>
+          <li>Email list: 200 → 500</li>
+          <li>First email blast campaigns</li>
+          <li>Facebook group presence active</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase__num">Phase 03</div>
+        <div class="phase__title">Scale</div>
+        <div class="phase__period">Month 5–6</div>
+        <div class="phase__rev">$4,000–$8,000</div>
+        <ul>
+          <li>15+ products</li>
+          <li>Pinterest: 30k+ monthly views</li>
+          <li>PLR Vault: 50+ members</li>
+          <li>Email list: 500–1,000</li>
+          <li>SEO content driving organic traffic</li>
+          <li>Etsy generating daily passive sales</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- CROSS-SELL -->
+  <div class="section">
+    <div class="cross-box">
+      <h3>The <span>GKL Agency</span> Cross-Sell Engine</h3>
+      <p>Every ExhalePLR customer is a warm lead for GKL Agency services. They've already paid us, they trust the brand, and they clearly need help growing their business online. We add this to every order confirmation email:</p>
+      <div style="background:rgba(0,0,0,0.4); border-radius:10px; padding:20px 24px; margin-bottom:24px; border-left:3px solid var(--gold);">
+        <p style="font-size:14px; color:rgba(232,236,244,0.9); font-style:italic; line-height:1.8;">"Want us to build this for you instead of doing it yourself? GKL Agency offers full done-for-you services — social media management, website creation, and complete online course production. <strong style="color:var(--gold);">Reply to this email mentioning your order for 15% off any service.</strong>"</p>
+      </div>
+      <div class="cross-items">
+        <div class="cross-item">
+          <div class="cross-item__arrow">📱→💼</div>
+          <h5>Social Media Kit buyer</h5>
+          <p>Upsell to GKL monthly social media management service (5,900 SEK/mo)</p>
+        </div>
+        <div class="cross-item">
+          <div class="cross-item__arrow">🎓→🏗️</div>
+          <h5>Course-in-a-Box buyer</h5>
+          <p>Upsell to GKL full course production service — "We'll build the whole thing for you" (14,900 SEK)</p>
+        </div>
+        <div class="cross-item">
+          <div class="cross-item__arrow">🎯→🌐</div>
+          <h5>Funnel Kit buyer</h5>
+          <p>Upsell to GKL website build + funnel setup service (8,500 SEK)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- WHAT WE NEED -->
+  <div class="section">
+    <p class="section__label">Action Items</p>
+    <h2>What We Need<br /><span>To Build First</span></h2>
+    <p class="section__desc">Here's exactly what GKL Agency needs to produce to launch ExhalePLR. Everything is content we can create with our existing skills and tools.</p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+      <div style="background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:24px;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--teal); margin-bottom:12px;">Content to Create</div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:8px;">
+          <li style="font-size:13px; color:var(--text); display:flex; gap:10px;"><span style="color:var(--gold);">→</span>Product 1: 30 IG captions + 8 Reel scripts (Business Coach)</li>
+          <li style="font-size:13px; color:var(--text); display:flex; gap:10px;"><span style="color:var(--gold);">→</span>Free mini-kit: 10 done-for-you captions (lead magnet)</li>
+          <li style="font-size:13px; color:var(--text); display:flex; gap:10px;"><span style="color:var(--gold);">→</span>Product 3: Course-in-a-Box scripts + worksheets (Coaching)</li>
+          <li style="font-size:13px; color:var(--text); display:flex; gap:10px;"><span style="color:var(--gold);">→</span>5-email welcome sequence for new subscribers</li>
+          <li style="font-size:13px; color:var(--text); display:flex; gap:10px;"><span style="color:var(--gold);">→</span>Pinterest pin graphics (10 per product — Canva)</li>
+          <li style="font-size:13px; color:var(--text); display:flex; gap:10px;"><span style="color:var(--gold);">→</span>Website hero copy rewrite</li>
+          <li style="font-size:13px; color:var(--text); display:flex; gap:10px;"><span style="color:var(--gold);">→</span>Instagram launch Reels (5 videos for launch week)</li>
+        </ul>
+      </div>
+      <div style="background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:24px;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Website & Tech</div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:8px;">
+          <li style="font-size:13px; color:var(--text); display:flex; gap:10px;"><span style="color:var(--gold);">→</span>Fix JS rendering / add proper meta tags</li>
+          <li style="font-size:13px; color:var(--text); display:flex; gap:10px;"><span style="color:var(--gold);">→</span>Add email capture popup (free mini-kit)</li>
+          <li style="font-size:13px; color:var(--text); display:flex; gap:10px;"><span style="color:var(--gold);">→</span>Update hero headline + subheading</li>
+          <li style="font-size:13px; color:var(--text); display:flex; gap:10px;"><span style="color:var(--gold);">→</span>Product pages for first 5 products</li>
+          <li style="font-size:13px; color:var(--text); display:flex; gap:10px;"><span style="color:var(--gold);">→</span>Stripe / PayPal checkout verified + working</li>
+          <li style="font-size:13px; color:var(--text); display:flex; gap:10px;"><span style="color:var(--gold);">→</span>Add Pinterest, IG, TikTok links</li>
+          <li style="font-size:13px; color:var(--text); display:flex; gap:10px;"><span style="color:var(--gold);">→</span>Set up email platform (Mailchimp / ConvertKit)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

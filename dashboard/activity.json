@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "ts": "2026-03-27T09:04:40.032Z",
+    "project": "system",
+    "type": "system",
+    "msg": "Command Center initialized"
+  },
+  {
+    "id": 1774608948436,
+    "ts": "2026-03-27T10:55:48.436Z",
+    "project": "merca-skroten",
+    "type": "task_completed",
+    "msg": "Full AI audit completed — website, SEO, reputation, brand, conversion. Score: 38/100. Roadmap written."
+  },
+  {
+    "id": 1774608948444,
+    "ts": "2026-03-27T10:55:48.444Z",
+    "project": "merca-skroten",
+    "type": "file_created",
+    "msg": "Created audit.md — 9 sections, full growth roadmap with 4 phases"
+  },
+  {
+    "id": 1774608948451,
+    "ts": "2026-03-27T10:55:48.451Z",
+    "project": "merca-skroten",
+    "type": "file_created",
+    "msg": "Created brief.md — client onboarded, key USPs and contact details documented"
+  },
+  {
+    "id": 1774609394839,
+    "ts": "2026-03-27T11:03:14.839Z",
+    "project": "merca-skroten",
+    "type": "file_created",
+    "msg": "proposal.html skapad — 6 delar, fullständig offert på svenska med prissättning i 3 paket"
+  },
+  {
+    "id": 1774611297260,
+    "ts": "2026-03-27T11:34:57.261Z",
+    "project": "yaloyoga",
+    "type": "milestone",
+    "msg": "Client onboarded — Yalo Yoga (Artemis). Sustainable cork yoga brand, Sweden."
+  },
+  {
+    "id": 1774611297266,
+    "ts": "2026-03-27T11:34:57.266Z",
+    "project": "yaloyoga",
+    "type": "deliverable",
+    "msg": "AI audit completed — Overall score 40/100. Key gaps: TikTok absent, permanent discounting, no digital products."
+  },
+  {
+    "id": 1774611297272,
+    "ts": "2026-03-27T11:34:57.272Z",
+    "project": "yaloyoga",
+    "type": "deliverable",
+    "msg": "Growth proposal published — 9 sections covering app, courses, clothing, content creation & full execution plan. 3 pricing tiers: Seed €2,900 / Growth €7,900 / Empire €18,900."
+  }
+]

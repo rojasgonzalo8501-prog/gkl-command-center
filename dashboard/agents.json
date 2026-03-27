@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1774607985545,
+    "ts_start": "2026-03-27T08:10:00.000Z",
+    "ts_end": "2026-03-27T08:10:42.000Z",
+    "status": "completed",
+    "project": "andasuthemma",
+    "type": "Explore",
+    "task": "Scan all client files and map deliverables structure",
+    "tokens_in": 1840,
+    "tokens_out": 620,
+    "cost": 0,
+    "model": "claude-sonnet-4-6",
+    "result": null
+  },
+  {
+    "id": 1774607985558,
+    "ts_start": "2026-03-27T09:00:00.000Z",
+    "ts_end": "2026-03-27T09:02:15.000Z",
+    "status": "completed",
+    "project": "gkl-agency",
+    "type": "Plan",
+    "task": "Design command center dashboard architecture with token tracking and agent visibility",
+    "tokens_in": 3200,
+    "tokens_out": 1800,
+    "cost": 0,
+    "model": "claude-sonnet-4-6",
+    "result": null
+  },
+  {
+    "id": 1774607985567,
+    "ts_start": "2026-03-27T09:30:00.000Z",
+    "ts_end": "2026-03-27T09:31:20.000Z",
+    "status": "completed",
+    "project": "exhaleplr",
+    "type": "general-purpose",
+    "task": "Review marketing plan and identify gaps in the social media strategy",
+    "tokens_in": 2100,
+    "tokens_out": 980,
+    "cost": 0,
+    "model": "claude-sonnet-4-6",
+    "result": null
+  },
+  {
+    "id": 1774608948412,
+    "ts_start": "2026-03-27T10:00:00.000Z",
+    "ts_end": "2026-03-27T10:04:30.000Z",
+    "status": "completed",
+    "project": "merca-skroten",
+    "type": "Explore",
+    "task": "Full website audit — scraped all pages, analyzed SEO, competitors, reputation, conversion, brand gaps",
+    "tokens_in": 8400,
+    "tokens_out": 4200,
+    "cost": 0,
+    "model": "claude-sonnet-4-6",
+    "result": null
+  }
+]

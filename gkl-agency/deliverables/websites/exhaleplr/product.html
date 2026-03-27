@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product — ExhalePLR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media(max-width:680px){ .related-grid{ grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">Exhale<span>PLR</span></a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html" class="active">Shop</a></li>
+        <li><a href="index.html#vault">PLR Vault</a></li>
+        <li><a href="index.html#how">How It Works</a></li>
+      </ul>
+      <div class="nav__right">
+        <a href="index.html#free-kit" class="btn btn--ghost btn--sm">Free Kit</a>
+        <a href="index.html#vault" class="btn btn--nav">Join Vault →</a>
+      </div>
+      <button class="nav__burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PRODUCT HERO -->
+  <section class="product-hero">
+    <div class="container">
+      <div class="product-hero__inner">
+
+        <!-- MOCKUP -->
+        <div class="product-hero__mockup" id="productEmoji">📱</div>
+
+        <!-- DETAILS -->
+        <div>
+          <p class="product-hero__breadcrumb"><a href="index.html">Home</a> → <a href="shop.html">Shop</a> → <span id="productName">Product</span></p>
+          <p class="product-hero__niche" id="productNiche">Social Media</p>
+          <h1 id="productTitle">Social Media Content Kit</h1>
+          <p class="product-hero__desc" id="productDesc">Loading...</p>
+
+          <div class="includes-box">
+            <h4>What's Included</h4>
+            <div class="includes-list" id="includesList"></div>
+          </div>
+
+          <div class="product-hero__price-box">
+            <div class="product-hero__price" id="productPrice">$27</div>
+            <p class="product-hero__price-note">One-time purchase · Instant digital download · Full commercial rights</p>
+            <a href="#" class="btn btn--primary btn--full btn--lg" id="buyBtn">Buy Now — Instant Download</a>
+            <div class="product-hero__guarantees">
+              <div class="guarantee"><span>⚡</span> Instant delivery</div>
+              <div class="guarantee"><span>🔄</span> Full commercial rights</div>
+              <div class="guarantee"><span>💳</span> Secure checkout</div>
+            </div>
+          </div>
+
+          <div style="background:var(--gold-bg); border:1px solid var(--gold-border); border-radius:12px; padding:16px 20px; margin-top:16px;">
+            <p style="font-size:13px; color:rgba(232,236,245,0.8);">🔐 <strong style="color:var(--gold2);">PLR Vault members save 20%</strong> on this product. <a href="index.html#vault" style="color:var(--gold2); text-decoration:underline;">Join the Vault →</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU CAN DO WITH THIS -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__label">Commercial Rights</p>
+        <h2 class="section__title">What You Can Do <span>With This Kit</span></h2>
+      </div>
+      <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:16px;">
+        <div class="why-card">
+          <div class="why-card__icon">✅</div>
+          <h4>Sell It</h4>
+          <p>Rebrand this kit as your own product and sell it to your audience. Keep 100% of the profits.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card__icon">✅</div>
+          <h4>Use It</h4>
+          <p>Use the content for your own business — post the captions, send the emails, launch the course.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card__icon">✅</div>
+          <h4>Bundle It</h4>
+          <p>Combine with other PLR products or your own content to create a larger bundle or membership.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card__icon">✅</div>
+          <h4>Give It Away</h4>
+          <p>Use as a lead magnet or bonus to grow your email list or reward existing customers.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card__icon">✅</div>
+          <h4>Edit It Freely</h4>
+          <p>Change the name, the branding, the colors, the content — it's yours to modify however you want.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card__icon">❌</div>
+          <h4>Can't Resell PLR Rights</h4>
+          <p>You can sell the content itself, but you cannot resell the PLR rights to others. That's the only restriction.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED PRODUCTS -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header" style="margin-bottom:32px;">
+        <p class="section__label">You Might Also Like</p>
+        <h2 class="section__title">Related <span>Products</span></h2>
+      </div>
+      <div class="related-grid">
+        <div class="product-card fade-up">
+          <div class="product-card__thumb">📆</div>
+          <div class="product-card__body">
+            <div class="product-card__niche">Any Niche</div>
+            <h3>90-Day Content Bundle</h3>
+            <p>3 months of social media content. The logical next step after the starter kit.</p>
+            <div class="product-card__footer">
+              <div class="product-card__price">$47</div>
+              <a href="product.html?id=90-day-bundle" class="btn btn--primary btn--sm">Buy Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="product-card fade-up">
+          <div class="product-card__thumb">✉️</div>
+          <div class="product-card__body">
+            <div class="product-card__niche">Any Business</div>
+            <h3>Email Sequence Pack</h3>
+            <p>7-email welcome + 5-email sales sequence. Perfect companion to any content kit.</p>
+            <div class="product-card__footer">
+              <div class="product-card__price">$17</div>
+              <a href="product.html?id=email-sequence" class="btn btn--primary btn--sm">Buy Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="product-card product-card--featured fade-up">
+          <div class="product-card__badge badge-popular">Best Value</div>
+          <div class="product-card__thumb">🎯</div>
+          <div class="product-card__body">
+            <div class="product-card__niche">Full Package</div>
+            <h3>Done-for-You Funnel Kit</h3>
+            <p>Complete marketing funnel — content, emails, and ads in one purchase.</p>
+            <div class="product-card__footer">
+              <div class="product-card__price">$147</div>
+              <a href="product.html?id=funnel-kit" class="btn btn--primary btn--sm">Buy Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <a href="index.html" class="nav__logo">Exhale<span>PLR</span></a>
+          <p>Premium done-for-you content kits for coaches and entrepreneurs.</p>
+        </div>
+        <div class="footer__col">
+          <h5>Products</h5>
+          <a href="shop.html">All Products</a>
+          <a href="shop.html?filter=social">Social Media Kits</a>
+          <a href="shop.html?filter=course">Course Kits</a>
+          <a href="shop.html?filter=bundle">Bundles</a>
+        </div>
+        <div class="footer__col">
+          <h5>Membership</h5>
+          <a href="index.html#vault">The PLR Vault</a>
+          <a href="index.html#vault">Join $27/month</a>
+        </div>
+        <div class="footer__col">
+          <h5>Support</h5>
+          <a href="mailto:support@exhaleplr.com">support@exhaleplr.com</a>
+          <a href="#">PLR License</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 ExhalePLR. All rights reserved.</p>
+        <div style="display:flex; gap:20px;">
+          <a href="#">Pinterest</a>
+          <a href="#">Instagram</a>
+          <a href="#">TikTok</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    // Product data — swap in Stripe Payment Links per product
+    const products = {
+      'social-media-kit': {
+        emoji: '📱', niche: 'Business Coach Edition', title: 'Social Media Content Kit',
+        price: '$27', stripeLink: '#',
+        desc: '30 done-for-you Instagram captions, 8 Reel/TikTok video script outlines, a full 30-day content calendar, and a hashtag research pack — all tailored for business coaches. Buy, add your name, start posting today.',
+        includes: ['30 Instagram captions with hooks and CTAs','8 Reel / TikTok video script outlines','30-day content calendar (mapped by content type)','10 Instagram Story prompts','Niche-specific hashtag research pack (200+ hashtags)','Usage guide with posting tips']
+      },
+      'social-wellness': {
+        emoji: '🌿', niche: 'Wellness Edition', title: 'Social Media Content Kit — Wellness',
+        price: '$27', stripeLink: '#',
+        desc: '30 wellness-niche Instagram captions, 8 mindfulness and wellness Reel scripts, content calendar, and hashtag pack. Perfect for health coaches, yoga teachers, and wellness brands.',
+        includes: ['30 wellness-focused captions with hooks','8 mindfulness / wellness Reel scripts','30-day content calendar','10 Story prompts for wellness brands','Wellness hashtag research pack']
+      },
+      'course-in-a-box': {
+        emoji: '🎓', niche: 'Coaching Niche', title: 'Course-in-a-Box',
+        price: '$97', stripeLink: '#',
+        desc: 'Everything you need to launch a complete, professional online course — fully written. Just record the videos and publish. No writing, no researching, no blank-page paralysis.',
+        includes: ['6-module course curriculum (fully outlined)','All 6 lesson scripts (written for you to record)','6 student worksheets (PDF-ready)','Full long-form sales page copy','5-email launch sequence','Course pricing guide + platform recommendations','Video recording checklist']
+      },
+      'lead-magnet-kit': {
+        emoji: '📩', niche: 'Any Niche', title: 'Lead Magnet Kit',
+        price: '$27', stripeLink: '#',
+        desc: 'A complete lead magnet system — 20-page ebook, opt-in page copy, and 3-email welcome sequence. Plug into your email platform and start building your list today.',
+        includes: ['20-page professionally written ebook','Opt-in landing page copy (headline, subhead, bullets, CTA)','Thank-you page copy','3-email welcome sequence','Cover page mockup (Canva-ready)']
+      },
+      'email-sequence': {
+        emoji: '✉️', niche: 'Any Business', title: 'Email Sequence Pack',
+        price: '$17', stripeLink: '#',
+        desc: 'Stop sending weak emails. This pack gives you a complete 7-email welcome nurture sequence and a 5-email sales sequence — fully written and ready to drop into any email platform.',
+        includes: ['7-email welcome nurture sequence','5-email product/service sales sequence','20 proven subject line swipe file','Open rate optimization tips','Instructions for customizing to your brand']
+      },
+      '90-day-bundle': {
+        emoji: '📆', niche: 'Any Niche', title: '90-Day Content Bundle',
+        price: '$47', stripeLink: '#',
+        desc: '3 full months of social media content — no more scrambling for what to post. 90 captions, 24 Reel scripts, 12 carousel outlines, and a complete 3-month calendar included.',
+        includes: ['90 Instagram captions with hooks (3 months)','24 Reel / TikTok video script outlines','12 carousel post content outlines','3-month strategic content calendar','Content mix guide (education, inspiration, promo, engagement)']
+      },
+      'funnel-kit': {
+        emoji: '🎯', niche: 'Coaches & Consultants', title: 'Done-for-You Funnel Kit',
+        price: '$147', stripeLink: '#',
+        desc: 'Your complete digital marketing funnel — from the lead magnet that grows your list, to the sales page that converts, to the email sequence that closes. One purchase, full funnel.',
+        includes: ['20-page lead magnet ebook (fully written)','Opt-in landing page copy','Full long-form sales page copy','10-email nurture + sales email sequence','5 Facebook/Instagram ad copy variants (A/B ready)','Funnel diagram + setup instructions']
+      },
+      'authority-pack': {
+        emoji: '👑', niche: 'Authority Builder', title: 'Niche Authority Pack',
+        price: '$247', stripeLink: '#',
+        desc: 'The most complete PLR product on the store. Everything you need to establish authority in your niche — content, a course, a full funnel, and SEO blog posts. Buy once, launch everything.',
+        includes: ['6 long-form SEO-optimized blog posts','30-page comprehensive niche ebook','60 social media posts (2 months)','Complete mini-course kit (outline + scripts + worksheets)','Full email funnel (lead magnet → sales)','Sales page copy for the mini-course']
+      }
+    };
+
+    // Load product from URL param
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id') || 'social-media-kit';
+    const p = products[id] || products['social-media-kit'];
+
+    document.getElementById('productEmoji').textContent = p.emoji;
+    document.getElementById('productNiche').textContent = p.niche;
+    document.getElementById('productTitle').textContent = p.title;
+    document.getElementById('productName').textContent = p.title;
+    document.getElementById('productDesc').textContent = p.desc;
+    document.getElementById('productPrice').textContent = p.price;
+    document.title = p.title + ' — ExhalePLR';
+    if (p.stripeLink && p.stripeLink !== '#') {
+      document.getElementById('buyBtn').href = p.stripeLink;
+    }
+    const list = document.getElementById('includesList');
+    list.innerHTML = p.includes.map(item => `<div class="includes-item">${item}</div>`).join('');
+  </script>
+</body>
+</html>

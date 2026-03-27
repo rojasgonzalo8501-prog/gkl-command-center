@@ -1,0 +1,13 @@
+{
+  "name": "gkl-command-center",
+  "version": "1.0.0",
+  "description": "GKL Agency Command Center",
+  "main": "dashboard/server.js",
+  "scripts": {
+    "start": "node dashboard/server.js",
+    "dev": "node dashboard/server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+ruflo-src/node_modules/
+
+# Environment
+.env
+.env.local
+*.env
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temp
+.tmp/
+gkl-agency/.tmp/
+
+# ruflo-src is the CLI package, not needed for the dashboard
+ruflo-src/dist/
+ruflo-src/node_modules/
+gkl-agency/marketing-skills/

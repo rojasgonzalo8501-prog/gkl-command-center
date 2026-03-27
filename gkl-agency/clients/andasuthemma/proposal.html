@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GKL Agency — Proposal for Andas ut Hemma</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0A0E1A;
+      --gold: #B8922E;
+      --gold2: #D4A83A;
+      --bg: #FFFFFF;
+      --bg2: #F6F7FB;
+      --text: #1a1a2e;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --green: #10B981;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── COVER ── */
+    .cover {
+      background: var(--navy);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(184,146,46,0.15) 0%, transparent 70%);
+      top: -100px; right: -100px;
+      border-radius: 50%;
+    }
+    .cover__logo { font-size: 14px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 64px; }
+    .cover__label { font-size: 12px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+    .cover__client { font-size: 15px; color: rgba(255,255,255,0.7); margin-bottom: 12px; }
+    .cover h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; line-height: 1.15; margin-bottom: 24px; }
+    .cover h1 span { color: var(--gold2); }
+    .cover__sub { font-size: 16px; color: rgba(255,255,255,0.6); max-width: 480px; margin-bottom: 48px; }
+    .cover__meta { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; }
+    .cover__meta-item { text-align: center; }
+    .cover__meta-item strong { display: block; font-size: 20px; color: var(--gold2); }
+    .cover__meta-item span { font-size: 12px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; }
+    .cover__footer { position: absolute; bottom: 32px; font-size: 12px; color: rgba(255,255,255,0.25); }
+
+    /* ── LAYOUT ── */
+    .page { max-width: 860px; margin: 0 auto; padding: 80px 32px; }
+    .section { margin-bottom: 80px; }
+    .section__label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    h2 { font-size: 32px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+    h2 span { color: var(--gold); }
+    .section__desc { font-size: 16px; color: var(--muted); max-width: 600px; margin-top: 8px; margin-bottom: 32px; }
+
+    /* ── AUDIT ── */
+    .audit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .audit-card { background: var(--bg2); border-radius: 12px; padding: 20px 24px; border-left: 3px solid var(--border); }
+    .audit-card.good { border-left-color: var(--green); }
+    .audit-card.gap { border-left-color: #EF4444; }
+    .audit-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+    .audit-card.good h4 { color: var(--green); }
+    .audit-card.gap h4 { color: #EF4444; }
+    .audit-card p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* ── PACKAGES ── */
+    .package { border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 24px; position: relative; background: #fff; }
+    .package--featured { border-color: var(--gold); background: linear-gradient(135deg, #fffdf5 0%, #fff 100%); }
+    .package__badge { position: absolute; top: -12px; left: 32px; background: var(--gold); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; }
+    .package__header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+    .package__num { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .package h3 { font-size: 22px; font-weight: 800; color: var(--navy); }
+    .package__price { text-align: right; }
+    .package__price strong { display: block; font-size: 24px; font-weight: 800; color: var(--navy); }
+    .package__price span { font-size: 12px; color: var(--muted); }
+    .package p { font-size: 14px; color: var(--muted); margin-bottom: 16px; }
+    .package ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .package ul li { font-size: 13px; color: var(--text); display: flex; align-items: flex-start; gap: 8px; }
+    .package ul li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── CRM SECTION ── */
+    .crm-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+    .crm-feature { background: var(--navy); color: #fff; border-radius: 12px; padding: 24px; }
+    .crm-feature__icon { font-size: 28px; margin-bottom: 12px; }
+    .crm-feature h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .crm-feature p { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+    .crm-screen { background: var(--bg2); border-radius: 16px; padding: 32px; margin-top: 24px; border: 1px solid var(--border); }
+    .crm-screen h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 16px; }
+    .crm-modules { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .crm-module { background: #fff; border-radius: 10px; padding: 16px; border: 1px solid var(--border); }
+    .crm-module__label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .crm-module p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    /* ── TIMELINE ── */
+    .timeline { position: relative; padding-left: 32px; }
+    .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+    .timeline__item { position: relative; margin-bottom: 32px; }
+    .timeline__item::before { content: ''; position: absolute; left: -28px; top: 6px; width: 12px; height: 12px; background: var(--gold); border-radius: 50%; }
+    .timeline__week { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .timeline__item h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .timeline__item p { font-size: 13px; color: var(--muted); }
+
+    /* ── INVESTMENT ── */
+    .investment-table { width: 100%; border-collapse: collapse; margin-top: 24px; }
+    .investment-table th { background: var(--navy); color: #fff; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 14px 20px; text-align: left; }
+    .investment-table td { padding: 14px 20px; border-bottom: 1px solid var(--border); font-size: 14px; }
+    .investment-table tr:last-child td { border-bottom: none; }
+    .investment-table tr:nth-child(even) td { background: var(--bg2); }
+    .investment-table .total td { font-weight: 700; font-size: 16px; background: var(--bg2); border-top: 2px solid var(--navy); }
+    .investment-table .total td:last-child { color: var(--gold); }
+    .note-box { background: #FFF8E6; border: 1px solid #F0D080; border-radius: 10px; padding: 16px 20px; margin-top: 16px; font-size: 13px; color: #7A5C00; }
+
+    /* ── CTA ── */
+    .cta-block { background: var(--navy); color: #fff; border-radius: 20px; padding: 56px 48px; text-align: center; }
+    .cta-block h2 { color: #fff; font-size: 32px; margin-bottom: 12px; }
+    .cta-block h2 span { color: var(--gold2); }
+    .cta-block p { color: rgba(255,255,255,0.6); font-size: 15px; margin-bottom: 32px; }
+    .cta-block .btn { display: inline-block; background: var(--gold); color: #fff; font-weight: 700; font-size: 14px; padding: 14px 36px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; margin: 0 8px 8px; }
+    .cta-block .btn--ghost { background: transparent; border: 1px solid rgba(255,255,255,0.3); }
+    .cta-contact { margin-top: 24px; font-size: 13px; color: rgba(255,255,255,0.4); }
+    .cta-contact a { color: var(--gold2); text-decoration: none; }
+
+    /* ── DIVIDER ── */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 60px 0; }
+
+    @media(max-width: 640px) {
+      .audit-grid, .crm-features, .crm-modules, .package ul { grid-template-columns: 1fr; }
+      .package__header { flex-direction: column; gap: 12px; }
+      .cover h1 { font-size: 28px; }
+    }
+    @media print {
+      .cover { min-height: auto; padding: 48px 24px; page-break-after: always; }
+      .page { padding: 40px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── COVER PAGE ── -->
+<div class="cover">
+  <div class="cover__logo">GKL Agency</div>
+  <div>
+    <div class="cover__label">Digital Growth Proposal</div>
+    <div class="cover__client">Prepared for: <strong>Vanesa — Andas ut Hemma</strong></div>
+    <h1>Your Business,<br /><span>Built to Scale</span></h1>
+    <p class="cover__sub">A complete digital strategy for Andas ut Hemma — from content to course to CRM.</p>
+    <div class="cover__meta">
+      <div class="cover__meta-item"><strong>4</strong><span>Packages</span></div>
+      <div class="cover__meta-item"><strong>1 week</strong><span>To Launch</span></div>
+      <div class="cover__meta-item"><strong>1</strong><span>Online Course</span></div>
+      <div class="cover__meta-item"><strong>Full</strong><span>CRM + Dashboard</span></div>
+    </div>
+  </div>
+  <div class="cover__footer">© 2025 GKL Agency · hello@gklagency.com · Confidential</div>
+</div>
+
+<!-- ── CONTENT ── -->
+<div class="page">
+
+  <!-- INTRO -->
+  <div class="section">
+    <p class="section__label">Introduction</p>
+    <h2>We Did Our Homework <span>On Your Business</span></h2>
+    <p class="section__desc">Before writing this proposal, we audited your website, your positioning, your audience, and your current digital footprint. Here's what we found — and exactly how we plan to help.</p>
+    <p style="font-size:15px; color: var(--muted); line-height:1.8;">
+      Vanesa, what you've built at Andas ut Hemma is genuinely valuable. You have a clear niche (ADHD-friendly home organization), real credentials (ICD member, motivational interviewing trained), a warm and trustworthy brand, and happy clients. The business works.
+      <br /><br />
+      The problem is that your income is 100% tied to your time. You can only take so many in-home clients per week. A digital strategy changes that — and we're going to show you exactly how.
+    </p>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- AUDIT -->
+  <div class="section">
+    <p class="section__label">Site Audit</p>
+    <h2>What's Working — <span>And What's Missing</span></h2>
+    <p class="section__desc">Your honest strengths and the gaps that are holding your business back.</p>
+    <div class="audit-grid">
+      <div class="audit-card good">
+        <h4>✓ Strong personal brand</h4>
+        <p>Warm, empathetic tone that resonates deeply with your ADHD audience. Feels human, not corporate.</p>
+      </div>
+      <div class="audit-card good">
+        <h4>✓ Real credibility signals</h4>
+        <p>ICD membership, motivational interviewing training, and SBPO affiliation set you apart from generic organizers.</p>
+      </div>
+      <div class="audit-card good">
+        <h4>✓ Lead magnet exists</h4>
+        <p>Rensningsguiden is a great asset — people who want to organize themselves are already downloading it.</p>
+      </div>
+      <div class="audit-card good">
+        <h4>✓ Multilingual reach</h4>
+        <p>Swedish, English, and Spanish gives you access to an international audience — almost no organizers do this.</p>
+      </div>
+      <div class="audit-card gap">
+        <h4>✗ No pricing shown</h4>
+        <p>Every interested visitor must book a call before knowing if they can afford you. This kills conversions silently.</p>
+      </div>
+      <div class="audit-card gap">
+        <h4>✗ No digital products</h4>
+        <p>Your income is 100% time-for-money. One sick week = zero revenue. A course fixes this permanently.</p>
+      </div>
+      <div class="audit-card gap">
+        <h4>✗ No email nurture</h4>
+        <p>Guide downloaders get the PDF and then... nothing. A 5-email sequence could convert 10–20% into paying clients.</p>
+      </div>
+      <div class="audit-card gap">
+        <h4>✗ No CRM or client system</h4>
+        <p>As you grow, tracking leads, bookings, course students, and revenue in your head doesn't scale.</p>
+      </div>
+      <div class="audit-card gap">
+        <h4>✗ No social content strategy</h4>
+        <p>Instagram and Facebook exist but without a content system, posting becomes stressful and inconsistent.</p>
+      </div>
+      <div class="audit-card gap">
+        <h4>✗ No before/after social proof</h4>
+        <p>Before/after transformation photos and videos are the #1 converting content type for your niche — they're missing.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- PACKAGES -->
+  <div class="section">
+    <p class="section__label">Our Proposal</p>
+    <h2>Four Packages. <span>One Complete Strategy.</span></h2>
+    <p class="section__desc">You can start with one or take all four together for the best results and the best price.</p>
+
+    <!-- Package 1 -->
+    <div class="package">
+      <div class="package__num">Package 01</div>
+      <div class="package__header">
+        <div>
+          <h3>📱 Social Media Content</h3>
+        </div>
+        <div class="package__price">
+          <strong>5,900 SEK</strong>
+          <span>per month</span>
+        </div>
+      </div>
+      <p>A full monthly content system for Instagram and Facebook — strategy, captions, video scripts, and visual briefs. Designed to grow your audience and drive bookings and course sales.</p>
+      <ul>
+        <li>Full content strategy & brand positioning</li>
+        <li>30-day content calendar every month</li>
+        <li>12–16 post captions + hooks + hashtags</li>
+        <li>4–6 Reels/TikTok video script outlines</li>
+        <li>Before/after content templates</li>
+        <li>ADHD-specific content pillars</li>
+        <li>Monthly performance review</li>
+        <li>Platform-specific optimization (IG + FB)</li>
+      </ul>
+    </div>
+
+    <!-- Package 2 -->
+    <div class="package">
+      <div class="package__num">Package 02</div>
+      <div class="package__header">
+        <div>
+          <h3>💻 Website Refresh</h3>
+        </div>
+        <div class="package__price">
+          <strong>8,500 SEK</strong>
+          <span>one-time</span>
+        </div>
+      </div>
+      <p>We improve your existing website to convert more visitors into bookings and course buyers — without rebuilding from scratch.</p>
+      <ul>
+        <li>Transparent pricing page added</li>
+        <li>Service packages redesigned with clear tiers</li>
+        <li>Before/after gallery section</li>
+        <li>FAQ section (reduces sales call friction)</li>
+        <li>Lead magnet page optimized with email capture</li>
+        <li>5-email welcome sequence for guide downloaders</li>
+        <li>SEO improvements on all pages</li>
+        <li>Mobile speed optimization</li>
+      </ul>
+    </div>
+
+    <!-- Package 3 - Featured -->
+    <div class="package package--featured">
+      <div class="package__badge">Biggest Opportunity</div>
+      <div class="package__num">Package 03</div>
+      <div class="package__header">
+        <div>
+          <h3>🎓 Online Course Creation</h3>
+        </div>
+        <div class="package__price">
+          <strong>14,900 SEK</strong>
+          <span>one-time</span>
+        </div>
+      </div>
+      <p>We turn your expertise into a complete, sellable online course. You record the videos — we handle everything else: outline, scripts, sales page, and launch strategy.</p>
+      <ul>
+        <li>Course title, positioning & market research</li>
+        <li>Full 6-module curriculum design</li>
+        <li>All lesson scripts (written for you)</li>
+        <li>6 student worksheets + printable pack</li>
+        <li>Teachable / Kajabi platform setup</li>
+        <li>Sales page copy (converts visitors to buyers)</li>
+        <li>5-email launch sequence</li>
+        <li>Launch strategy + early-bird campaign</li>
+      </ul>
+    </div>
+
+    <!-- Package 4 - CRM -->
+    <div class="package package--featured">
+      <div class="package__badge">New — Exclusive to GKL Clients</div>
+      <div class="package__num">Package 04</div>
+      <div class="package__header">
+        <div>
+          <h3>📊 CRM + Business Dashboard</h3>
+        </div>
+        <div class="package__price">
+          <strong>11,900 SEK</strong>
+          <span>one-time + setup</span>
+        </div>
+      </div>
+      <p>A custom-built private dashboard where you manage every part of your business in one place — leads, clients, course students, bookings, and revenue. No more spreadsheets.</p>
+      <ul>
+        <li>Custom web-based CRM (works on any device)</li>
+        <li>Lead pipeline (New → Contacted → Booked → Client)</li>
+        <li>Client profiles with session notes & history</li>
+        <li>Course student tracker</li>
+        <li>Revenue dashboard (monthly + annual view)</li>
+        <li>Booking status & follow-up reminders</li>
+        <li>Email capture integration</li>
+        <li>Private & password-protected — only you</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- CRM DETAIL -->
+  <div class="section">
+    <p class="section__label">Package 04 — Detail</p>
+    <h2>Your CRM & <span>Business Dashboard</span></h2>
+    <p class="section__desc">Built specifically for solo service providers like you. Everything in one screen. No subscriptions, no complicated software.</p>
+
+    <div class="crm-features">
+      <div class="crm-feature">
+        <div class="crm-feature__icon">👥</div>
+        <h4>Lead & Client CRM</h4>
+        <p>Track every lead from first contact to paying client. Add notes, follow-up dates, and service history.</p>
+      </div>
+      <div class="crm-feature">
+        <div class="crm-feature__icon">🎓</div>
+        <h4>Course Student Hub</h4>
+        <p>See all course buyers in one view. Track enrolment dates, completion, and upsell status.</p>
+      </div>
+      <div class="crm-feature">
+        <div class="crm-feature__icon">💰</div>
+        <h4>Revenue Dashboard</h4>
+        <p>Monthly and annual revenue from services + course. Know exactly where your income comes from.</p>
+      </div>
+      <div class="crm-feature">
+        <div class="crm-feature__icon">📅</div>
+        <h4>Booking Tracker</h4>
+        <p>Upcoming sessions, pending confirmations, and follow-ups — all color-coded and at a glance.</p>
+      </div>
+      <div class="crm-feature">
+        <div class="crm-feature__icon">📈</div>
+        <h4>Growth Analytics</h4>
+        <p>Track your leads per month, conversion rate, and course sales over time. Know what's working.</p>
+      </div>
+      <div class="crm-feature">
+        <div class="crm-feature__icon">🔔</div>
+        <h4>Reminders & Tasks</h4>
+        <p>Never drop the ball on a follow-up. Set reminders directly on client cards.</p>
+      </div>
+    </div>
+
+    <div class="crm-screen">
+      <h4>Dashboard Modules Included</h4>
+      <div class="crm-modules">
+        <div class="crm-module">
+          <div class="crm-module__label">Overview</div>
+          <p>Total revenue, active clients, leads this month, course students — all at a glance on your home screen.</p>
+        </div>
+        <div class="crm-module">
+          <div class="crm-module__label">Lead Pipeline</div>
+          <p>Kanban-style board: New Lead → Contacted → Consultation Booked → Active Client → Completed.</p>
+        </div>
+        <div class="crm-module">
+          <div class="crm-module__label">Client Profiles</div>
+          <p>Name, contact, service type, session dates, notes, invoicing status, and next follow-up date.</p>
+        </div>
+        <div class="crm-module">
+          <div class="crm-module__label">Course Hub</div>
+          <p>All course students with enrolment date, payment status, completion %, and upgrade/upsell notes.</p>
+        </div>
+        <div class="crm-module">
+          <div class="crm-module__label">Revenue Tracker</div>
+          <p>Log income from in-home sessions, virtual sessions, course sales, and any other product. Monthly breakdown.</p>
+        </div>
+        <div class="crm-module">
+          <div class="crm-module__label">Tasks & Follow-ups</div>
+          <p>A simple to-do list with client links and due dates. Prioritized daily so you know what to do first.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- COURSE DETAIL -->
+  <div class="section">
+    <p class="section__label">Package 03 — Course Outline</p>
+    <h2>The Course We'll <span>Build Together</span></h2>
+    <p class="section__desc">Working title: <em>"Andas ut hemma — Organisera med ADHD"</em> · Self-paced · 6 modules · Swedish first, English phase 2</p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:24px;">
+      <div style="background:var(--bg2); border-radius:12px; padding:20px 24px;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Module 1</div>
+        <h4 style="font-size:15px; margin-bottom:4px;">Förstå din relation till röran</h4>
+        <p style="font-size:13px; color:var(--muted);">Why ADHD brains struggle. Validation, not shame. Your organizing style assessment.</p>
+      </div>
+      <div style="background:var(--bg2); border-radius:12px; padding:20px 24px;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Module 2</div>
+        <h4 style="font-size:15px; margin-bottom:4px;">Mindset & Motivation</h4>
+        <p style="font-size:13px; color:var(--muted);">Why traditional advice fails. The "good enough" method. Building momentum with small wins.</p>
+      </div>
+      <div style="background:var(--bg2); border-radius:12px; padding:20px 24px;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Module 3</div>
+        <h4 style="font-size:15px; margin-bottom:4px;">Vanesas Metod: Rum för Rum</h4>
+        <p style="font-size:13px; color:var(--muted);">Sort → Decide → Place → Maintain. Kitchen, bedroom, wardrobe, office — step by step.</p>
+      </div>
+      <div style="background:var(--bg2); border-radius:12px; padding:20px 24px;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Module 4</div>
+        <h4 style="font-size:15px; margin-bottom:4px;">Hållbara System</h4>
+        <p style="font-size:13px; color:var(--muted);">Why chaos comes back — and how to prevent it. Labels, zones, visual cues. 10-min daily reset.</p>
+      </div>
+      <div style="background:var(--bg2); border-radius:12px; padding:20px 24px;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Module 5</div>
+        <h4 style="font-size:15px; margin-bottom:4px;">Digital Röran</h4>
+        <p style="font-size:13px; color:var(--muted);">Phone, email, desktop, photos. ADHD-friendly digital tools. Protect your attention online.</p>
+      </div>
+      <div style="background:var(--bg2); border-radius:12px; padding:20px 24px;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Module 6</div>
+        <h4 style="font-size:15px; margin-bottom:4px;">Hålla Farten Uppe</h4>
+        <p style="font-size:13px; color:var(--muted);">When you fall off the wagon. Accountability systems. Celebrating progress. Community access.</p>
+      </div>
+    </div>
+
+    <div style="background:#F0FDF4; border:1px solid #86EFAC; border-radius:12px; padding:20px 24px; margin-top:24px;">
+      <h4 style="font-size:14px; font-weight:700; color:#166534; margin-bottom:8px;">📈 Revenue Projection</h4>
+      <p style="font-size:13px; color:#166534;">At <strong>1,490 SEK</strong> per student — just 50 students per launch = <strong>74,500 SEK</strong>. After the first launch, it goes evergreen. You make money from students enrolling every single month, with no extra work.</p>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- TIMELINE -->
+  <div class="section">
+    <p class="section__label">Project Timeline</p>
+    <h2>From Signing to <span>Live in 1 Week</span></h2>
+    <p class="section__desc">We move fast. Everything is built and delivered within 7 days — you focus on your clients while we handle the rest.</p>
+
+    <div class="timeline" style="margin-top:32px;">
+      <div class="timeline__item">
+        <div class="timeline__week">Day 1</div>
+        <h4>Kickoff & Discovery</h4>
+        <p>1-hour onboarding call with Gonzalo. We gather your brand assets, client stories, and content preferences. CRM setup begins immediately.</p>
+      </div>
+      <div class="timeline__item">
+        <div class="timeline__week">Day 2</div>
+        <h4>CRM Dashboard + All Content Written</h4>
+        <p>Your custom CRM is delivered and ready to use. All 30 social media captions, 8 Reel scripts, course lesson scripts, and email sequences — fully written.</p>
+      </div>
+      <div class="timeline__item">
+        <div class="timeline__week">Day 3</div>
+        <h4>Course Platform Set Up + Worksheets Done</h4>
+        <p>All 6 student worksheets designed and ready. Course platform configured with your content, pricing, and checkout. Sales page copy live.</p>
+      </div>
+      <div class="timeline__item">
+        <div class="timeline__week">Day 4</div>
+        <h4>Website Refresh Live</h4>
+        <p>Pricing page, FAQ, gallery, and lead magnet page updated and live. Email capture connected to your list. Welcome sequence activated.</p>
+      </div>
+      <div class="timeline__item">
+        <div class="timeline__week">Day 5</div>
+        <h4>Social Media Strategy Delivered</h4>
+        <p>Full content strategy document + your first 30-day content calendar. Visual briefs for every post. You start posting with confidence.</p>
+      </div>
+      <div class="timeline__item">
+        <div class="timeline__week">Day 6–7</div>
+        <h4>Course Launch 🚀</h4>
+        <p>Early-bird campaign goes out, Instagram launch content published, email sequence activated — your first students enrolled before the week is out.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- INVESTMENT -->
+  <div class="section">
+    <p class="section__label">Investment</p>
+    <h2>Clear Pricing. <span>No Surprises.</span></h2>
+    <p class="section__desc">50% deposit to start, 50% on delivery. Monthly social media is billed month-to-month with no lock-in after month 3.</p>
+
+    <table class="investment-table">
+      <thead>
+        <tr>
+          <th>Package</th>
+          <th>Type</th>
+          <th>Investment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>📱 Social Media Content</td>
+          <td>Monthly retainer</td>
+          <td>5,900 SEK / month</td>
+        </tr>
+        <tr>
+          <td>💻 Website Refresh</td>
+          <td>One-time project</td>
+          <td>8,500 SEK</td>
+        </tr>
+        <tr>
+          <td>🎓 Online Course Creation</td>
+          <td>One-time project</td>
+          <td>14,900 SEK</td>
+        </tr>
+        <tr>
+          <td>📊 CRM + Business Dashboard</td>
+          <td>One-time + setup</td>
+          <td>11,900 SEK</td>
+        </tr>
+        <tr class="total">
+          <td colspan="2"><strong>Full Package (all 4) — First Month</strong></td>
+          <td><strong>41,200 SEK</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="note-box">
+      💡 <strong>Bundle discount available:</strong> Take all 4 packages together and receive 10% off the one-time projects (Website + Course + CRM). That's a saving of 3,530 SEK. Ask Gonzalo about the bundle rate.
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- CTA -->
+  <div class="section">
+    <div class="cta-block">
+      <h2>Ready to <span>Build Something Great</span>?</h2>
+      <p>Book a free 30-minute call with Gonzalo. We'll go through the proposal, answer your questions, and if it's the right fit — we start that same week.</p>
+      <a href="mailto:hello@gklagency.com" class="btn">Book Your Free Call</a>
+      <a href="mailto:hello@gklagency.com" class="btn btn--ghost">Send Us a Question</a>
+      <div class="cta-contact">
+        Questions? Email us directly at <a href="mailto:hello@gklagency.com">hello@gklagency.com</a>
+        <br />Prepared by Gonzalo — GKL Agency · March 2025
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

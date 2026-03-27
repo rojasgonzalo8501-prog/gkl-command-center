@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — ExhalePLR</title>
+  <meta name="description" content="Browse all done-for-you PLR content kits. Social media, courses, email sequences, funnels, and bundles for coaches and entrepreneurs." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .shop-layout { display: grid; grid-template-columns: 220px 1fr; gap: 40px; align-items: start; }
+    .shop-sidebar { position: sticky; top: 84px; }
+    .sidebar-section { margin-bottom: 32px; }
+    .sidebar-section h5 { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .sidebar-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-size: 13px; color: var(--muted); transition: all 0.15s; }
+    .sidebar-item:hover, .sidebar-item.active { background: var(--gold-bg); color: var(--gold2); }
+    .sidebar-item__count { margin-left: auto; font-size: 11px; background: var(--bg3); padding: 2px 8px; border-radius: 10px; color: var(--muted); }
+    .price-range { display: flex; flex-direction: column; gap: 8px; }
+    .price-option { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); cursor: pointer; }
+    .price-option input { accent-color: var(--gold); }
+    .shop-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
+    .shop-header__count { font-size: 13px; color: var(--muted); }
+    .sort-select { background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 7px 12px; font-size: 13px; color: var(--text); font-family: 'Inter', sans-serif; outline: none; cursor: pointer; }
+    @media(max-width: 768px) {
+      .shop-layout { grid-template-columns: 1fr; }
+      .shop-sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">Exhale<span>PLR</span></a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html" class="active">Shop</a></li>
+        <li><a href="index.html#vault">PLR Vault</a></li>
+        <li><a href="index.html#how">How It Works</a></li>
+      </ul>
+      <div class="nav__right">
+        <a href="index.html#free-kit" class="btn btn--ghost btn--sm">Free Kit</a>
+        <a href="index.html#vault" class="btn btn--nav">Join Vault →</a>
+      </div>
+      <button class="nav__burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="container page-hero__inner">
+      <p class="section__label">The Store</p>
+      <h1>All <span>Products</span></h1>
+      <p>Done-for-you content kits. Buy, rebrand, launch.</p>
+    </div>
+  </div>
+
+  <!-- SHOP -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="shop-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="shop-sidebar">
+          <div class="sidebar-section">
+            <h5>Category</h5>
+            <div class="sidebar-item active" data-filter="all">
+              All Products <span class="sidebar-item__count">8</span>
+            </div>
+            <div class="sidebar-item" data-filter="social">
+              📱 Social Media <span class="sidebar-item__count">2</span>
+            </div>
+            <div class="sidebar-item" data-filter="course">
+              🎓 Course Kits <span class="sidebar-item__count">1</span>
+            </div>
+            <div class="sidebar-item" data-filter="email">
+              ✉️ Email <span class="sidebar-item__count">1</span>
+            </div>
+            <div class="sidebar-item" data-filter="bundle">
+              🎯 Bundles <span class="sidebar-item__count">3</span>
+            </div>
+            <div class="sidebar-item" data-filter="lead">
+              📩 Lead Magnets <span class="sidebar-item__count">1</span>
+            </div>
+          </div>
+          <div class="sidebar-section">
+            <h5>Price</h5>
+            <div class="price-range">
+              <label class="price-option"><input type="checkbox" checked /> Under $30</label>
+              <label class="price-option"><input type="checkbox" checked /> $30 – $100</label>
+              <label class="price-option"><input type="checkbox" checked /> $100 – $200</label>
+              <label class="price-option"><input type="checkbox" checked /> $200+</label>
+            </div>
+          </div>
+          <div class="sidebar-section">
+            <h5>Membership</h5>
+            <div class="sidebar-item" onclick="window.location='index.html#vault'">
+              🔐 PLR Vault — $27/mo
+            </div>
+          </div>
+        </aside>
+
+        <!-- PRODUCTS -->
+        <div>
+          <div class="shop-header">
+            <span class="shop-header__count" id="productCount">8 products</span>
+            <select class="sort-select" id="sortSelect">
+              <option value="featured">Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+            </select>
+          </div>
+
+          <div class="products__grid" id="shopGrid">
+
+            <div class="product-card product-card--featured fade-up" data-category="social" data-price="27">
+              <div class="product-card__badge badge-popular">Best Seller</div>
+              <div class="product-card__thumb">📱</div>
+              <div class="product-card__body">
+                <div class="product-card__niche">Business Coach Edition</div>
+                <h3>Social Media Content Kit</h3>
+                <p>30 captions, 8 Reel scripts, content calendar, hashtag pack. Fully written and ready to post.</p>
+                <div class="product-card__includes">
+                  <span>30 Instagram captions with hooks</span>
+                  <span>8 Reel / TikTok script outlines</span>
+                  <span>30-day content calendar</span>
+                  <span>Hashtag research pack</span>
+                </div>
+                <div class="product-card__footer">
+                  <div class="product-card__price">$27</div>
+                  <a href="product.html?id=social-media-kit" class="btn btn--primary btn--sm">Buy Now</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card fade-up" data-category="social" data-price="27">
+              <div class="product-card__badge badge-new">New</div>
+              <div class="product-card__thumb">🌿</div>
+              <div class="product-card__body">
+                <div class="product-card__niche">Wellness Edition</div>
+                <h3>Social Media Content Kit</h3>
+                <p>30 wellness-niche captions, 8 mindfulness Reel scripts, calendar, and hashtag pack.</p>
+                <div class="product-card__includes">
+                  <span>30 wellness-focused captions</span>
+                  <span>8 mindfulness Reel scripts</span>
+                  <span>30-day content calendar</span>
+                  <span>Niche hashtag research</span>
+                </div>
+                <div class="product-card__footer">
+                  <div class="product-card__price">$27</div>
+                  <a href="product.html?id=social-wellness" class="btn btn--primary btn--sm">Buy Now</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card product-card--featured fade-up" data-category="course" data-price="97">
+              <div class="product-card__badge badge-popular">Hero Product</div>
+              <div class="product-card__thumb">🎓</div>
+              <div class="product-card__body">
+                <div class="product-card__niche">Coaching Niche</div>
+                <h3>Course-in-a-Box</h3>
+                <p>Launch a complete online course in days. Everything written — just record and publish.</p>
+                <div class="product-card__includes">
+                  <span>6-module curriculum + full lesson scripts</span>
+                  <span>6 student worksheets</span>
+                  <span>Full sales page copy</span>
+                  <span>5-email launch sequence</span>
+                </div>
+                <div class="product-card__footer">
+                  <div class="product-card__price">$97</div>
+                  <a href="product.html?id=course-in-a-box" class="btn btn--primary btn--sm">Buy Now</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card fade-up" data-category="lead" data-price="27">
+              <div class="product-card__thumb">📩</div>
+              <div class="product-card__body">
+                <div class="product-card__niche">Any Niche</div>
+                <h3>Lead Magnet Kit</h3>
+                <p>20-page ebook + opt-in page copy + 3-email welcome sequence. Ready to plug and launch.</p>
+                <div class="product-card__includes">
+                  <span>20-page professionally written ebook</span>
+                  <span>Opt-in + thank-you page copy</span>
+                  <span>3-email welcome sequence</span>
+                </div>
+                <div class="product-card__footer">
+                  <div class="product-card__price">$27</div>
+                  <a href="product.html?id=lead-magnet-kit" class="btn btn--primary btn--sm">Buy Now</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card fade-up" data-category="email" data-price="17">
+              <div class="product-card__thumb">✉️</div>
+              <div class="product-card__body">
+                <div class="product-card__niche">Any Business</div>
+                <h3>Email Sequence Pack</h3>
+                <p>7-email welcome sequence + 5-email sales sequence. Fully written, just add your brand.</p>
+                <div class="product-card__includes">
+                  <span>7-email welcome nurture sequence</span>
+                  <span>5-email sales sequence</span>
+                  <span>20 subject line swipe file</span>
+                </div>
+                <div class="product-card__footer">
+                  <div class="product-card__price">$17</div>
+                  <a href="product.html?id=email-sequence" class="btn btn--primary btn--sm">Buy Now</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card fade-up" data-category="bundle" data-price="47">
+              <div class="product-card__thumb">📆</div>
+              <div class="product-card__body">
+                <div class="product-card__niche">Any Niche</div>
+                <h3>90-Day Content Bundle</h3>
+                <p>3 months of social media content in one pack. Highest value product in the store.</p>
+                <div class="product-card__includes">
+                  <span>90 captions + hooks</span>
+                  <span>24 Reel scripts</span>
+                  <span>12 carousel outlines + 3-mo calendar</span>
+                </div>
+                <div class="product-card__footer">
+                  <div class="product-card__price">$47</div>
+                  <a href="product.html?id=90-day-bundle" class="btn btn--primary btn--sm">Buy Now</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card fade-up" data-category="bundle" data-price="147">
+              <div class="product-card__thumb">🎯</div>
+              <div class="product-card__body">
+                <div class="product-card__niche">Coaches & Consultants</div>
+                <h3>Done-for-You Funnel Kit</h3>
+                <p>Complete marketing funnel. Lead magnet, landing page, emails, and ads. One purchase, full funnel.</p>
+                <div class="product-card__includes">
+                  <span>20-page lead magnet ebook</span>
+                  <span>Opt-in + sales page copy</span>
+                  <span>10-email funnel + 5 ad variants</span>
+                </div>
+                <div class="product-card__footer">
+                  <div class="product-card__price">$147</div>
+                  <a href="product.html?id=funnel-kit" class="btn btn--primary btn--sm">Buy Now</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card fade-up" data-category="bundle" data-price="247">
+              <div class="product-card__badge badge-new">Premium</div>
+              <div class="product-card__thumb">👑</div>
+              <div class="product-card__body">
+                <div class="product-card__niche">Authority Builder</div>
+                <h3>Niche Authority Pack</h3>
+                <p>Everything to dominate your niche — content, course, funnel, and SEO. Our biggest product.</p>
+                <div class="product-card__includes">
+                  <span>6 SEO blog posts + 30-page ebook</span>
+                  <span>60 social posts + complete course kit</span>
+                  <span>Full email funnel included</span>
+                </div>
+                <div class="product-card__footer">
+                  <div class="product-card__price">$247</div>
+                  <a href="product.html?id=authority-pack" class="btn btn--primary btn--sm">Buy Now</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FREE KIT -->
+  <section class="section--tight" style="padding:60px 0;">
+    <div class="container">
+      <div class="freebar">
+        <div class="freebar__left">
+          <div class="freebar__label">Free Sample</div>
+          <h3>Try Before You Buy — Free Kit</h3>
+          <p>10 done-for-you Instagram captions. Instant download.</p>
+        </div>
+        <div class="freebar__form">
+          <input type="email" id="freeKitEmail" placeholder="Your email address" />
+          <button class="btn btn--primary" onclick="claimFreeKit()">Get Free Kit →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <a href="index.html" class="nav__logo">Exhale<span>PLR</span></a>
+          <p>Premium done-for-you content kits for coaches and entrepreneurs.</p>
+        </div>
+        <div class="footer__col">
+          <h5>Products</h5>
+          <a href="shop.html">All Products</a>
+          <a href="shop.html?filter=social">Social Media Kits</a>
+          <a href="shop.html?filter=course">Course Kits</a>
+          <a href="shop.html?filter=email">Email Sequences</a>
+          <a href="shop.html?filter=bundle">Bundles</a>
+        </div>
+        <div class="footer__col">
+          <h5>Membership</h5>
+          <a href="index.html#vault">The PLR Vault</a>
+          <a href="index.html#vault">Join $27/month</a>
+          <a href="index.html#free-kit">Free Sample Kit</a>
+        </div>
+        <div class="footer__col">
+          <h5>Company</h5>
+          <a href="mailto:support@exhaleplr.com">support@exhaleplr.com</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">PLR License</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 ExhalePLR. All rights reserved.</p>
+        <div style="display:flex; gap:20px;">
+          <a href="#">Pinterest</a>
+          <a href="#">Instagram</a>
+          <a href="#">TikTok</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    // Shop filtering
+    document.querySelectorAll('.sidebar-item[data-filter]').forEach(item => {
+      item.addEventListener('click', () => {
+        document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+        const filter = item.dataset.filter;
+        const cards = document.querySelectorAll('#shopGrid .product-card');
+        let count = 0;
+        cards.forEach(card => {
+          const show = filter === 'all' || card.dataset.category === filter;
+          card.style.display = show ? '' : 'none';
+          if (show) count++;
+        });
+        document.getElementById('productCount').textContent = count + ' product' + (count !== 1 ? 's' : '');
+      });
+    });
+  </script>
+</body>
+</html>

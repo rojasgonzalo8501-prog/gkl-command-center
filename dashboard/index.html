@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GKL — Command Center</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:#0d1117; --surface:#161b22; --s2:#21262d; --border:#30363d;
+    --text:#e6edf3; --muted:#8b949e;
+    --c-overview:#58a6ff; --c-gkl:#f78166; --c-ecom:#d29922;
+    --c-avatars:#a371f7; --c-trading:#3fb950; --c-youtube:#ff4444;
+    --c-whoop:#00e5a0; --c-system:#6e7681;
+    --c-andas:#ffa657; --c-exhale:#79c0ff; --c-brand:#f78166;
+  }
+
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; background:var(--bg); color:var(--text); height:100vh; display:flex; flex-direction:column; overflow:hidden; font-size:13px; }
+
+  /* ── Header ── */
+  header { background:var(--surface); border-bottom:1px solid var(--border); padding:0 16px; height:48px; display:flex; align-items:center; gap:0; flex-shrink:0; }
+
+  .logo { font-size:14px; font-weight:700; display:flex; align-items:center; gap:8px; margin-right:16px; white-space:nowrap; }
+  .pulse { width:7px;height:7px;background:var(--c-trading);border-radius:50%;box-shadow:0 0 5px var(--c-trading);animation:pulse 2s ease-in-out infinite; }
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+  /* Search bar */
+  .search-wrap { position:relative; margin-right:14px; }
+  .search-input { background:var(--s2); border:1px solid var(--border); border-radius:6px; padding:5px 10px 5px 30px; color:var(--text); font-size:12px; width:200px; outline:none; transition:border-color .15s,width .2s; }
+  .search-input:focus { border-color:var(--c-overview); width:260px; }
+  .search-input::placeholder { color:var(--muted); }
+  .search-icon { position:absolute; left:9px; top:50%; transform:translateY(-50%); color:var(--muted); font-size:12px; pointer-events:none; }
+  .search-results { position:absolute; top:calc(100% + 4px); left:0; width:340px; background:var(--surface); border:1px solid var(--border); border-radius:8px; z-index:100; max-height:320px; overflow-y:auto; display:none; }
+  .search-results.show { display:block; }
+  .sr-section { padding:8px 12px 4px; font-size:10px; text-transform:uppercase; letter-spacing:.6px; color:var(--muted); border-bottom:1px solid var(--border); }
+  .sr-item { padding:7px 12px; display:flex; align-items:center; gap:8px; cursor:pointer; font-size:12px; }
+  .sr-item:hover { background:var(--s2); }
+  .sr-path { color:var(--muted); font-size:11px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+  .token-meter { display:flex;align-items:center;gap:10px;padding:0 14px;border-left:1px solid var(--border);border-right:1px solid var(--border);height:100%; }
+  .tg { display:flex;flex-direction:column;line-height:1.2; }
+  .tl { font-size:9px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted); }
+  .tv { font-size:13px;font-weight:700;font-variant-numeric:tabular-nums; }
+  .tdiv { width:1px;height:22px;background:var(--border); }
+
+  .header-right { margin-left:auto;display:flex;align-items:center;gap:10px;color:var(--muted);font-size:11px; }
+  .live-badge { background:rgba(63,185,80,.1);color:var(--c-trading);border:1px solid rgba(63,185,80,.2);padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600; }
+  #rdot { width:5px;height:5px;border-radius:50%;background:var(--c-overview);opacity:0;transition:opacity .3s; }
+  #rdot.on { opacity:1; }
+
+  /* ── Tabs ── */
+  .tab-bar { background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:stretch;padding:0 12px;flex-shrink:0;overflow-x:auto; }
+  .tab-bar::-webkit-scrollbar{height:0}
+  .tab { padding:0 13px;height:38px;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap;font-size:12.5px;font-weight:500;display:flex;align-items:center;gap:6px;user-select:none;transition:color .15s,border-color .15s; }
+  .tab:hover{color:var(--text)}
+  .tab.active{color:var(--text);border-bottom-color:var(--tc)}
+
+  /* ── Layout ── */
+  .layout{display:flex;flex:1;overflow:hidden}
+  .main{flex:1;overflow-y:auto;padding:16px 20px}
+  .main::-webkit-scrollbar{width:5px}
+  .main::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+  .sidebar{width:275px;border-left:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+  .sidebar-head{padding:10px 13px;border-bottom:1px solid var(--border);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+  .sidebar-body{flex:1;overflow-y:auto}
+  .sidebar-body::-webkit-scrollbar{width:3px}
+  .sidebar-body::-webkit-scrollbar-thumb{background:var(--border)}
+
+  .stabs{display:flex;border-bottom:1px solid var(--border);flex-shrink:0}
+  .stab{flex:1;text-align:center;padding:7px 0;font-size:11px;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;transition:all .15s}
+  .stab:hover{color:var(--text)}
+  .stab.active{color:var(--text);border-bottom-color:var(--c-overview)}
+
+  /* ── Activity ── */
+  .act-item{padding:8px 12px;border-bottom:1px solid rgba(48,54,61,.5)}
+  .act-item:hover{background:rgba(255,255,255,.02)}
+  .act-row{display:flex;align-items:center;gap:6px;margin-bottom:2px}
+  .act-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+  .act-proj{font-size:10px;text-transform:uppercase;letter-spacing:.4px;font-weight:600}
+  .act-time{margin-left:auto;color:var(--muted);font-size:10px;white-space:nowrap}
+  .act-msg{font-size:11.5px;color:var(--text);padding-left:11px;line-height:1.4;opacity:.85}
+
+  /* ── Agent sidebar ── */
+  .agent-mini{padding:8px 12px;border-bottom:1px solid rgba(48,54,61,.5)}
+  .agent-mini:hover{background:rgba(255,255,255,.02)}
+  .am-row{display:flex;align-items:center;gap:6px;margin-bottom:3px}
+  .am-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+  .running .am-dot{background:var(--c-ecom);box-shadow:0 0 4px var(--c-ecom);animation:pulse 1s ease-in-out infinite}
+  .completed .am-dot{background:var(--c-trading)}
+  .failed .am-dot{background:var(--c-youtube)}
+  .am-type{font-size:11px;font-weight:600}
+  .am-proj{margin-left:auto;font-size:10px;color:var(--muted)}
+  .am-task{font-size:11px;color:var(--muted);padding-left:12px;line-height:1.4;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .am-meta{display:flex;gap:8px;padding-left:12px;margin-top:3px}
+  .am-m{font-size:10px;color:var(--muted)}
+  .am-m span{color:var(--text)}
+
+  /* ── Common ── */
+  .sec{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);margin-bottom:8px;margin-top:20px;display:flex;align-items:center;justify-content:space-between}
+  .sec:first-child{margin-top:0}
+  .sec-action{font-size:11px;font-weight:400;text-transform:none;letter-spacing:0;cursor:pointer;color:var(--c-overview);opacity:.8}
+  .sec-action:hover{opacity:1}
+
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:8px}
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(125px,1fr));gap:8px;margin-bottom:16px}
+  .stat{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:11px 13px}
+  .stat-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:5px}
+  .stat-val{font-size:21px;font-weight:700;line-height:1}
+  .stat-sub{font-size:10px;color:var(--muted);margin-top:3px}
+
+  /* ── File list with actions ── */
+  .file-list{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+  .file-row{display:flex;align-items:center;padding:7px 10px;border-bottom:1px solid var(--border);gap:7px;transition:background .1s;min-height:34px}
+  .file-row:last-child{border-bottom:none}
+  .file-row:hover{background:var(--s2)}
+  .file-row:hover .file-actions{opacity:1}
+  .fi{font-size:12px;width:15px;text-align:center;flex-shrink:0}
+  .fp{flex:1;font-size:11.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer}
+  .fp:hover{color:var(--c-overview);text-decoration:underline}
+  .ft{color:var(--muted);font-size:10.5px;white-space:nowrap;flex-shrink:0}
+  .file-actions{display:flex;gap:3px;opacity:0;transition:opacity .15s;flex-shrink:0}
+  .fa-btn{padding:2px 7px;border-radius:4px;border:1px solid var(--border);background:var(--s2);color:var(--muted);font-size:10px;cursor:pointer;white-space:nowrap;transition:all .15s}
+  .fa-btn:hover{color:var(--text);border-color:#484f58}
+  .fa-btn.open{color:var(--c-overview);border-color:rgba(88,166,255,.3);background:rgba(88,166,255,.08)}
+  .fa-btn.open:hover{background:rgba(88,166,255,.15)}
+
+  .page-hdr{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:13px 15px;margin-bottom:14px;display:flex;align-items:center;gap:11px}
+  .page-av{width:36px;height:36px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+  .page-title{font-size:15px;font-weight:700;margin-bottom:2px}
+  .page-desc{color:var(--muted);font-size:11.5px}
+
+  .pill{padding:2px 8px;border-radius:20px;font-size:10.5px;font-weight:600;white-space:nowrap}
+  .pill-active{background:rgba(63,185,80,.1);color:#3fb950;border:1px solid rgba(63,185,80,.2)}
+  .pill-planning{background:rgba(163,113,247,.1);color:#a371f7;border:1px solid rgba(163,113,247,.2)}
+  .pill-new{background:rgba(88,166,255,.1);color:#58a6ff;border:1px solid rgba(88,166,255,.2)}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+
+  .sub-nav{display:flex;gap:5px;margin-bottom:14px;flex-wrap:wrap}
+  .stab2{padding:4px 11px;border-radius:6px;border:1px solid var(--border);font-size:11.5px;cursor:pointer;color:var(--muted);transition:all .15s}
+  .stab2:hover{color:var(--text);border-color:#484f58}
+  .stab2.on{color:var(--text);background:var(--s2);border-color:var(--sc,var(--border))}
+
+  .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:8px;margin-bottom:16px}
+  .proj-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 13px;cursor:pointer;transition:border-color .15s,background .15s}
+  .proj-card:hover{border-color:var(--pc);background:var(--s2)}
+  .pc-top{display:flex;align-items:center;gap:7px;margin-bottom:7px}
+  .pc-icon{font-size:17px}
+  .pc-name{font-weight:600;font-size:12.5px}
+  .pc-badge{margin-left:auto}
+  .pc-desc{color:var(--muted);font-size:11px;line-height:1.5}
+
+  /* ── Token bar ── */
+  .tok-wrap{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:16px}
+  .tok-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+  .tok-title{font-size:12px;font-weight:600}
+  .tok-total{font-size:11px;color:var(--muted)}
+  .tok-rows{display:flex;flex-direction:column;gap:6px}
+  .tok-row{display:flex;align-items:center;gap:8px}
+  .tok-name{width:100px;font-size:11px;color:var(--muted);flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .tok-bg{flex:1;height:5px;background:var(--s2);border-radius:3px;overflow:hidden}
+  .tok-fill{height:100%;border-radius:3px;transition:width .5s}
+  .tok-v{font-size:10px;color:var(--muted);white-space:nowrap;width:50px;text-align:right;flex-shrink:0}
+  .tok-c{font-size:10px;color:var(--muted);white-space:nowrap;width:42px;text-align:right;flex-shrink:0}
+
+  /* ── Agent cards ── */
+  .agent-grid{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+  .agent-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:11px 13px;display:grid;grid-template-columns:auto 1fr auto;gap:9px;align-items:start}
+  .agent-card.running{border-color:rgba(210,153,34,.35)}
+  .agent-card.completed{border-color:rgba(63,185,80,.2)}
+  .agent-card.failed{border-color:rgba(248,81,73,.25)}
+  .ac-s{display:flex;flex-direction:column;align-items:center;padding-top:2px;gap:3px}
+  .ac-d{width:8px;height:8px;border-radius:50%}
+  .running .ac-d{background:var(--c-ecom);box-shadow:0 0 5px var(--c-ecom);animation:pulse 1s ease-in-out infinite}
+  .completed .ac-d{background:var(--c-trading)}
+  .failed .ac-d{background:var(--c-youtube)}
+  .ac-l{flex:1;width:1px;background:var(--border);min-height:16px}
+  .ac-top{display:flex;align-items:center;gap:7px;margin-bottom:3px;flex-wrap:wrap}
+  .ac-type{font-size:12px;font-weight:700}
+  .ac-pb{font-size:10px;padding:1px 6px;border-radius:10px;font-weight:600}
+  .ac-model{font-size:10px;color:var(--muted);margin-left:auto}
+  .ac-task{font-size:11.5px;color:var(--muted);line-height:1.4;margin-bottom:5px}
+  .ac-stats{display:flex;gap:12px;flex-wrap:wrap}
+  .ac-stat{font-size:10.5px;color:var(--muted)}
+  .ac-stat b{color:var(--text)}
+  .ac-time{font-size:10px;color:var(--muted);white-space:nowrap;padding-top:1px}
+
+  /* ── Kanban board ── */
+  .kanban{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+  .kan-col{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:10px;min-height:120px}
+  .kan-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+  .kan-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--muted)}
+  .kan-count{font-size:10px;background:var(--border);color:var(--muted);padding:1px 6px;border-radius:10px}
+  .kan-cards{display:flex;flex-direction:column;gap:5px}
+  .kan-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:8px 9px;font-size:11.5px;cursor:pointer;transition:border-color .15s}
+  .kan-card:hover{border-color:#484f58}
+  .kan-card-title{margin-bottom:4px;line-height:1.4}
+  .kan-card-meta{display:flex;align-items:center;gap:6px}
+  .kan-card-proj{font-size:10px;color:var(--muted)}
+  .kan-card-del{margin-left:auto;color:var(--muted);font-size:11px;opacity:0;transition:opacity .15s}
+  .kan-card:hover .kan-card-del{opacity:1}
+  .kan-add{width:100%;margin-top:6px;padding:5px;background:transparent;border:1px dashed var(--border);border-radius:5px;color:var(--muted);font-size:11px;cursor:pointer;text-align:center;transition:all .15s}
+  .kan-add:hover{border-color:#484f58;color:var(--text)}
+  .pri-high{border-left:2px solid var(--c-youtube)}
+  .pri-medium{border-left:2px solid var(--c-ecom)}
+  .pri-low{border-left:2px solid var(--muted)}
+
+  /* ── Quick links ── */
+  .links-grid{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+  .link-chip{display:flex;align-items:center;gap:6px;padding:5px 11px;background:var(--surface);border:1px solid var(--border);border-radius:20px;font-size:11.5px;text-decoration:none;color:var(--text);transition:all .15s;cursor:pointer}
+  .link-chip:hover{border-color:var(--c-overview);color:var(--c-overview)}
+  .link-del{color:var(--muted);font-size:12px;margin-left:2px;opacity:0;transition:opacity .15s}
+  .link-chip:hover .link-del{opacity:1}
+  .link-add{background:transparent;border:1px dashed var(--border);color:var(--muted)}
+  .link-add:hover{border-color:var(--c-overview);color:var(--c-overview)}
+
+  /* ── Preview modal ── */
+  .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:none;align-items:center;justify-content:center}
+  .modal-bg.show{display:flex}
+  .modal{background:var(--surface);border:1px solid var(--border);border-radius:10px;width:90vw;height:88vh;display:flex;flex-direction:column;overflow:hidden}
+  .modal-head{display:flex;align-items:center;padding:10px 14px;border-bottom:1px solid var(--border);gap:10px;flex-shrink:0}
+  .modal-title{flex:1;font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .modal-actions{display:flex;gap:6px}
+  .modal-btn{padding:4px 10px;background:var(--s2);border:1px solid var(--border);border-radius:5px;color:var(--text);font-size:11.5px;cursor:pointer;transition:background .15s;text-decoration:none}
+  .modal-btn:hover{background:#2d333b}
+  .modal-close{padding:4px 10px;background:transparent;border:1px solid var(--border);border-radius:5px;color:var(--muted);font-size:13px;cursor:pointer;transition:all .15s}
+  .modal-close:hover{color:var(--text);border-color:#484f58}
+  .modal-iframe{flex:1;border:none;background:#fff}
+
+  /* ── Website cards ── */
+  .site-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-bottom:16px}
+  .site-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:border-color .15s}
+  .site-card:hover{border-color:var(--sc,var(--c-overview))}
+  .site-thumb{height:100px;background:var(--s2);display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;position:relative}
+  .site-thumb iframe{width:200%;height:200%;transform:scale(.5);transform-origin:top left;pointer-events:none;border:none}
+  .site-thumb-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;background:rgba(0,0,0,.4);transition:opacity .2s;font-size:22px}
+  .site-card:hover .site-thumb-overlay{opacity:1}
+  .site-info{padding:8px 10px;display:flex;align-items:center;gap:6px}
+  .site-name{flex:1;font-size:12px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .site-open{font-size:11px;color:var(--c-overview);cursor:pointer;white-space:nowrap}
+
+  /* ── Idea card ── */
+  .idea-card{background:var(--surface);border:1px dashed var(--border);border-radius:8px;padding:16px}
+  .idea-item{padding:5px 0;font-size:12px;border-bottom:1px solid var(--border)}
+  .idea-item:last-child{border-bottom:none}
+
+  .btn{display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:5px 10px;background:var(--s2);border:1px solid var(--border);border-radius:5px;color:var(--text);font-size:11.5px;cursor:pointer;transition:background .15s}
+  .btn:hover{background:#2d333b}
+  .empty{text-align:center;padding:28px 16px;color:var(--muted)}
+  .empty-icon{font-size:22px;margin-bottom:7px}
+  .loading{display:flex;align-items:center;justify-content:center;padding:50px;color:var(--muted);gap:8px}
+  .spinner{width:14px;height:14px;border:2px solid var(--border);border-top-color:var(--c-overview);border-radius:50%;animation:spin .7s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  @media(max-width:900px){.two-col{grid-template-columns:1fr}.sidebar{display:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><div class="pulse"></div>GKL Command Center</div>
+
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input class="search-input" id="search-input" placeholder="Search files, activity..." autocomplete="off">
+    <div class="search-results" id="search-results"></div>
+  </div>
+
+  <div class="token-meter">
+    <div class="tg"><span class="tl">Tokens</span><span class="tv" id="hdr-tok" style="color:var(--c-overview)">—</span></div>
+    <div class="tdiv"></div>
+    <div class="tg"><span class="tl">Cost</span><span class="tv" id="hdr-cost" style="color:var(--c-ecom)">—</span></div>
+    <div class="tdiv"></div>
+    <div class="tg"><span class="tl">Agents</span><span class="tv" id="hdr-agents" style="color:var(--c-trading)">—</span></div>
+  </div>
+
+  <div class="header-right">
+    <div id="rdot"></div>
+    <span id="clock"></span>
+    <span class="live-badge">● LIVE</span>
+  </div>
+</header>
+
+<div class="tab-bar" id="tab-bar">
+  <div class="tab active" data-tab="overview"  style="--tc:var(--c-overview)">⌂ Overview</div>
+  <div class="tab" data-tab="gkl"     style="--tc:var(--c-gkl)">🚀 GKL Agency</div>
+  <div class="tab" data-tab="ecom"    style="--tc:var(--c-ecom)">🛒 E-Commerce</div>
+  <div class="tab" data-tab="avatars" style="--tc:var(--c-avatars)">🤖 Avatars</div>
+  <div class="tab" data-tab="trading" style="--tc:var(--c-trading)">📈 Trading Bots</div>
+  <div class="tab" data-tab="youtube" style="--tc:var(--c-youtube)">▶ YouTube</div>
+  <div class="tab" data-tab="whoop"   style="--tc:var(--c-whoop)">⌚ Whoop</div>
+</div>
+
+<div class="layout">
+  <div class="main" id="main"><div class="loading"><div class="spinner"></div></div></div>
+
+  <div class="sidebar">
+    <div class="stabs">
+      <div class="stab active" data-stab="activity">Activity</div>
+      <div class="stab" data-stab="agents">Agents</div>
+    </div>
+    <div class="sidebar-body" id="sidebar-body"></div>
+  </div>
+</div>
+
+<!-- Preview modal -->
+<div class="modal-bg" id="modal-bg" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-head">
+      <span class="modal-title" id="modal-title"></span>
+      <div class="modal-actions">
+        <a class="modal-btn" id="modal-open-btn" target="_blank">↗ Open in tab</a>
+        <button class="modal-btn" id="modal-finder-btn">📂 Finder</button>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <iframe class="modal-iframe" id="modal-iframe" sandbox="allow-scripts allow-same-origin"></iframe>
+  </div>
+</div>
+
+<script>
+// ── Config ────────────────────────────────────────────────
+const PC = { andasuthemma:'var(--c-andas)',exhaleplr:'var(--c-exhale)','gkl-agency':'var(--c-brand)',ecom:'var(--c-ecom)',avatars:'var(--c-avatars)',trading:'var(--c-trading)',youtube:'var(--c-youtube)',whoop:'var(--c-whoop)',system:'var(--c-system)',overview:'var(--c-overview)' };
+const AT = { 'general-purpose':{label:'General Purpose',color:'var(--c-overview)'},'Explore':{label:'Explore',color:'var(--c-exhale)'},'Plan':{label:'Plan',color:'var(--c-avatars)'},'claude-code-guide':{label:'Code Guide',color:'var(--c-andas)'} };
+const CM = { andasuthemma:{emoji:'🏋️',color:'var(--c-andas)',desc:'Personal training & wellness coaching'},exhaleplr:{emoji:'🧘',color:'var(--c-exhale)',desc:'Breathwork & mindfulness platform'},'gkl-agency':{emoji:'🏢',color:'var(--c-brand)',desc:'Agency brand & website'},'merca-skroten':{emoji:'🚗',color:'var(--c-trading)',desc:'Car scrapping & Mercedes parts — Enköping, Sweden'},yaloyoga:{emoji:'🌿',color:'var(--c-whoop)',desc:'Sustainable cork yoga brand — app, courses & clothing'} };
+const NP = {
+  ecom:    {icon:'🛒',color:'var(--c-ecom)',    title:'E-Commerce',      desc:'Stores, products, and automated fulfilment pipelines with AI-driven product research.',       pillars:['🔍 Product & niche research','🏪 Store setup — Shopify / WooCommerce','📦 Supplier sourcing & dropship automation','📣 Paid ads + influencer seeding','📊 Analytics, pricing, inventory ops']},
+  avatars: {icon:'🤖',color:'var(--c-avatars)', title:'AI Avatars',       desc:'Hyper-realistic AI avatars for brand representation and virtual influencer campaigns.',       pillars:['🎭 Avatar design & persona definition','🎬 Video generation (HeyGen / Runway)','🗣️ Voice cloning & lip-sync automation','📱 Multi-platform distribution','🤝 Brand deal strategy']},
+  trading: {icon:'📈',color:'var(--c-trading)', title:'Trading Bots',     desc:'Algorithmic trading bots for crypto and equity markets with full risk management.',          pillars:['📐 Strategy design (momentum, arbitrage)','🧪 Backtesting & walk-forward analysis','⚡ Live execution (Alpaca / Binance / IBKR)','🛡️ Risk management & position sizing','📊 Performance dashboard & alerts']},
+  youtube: {icon:'▶', color:'var(--c-youtube)', title:'Faceless YouTube', desc:'Faceless YouTube channels with AI scripts, voiceovers, and automated publishing.',           pillars:['🎯 Niche research & channel positioning','📝 Script + voiceover pipeline','🎬 Auto-editing with B-roll & captions','🔎 SEO, thumbnails & monetisation','📅 Publishing schedule & analytics']},
+  whoop:   {icon:'⌚',color:'var(--c-whoop)',   title:'Whoop Clipper',    desc:'Whoop data content — clips, recovery tips, and performance stories.',                        pillars:['📱 Short-form clip strategy (TikTok / Reels / Shorts)','📊 Whoop data visualisation','🏃 Athlete performance stories','💤 Sleep & recovery series','🤝 Brand partnerships']},
+};
+
+// ── State ─────────────────────────────────────────────────
+let S = { data:null, activity:[], agents:[], tokens:null, tasks:[], links:{} };
+let activeTab='overview', activeClient='andasuthemma', activeSTab='activity';
+
+// ── Clock ─────────────────────────────────────────────────
+setInterval(()=>{ document.getElementById('clock').textContent = new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit'}); },1000);
+
+// ── Tab bar ───────────────────────────────────────────────
+document.getElementById('tab-bar').addEventListener('click',e=>{
+  const t=e.target.closest('.tab'); if(!t)return;
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active'); activeTab=t.dataset.tab; renderMain();
+});
+document.querySelector('.stabs').addEventListener('click',e=>{
+  const t=e.target.closest('.stab'); if(!t)return;
+  document.querySelectorAll('.stab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active'); activeSTab=t.dataset.stab; renderSidebar();
+});
+
+function go(tab,client){ activeTab=tab; if(client)activeClient=client; document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.tab===tab)); renderMain(); }
+function setClient(k){ activeClient=k; renderMain(); }
+
+// ── Search ────────────────────────────────────────────────
+let searchTimer;
+document.getElementById('search-input').addEventListener('input', e=>{
+  clearTimeout(searchTimer);
+  const q=e.target.value.trim();
+  if(q.length<2){ document.getElementById('search-results').classList.remove('show'); return; }
+  searchTimer=setTimeout(async()=>{
+    const res=await fetch(`/api/search?q=${encodeURIComponent(q)}`).then(r=>r.json());
+    renderSearchResults(res, q);
+  }, 250);
+});
+document.getElementById('search-input').addEventListener('blur', ()=>{ setTimeout(()=>document.getElementById('search-results').classList.remove('show'),200); });
+
+function renderSearchResults(res, q){
+  const el=document.getElementById('search-results');
+  let html='';
+  if(res.files.length){
+    html+=`<div class="sr-section">Files (${res.files.length})</div>`;
+    html+=res.files.map(f=>`
+      <div class="sr-item" onclick="openOrPreview('${esc(f.path)}','${esc(f.name)}')">
+        <span>${ficon(f.name)}</span>
+        <div style="overflow:hidden"><div style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(f.name)}</div><div class="sr-path">${esc(f.path)}</div></div>
+      </div>`).join('');
+  }
+  if(res.activity.length){
+    html+=`<div class="sr-section">Activity (${res.activity.length})</div>`;
+    html+=res.activity.map(a=>`
+      <div class="sr-item">
+        <span style="color:${PC[a.project]||'var(--muted)'};font-size:10px;font-weight:600;white-space:nowrap">${esc(a.project)}</span>
+        <span style="font-size:11.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(a.msg)}</span>
+      </div>`).join('');
+  }
+  if(!html) html=`<div style="padding:16px;text-align:center;color:var(--muted);font-size:12px">No results for "${esc(q)}"</div>`;
+  el.innerHTML=html; el.classList.add('show');
+}
+
+// ── Fetch ─────────────────────────────────────────────────
+async function fetchAll(){
+  document.getElementById('rdot').classList.add('on');
+  try {
+    const [dr,ar,agr,tr,tkr,lr] = await Promise.all([
+      fetch('/api/data'), fetch('/api/activity'), fetch('/api/agents'),
+      fetch('/api/tokens'), fetch('/api/tasks'), fetch('/api/links')
+    ]);
+    S.data=await dr.json(); S.activity=await ar.json(); S.agents=await agr.json();
+    S.tokens=await tr.json(); S.tasks=await tkr.json(); S.links=await lr.json();
+    renderHeader(); renderMain(); renderSidebar();
+  } catch(e){console.error(e);}
+  document.getElementById('rdot').classList.remove('on');
+}
+
+// ── Header ────────────────────────────────────────────────
+function renderHeader(){
+  if(!S.tokens)return;
+  const t=S.tokens.totals; const running=S.agents.filter(a=>a.status==='running').length;
+  document.getElementById('hdr-tok').textContent=fmtTok(t.total_tokens||0);
+  document.getElementById('hdr-cost').textContent='$'+(t.cost||0).toFixed(4);
+  document.getElementById('hdr-agents').textContent=running>0?running+' running':S.agents.length+' total';
+}
+
+// ── Helpers ───────────────────────────────────────────────
+const EXT={html:'🌐',css:'🎨',js:'⚡',ts:'📘',md:'📝',json:'📋',py:'🐍',txt:'📄',jpg:'🖼',png:'🖼',svg:'🖼'};
+const ficon=n=>EXT[n.split('.').pop().toLowerCase()]||'📄';
+const isHTML=n=>n.toLowerCase().endsWith('.html');
+const rel=iso=>{const s=(Date.now()-new Date(iso))/1000;if(s<60)return'just now';if(s<3600)return~~(s/60)+'m ago';if(s<86400)return~~(s/3600)+'h ago';return~~(s/86400)+'d ago';};
+const dur=(a,b)=>{if(!b)return'running';const s=(new Date(b)-new Date(a))/1000;if(s<60)return~~s+'s';return~~(s/60)+'m '+~~s%60+'s';};
+const fmtTok=n=>{if(!n)return'0';if(n>=1e6)return(n/1e6).toFixed(2)+'M';if(n>=1e3)return(n/1e3).toFixed(1)+'K';return n+'';};
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const pill=s=>({active:`<span class="pill pill-active">Active</span>`,planning:`<span class="pill pill-planning">Planning</span>`,new:`<span class="pill pill-new">New</span>`}[s]||`<span class="pill pill-new">${s}</span>`);
+
+// ── File list with clickable actions ─────────────────────
+function fileRowHTML(f){
+  const html = isHTML(f.name);
+  const previewUrl = html ? `/sites/${f.path}` : null;
+  const actions = `
+    <div class="file-actions">
+      ${html ? `<button class="fa-btn open" onclick="previewFile('${esc(previewUrl)}','${esc(f.name)}')">👁 Preview</button>
+               <a class="fa-btn open" href="${esc(previewUrl)}" target="_blank">↗ Open</a>` : ''}
+      <button class="fa-btn" onclick="openFinder('${esc(f.path)}')">📂</button>
+    </div>`;
+  return `<div class="file-row">
+    <span class="fi">${ficon(f.name)}</span>
+    <span class="fp" onclick="${html?`previewFile('${esc(previewUrl)}','${esc(f.name)}')`:`openFinder('${esc(f.path)}')`}">${esc(f.path)}</span>
+    ${actions}
+    <span class="ft">${rel(f.mtime)}</span>
+  </div>`;
+}
+
+function fileListHTML(files,max=20){
+  if(!files?.length)return`<div class="empty"><div class="empty-icon">📂</div>No files yet</div>`;
+  const rows=files.slice(0,max).map(fileRowHTML).join('');
+  const more=files.length>max?`<div class="file-row" style="color:var(--muted)">+${files.length-max} more</div>`:'';
+  return`<div class="file-list">${rows}${more}</div>`;
+}
+
+// ── Website cards (thumbnail preview) ────────────────────
+function siteCardsHTML(deliverables, accentColor){
+  const htmlFiles=deliverables.filter(f=>isHTML(f.name));
+  if(!htmlFiles.length)return'';
+  const cards=htmlFiles.map(f=>{
+    const url=`/sites/${f.path}`;
+    return`<div class="site-card" style="--sc:${accentColor}">
+      <div class="site-thumb" onclick="previewFile('${esc(url)}','${esc(f.name)}')">
+        <iframe src="${esc(url)}" tabindex="-1" aria-hidden="true"></iframe>
+        <div class="site-thumb-overlay">👁</div>
+      </div>
+      <div class="site-info">
+        <span class="site-name">${esc(f.name)}</span>
+        <a class="site-open" href="${esc(url)}" target="_blank">↗ Open</a>
+      </div>
+    </div>`;
+  }).join('');
+  return`<div class="sec">Website Previews <span class="sec-action" style="color:var(--muted)">${htmlFiles.length} pages</span></div><div class="site-cards">${cards}</div>`;
+}
+
+// ── Token bar ─────────────────────────────────────────────
+function tokBarHTML(){
+  const t=S.tokens?.totals;
+  if(!t?.total_tokens)return`<div class="tok-wrap"><div class="tok-head"><span class="tok-title">Token Usage</span><span class="tok-total">No usage yet</span></div></div>`;
+  const byP=t.by_project||{};
+  const maxT=Math.max(...Object.values(byP).map(p=>p.tokens_in+p.tokens_out),1);
+  const rows=Object.entries(byP).sort((a,b)=>(b[1].tokens_in+b[1].tokens_out)-(a[1].tokens_in+a[1].tokens_out)).map(([p,d])=>{
+    const tot=d.tokens_in+d.tokens_out; const pct=(tot/maxT*100).toFixed(1); const c=PC[p]||'var(--muted)';
+    return`<div class="tok-row"><span class="tok-name" style="color:${c}">${p}</span><div class="tok-bg"><div class="tok-fill" style="width:${pct}%;background:${c}"></div></div><span class="tok-v">${fmtTok(tot)}</span><span class="tok-c">$${d.cost.toFixed(4)}</span></div>`;
+  }).join('');
+  return`<div class="tok-wrap"><div class="tok-head"><span class="tok-title">Token Usage by Project</span><span class="tok-total">${fmtTok(t.total_tokens)} · $${t.cost.toFixed(4)}</span></div><div class="tok-rows">${rows}</div></div>`;
+}
+
+// ── Agent cards ───────────────────────────────────────────
+function agentGridHTML(agents){
+  if(!agents?.length)return`<div class="empty card" style="padding:20px"><div class="empty-icon">🤖</div>No agents logged yet</div>`;
+  return`<div class="agent-grid">${agents.map(a=>{
+    const at=AT[a.type]||{label:a.type,color:'var(--muted)'}; const pc=PC[a.project]||'var(--muted)'; const toks=(a.tokens_in||0)+(a.tokens_out||0);
+    return`<div class="agent-card ${a.status}">
+      <div class="ac-s"><div class="ac-d"></div><div class="ac-l"></div></div>
+      <div>
+        <div class="ac-top"><span class="ac-type" style="color:${at.color}">${esc(at.label)}</span><span class="ac-pb" style="background:${pc}22;color:${pc}">${esc(a.project)}</span><span class="ac-model">${esc(a.model||'sonnet-4-6')}</span></div>
+        <div class="ac-task">${esc(a.task)}</div>
+        <div class="ac-stats">
+          <span class="ac-stat">Status: <b style="color:${a.status==='running'?'var(--c-ecom)':a.status==='completed'?'var(--c-trading)':'var(--c-youtube)'}">${a.status}</b></span>
+          ${toks?`<span class="ac-stat">Tokens: <b>${fmtTok(toks)}</b></span>`:''}
+          ${a.cost?`<span class="ac-stat">Cost: <b>$${Number(a.cost).toFixed(4)}</b></span>`:''}
+          <span class="ac-stat">Duration: <b>${dur(a.ts_start,a.ts_end)}</b></span>
+        </div>
+      </div>
+      <div class="ac-time">${rel(a.ts_start)}</div>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+// ── Kanban board ──────────────────────────────────────────
+function kanbanHTML(project){
+  const cols=[{id:'todo',label:'To Do'},{id:'doing',label:'In Progress'},{id:'done',label:'Done'}];
+  const tasks=S.tasks.filter(t=>t.project===project);
+  return`<div class="kanban">${cols.map(col=>{
+    const cards=tasks.filter(t=>t.status===col.id);
+    return`<div class="kan-col">
+      <div class="kan-head"><span class="kan-title">${col.label}</span><span class="kan-count">${cards.length}</span></div>
+      <div class="kan-cards">${cards.map(t=>`
+        <div class="kan-card pri-${t.priority||'medium'}" draggable="true">
+          <div class="kan-card-title">${esc(t.title)}</div>
+          <div class="kan-card-meta">
+            <span class="kan-card-proj">${rel(t.ts)}</span>
+            <span class="kan-card-del" onclick="deleteTask(${t.id})">✕</span>
+            ${col.id!=='done'?`<span class="kan-card-del" onclick="moveTask(${t.id},'${col.id==='todo'?'doing':'done'}')" style="opacity:1;color:var(--c-trading)">→</span>`:''}
+          </div>
+        </div>`).join('')}
+      </div>
+      <button class="kan-add" onclick="addTask('${project}','${col.id}')">+ Add</button>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+// ── Quick links ───────────────────────────────────────────
+function linksHTML(project){
+  const links=(S.links[project]||[]);
+  const chips=links.map(l=>`
+    <a class="link-chip" href="${esc(l.url)}" target="_blank">
+      🔗 ${esc(l.label)}
+      <span class="link-del" onclick="event.preventDefault();deleteLink('${project}',${l.id})">✕</span>
+    </a>`).join('');
+  return`<div class="links-grid">
+    ${chips}
+    <div class="link-chip link-add" onclick="addLink('${project}')">+ Add link</div>
+  </div>`;
+}
+
+// ── Render dispatch ───────────────────────────────────────
+function renderMain(){
+  const el=document.getElementById('main');
+  if(!S.data){el.innerHTML=`<div class="loading"><div class="spinner"></div></div>`;return;}
+  if(activeTab==='overview')        renderOverview(el);
+  else if(activeTab==='gkl')        renderGKL(el);
+  else if(NP[activeTab])            renderNewProject(el,activeTab);
+}
+
+// ── Overview ──────────────────────────────────────────────
+function renderOverview(el){
+  const {projects,workflows,allFiles}=S.data;
+  const ks=Object.keys(projects);
+  const totalD=ks.reduce((s,k)=>s+(projects[k].deliverables?.length||0),0);
+  const t=S.tokens?.totals||{};
+  el.innerHTML=`
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-lbl">Clients</div><div class="stat-val" style="color:var(--c-gkl)">${ks.length}</div><div class="stat-sub">Under GKL Agency</div></div>
+      <div class="stat"><div class="stat-lbl">Ventures</div><div class="stat-val" style="color:var(--c-ecom)">5</div><div class="stat-sub">In planning</div></div>
+      <div class="stat"><div class="stat-lbl">Deliverables</div><div class="stat-val" style="color:var(--c-exhale)">${totalD}</div><div class="stat-sub">Files shipped</div></div>
+      <div class="stat"><div class="stat-lbl">Agents Run</div><div class="stat-val" style="color:var(--c-trading)">${S.agents.length}</div><div class="stat-sub">${S.agents.filter(a=>a.status==='running').length} running</div></div>
+      <div class="stat"><div class="stat-lbl">Tokens Used</div><div class="stat-val" style="color:var(--c-overview)">${fmtTok(t.total_tokens||0)}</div><div class="stat-sub">$${(t.cost||0).toFixed(4)}</div></div>
+      <div class="stat"><div class="stat-lbl">Tasks</div><div class="stat-val" style="color:var(--c-avatars)">${S.tasks.length}</div><div class="stat-sub">${S.tasks.filter(t=>t.status==='done').length} done</div></div>
+    </div>
+    ${tokBarHTML()}
+    <div class="sec">Recent Agents</div>
+    ${agentGridHTML(S.agents.slice(0,4))}
+    <div class="sec">All Projects</div>
+    <div class="proj-grid">
+      <div class="proj-card" style="--pc:var(--c-gkl)" onclick="go('gkl')">
+        <div class="pc-top"><span class="pc-icon">🚀</span><span class="pc-name">GKL Agency</span><span class="pc-badge">${pill('active')}</span></div>
+        <div class="pc-desc">${ks.length} clients · ${totalD} deliverables</div>
+      </div>
+      ${Object.entries(NP).map(([k,p])=>`<div class="proj-card" style="--pc:${p.color}" onclick="go('${k}')">
+        <div class="pc-top"><span class="pc-icon">${p.icon}</span><span class="pc-name">${p.title}</span><span class="pc-badge">${pill('planning')}</span></div>
+        <div class="pc-desc">${p.pillars[0]}</div>
+      </div>`).join('')}
+    </div>
+    <div class="sec">Recent Files</div>
+    ${fileListHTML(allFiles,10)}`;
+}
+
+// ── GKL Agency ────────────────────────────────────────────
+function renderGKL(el){
+  const {projects}=S.data;
+  const cks=['andasuthemma','exhaleplr','gkl-agency','merca-skroten','yaloyoga'];
+  const m=CM[activeClient]; const proj=projects[activeClient]||{clientFiles:[],deliverables:[]};
+  const cAgents=S.agents.filter(a=>a.project===activeClient);
+  const subNav=cks.map(k=>{const cm=CM[k];const on=activeClient===k;return`<div class="stab2${on?' on':''}" onclick="setClient('${k}')" ${on?`style="--sc:${cm.color};border-color:${cm.color}"`:''}>${cm.emoji} ${k}</div>`;}).join('');
+  const pt=S.tokens?.totals?.by_project?.[activeClient]||{tokens_in:0,tokens_out:0,cost:0};
+  el.innerHTML=`
+    <div class="page-hdr">
+      <div class="page-av" style="background:var(--c-gkl)22">🚀</div>
+      <div><div class="page-title" style="color:var(--c-gkl)">GKL Agency</div><div class="page-desc">Client accounts & deliverables</div></div>
+      ${pill('active')}
+    </div>
+    <div class="sub-nav">${subNav}</div>
+    <div class="page-hdr">
+      <div class="page-av" style="background:${m.color}22">${m.emoji}</div>
+      <div><div class="page-title" style="color:${m.color}">${activeClient}</div><div class="page-desc">${m.desc}</div></div>
+      ${pill('active')}
+    </div>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-lbl">Client Files</div><div class="stat-val" style="color:${m.color}">${proj.clientFiles?.length||0}</div></div>
+      <div class="stat"><div class="stat-lbl">Deliverables</div><div class="stat-val" style="color:${m.color}">${proj.deliverables?.length||0}</div></div>
+      <div class="stat"><div class="stat-lbl">Agent Runs</div><div class="stat-val" style="color:var(--c-trading)">${cAgents.length}</div></div>
+      <div class="stat"><div class="stat-lbl">Tokens</div><div class="stat-val" style="color:var(--c-overview)">${fmtTok(pt.tokens_in+pt.tokens_out)}</div><div class="stat-sub">$${pt.cost.toFixed(4)}</div></div>
+    </div>
+    <div class="sec">Quick Links <span class="sec-action" onclick="addLink('${activeClient}')">+ Add</span></div>
+    ${linksHTML(activeClient)}
+    ${siteCardsHTML(proj.deliverables, m.color)}
+    <div class="sec">Task Board <span class="sec-action" onclick="addTask('${activeClient}','todo')">+ Task</span></div>
+    ${kanbanHTML(activeClient)}
+    ${cAgents.length?`<div class="sec">Agent History</div>${agentGridHTML(cAgents.slice(0,4))}`:''}
+    <div class="two-col">
+      <div><div class="sec">Client Files</div>${fileListHTML(proj.clientFiles)}</div>
+      <div><div class="sec">Deliverables</div>${fileListHTML(proj.deliverables)}</div>
+    </div>`;
+}
+
+// ── New projects ──────────────────────────────────────────
+function renderNewProject(el,key){
+  const cfg=NP[key]; const pA=S.agents.filter(a=>a.project===key); const pt=S.tokens?.totals?.by_project?.[key]||{tokens_in:0,tokens_out:0,cost:0};
+  el.innerHTML=`
+    <div class="page-hdr">
+      <div class="page-av" style="background:${cfg.color}22;font-size:19px">${cfg.icon}</div>
+      <div><div class="page-title" style="color:${cfg.color}">${cfg.title}</div><div class="page-desc">New venture — planning phase</div></div>
+      ${pill('planning')}
+    </div>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-lbl">Agent Runs</div><div class="stat-val" style="color:var(--c-trading)">${pA.length}</div></div>
+      <div class="stat"><div class="stat-lbl">Tokens</div><div class="stat-val" style="color:var(--c-overview)">${fmtTok(pt.tokens_in+pt.tokens_out)}</div><div class="stat-sub">$${pt.cost.toFixed(4)}</div></div>
+      <div class="stat"><div class="stat-lbl">Tasks</div><div class="stat-val" style="color:var(--c-avatars)">${S.tasks.filter(t=>t.project===key).length}</div></div>
+    </div>
+    <div class="sec">Quick Links <span class="sec-action" onclick="addLink('${key}')">+ Add</span></div>
+    ${linksHTML(key)}
+    <div class="sec">Task Board <span class="sec-action" onclick="addTask('${key}','todo')">+ Task</span></div>
+    ${kanbanHTML(key)}
+    <div class="two-col">
+      <div class="idea-card" style="border-color:${cfg.color}33">
+        <div style="font-weight:600;margin-bottom:8px;color:${cfg.color}">💡 Scope</div>
+        <p style="color:var(--muted);font-size:11.5px;line-height:1.7">${cfg.desc}</p>
+      </div>
+      <div class="idea-card" style="border-color:${cfg.color}33">
+        <div style="font-weight:600;margin-bottom:8px;color:${cfg.color}">📋 Pillars</div>
+        ${cfg.pillars.map(p=>`<div class="idea-item">${p}</div>`).join('')}
+      </div>
+    </div>
+    ${pA.length?`<div class="sec" style="margin-top:16px">Agent History</div>${agentGridHTML(pA)}`:''}`;
+}
+
+// ── Sidebar ───────────────────────────────────────────────
+const TD={file_created:'var(--c-trading)',file_modified:'var(--c-overview)',task_started:'var(--c-ecom)',task_completed:'var(--c-trading)',note:'var(--muted)',system:'var(--c-avatars)'};
+function renderSidebar(){
+  const el=document.getElementById('sidebar-body');
+  if(activeSTab==='activity'){
+    if(!S.activity.length){el.innerHTML=`<div class="empty"><div class="empty-icon">📋</div>No activity</div>`;return;}
+    el.innerHTML=S.activity.map(it=>{const pc=PC[it.project]||'var(--muted)';const dc=TD[it.type]||'var(--muted)';return`<div class="act-item"><div class="act-row"><div class="act-dot" style="background:${dc}"></div><span class="act-proj" style="color:${pc}">${esc(it.project)}</span><span class="act-time">${rel(it.ts)}</span></div><div class="act-msg">${esc(it.msg)}</div></div>`;}).join('');
+  } else {
+    if(!S.agents.length){el.innerHTML=`<div class="empty"><div class="empty-icon">🤖</div>No agents yet</div>`;return;}
+    el.innerHTML=S.agents.map(a=>{const at=AT[a.type]||{label:a.type,color:'var(--muted)'};const pc=PC[a.project]||'var(--muted)';const toks=(a.tokens_in||0)+(a.tokens_out||0);return`<div class="agent-mini ${a.status}"><div class="am-row"><div class="am-dot"></div><span class="am-type" style="color:${at.color}">${esc(at.label)}</span><span class="am-proj" style="color:${pc}">${esc(a.project)}</span></div><div class="am-task">${esc(a.task)}</div><div class="am-meta"><span class="am-m">Status: <span style="color:${a.status==='running'?'var(--c-ecom)':a.status==='completed'?'var(--c-trading)':'var(--c-youtube)'}">${a.status}</span></span>${toks?`<span class="am-m">Tokens: <span>${fmtTok(toks)}</span></span>`:''}<span class="am-m">${rel(a.ts_start)}</span></div></div>`;}).join('');
+  }
+}
+
+// ── Preview modal ─────────────────────────────────────────
+function previewFile(url, name){
+  document.getElementById('modal-title').textContent=name;
+  document.getElementById('modal-iframe').src=url;
+  document.getElementById('modal-open-btn').href=url;
+  document.getElementById('modal-finder-btn').onclick=()=>{ const p=url.replace('/sites/','deliverables/websites/'); openFinder(p); };
+  document.getElementById('modal-bg').classList.add('show');
+}
+function closeModal(e){ if(!e||e.target===document.getElementById('modal-bg')){document.getElementById('modal-bg').classList.remove('show');document.getElementById('modal-iframe').src='';} }
+document.addEventListener('keydown',e=>{ if(e.key==='Escape')closeModal(); });
+
+// ── File actions ──────────────────────────────────────────
+function openOrPreview(filePath, name){
+  if(isHTML(name)){
+    const sp=filePath.replace('deliverables/websites/','');
+    previewFile(`/sites/${sp}`, name);
+  } else { openFinder(filePath); }
+}
+function openFinder(p){ fetch(`/api/open?path=${encodeURIComponent(p)}&finder=1`); }
+function openFile(p){ fetch(`/api/open?path=${encodeURIComponent(p)}`); }
+
+// ── Tasks ─────────────────────────────────────────────────
+async function addTask(project, status){
+  const title=prompt('Task:'); if(!title?.trim())return;
+  const priority=prompt('Priority (high/medium/low):','medium')||'medium';
+  await fetch('/api/tasks',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({project,status,title:title.trim(),priority})});
+  await fetchAll();
+}
+async function moveTask(id, status){
+  await fetch('/api/tasks',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({id,status})});
+  await fetchAll();
+}
+async function deleteTask(id){
+  await fetch('/api/tasks',{method:'DELETE',headers:{'Content-Type':'application/json'},body:JSON.stringify({id})});
+  await fetchAll();
+}
+
+// ── Links ─────────────────────────────────────────────────
+async function addLink(project){
+  const label=prompt('Label (e.g. Live Site, Google Drive):'); if(!label?.trim())return;
+  const url=prompt('URL:'); if(!url?.trim())return;
+  await fetch('/api/links',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({project,label:label.trim(),url:url.trim()})});
+  await fetchAll();
+}
+async function deleteLink(project,id){
+  await fetch('/api/links',{method:'DELETE',headers:{'Content-Type':'application/json'},body:JSON.stringify({project,id})});
+  await fetchAll();
+}
+
+// ── Browser notifications ─────────────────────────────────
+let lastAgentCount=0;
+function checkNotifications(){
+  if(!('Notification' in window))return;
+  const done=S.agents.filter(a=>a.status==='completed'||a.status==='failed');
+  if(done.length>lastAgentCount&&lastAgentCount>0&&Notification.permission==='granted'){
+    const latest=done[0];
+    new Notification(`Agent ${latest.status}`,{body:`${latest.type} — ${latest.task?.slice(0,60)}`,icon:'/favicon.ico'});
+  }
+  lastAgentCount=done.length;
+}
+if('Notification' in window&&Notification.permission==='default') Notification.requestPermission();
+
+// ── Boot ──────────────────────────────────────────────────
+fetchAll();
+setInterval(()=>{fetchAll().then(checkNotifications);},12000);
+</script>
+</body>
+</html>

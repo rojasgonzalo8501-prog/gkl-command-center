@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andas ut Hemma — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0A0E1A;
+      --navy2: #141829;
+      --gold: #B8922E;
+      --gold2: #D4A83A;
+      --bg: #F4F6FA;
+      --white: #FFFFFF;
+      --text: #0A0E1A;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --green: #10B981;
+      --green-bg: #ECFDF5;
+      --blue: #3B82F6;
+      --blue-bg: #EFF6FF;
+      --amber: #F59E0B;
+      --amber-bg: #FFFBEB;
+      --red: #EF4444;
+      --red-bg: #FEF2F2;
+      --sidebar-w: 240px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: var(--navy);
+      min-height: 100vh;
+      position: fixed;
+      top: 0; left: 0;
+      display: flex;
+      flex-direction: column;
+      z-index: 100;
+    }
+    .sidebar__logo {
+      padding: 24px 20px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .sidebar__logo-name { font-size: 15px; font-weight: 800; color: #fff; }
+    .sidebar__logo-name span { color: var(--gold2); }
+    .sidebar__logo-sub { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+    .sidebar__nav { padding: 16px 12px; flex: 1; }
+    .sidebar__label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.25); padding: 8px 8px 4px; margin-bottom: 4px; }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      color: rgba(255,255,255,0.6);
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 2px;
+      transition: all 0.15s;
+    }
+    .nav-item:hover { background: rgba(255,255,255,0.06); color: #fff; }
+    .nav-item.active { background: rgba(184,146,46,0.18); color: var(--gold2); }
+    .nav-item__icon { font-size: 16px; width: 20px; text-align: center; }
+    .sidebar__user {
+      padding: 16px 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sidebar__avatar { width: 32px; height: 32px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #fff; flex-shrink: 0; }
+    .sidebar__user-info strong { display: block; font-size: 12px; color: #fff; }
+    .sidebar__user-info span { font-size: 11px; color: rgba(255,255,255,0.4); }
+
+    /* ── MAIN ── */
+    .main { margin-left: var(--sidebar-w); flex: 1; min-height: 100vh; }
+    .topbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .topbar__title { font-size: 16px; font-weight: 700; color: var(--navy); }
+    .topbar__right { display: flex; align-items: center; gap: 12px; }
+    .topbar__date { font-size: 12px; color: var(--muted); }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: all 0.15s; }
+    .btn--primary { background: var(--gold); color: #fff; }
+    .btn--primary:hover { background: var(--gold2); }
+    .btn--ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
+    .btn--ghost:hover { background: var(--bg); }
+    .btn--sm { padding: 5px 12px; font-size: 12px; }
+
+    /* ── CONTENT ── */
+    .content { padding: 28px 32px; }
+    .page-view { display: none; }
+    .page-view.active { display: block; }
+
+    /* ── STAT CARDS ── */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+    .stat-card { background: var(--white); border-radius: 12px; padding: 20px 24px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+    .stat-card__label { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .stat-card__value { font-size: 28px; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 6px; }
+    .stat-card__change { font-size: 12px; }
+    .stat-card__change.up { color: var(--green); }
+    .stat-card__change.neutral { color: var(--muted); }
+    .stat-card__icon { float: right; font-size: 28px; margin-top: -4px; }
+
+    /* ── PANELS ── */
+    .panel { background: var(--white); border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 20px; }
+    .panel__header { padding: 18px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .panel__title { font-size: 14px; font-weight: 700; color: var(--navy); }
+    .panel__body { padding: 20px 24px; }
+
+    /* ── PIPELINE ── */
+    .pipeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .pipeline-col__header { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; }
+    .pipeline-col__count { background: var(--bg); color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 10px; }
+    .lead-card { background: var(--bg); border-radius: 8px; padding: 12px; margin-bottom: 8px; cursor: pointer; border: 1px solid transparent; transition: all 0.15s; }
+    .lead-card:hover { border-color: var(--gold); background: #fffdf5; }
+    .lead-card__name { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+    .lead-card__meta { font-size: 11px; color: var(--muted); }
+    .lead-card__service { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 10px; margin-top: 6px; }
+    .tag--home { background: #EDE9FE; color: #7C3AED; }
+    .tag--virtual { background: var(--blue-bg); color: var(--blue); }
+    .tag--course { background: var(--green-bg); color: #059669; }
+
+    /* ── TABLE ── */
+    .table { width: 100%; border-collapse: collapse; }
+    .table th { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+    .table td { padding: 14px 16px; font-size: 13px; border-bottom: 1px solid var(--border); }
+    .table tr:last-child td { border-bottom: none; }
+    .table tr:hover td { background: var(--bg); }
+    .badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+    .badge--green { background: var(--green-bg); color: #059669; }
+    .badge--amber { background: var(--amber-bg); color: #B45309; }
+    .badge--blue { background: var(--blue-bg); color: var(--blue); }
+    .badge--red { background: var(--red-bg); color: var(--red); }
+    .badge--gray { background: var(--bg); color: var(--muted); }
+    .client-name { font-weight: 600; color: var(--navy); }
+
+    /* ── REVENUE ── */
+    .revenue-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .revenue-bar { display: flex; flex-direction: column; gap: 10px; }
+    .revenue-row { display: flex; align-items: center; gap: 12px; }
+    .revenue-row__label { font-size: 12px; color: var(--muted); width: 100px; flex-shrink: 0; }
+    .revenue-row__bar-wrap { flex: 1; height: 8px; background: var(--bg); border-radius: 4px; overflow: hidden; }
+    .revenue-row__bar { height: 100%; background: var(--gold); border-radius: 4px; transition: width 1s; }
+    .revenue-row__val { font-size: 12px; font-weight: 600; color: var(--navy); width: 80px; text-align: right; flex-shrink: 0; }
+
+    .mini-stat { padding: 16px; background: var(--bg); border-radius: 10px; margin-bottom: 12px; }
+    .mini-stat__label { font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+    .mini-stat__value { font-size: 20px; font-weight: 800; color: var(--navy); }
+    .mini-stat__sub { font-size: 11px; color: var(--green); margin-top: 2px; }
+
+    /* ── TASKS ── */
+    .task-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .task-item:last-child { border-bottom: none; }
+    .task-check { width: 16px; height: 16px; border: 2px solid var(--border); border-radius: 4px; flex-shrink: 0; cursor: pointer; margin-top: 1px; }
+    .task-check.done { background: var(--green); border-color: var(--green); }
+    .task-item__text { font-size: 13px; color: var(--text); flex: 1; }
+    .task-item__text.done { text-decoration: line-through; color: var(--muted); }
+    .task-item__due { font-size: 11px; color: var(--muted); flex-shrink: 0; }
+    .task-item__due.overdue { color: var(--red); font-weight: 600; }
+
+    /* ── MODAL ── */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 200; align-items: center; justify-content: center; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: var(--white); border-radius: 16px; padding: 32px; width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto; }
+    .modal h3 { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 20px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .modal__footer { display: flex; justify-content: flex-end; gap: 10px; margin-top: 8px; }
+
+    /* ── EMPTY STATE ── */
+    .empty { text-align: center; padding: 40px 20px; color: var(--muted); }
+    .empty__icon { font-size: 36px; margin-bottom: 12px; }
+    .empty p { font-size: 13px; }
+
+    @media (max-width: 1100px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .pipeline { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .sidebar { transform: translateX(-100%); }
+      .main { margin-left: 0; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .pipeline { grid-template-columns: 1fr 1fr; }
+      .revenue-grid { grid-template-columns: 1fr; }
+      .content { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── SIDEBAR ── -->
+<aside class="sidebar">
+  <div class="sidebar__logo">
+    <div class="sidebar__logo-name">Andas ut <span>Hemma</span></div>
+    <div class="sidebar__logo-sub">Business Dashboard</div>
+  </div>
+  <nav class="sidebar__nav">
+    <div class="sidebar__label">Main</div>
+    <div class="nav-item active" data-page="overview">
+      <span class="nav-item__icon">📊</span> Overview
+    </div>
+    <div class="nav-item" data-page="leads">
+      <span class="nav-item__icon">🎯</span> Lead Pipeline
+    </div>
+    <div class="nav-item" data-page="clients">
+      <span class="nav-item__icon">👥</span> Clients
+    </div>
+    <div class="sidebar__label">Products</div>
+    <div class="nav-item" data-page="course">
+      <span class="nav-item__icon">🎓</span> Course Students
+    </div>
+    <div class="nav-item" data-page="revenue">
+      <span class="nav-item__icon">💰</span> Revenue
+    </div>
+    <div class="sidebar__label">Tools</div>
+    <div class="nav-item" data-page="tasks">
+      <span class="nav-item__icon">✅</span> Tasks & Follow-ups
+    </div>
+  </nav>
+  <div class="sidebar__user">
+    <div class="sidebar__avatar">V</div>
+    <div class="sidebar__user-info">
+      <strong>Vanesa</strong>
+      <span>andasuthemma.se</span>
+    </div>
+  </div>
+</aside>
+
+<!-- ── MAIN ── -->
+<div class="main">
+  <div class="topbar">
+    <div class="topbar__title" id="topbarTitle">Overview</div>
+    <div class="topbar__right">
+      <span class="topbar__date" id="todayDate"></span>
+      <button class="btn btn--primary" id="addBtn">+ Add New</button>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ── OVERVIEW ── -->
+    <div class="page-view active" id="page-overview">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-card__icon">👥</span>
+          <div class="stat-card__label">Active Clients</div>
+          <div class="stat-card__value" id="stat-clients">0</div>
+          <div class="stat-card__change neutral">Total in system</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__icon">🎯</span>
+          <div class="stat-card__label">Open Leads</div>
+          <div class="stat-card__value" id="stat-leads">0</div>
+          <div class="stat-card__change up" id="stat-leads-change">In pipeline</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__icon">🎓</span>
+          <div class="stat-card__label">Course Students</div>
+          <div class="stat-card__value" id="stat-students">0</div>
+          <div class="stat-card__change neutral">Enrolled</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__icon">💰</span>
+          <div class="stat-card__label">Revenue This Month</div>
+          <div class="stat-card__value" id="stat-revenue">0 kr</div>
+          <div class="stat-card__change up" id="stat-rev-change">SEK</div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:20px;">
+        <div>
+          <div class="panel">
+            <div class="panel__header">
+              <span class="panel__title">Recent Leads</span>
+              <button class="btn btn--ghost btn--sm" onclick="switchPage('leads')">View all →</button>
+            </div>
+            <div class="panel__body" style="padding:0;">
+              <table class="table" id="overview-leads-table">
+                <thead><tr><th>Name</th><th>Service</th><th>Status</th><th>Added</th></tr></thead>
+                <tbody id="overview-leads-body">
+                  <tr><td colspan="4" class="empty" style="padding:24px; text-align:center; color:var(--muted);">No leads yet — add your first lead</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="panel">
+            <div class="panel__header"><span class="panel__title">Tasks Due Today</span></div>
+            <div class="panel__body" id="overview-tasks">
+              <div class="empty"><div class="empty__icon">✅</div><p>No tasks due today</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── LEADS PIPELINE ── -->
+    <div class="page-view" id="page-leads">
+      <div class="pipeline" id="pipeline-board">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- ── CLIENTS ── -->
+    <div class="page-view" id="page-clients">
+      <div class="panel">
+        <div class="panel__header">
+          <span class="panel__title">All Clients</span>
+          <span id="client-count" style="font-size:12px; color:var(--muted);">0 clients</span>
+        </div>
+        <div class="panel__body" style="padding:0;">
+          <table class="table">
+            <thead><tr><th>Name</th><th>Service</th><th>Sessions</th><th>Status</th><th>Last Contact</th><th>Notes</th></tr></thead>
+            <tbody id="clients-table-body">
+              <tr><td colspan="6" style="padding:32px; text-align:center; color:var(--muted);">No clients yet</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── COURSE ── -->
+    <div class="page-view" id="page-course">
+      <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="stat-card">
+          <span class="stat-card__icon">🎓</span>
+          <div class="stat-card__label">Total Students</div>
+          <div class="stat-card__value" id="course-total">0</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__icon">✅</span>
+          <div class="stat-card__label">Completed</div>
+          <div class="stat-card__value" id="course-completed">0</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__icon">💰</span>
+          <div class="stat-card__label">Course Revenue</div>
+          <div class="stat-card__value" id="course-revenue">0 kr</div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel__header"><span class="panel__title">Course Students</span></div>
+        <div class="panel__body" style="padding:0;">
+          <table class="table">
+            <thead><tr><th>Name</th><th>Email</th><th>Enrolled</th><th>Progress</th><th>Paid</th><th>Status</th></tr></thead>
+            <tbody id="course-table-body">
+              <tr><td colspan="6" style="padding:32px; text-align:center; color:var(--muted);">No students yet</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── REVENUE ── -->
+    <div class="page-view" id="page-revenue">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-card__icon">📅</span>
+          <div class="stat-card__label">This Month</div>
+          <div class="stat-card__value" id="rev-month">0 kr</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__icon">📆</span>
+          <div class="stat-card__label">This Year</div>
+          <div class="stat-card__value" id="rev-year">0 kr</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__icon">🏠</span>
+          <div class="stat-card__label">From Services</div>
+          <div class="stat-card__value" id="rev-services">0 kr</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__icon">🎓</span>
+          <div class="stat-card__label">From Course</div>
+          <div class="stat-card__value" id="rev-course">0 kr</div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:2fr 1fr; gap:20px;">
+        <div class="panel">
+          <div class="panel__header"><span class="panel__title">Revenue Log</span></div>
+          <div class="panel__body" style="padding:0;">
+            <table class="table">
+              <thead><tr><th>Date</th><th>Client / Source</th><th>Type</th><th>Amount</th><th>Note</th></tr></thead>
+              <tbody id="revenue-table-body">
+                <tr><td colspan="5" style="padding:32px; text-align:center; color:var(--muted);">No revenue logged yet</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel__header"><span class="panel__title">By Source</span></div>
+          <div class="panel__body" id="rev-breakdown">
+            <div class="mini-stat">
+              <div class="mini-stat__label">In-home sessions</div>
+              <div class="mini-stat__value" id="rev-home">0 kr</div>
+            </div>
+            <div class="mini-stat">
+              <div class="mini-stat__label">Virtual sessions</div>
+              <div class="mini-stat__value" id="rev-virtual">0 kr</div>
+            </div>
+            <div class="mini-stat">
+              <div class="mini-stat__label">Course sales</div>
+              <div class="mini-stat__value" id="rev-course-2">0 kr</div>
+            </div>
+            <div class="mini-stat">
+              <div class="mini-stat__label">Other / Guides</div>
+              <div class="mini-stat__value" id="rev-other">0 kr</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TASKS ── -->
+    <div class="page-view" id="page-tasks">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+        <div class="panel">
+          <div class="panel__header">
+            <span class="panel__title">Open Tasks</span>
+            <button class="btn btn--ghost btn--sm" id="addTaskBtn">+ Add Task</button>
+          </div>
+          <div class="panel__body" id="tasks-open-list">
+            <div class="empty"><div class="empty__icon">📋</div><p>No open tasks</p></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel__header"><span class="panel__title">Completed</span></div>
+          <div class="panel__body" id="tasks-done-list">
+            <div class="empty"><div class="empty__icon">✅</div><p>Nothing completed yet</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── MODALS ── -->
+<!-- Add Lead -->
+<div class="modal-overlay" id="modal-lead">
+  <div class="modal">
+    <h3>Add New Lead</h3>
+    <div class="form-row">
+      <div class="form-group"><label>Full Name *</label><input type="text" id="lead-name" placeholder="Sara Johansson" /></div>
+      <div class="form-group"><label>Phone / Email</label><input type="text" id="lead-contact" placeholder="sara@email.se" /></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Service Interested In</label>
+        <select id="lead-service">
+          <option value="In-home session">In-home session</option>
+          <option value="Virtual session">Virtual session</option>
+          <option value="Course">Course</option>
+          <option value="Support group">Support group</option>
+          <option value="Not sure">Not sure</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Stage</label>
+        <select id="lead-stage">
+          <option value="New">New Lead</option>
+          <option value="Contacted">Contacted</option>
+          <option value="Consultation">Consultation Booked</option>
+          <option value="Client">Active Client</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group"><label>Notes</label><textarea id="lead-notes" rows="3" placeholder="How did they find you? What do they need?"></textarea></div>
+    <div class="modal__footer">
+      <button class="btn btn--ghost" onclick="closeModals()">Cancel</button>
+      <button class="btn btn--primary" onclick="saveLead()">Save Lead</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Client -->
+<div class="modal-overlay" id="modal-client">
+  <div class="modal">
+    <h3>Add Client</h3>
+    <div class="form-row">
+      <div class="form-group"><label>Full Name *</label><input type="text" id="client-name" placeholder="Anna Lindström" /></div>
+      <div class="form-group"><label>Email</label><input type="text" id="client-email" placeholder="anna@email.se" /></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Service</label>
+        <select id="client-service">
+          <option value="In-home session">In-home session</option>
+          <option value="Virtual session">Virtual session</option>
+          <option value="Support group">Support group</option>
+          <option value="Course">Course</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Status</label>
+        <select id="client-status">
+          <option value="Active">Active</option>
+          <option value="Completed">Completed</option>
+          <option value="Follow-up">Follow-up needed</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Sessions Completed</label><input type="number" id="client-sessions" value="1" min="0" /></div>
+      <div class="form-group"><label>Last Contact Date</label><input type="date" id="client-date" /></div>
+    </div>
+    <div class="form-group"><label>Notes</label><textarea id="client-notes" rows="3" placeholder="Session notes, preferences, follow-up info..."></textarea></div>
+    <div class="modal__footer">
+      <button class="btn btn--ghost" onclick="closeModals()">Cancel</button>
+      <button class="btn btn--primary" onclick="saveClient()">Save Client</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Student -->
+<div class="modal-overlay" id="modal-student">
+  <div class="modal">
+    <h3>Add Course Student</h3>
+    <div class="form-row">
+      <div class="form-group"><label>Full Name *</label><input type="text" id="student-name" placeholder="Maria Eriksson" /></div>
+      <div class="form-group"><label>Email *</label><input type="text" id="student-email" placeholder="maria@email.se" /></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Enrolled Date</label><input type="date" id="student-date" /></div>
+      <div class="form-group"><label>Amount Paid (SEK)</label><input type="number" id="student-paid" value="1490" /></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Progress</label>
+        <select id="student-progress">
+          <option value="Not started">Not started</option>
+          <option value="In progress">In progress</option>
+          <option value="Completed">Completed</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Payment Status</label>
+        <select id="student-payment">
+          <option value="Paid">Paid</option>
+          <option value="Pending">Pending</option>
+          <option value="Refunded">Refunded</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal__footer">
+      <button class="btn btn--ghost" onclick="closeModals()">Cancel</button>
+      <button class="btn btn--primary" onclick="saveStudent()">Save Student</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Revenue -->
+<div class="modal-overlay" id="modal-revenue">
+  <div class="modal">
+    <h3>Log Revenue</h3>
+    <div class="form-row">
+      <div class="form-group"><label>Client / Source</label><input type="text" id="rev-client" placeholder="Sara Johansson" /></div>
+      <div class="form-group"><label>Date</label><input type="date" id="rev-date" /></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Type</label>
+        <select id="rev-type">
+          <option value="In-home session">In-home session</option>
+          <option value="Virtual session">Virtual session</option>
+          <option value="Course sale">Course sale</option>
+          <option value="Support group">Support group</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Amount (SEK)</label><input type="number" id="rev-amount" placeholder="2500" /></div>
+    </div>
+    <div class="form-group"><label>Note</label><input type="text" id="rev-note" placeholder="Hemstädning Hägersten — 2 rum" /></div>
+    <div class="modal__footer">
+      <button class="btn btn--ghost" onclick="closeModals()">Cancel</button>
+      <button class="btn btn--primary" onclick="saveRevenue()">Log Revenue</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Task -->
+<div class="modal-overlay" id="modal-task">
+  <div class="modal">
+    <h3>Add Task / Follow-up</h3>
+    <div class="form-group"><label>Task *</label><input type="text" id="task-text" placeholder="Follow up with Sara about booking" /></div>
+    <div class="form-row">
+      <div class="form-group"><label>Due Date</label><input type="date" id="task-due" /></div>
+      <div class="form-group"><label>Related Client</label><input type="text" id="task-client" placeholder="Sara Johansson (optional)" /></div>
+    </div>
+    <div class="modal__footer">
+      <button class="btn btn--ghost" onclick="closeModals()">Cancel</button>
+      <button class="btn btn--primary" onclick="saveTask()">Add Task</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── DATA STORE ──
+let db = JSON.parse(localStorage.getItem('auh-crm') || '{}');
+db.leads    = db.leads    || [];
+db.clients  = db.clients  || [];
+db.students = db.students || [];
+db.revenue  = db.revenue  || [];
+db.tasks    = db.tasks    || [];
+
+function save() { localStorage.setItem('auh-crm', JSON.stringify(db)); }
+
+// ── NAVIGATION ──
+const pages = { overview: 'Overview', leads: 'Lead Pipeline', clients: 'Clients', course: 'Course Students', revenue: 'Revenue', tasks: 'Tasks & Follow-ups' };
+
+function switchPage(id) {
+  document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.querySelector('[data-page="' + id + '"]').classList.add('active');
+  document.getElementById('topbarTitle').textContent = pages[id];
+  renderAll();
+}
+
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', () => switchPage(item.dataset.page));
+});
+
+// ── ADD BUTTON ──
+const addBtn = document.getElementById('addBtn');
+const pageToModal = { overview: 'lead', leads: 'lead', clients: 'client', course: 'student', revenue: 'revenue', tasks: 'task' };
+addBtn.addEventListener('click', () => {
+  const active = document.querySelector('.nav-item.active')?.dataset.page || 'overview';
+  openModal('modal-' + (pageToModal[active] || 'lead'));
+});
+document.getElementById('addTaskBtn')?.addEventListener('click', () => openModal('modal-task'));
+
+// ── MODALS ──
+function openModal(id) {
+  const today = new Date().toISOString().split('T')[0];
+  const m = document.getElementById(id);
+  if (!m) return;
+  // Set default dates
+  m.querySelectorAll('input[type="date"]').forEach(d => { if (!d.value) d.value = today; });
+  m.classList.add('open');
+}
+function closeModals() { document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('open')); }
+document.querySelectorAll('.modal-overlay').forEach(m => m.addEventListener('click', e => { if (e.target === m) closeModals(); }));
+
+// ── SAVE FUNCTIONS ──
+function saveLead() {
+  const name = document.getElementById('lead-name').value.trim();
+  if (!name) return alert('Please enter a name');
+  db.leads.push({ id: Date.now(), name, contact: document.getElementById('lead-contact').value, service: document.getElementById('lead-service').value, stage: document.getElementById('lead-stage').value, notes: document.getElementById('lead-notes').value, date: new Date().toLocaleDateString('sv-SE') });
+  save(); closeModals(); document.getElementById('lead-name').value = ''; document.getElementById('lead-contact').value = ''; document.getElementById('lead-notes').value = '';
+  renderAll();
+}
+
+function saveClient() {
+  const name = document.getElementById('client-name').value.trim();
+  if (!name) return alert('Please enter a name');
+  db.clients.push({ id: Date.now(), name, email: document.getElementById('client-email').value, service: document.getElementById('client-service').value, status: document.getElementById('client-status').value, sessions: document.getElementById('client-sessions').value, date: document.getElementById('client-date').value, notes: document.getElementById('client-notes').value });
+  save(); closeModals(); document.getElementById('client-name').value = ''; document.getElementById('client-email').value = ''; document.getElementById('client-notes').value = '';
+  renderAll();
+}
+
+function saveStudent() {
+  const name = document.getElementById('student-name').value.trim();
+  if (!name) return alert('Please enter a name');
+  db.students.push({ id: Date.now(), name, email: document.getElementById('student-email').value, date: document.getElementById('student-date').value, paid: parseInt(document.getElementById('student-paid').value) || 0, progress: document.getElementById('student-progress').value, payment: document.getElementById('student-payment').value });
+  save(); closeModals(); document.getElementById('student-name').value = ''; document.getElementById('student-email').value = '';
+  renderAll();
+}
+
+function saveRevenue() {
+  const amount = parseInt(document.getElementById('rev-amount').value) || 0;
+  if (!amount) return alert('Please enter an amount');
+  db.revenue.push({ id: Date.now(), client: document.getElementById('rev-client').value, date: document.getElementById('rev-date').value, type: document.getElementById('rev-type').value, amount, note: document.getElementById('rev-note').value });
+  save(); closeModals(); document.getElementById('rev-client').value = ''; document.getElementById('rev-amount').value = ''; document.getElementById('rev-note').value = '';
+  renderAll();
+}
+
+function saveTask() {
+  const text = document.getElementById('task-text').value.trim();
+  if (!text) return alert('Please enter a task');
+  db.tasks.push({ id: Date.now(), text, due: document.getElementById('task-due').value, client: document.getElementById('task-client').value, done: false });
+  save(); closeModals(); document.getElementById('task-text').value = ''; document.getElementById('task-client').value = '';
+  renderAll();
+}
+
+function toggleTask(id) {
+  const t = db.tasks.find(t => t.id === id);
+  if (t) { t.done = !t.done; save(); renderAll(); }
+}
+
+// ── HELPERS ──
+const stageColors = { 'New': 'badge--blue', 'Contacted': 'badge--amber', 'Consultation': 'badge--green', 'Client': 'badge--green' };
+const statusColors = { 'Active': 'badge--green', 'Completed': 'badge--gray', 'Follow-up': 'badge--amber' };
+const serviceTag = { 'In-home session': 'tag--home', 'Virtual session': 'tag--virtual', 'Course': 'tag--course', 'Support group': 'tag--home' };
+function fmt(n) { return n.toLocaleString('sv-SE') + ' kr'; }
+function thisMonth() {
+  const now = new Date();
+  return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+}
+
+// ── RENDER ──
+function renderAll() {
+  renderStats();
+  renderPipeline();
+  renderClients();
+  renderCourse();
+  renderRevenue();
+  renderTasks();
+  renderOverviewLeads();
+  renderOverviewTasks();
+}
+
+function renderStats() {
+  const activeClients = db.clients.filter(c => c.status === 'Active').length;
+  const openLeads = db.leads.filter(l => l.stage !== 'Client').length;
+  const students = db.students.length;
+  const monthRev = db.revenue.filter(r => r.date && r.date.startsWith(thisMonth())).reduce((s, r) => s + r.amount, 0);
+  document.getElementById('stat-clients').textContent = activeClients;
+  document.getElementById('stat-leads').textContent = openLeads;
+  document.getElementById('stat-students').textContent = students;
+  document.getElementById('stat-revenue').textContent = fmt(monthRev);
+}
+
+const STAGES = ['New', 'Contacted', 'Consultation', 'Client', 'Completed'];
+const STAGE_LABELS = { 'New': 'New Lead', 'Contacted': 'Contacted', 'Consultation': 'Consultation Booked', 'Client': 'Active Client', 'Completed': 'Completed' };
+
+function renderPipeline() {
+  const board = document.getElementById('pipeline-board');
+  board.innerHTML = STAGES.map(stage => {
+    const items = db.leads.filter(l => l.stage === stage);
+    return `<div>
+      <div class="pipeline-col__header">
+        ${STAGE_LABELS[stage]}
+        <span class="pipeline-col__count">${items.length}</span>
+      </div>
+      ${items.length === 0 ? '<div style="background:var(--bg); border-radius:8px; padding:12px; font-size:12px; color:var(--muted); text-align:center;">Empty</div>' : ''}
+      ${items.map(l => `<div class="lead-card">
+        <div class="lead-card__name">${l.name}</div>
+        <div class="lead-card__meta">${l.contact || '—'}</div>
+        <div class="lead-card__meta">${l.date}</div>
+        <span class="lead-card__service ${serviceTag[l.service] || 'tag--home'}">${l.service}</span>
+      </div>`).join('')}
+    </div>`;
+  }).join('');
+}
+
+function renderClients() {
+  const tbody = document.getElementById('clients-table-body');
+  document.getElementById('client-count').textContent = db.clients.length + ' clients';
+  if (db.clients.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" style="padding:32px; text-align:center; color:var(--muted);">No clients yet — add your first client</td></tr>';
+    return;
+  }
+  tbody.innerHTML = db.clients.map(c => `<tr>
+    <td class="client-name">${c.name}</td>
+    <td>${c.service}</td>
+    <td>${c.sessions} session${c.sessions != 1 ? 's' : ''}</td>
+    <td><span class="badge ${statusColors[c.status] || 'badge--gray'}">${c.status}</span></td>
+    <td>${c.date || '—'}</td>
+    <td style="max-width:160px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--muted);">${c.notes || '—'}</td>
+  </tr>`).join('');
+}
+
+function renderCourse() {
+  const tbody = document.getElementById('course-table-body');
+  const total = db.students.length;
+  const completed = db.students.filter(s => s.progress === 'Completed').length;
+  const rev = db.students.filter(s => s.payment === 'Paid').reduce((s, st) => s + st.paid, 0);
+  document.getElementById('course-total').textContent = total;
+  document.getElementById('course-completed').textContent = completed;
+  document.getElementById('course-revenue').textContent = fmt(rev);
+  if (total === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" style="padding:32px; text-align:center; color:var(--muted);">No students yet</td></tr>';
+    return;
+  }
+  const progressColors = { 'Not started': 'badge--gray', 'In progress': 'badge--amber', 'Completed': 'badge--green' };
+  tbody.innerHTML = db.students.map(s => `<tr>
+    <td class="client-name">${s.name}</td>
+    <td>${s.email || '—'}</td>
+    <td>${s.date || '—'}</td>
+    <td><span class="badge ${progressColors[s.progress]}">${s.progress}</span></td>
+    <td style="font-weight:600">${fmt(s.paid)}</td>
+    <td><span class="badge ${s.payment === 'Paid' ? 'badge--green' : 'badge--amber'}">${s.payment}</span></td>
+  </tr>`).join('');
+}
+
+function renderRevenue() {
+  const tbody = document.getElementById('revenue-table-body');
+  const now = new Date();
+  const month = thisMonth();
+  const year = now.getFullYear() + '';
+  const monthRev = db.revenue.filter(r => r.date && r.date.startsWith(month)).reduce((s, r) => s + r.amount, 0);
+  const yearRev = db.revenue.filter(r => r.date && r.date.startsWith(year)).reduce((s, r) => s + r.amount, 0);
+  const byType = (t) => db.revenue.filter(r => r.type === t).reduce((s, r) => s + r.amount, 0);
+  document.getElementById('rev-month').textContent = fmt(monthRev);
+  document.getElementById('rev-year').textContent = fmt(yearRev);
+  document.getElementById('rev-services').textContent = fmt(byType('In-home session') + byType('Virtual session') + byType('Support group'));
+  document.getElementById('rev-course').textContent = fmt(byType('Course sale'));
+  document.getElementById('rev-home').textContent = fmt(byType('In-home session'));
+  document.getElementById('rev-virtual').textContent = fmt(byType('Virtual session'));
+  document.getElementById('rev-course-2').textContent = fmt(byType('Course sale'));
+  document.getElementById('rev-other').textContent = fmt(byType('Other'));
+  if (db.revenue.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="5" style="padding:32px; text-align:center; color:var(--muted);">No revenue logged yet</td></tr>';
+    return;
+  }
+  const sorted = [...db.revenue].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  tbody.innerHTML = sorted.map(r => `<tr>
+    <td>${r.date || '—'}</td>
+    <td class="client-name">${r.client || '—'}</td>
+    <td><span class="badge badge--blue">${r.type}</span></td>
+    <td style="font-weight:700; color:var(--green)">${fmt(r.amount)}</td>
+    <td style="color:var(--muted)">${r.note || '—'}</td>
+  </tr>`).join('');
+}
+
+function renderTasks() {
+  const open = db.tasks.filter(t => !t.done);
+  const done = db.tasks.filter(t => t.done);
+  const today = new Date().toISOString().split('T')[0];
+  const renderTask = (t) => {
+    const overdue = t.due && t.due < today && !t.done;
+    return `<div class="task-item">
+      <div class="task-check ${t.done ? 'done' : ''}" onclick="toggleTask(${t.id})"></div>
+      <div style="flex:1;">
+        <div class="task-item__text ${t.done ? 'done' : ''}">${t.text}${t.client ? ` <span style="color:var(--gold); font-size:11px;">— ${t.client}</span>` : ''}</div>
+      </div>
+      ${t.due ? `<div class="task-item__due ${overdue ? 'overdue' : ''}">${overdue ? '⚠ ' : ''}${t.due}</div>` : ''}
+    </div>`;
+  };
+  document.getElementById('tasks-open-list').innerHTML = open.length ? open.map(renderTask).join('') : '<div class="empty"><div class="empty__icon">📋</div><p>No open tasks</p></div>';
+  document.getElementById('tasks-done-list').innerHTML = done.length ? done.map(renderTask).join('') : '<div class="empty"><div class="empty__icon">✅</div><p>Nothing completed yet</p></div>';
+}
+
+function renderOverviewLeads() {
+  const tbody = document.getElementById('overview-leads-body');
+  const recent = [...db.leads].slice(-5).reverse();
+  if (recent.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="4" style="padding:24px; text-align:center; color:var(--muted);">No leads yet — add your first lead</td></tr>';
+    return;
+  }
+  tbody.innerHTML = recent.map(l => `<tr>
+    <td class="client-name">${l.name}</td>
+    <td>${l.service}</td>
+    <td><span class="badge ${stageColors[l.stage] || 'badge--gray'}">${l.stage}</span></td>
+    <td style="color:var(--muted)">${l.date}</td>
+  </tr>`).join('');
+}
+
+function renderOverviewTasks() {
+  const today = new Date().toISOString().split('T')[0];
+  const due = db.tasks.filter(t => !t.done && t.due <= today);
+  const el = document.getElementById('overview-tasks');
+  if (due.length === 0) {
+    el.innerHTML = '<div class="empty"><div class="empty__icon">✅</div><p>No tasks due today</p></div>';
+    return;
+  }
+  el.innerHTML = due.map(t => `<div class="task-item">
+    <div class="task-check" onclick="toggleTask(${t.id})"></div>
+    <div class="task-item__text">${t.text}</div>
+  </div>`).join('');
+}
+
+// ── DATE ──
+document.getElementById('todayDate').textContent = new Date().toLocaleDateString('sv-SE', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+// ── INIT ──
+renderAll();
+</script>
+</body>
+</html>

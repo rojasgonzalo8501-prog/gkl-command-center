@@ -1,0 +1,36 @@
+{
+  "merca-skroten": [
+    {
+      "id": 1774608948499,
+      "label": "Live Website",
+      "url": "https://www.merca-skroten.se/"
+    },
+    {
+      "id": 1774608948504,
+      "label": "Reco.se Profile",
+      "url": "https://www.reco.se/merca-skroten-i-sverige-ab"
+    },
+    {
+      "id": 1774608948509,
+      "label": "Competitor: bilskrot-enkoping.se",
+      "url": "https://bilskrot-enkoping.se/"
+    }
+  ],
+  "yaloyoga": [
+    {
+      "id": 1774611297241,
+      "label": "yaloyoga.com",
+      "url": "https://yaloyoga.com"
+    },
+    {
+      "id": 1774611297248,
+      "label": "Instagram @yaloyoga_",
+      "url": "https://www.instagram.com/yaloyoga_/"
+    },
+    {
+      "id": 1774611297254,
+      "label": "Proposal",
+      "url": "http://localhost:3737/sites/clients/yaloyoga/proposal.html"
+    }
+  ]
+}
