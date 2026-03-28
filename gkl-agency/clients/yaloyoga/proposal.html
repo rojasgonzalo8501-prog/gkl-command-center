@@ -419,9 +419,32 @@
     @media (max-width: 480px) {
       .audit-grid, .market-nums, .pricing-grid { grid-template-columns: 1fr; }
     }
+
+    /* ── LANGUAGE TOGGLE ─────────────────────────────────── */
+    #lang-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      background: var(--dark);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: .3px;
+      transition: background .2s, border-color .2s, transform .1s;
+      box-shadow: 0 4px 16px rgba(0,0,0,.3);
+    }
+    #lang-btn:hover { background: var(--terra); border-color: var(--terra); transform: translateY(-1px); }
   </style>
 </head>
 <body>
+
+<button id="lang-btn" onclick="toggleLang()">🇬🇷 Ελληνικά</button>
 
 <!-- COVER -->
 <section class="cover">
@@ -625,7 +648,7 @@
       </div>
     </div>
 
-    <div style="background:var(--cream2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;font-size:13px;color:var(--muted)">
+    <div id="app-build-note" style="background:var(--cream2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;font-size:13px;color:var(--muted)">
       <strong style="color:var(--text)">Build approach:</strong> We start with a white-label platform (Uscreen or Kajabi) to launch fast and cheaply, then invest in a native app once the subscription model is validated. Time to launch: 8–12 weeks. No custom development needed at first.
     </div>
   </section>
@@ -756,8 +779,8 @@
 
     <div style="background:var(--dark);color:#fff;border-radius:14px;padding:32px 36px;margin-top:32px;position:relative;overflow:hidden">
       <div style="position:absolute;inset:0;background:radial-gradient(circle at 70% 50%,rgba(196,97,74,.12),transparent 60%)"></div>
-      <h3 style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;margin-bottom:10px;position:relative;z-index:1">The content flywheel</h3>
-      <p style="font-size:13.5px;color:rgba(255,255,255,.6);max-width:580px;line-height:1.75;position:relative;z-index:1">TikTok video goes viral → people discover Yalo → visit Instagram → follow → see link in bio → sign up for the 7-day free challenge → receive welcome email sequence → buy the course → become app members → buy a mat → share content of themselves using it → new TikTok viewers discover the brand. <strong style="color:rgba(255,255,255,.9)">Every piece of content feeds every other part of the business.</strong></p>
+      <h3 id="flywheel-h3" style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;margin-bottom:10px;position:relative;z-index:1">The content flywheel</h3>
+      <p id="flywheel-p" style="font-size:13.5px;color:rgba(255,255,255,.6);max-width:580px;line-height:1.75;position:relative;z-index:1">TikTok video goes viral → people discover Yalo → visit Instagram → follow → see link in bio → sign up for the 7-day free challenge → receive welcome email sequence → buy the course → become app members → buy a mat → share content of themselves using it → new TikTok viewers discover the brand. <strong style="color:rgba(255,255,255,.9)">Every piece of content feeds every other part of the business.</strong></p>
       <div style="display:flex;gap:28px;margin-top:22px;flex-wrap:wrap;position:relative;z-index:1">
         <div style="text-align:center"><div style="font-size:22px;font-weight:800;color:var(--terra)">TikTok</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px">Discovery</div></div>
         <div style="font-size:20px;color:rgba(255,255,255,.2);display:flex;align-items:center">→</div>
@@ -925,7 +948,7 @@
       </div>
     </div>
 
-    <div style="background:var(--cream2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;font-size:13px;color:var(--muted);line-height:1.7">
+    <div id="pricing-note" style="background:var(--cream2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;font-size:13px;color:var(--muted);line-height:1.7">
       <strong style="color:var(--text)">Note:</strong> Platform costs for Kajabi/Uscreen/Teachable (€100–300/month) are separate. Advertising budget for paid campaigns is additional. All prices exclusive of VAT.
     </div>
   </section>
@@ -994,6 +1017,457 @@
     Questions? <a href="mailto:info@gklagency.se" style="color:var(--terra)">info@gklagency.se</a>
   </p>
 </footer>
+
+<script>
+(function(){
+  const T = {
+    en: {
+      coverEyebrow: "Growth Strategy & Proposal",
+      coverFor: "For Artemis & Yalo Yoga",
+      coverH1: 'Your story is <em>exceptional.</em><br>Now let\'s build the empire around it.',
+      coverSub: "A sustainable yoga brand with a founder who left Greece, found yoga in Sweden, and built something beautiful. Here is how we take it from 2,373 followers to a multi-revenue wellness empire.",
+      pillarTitles: ["App","Courses","Clothing","Content","Community"],
+      pillarSubs: ["Digital revenue","Knowledge products","Brand expansion","Audience engine","Recurring revenue"],
+      coverDate: "Presented March 2026",
+      scrollHint: "Scroll",
+      sectionLabels: [
+        "Part 1 — The Honest Audit",
+        "Part 2 — The Growth Strategy",
+        "Part 3 — The App",
+        "Part 4 — Online Courses",
+        "Part 5 — The Clothing Brand",
+        "Part 6 — Content Creation & Digital Marketing",
+        "Part 7 — The Execution Plan",
+        "Part 8 — Investment",
+        "Part 9 — Why GKL Agency"
+      ],
+      sectionTitles: [
+        "You have all the ingredients.<br>The recipe just needs work.",
+        "Three new revenue streams.<br>One coherent brand.",
+        "The Yalo App —<br>your most powerful move.",
+        "What Artemis knows is worth paying for.",
+        "Yalo Clothing deserves to be a brand, not a footnote.",
+        "Content is the engine.<br>Everything else runs on it.",
+        "Four phases. One year. A completely different business.",
+        "Choose your pace.",
+        "We are built differently."
+      ],
+      sectionIntros: [
+        "We audited your website, social media, product strategy, SEO, and revenue model. Here is exactly where you stand — and where the biggest leverage points are.",
+        "You asked us to think about an app, courses, and the clothing brand. Here's how we see all three working together — and how they reinforce each other rather than compete.",
+        "Physical products have a ceiling. A subscription app grows with every new user and pays you every single month. Here is how we build it.",
+        "Courses are the fastest way to monetize expertise. Once recorded, they sell 24/7 with no additional time from Artemis.",
+        "The activewear line is already born. It just needs positioning, pricing confidence, and a launch strategy worthy of the brand.",
+        "Products, courses, and apps don't sell themselves — content is what drives discovery, trust, and conversion. Artemis has a story, a face, a mission, and a visual world that is genuinely magnetic. Here is how we turn that into a content machine that works 24/7.",
+        "App + Courses + Clothing + Content — all four pillars activated in sequence, each building on the last."
+      ],
+      scoreH3: "Current digital score: 40 out of 100",
+      scoreP: "Not a reflection of your products or your story — both are genuinely strong. It's a reflection of how much of your potential is sitting untapped. That gap is where we work.",
+      auditLabels: ["Website & UX","SEO","Social Media","Brand & Content","Product Strategy","Revenue Model"],
+      auditNotes: [
+        "Clean Shopify store, but hero product sold out with no waitlist.",
+        "Blog exists but not keyword-optimized. Not ranking for cork yoga mat.",
+        "880 posts → 2,373 followers. No TikTok. Growth is stalled.",
+        "Beautiful story, totally inconsistent in execution and frequency.",
+        "Constant 50% discounting destroys perceived value. Hero sold out.",
+        "Physical products only. No app, no courses, no membership. One stream."
+      ],
+      findingTitles: [
+        "Your best product is sold out — with no way to capture the demand",
+        "Permanent 50% discounting is quietly killing the brand",
+        "880 posts. 2,373 followers. The content isn't reaching new people.",
+        "No TikTok. In 2026, that's the biggest growth channel you're ignoring.",
+        "You are a yoga brand with zero yoga content",
+        "The app + courses opportunity is enormous — and perfectly timed"
+      ],
+      findingBodies: [
+        "The Golden Hour Yoga Mat has a 5-star rating and is the product people come looking for. It's sold out with no back-in-stock notification. Every interested customer who sees \"sold out\" leaves and buys from a competitor. This is the single most immediate revenue leak to fix.",
+        "Leggings at $26 (was $50). Bra at $24 (was $50). When everything is always on sale, customers learn to never pay full price — and they stop believing in the full price. Lululemon and Alo Yoga built empires by protecting their pricing. Premium yoga brands use scarcity, not permanent discount banners.",
+        "If every post brought in just 3 new followers, you've posted 880 times and have 2,373 followers. That means your content is only reaching people who already follow you — it's not discovering new audiences. The format needs to change. Reels, TikTok, SEO content. Static posts alone won't grow you in 2026.",
+        "Yoga content is one of the highest-performing niches on TikTok. A Greek founder who became a figure skater, moved to Sweden, started a sustainable yoga brand after watching plastic destroy Mediterranean beaches, and now makes cork yoga mats? That story goes viral on TikTok. You have everything the algorithm rewards. You're just not there yet.",
+        "People follow yoga brands primarily for yoga content — tutorials, breathwork, daily practices, movement inspiration. Your blog is 90% product education. Your Instagram has no classes or practice videos in evidence. Yoga with Adriene built 12M YouTube subscribers on free class content and monetizes through product sales. You have the same model available to you.",
+        "The online yoga market is $20 billion and growing at 18% per year. Down Dog, Asana Rebel, and Glo are capturing this with apps. None of them have a physical product ecosystem to reinforce the digital. Yalo Yoga does. \"Buy a mat, get 3 months free on the app\" is a product-digital flywheel none of them can replicate."
+      ],
+      pillarCardTitles: ["The Yalo App","Online Courses","Yalo Clothing"],
+      pillarCardDescs: [
+        "A subscription yoga platform with Artemis's classes, breathwork, and community. The biggest long-term revenue multiplier.",
+        "Self-paced digital courses that monetize Artemis's expertise. Low cost to create, high margin, passive once launched.",
+        "The activewear line repositioned as a premium, sustainable clothing brand — not an afterthought to the mats."
+      ],
+      pillarCardRevs: ["€120K–300K/yr potential","€10K–30K/month at scale","2× revenue with proper pricing"],
+      marketH3: "The market is moving in your direction. Fast.",
+      marketP: 'The global yoga market is <em>$127 billion</em> in 2025. Online yoga alone is <em>$20 billion</em> growing at <em>18% per year</em>. Consumers are moving toward sustainable brands, founder-led stories, and digital-first wellness. Yalo Yoga is positioned exactly where the market is going. We just need to execute before others find the same positioning.',
+      mnumLbls: ["Global yoga market 2025","Online yoga market, growing 18%/yr","Registered yoga practitioners in Sweden alone","Of yoga revenue shifting to subscriptions by 2025"],
+      appH3: "What the Yalo App looks like",
+      appP: "Artemis's yoga classes on demand. Daily practices, breathwork, meditation, movement challenges. A community space for Yalo members. Integrated with the physical products — buy a mat, unlock 3 months free.",
+      appFeatures: [
+        "On-demand class library (beginner → advanced, 5–60 min)",
+        "Daily practice suggestions tailored to the user's level",
+        "Breathwork & meditation tracks",
+        "Monthly live sessions with Artemis",
+        "Community feed + challenges",
+        "Product integration: mat purchase unlocks free trial",
+        "Freemium model — free tier drives app store discovery"
+      ],
+      appRevLabel: "Revenue projection (€9.99/month subscription)",
+      appScenarioSpans: ["500 subscribers","1,000 subscribers","2,500 subscribers","Annual plan (€79/yr)"],
+      appScenarioStrongs: ["€60K / year","€120K / year","€300K / year","Higher margin, lower churn"],
+      appBuildNote: '<strong style="color:var(--text)">Build approach:</strong> We start with a white-label platform (Uscreen or Kajabi) to launch fast and cheaply, then invest in a native app once the subscription model is validated. Time to launch: 8–12 weeks. No custom development needed at first.',
+      clothingLabels: [
+        "Course 1 — Launch First","Course 2 — The Niche Winner","Course 3 — The Premium Offer","The Free Lead Magnet",
+        "Fix This Now","The Strategy","The Identity","The Growth Engine",
+        "TikTok — The Growth Engine","YouTube — The Long Game","Instagram Reels — Transformation","Email Marketing",
+        "SEO Content Strategy","Brand Photography & Visual Identity","Pinterest — The Evergreen Discovery Channel","Paid Advertising — When Organic Needs a Boost"
+      ],
+      clothingTitles: [
+        '"Foundations of Flow" — 4-Week Beginner Yoga',
+        '"Yoga for Busy Mothers" — 21-Day Reset',
+        '"Sustainable Movement" — Yoga Teacher Intensive',
+        '"7-Day Morning Yoga Challenge" — Free, Email-Gated',
+        "End the permanent sale",
+        "Seasonal drops, not a permanent catalogue",
+        "Mediterranean movement — not generic activewear",
+        "Creator collabs → audience crossover",
+        "Artemis goes viral. The algorithm is ready.",
+        "Free classes that compound forever.",
+        "Stop posting for followers. Post for discovery.",
+        "The audience you own.",
+        "Rank for searches that have buying intent.",
+        "One Greece shoot. Months of content.",
+        "The platform that sends buyers, not just viewers.",
+        "Targeted reach. Measurable ROI."
+      ],
+      clothingBodies: [
+        "A complete beginner yoga program. 4 weeks, 3 sessions per week, full progression from zero to confident practice. Priced at €97. This is the course that will convert email subscribers and Instagram followers into paying students. Every physical product customer is a warm lead for this course.",
+        "Artemis is a mother of two who found yoga as her anchor. This course is autobiographical. It speaks directly to the overwhelmed, stretched-thin mother who knows she needs movement but has 20 minutes at best. Priced at €127. This niche has enormous organic reach potential — \"yoga for moms\" content performs exceptionally online.",
+        "A premium 8-week course for yoga teachers or advanced practitioners who want to integrate sustainability into their teaching and practice. Priced at €297. Lower volume, higher margin — 50 students per year = €14,850 from one course alone.",
+        "A free 7-day challenge that captures email addresses and warms up new followers for the paid courses and app. Delivered via email or hosted on the platform. This sits at the top of every funnel — social ad, TikTok, YouTube video — and converts attention into a database of warm leads.",
+        "Run one proper 72-hour sale to clear current stock if needed, then restore full pricing permanently. Use scarcity (limited colorways, seasonal drops) instead of ongoing discounts. Lululemon leggings at $128 sell better than Yalo leggings at $26 — not because of quality, but because of perceived value. Price communicates quality.",
+        "Move from \"always available, always discounted\" to 2–3 seasonal drops per year. Limited colorways, defined launch windows, waitlists. This is how Supreme built hype and how Lululemon keeps full-price integrity. Each drop becomes an event that drives content, email opens, and social media excitement.",
+        "The clothing needs a visual identity tied to Artemis's Greek roots. Ocean blues, sandy neutrals, earthy terracottas — the colors are already there in the product names (Balos Sand, Ocean Blue, Earth Clay). That's the visual language. Make it deliberate. Make it the brand story. Shoot it in Greece if possible.",
+        "The Aleksandra collabs are already proving this works. Expand it. Partner with 5–8 yoga teachers and wellness creators who each have 10K–100K engaged followers. Send them the collection, co-create content, give them a discount code. Each partnership is a content machine and a new audience acquisition. Cost: product samples. ROI: potentially thousands of new customers.",
+        "Yoga is one of TikTok's highest-performing niches. A Greek founder, former figure skater, mother of two, living in Sweden, making cork mats to fight Mediterranean plastic pollution — that is a story the algorithm rewards with millions of views. We create a TikTok content system: weekly posting schedule, scripted hooks for Artemis, POV formats, day-in-the-life yoga routines, cork mat education, and sustainability storytelling. One viral video can bring 50,000 new eyes to the brand overnight.",
+        "Yoga with Adriene built 12 million subscribers and a multi-million dollar business on free YouTube content. Every class she uploads is a permanent SEO asset — found by people searching \"yoga for beginners\", \"30-minute yoga flow\", \"yoga for anxiety\". We launch Yalo's YouTube channel with 2 classes per month. Each video links to the app, the courses, and the shop. The content pays dividends for years after posting.",
+        "880 posts, 2,373 followers means static content isn't working. We completely shift the Instagram strategy: 80% Reels, 20% Stories. Reels formats that work for yoga brands: 60-second practice clips, \"cork mat vs. regular mat\" comparisons, Greek coastline transitions, behind-the-scenes mat production, morning routine content. Every Reel is designed to reach non-followers first. We also audit and clean up the feed so that first-time visitors instantly understand what Yalo Yoga is and why they want it.",
+        "Unlike Instagram or TikTok, your email list belongs to you — no algorithm can take it away. We build a full email marketing system: a 5-email welcome sequence that tells Artemis's story and introduces the products and courses; a weekly newsletter (The Yalo Letter) with short yoga tips, sustainability facts, and product highlights; automated post-purchase sequences; and launch campaigns for each new course and seasonal clothing drop. Email converts 3–5× better than social media for product sales.",
+        "The blog exists but isn't working hard enough. We build a keyword-led content cluster strategy: pillar pages for \"cork yoga mat\", \"sustainable yoga mat\", \"yoga for beginners Sweden\" plus supporting articles for each. Every product page gets fully optimized descriptions with target keywords. The goal is organic traffic from people who are already searching for exactly what Yalo sells. 12–18 months of consistent SEO content can generate thousands of visitors per month at zero ongoing cost.",
+        "The most powerful content Yalo can produce is Artemis practicing yoga on a Greek coastline — cork mat on golden sand, olive groves in the background, clear Aegean water. Mediterranean aesthetics are having a cultural moment and this brand is uniquely positioned to own it. We coordinate one focused content shoot in Greece (or a Mediterranean-aesthetic location in Sweden as an alternative): 3–4 hours, clothing + mats, multiple locations. Output: 200+ photos and 15–20 short video clips that feed all channels for 3–6 months.",
+        "Pinterest users are in \"planning\" mode — looking for yoga inspiration, sustainable lifestyle ideas, activewear, home gym aesthetics. Yalo's visual world (Mediterranean colors, cork textures, nature) is exactly what performs on Pinterest. Pins have a lifespan measured in months, not hours. We create a Pinterest presence with optimized boards (sustainable yoga, cork yoga mats, Mediterranean lifestyle, yoga for mothers), regular pinning schedule, and direct product links. Low effort, long tail traffic that compounds over time.",
+        "Once the organic content engine is running, paid advertising amplifies what's working. Meta ads targeting yoga practitioners, sustainable living enthusiasts, and wellness consumers in Europe and North America. Retargeting campaigns for people who visited the store but didn't buy. Course launch ads driving traffic to the free 7-day challenge lead magnet. We don't run ads until the funnel is ready to convert — paid traffic to a broken funnel is money wasted. Done correctly, €500/month in ads can generate €2,000–5,000 in revenue."
+      ],
+      flywheelH3: "The content flywheel",
+      flywheelP: 'TikTok video goes viral → people discover Yalo → visit Instagram → follow → see link in bio → sign up for the 7-day free challenge → receive welcome email sequence → buy the course → become app members → buy a mat → share content of themselves using it → new TikTok viewers discover the brand. <strong style="color:rgba(255,255,255,.9)">Every piece of content feeds every other part of the business.</strong>',
+      phaseTitles: [
+        "Fix the Foundation — Stop the bleeding",
+        "Launch the Digital Products — First revenue from knowledge",
+        "Social Media Transformation — Find new audiences",
+        "App Launch & Community — The recurring revenue engine"
+      ],
+      phaseTimes: ["Month 1","Month 1–3","Month 2–4","Month 4–8"],
+      phaseTasks: [
+        ["Add \"Notify me when back in stock\" to the Golden Hour Mat — capture every interested buyer","End the permanent sale on activewear — restore full pricing, schedule a real 72hr clearance first","Update Instagram bio to make it clear what Yalo Yoga is and sells","Add product bundles: Mat + Blocks + Bag — increases average order value","Optimize product descriptions for SEO: \"cork yoga mat\", \"sustainable yoga mat Sweden\"","Set up back-in-stock email automation on Shopify"],
+        ["Record \"7-Day Morning Yoga Challenge\" — the free lead magnet that builds the email list","Build \"Foundations of Flow\" 4-week course on Kajabi or Teachable","Set up email welcome sequence that introduces Artemis's story and sells the course passively","Launch app waitlist with founding-member pricing (€7.99/month locked for first 500)","Begin content planning for TikTok — start with Artemis's origin story"],
+        ["TikTok launch — Artemis tells her story in 60 seconds (origin story format, high viral potential)","YouTube channel — 2 full yoga classes per month (SEO compound interest over time)","Instagram pivots to Reels — short practices, sustainability facts, behind-the-scenes content","Reach out to 5 yoga micro-influencers (10K–100K) for clothing collaboration and content exchange","Greece content shoot — activewear and mats against Mediterranean backdrop"],
+        ["Launch Yalo App MVP on Uscreen — founding member list converts to paid subscriptions","Product-app integration: Golden Hour Mat restocked with \"3 months app free\" bundled","Monthly live practice with Artemis for app members — creates retention and community","Launch \"Yalo Ambassador\" program — 20 yoga teachers, free mat + clothing, monthly content","Second course: \"Yoga for Busy Mothers\" — leverages TikTok and YouTube audience built in Phase 3","Seasonal clothing drop — limited colorways, waitlist, proper launch campaign"]
+      ],
+      phaseImpacts: [
+        "🌿 Expected impact: Capture lost demand, raise perceived value, start appearing in search results.",
+        "🌿 Expected impact: First digital revenue within 30 days of course launch. Email list begins growing rapidly.",
+        "🌿 Expected impact: First viral TikTok moments. New audiences discovering Yalo. Clothing collabs generating third-party content.",
+        "🌿 Expected impact: Recurring revenue begins. Multi-stream business in operation. Brand is recognizable in its niche."
+      ],
+      priceBadge: "Recommended",
+      priceNames: ["Seed","Growth","Empire"],
+      pricePeriods: ["one-time","+ €1,900/month management","+ €3,900/month management"],
+      priceDescs: [
+        "Fix the immediate product issues and launch your first digital product to validate the model before committing further.",
+        "Full digital launch. First course live, content engine running, app waitlist built, clothing strategy executed.",
+        "Full brand build across all five pillars — app, courses, clothing, content, and community. Total transformation in 6 months."
+      ],
+      pricingNote: '<strong style="color:var(--text)">Note:</strong> Platform costs for Kajabi/Uscreen/Teachable (€100–300/month) are separate. Advertising budget for paid campaigns is additional. All prices exclusive of VAT.',
+      whyTitles: ["AI-powered execution speed","Full transparency via live dashboard","We understand the wellness brand space","We think in business models, not deliverables"],
+      whyDescs: [
+        "We deploy specialized AI agents to work in parallel — content, SEO, design, strategy. What takes traditional agencies 3 months, we deliver in 3 weeks without losing quality.",
+        "You have real-time access to our Command Center — see every task, every agent running, every token spent. No black boxes, no mystery about what we're doing or why.",
+        "Sustainable brands, founder-led storytelling, community-first growth — this is the exact space we specialize in. We know how it works, who the audience is, and what moves the needle.",
+        "We don't just build a website or run some ads. We design revenue systems. The app + course + clothing + community model we've laid out here is a compound growth machine, not a one-off project."
+      ],
+      ctaH2: "Artemis, you've built something real.<br>Let's take it to where it deserves to be.",
+      ctaP: "A free 30-minute call with no obligation. We'll walk through the plan, answer every question, and align on next steps — if it's a fit.",
+      ctaBtn: "Book a call →",
+      footerP: 'GKL Agency — Growth proposal for Yalo Yoga · March 2026<br>This proposal is valid for 30 days. All prices exclusive of VAT.<br>Questions? <a href="mailto:info@gklagency.se" style="color:var(--terra)">info@gklagency.se</a>'
+    },
+    el: {
+      coverEyebrow: "Στρατηγική Ανάπτυξης & Πρόταση",
+      coverFor: "Για την Άρτεμη & τη Yalo Yoga",
+      coverH1: 'Η ιστορία σου είναι <em>εξαιρετική.</em><br>Ας χτίσουμε την αυτοκρατορία γύρω της.',
+      coverSub: "Μια βιώσιμη yoga brand με ιδρύτρια που έφυγε από την Ελλάδα, ανακάλυψε τη yoga στη Σουηδία, και έχτισε κάτι υπέροχο. Έτσι το πηγαίνουμε από 2.373 ακόλουθους σε μια αυτοκρατορία ευεξίας πολλαπλών εσόδων.",
+      pillarTitles: ["Εφαρμογή","Μαθήματα","Ρούχα","Περιεχόμενο","Κοινότητα"],
+      pillarSubs: ["Ψηφιακά έσοδα","Γνωσιακά προϊόντα","Επέκταση brand","Μηχανή κοινού","Επαναλαμβανόμενα έσοδα"],
+      coverDate: "Παρουσιάστηκε Μάρτιος 2026",
+      scrollHint: "Κύλισε",
+      sectionLabels: [
+        "Μέρος 1 — Η Ειλικρινής Αξιολόγηση",
+        "Μέρος 2 — Η Στρατηγική Ανάπτυξης",
+        "Μέρος 3 — Η Εφαρμογή",
+        "Μέρος 4 — Online Μαθήματα",
+        "Μέρος 5 — Η Clothing Brand",
+        "Μέρος 6 — Δημιουργία Περιεχομένου & Ψηφιακό Marketing",
+        "Μέρος 7 — Το Σχέδιο Εκτέλεσης",
+        "Μέρος 8 — Επένδυση",
+        "Μέρος 9 — Γιατί GKL Agency"
+      ],
+      sectionTitles: [
+        "Έχεις όλα τα υλικά.<br>Η συνταγή χρειάζεται μόνο δουλειά.",
+        "Τρεις νέες ροές εσόδων.<br>Ένα συνεκτικό brand.",
+        "Η Εφαρμογή Yalo —<br>η πιο ισχυρή σου κίνηση.",
+        "Αυτό που ξέρει η Άρτεμη αξίζει να πληρωθεί.",
+        "Τα ρούχα Yalo αξίζουν να είναι brand, όχι υποσημείωση.",
+        "Το περιεχόμενο είναι η μηχανή.<br>Όλα τα άλλα τρέχουν πάνω σε αυτό.",
+        "Τέσσερις φάσεις. Ένας χρόνος. Μια εντελώς διαφορετική επιχείρηση.",
+        "Επέλεξε τον ρυθμό σου.",
+        "Είμαστε χτισμένοι διαφορετικά."
+      ],
+      sectionIntros: [
+        "Αξιολογήσαμε τον ιστότοπό σου, τα social media, τη στρατηγική προϊόντων, το SEO και το μοντέλο εσόδων. Εδώ είναι ακριβώς που βρίσκεσαι — και πού είναι τα μεγαλύτερα σημεία μόχλευσης.",
+        "Μας ζήτησες να σκεφτούμε μια εφαρμογή, μαθήματα και το brand ρούχων. Δείτε πώς βλέπουμε και τα τρία να λειτουργούν μαζί — και πώς αλληλοενισχύονται αντί να ανταγωνίζονται.",
+        "Τα φυσικά προϊόντα έχουν ανώτατο όριο. Μια εφαρμογή συνδρομής αναπτύσσεται με κάθε νέο χρήστη και σε πληρώνει κάθε μήνα. Έτσι τη χτίζουμε.",
+        "Τα μαθήματα είναι ο πιο γρήγορος τρόπος να αξιοποιήσεις την εμπειρογνωμοσύνη. Μόλις ηχογραφηθούν, πωλούνται 24/7 χωρίς πρόσθετο χρόνο από την Άρτεμη.",
+        "Η γραμμή αθλητικών ρούχων έχει ήδη γεννηθεί. Χρειάζεται μόνο τοποθέτηση, σιγουριά στις τιμές και μια στρατηγική κυκλοφορίας αντάξια του brand.",
+        "Τα προϊόντα, τα μαθήματα και οι εφαρμογές δεν πωλούνται μόνα τους — το περιεχόμενο είναι αυτό που οδηγεί την ανακάλυψη, την εμπιστοσύνη και τη μετατροπή. Η Άρτεμη έχει μια ιστορία, ένα πρόσωπο, μια αποστολή και έναν οπτικό κόσμο που είναι αληθινά μαγνητικός. Εδώ είναι πώς το μετατρέπουμε σε μια μηχανή περιεχομένου που λειτουργεί 24/7.",
+        "Εφαρμογή + Μαθήματα + Ρούχα + Περιεχόμενο — και τα τέσσερα pillars ενεργοποιούνται διαδοχικά, το καθένα χτίζει πάνω στο προηγούμενο."
+      ],
+      scoreH3: "Τρέχουσα ψηφιακή βαθμολογία: 40 από 100",
+      scoreP: "Δεν αντικατοπτρίζει τα προϊόντα ή την ιστορία σου — και τα δύο είναι αληθινά ισχυρά. Αντικατοπτρίζει το πόσο από τη δυνητική σου ισχύ παραμένει ανεκμετάλλευτη. Εκεί δουλεύουμε.",
+      auditLabels: ["Ιστότοπος & UX","SEO","Κοινωνικά Δίκτυα","Brand & Περιεχόμενο","Στρατηγική Προϊόντων","Μοντέλο Εσόδων"],
+      auditNotes: [
+        "Καθαρό Shopify, αλλά το κορυφαίο προϊόν εξαντλήθηκε χωρίς λίστα αναμονής.",
+        "Υπάρχει blog αλλά δεν είναι βελτιστοποιημένο. Δεν κατατάσσεται για cork yoga mat.",
+        "880 αναρτήσεις → 2.373 ακόλουθοι. Χωρίς TikTok. Η ανάπτυξη έχει σταματήσει.",
+        "Υπέροχη ιστορία, εντελώς ασυνεπής εκτέλεση και συχνότητα.",
+        "Η συνεχής έκπτωση 50% καταστρέφει την αντιληπτή αξία. Το κορυφαίο προϊόν εξαντλήθηκε.",
+        "Μόνο φυσικά προϊόντα. Χωρίς εφαρμογή, μαθήματα ή συνδρομή. Μία μόνο ροή."
+      ],
+      findingTitles: [
+        "Το καλύτερό σου προϊόν είναι εξαντλημένο — χωρίς τρόπο να συλλάβεις τη ζήτηση",
+        "Η μόνιμη έκπτωση 50% καταστρέφει αθόρυβα το brand",
+        "880 αναρτήσεις. 2.373 ακόλουθοι. Το περιεχόμενο δεν φτάνει νέα άτομα.",
+        "Χωρίς TikTok. Το 2026, αυτό είναι το μεγαλύτερο κανάλι ανάπτυξης που αγνοείς.",
+        "Είσαι yoga brand χωρίς περιεχόμενο yoga",
+        "Η ευκαιρία εφαρμογής + μαθημάτων είναι τεράστια — και η ώρα είναι τέλεια"
+      ],
+      findingBodies: [
+        "Το Golden Hour Yoga Mat έχει αξιολόγηση 5 αστέρων και είναι το προϊόν που αναζητούν οι επισκέπτες. Είναι εξαντλημένο χωρίς ειδοποίηση επαναστοχασμού. Κάθε ενδιαφερόμενος πελάτης που βλέπει «εξαντλημένο» φεύγει και αγοράζει από έναν ανταγωνιστή. Αυτή είναι η πιο άμεση διαρροή εσόδων για να διορθωθεί.",
+        "Κολάν στα 26$ (ήταν 50$). Σουτιέν στα 24$ (ήταν 50$). Όταν όλα πωλούνται πάντα σε προσφορά, οι πελάτες μαθαίνουν να μην πληρώνουν ποτέ πλήρη τιμή — και σταματούν να πιστεύουν στην κανονική τιμή. Η Lululemon και η Alo Yoga έχτισαν αυτοκρατορίες προστατεύοντας τις τιμές τους. Τα premium yoga brands χρησιμοποιούν σπανιότητα, όχι μόνιμα banners έκπτωσης.",
+        "Αν κάθε ανάρτηση έφερνε μόλις 3 νέους ακόλουθους, έχεις κάνει 880 αναρτήσεις και έχεις 2.373 ακόλουθους. Αυτό σημαίνει ότι το περιεχόμενό σου φτάνει μόνο σε αυτούς που σε ακολουθούν ήδη — δεν ανακαλύπτει νέα κοινά. Η μορφή χρειάζεται να αλλάξει. Reels, TikTok, περιεχόμενο SEO. Οι στατικές αναρτήσεις μόνες τους δεν θα σε αναπτύξουν το 2026.",
+        "Το περιεχόμενο yoga είναι μία από τις καλύτερες κατηγορίες στο TikTok. Μια Ελληνίδα ιδρύτρια, πρώην παγοδρόμος, μητέρα δύο παιδιών, που ζει στη Σουηδία, φτιάχνει mats από φελλό για να καταπολεμήσει τη μεσογειακή πλαστική ρύπανση; Αυτή η ιστορία γίνεται viral στο TikTok. Έχεις όλα αυτά που ανταμείβει ο αλγόριθμος. Απλώς δεν είσαι εκεί ακόμα.",
+        "Οι άνθρωποι ακολουθούν yoga brands κυρίως για περιεχόμενο yoga — tutorials, αναπνευστικές ασκήσεις, καθημερινές πρακτικές, έμπνευση κίνησης. Το blog σου είναι 90% εκπαίδευση προϊόντων. Το Instagram σου δεν έχει μαθήματα ή βίντεο εξάσκησης. Η Yoga with Adriene έχτισε 12 εκατ. συνδρομητές στο YouTube με δωρεάν μαθήματα και κερδίζει από πωλήσεις προϊόντων. Το ίδιο μοντέλο είναι διαθέσιμο σε σένα.",
+        "Η αγορά online yoga είναι 20 δισ. δολάρια και αναπτύσσεται με 18% ετησίως. Το Down Dog, το Asana Rebel και το Glo το αξιοποιούν με εφαρμογές. Καμία δεν έχει φυσικό οικοσύστημα προϊόντων για να ενισχύσει το ψηφιακό. Η Yalo Yoga έχει. «Αγόρασε ένα mat, απόκτησε 3 μήνες δωρεάν στην εφαρμογή» είναι ένα flywheel που καμία άλλη δεν μπορεί να αντιγράψει."
+      ],
+      pillarCardTitles: ["Η Εφαρμογή Yalo","Online Μαθήματα","Ρούχα Yalo"],
+      pillarCardDescs: [
+        "Μια πλατφόρμα yoga συνδρομής με τα μαθήματα, τις αναπνευστικές ασκήσεις και την κοινότητα της Άρτεμης. Ο μεγαλύτερος μακροπρόθεσμος πολλαπλασιαστής εσόδων.",
+        "Ψηφιακά μαθήματα αυτορυθμιζόμενης εκμάθησης που αξιοποιούν την εμπειρία της Άρτεμης. Χαμηλό κόστος δημιουργίας, υψηλό περιθώριο, παθητικά μετά την κυκλοφορία.",
+        "Η γραμμή αθλητικών ρούχων επανατοποθετημένη ως premium, βιώσιμη clothing brand — όχι ως παράρτημα των mats."
+      ],
+      pillarCardRevs: ["€120K–300K/χρόνο δυνητικά","€10K–30K/μήνα σε κλίμακα","2× έσοδα με σωστές τιμές"],
+      marketH3: "Η αγορά κινείται στην κατεύθυνσή σου. Γρήγορα.",
+      marketP: 'Η παγκόσμια αγορά yoga είναι <em>127 δισ. δολάρια</em> το 2025. Το online yoga μόνο είναι <em>20 δισ. δολάρια</em> με ρυθμό ανάπτυξης <em>18% ετησίως</em>. Οι καταναλωτές στρέφονται σε βιώσιμα brands, ιστορίες με ιδρυτές στο επίκεντρο, και ψηφιακή ευεξία πρώτα. Η Yalo Yoga είναι τοποθετημένη ακριβώς εκεί που πηγαίνει η αγορά. Απλώς πρέπει να εκτελέσουμε πριν άλλοι βρουν την ίδια τοποθέτηση.',
+      mnumLbls: ["Παγκόσμια αγορά yoga 2025","Αγορά online yoga, ανάπτυξη 18%/χρόνο","Εγγεγραμμένοι ασκούμενοι yoga στη Σουηδία","Των εσόδων yoga μεταβαίνει σε συνδρομές έως το 2025"],
+      appH3: "Πώς μοιάζει η Εφαρμογή Yalo",
+      appP: "Τα μαθήματα yoga της Άρτεμης on demand. Καθημερινές εξασκήσεις, αναπνευστικές ασκήσεις, διαλογισμός, προκλήσεις κίνησης. Χώρος κοινότητας για μέλη Yalo. Ενσωμάτωση με τα φυσικά προϊόντα — αγόρασε ένα mat, ξεκλείδωσε 3 μήνες δωρεάν.",
+      appFeatures: [
+        "Βιβλιοθήκη μαθημάτων on demand (αρχάριοι → προχωρημένοι, 5–60 λεπτά)",
+        "Καθημερινές προτάσεις εξάσκησης προσαρμοσμένες στο επίπεδο του χρήστη",
+        "Κομμάτια αναπνευστικών ασκήσεων & διαλογισμού",
+        "Μηνιαίες ζωντανές συνεδρίες με την Άρτεμη",
+        "Κοινοτική ροή + προκλήσεις",
+        "Ενσωμάτωση προϊόντων: αγορά mat ξεκλειδώνει δωρεάν δοκιμή",
+        "Freemium μοντέλο — το δωρεάν επίπεδο οδηγεί σε ανακάλυψη στο app store"
+      ],
+      appRevLabel: "Προβολή εσόδων (συνδρομή €9,99/μήνα)",
+      appScenarioSpans: ["500 συνδρομητές","1.000 συνδρομητές","2.500 συνδρομητές","Ετήσιο πλάνο (€79/χρόνο)"],
+      appScenarioStrongs: ["€60K / χρόνο","€120K / χρόνο","€300K / χρόνο","Υψηλότερο περιθώριο, λιγότερες ακυρώσεις"],
+      appBuildNote: '<strong style="color:var(--text)">Προσέγγιση κατασκευής:</strong> Ξεκινάμε με white-label πλατφόρμα (Uscreen ή Kajabi) για γρήγορη και οικονομική κυκλοφορία, μετά επενδύουμε σε native εφαρμογή μόλις επικυρωθεί το μοντέλο συνδρομής. Χρόνος κυκλοφορίας: 8–12 εβδομάδες. Δεν απαιτείται custom ανάπτυξη αρχικά.',
+      clothingLabels: [
+        "Μάθημα 1 — Πρώτη Κυκλοφορία","Μάθημα 2 — Ο Εξειδικευμένος Νικητής","Μάθημα 3 — Η Premium Προσφορά","Ο Δωρεάν Μαγνήτης",
+        "Φτιάξε Αυτό Τώρα","Η Στρατηγική","Η Ταυτότητα","Η Μηχανή Ανάπτυξης",
+        "TikTok — Η Μηχανή Ανάπτυξης","YouTube — Το Μακροπρόθεσμο Παιχνίδι","Instagram Reels — Μεταμόρφωση","Email Marketing",
+        "Στρατηγική Περιεχομένου SEO","Φωτογράφηση Brand & Οπτική Ταυτότητα","Pinterest — Το Evergreen Κανάλι Ανακάλυψης","Πληρωμένη Διαφήμιση — Όταν το Οργανικό Χρειάζεται Ώθηση"
+      ],
+      clothingTitles: [
+        '"Foundations of Flow" — 4-Εβδομάδων Yoga για Αρχαρίους',
+        '"Yoga για Απασχολημένες Μαμάδες" — 21-Ήμερη Επαναφορά',
+        '"Βιώσιμη Κίνηση" — Εντατικό Εκπαιδευτών Yoga',
+        '"7-Ήμερη Πρωινή Πρόκληση Yoga" — Δωρεάν, με Email',
+        "Τερμάτισε τη μόνιμη προσφορά",
+        "Εποχιακές κυκλοφορίες, όχι μόνιμος κατάλογος",
+        "Μεσογειακή κίνηση — όχι γενική αθλητική ένδυση",
+        "Συνεργασίες δημιουργών → cross-over κοινού",
+        "Η Άρτεμη γίνεται viral. Ο αλγόριθμος είναι έτοιμος.",
+        "Δωρεάν μαθήματα που συσσωρεύονται για πάντα.",
+        "Σταμάτα να αναρτάς για ακόλουθους. Ανάρτα για ανακάλυψη.",
+        "Το κοινό που σου ανήκει.",
+        "Κατάταξη για αναζητήσεις με πρόθεση αγοράς.",
+        "Ένα shoot στην Ελλάδα. Μήνες περιεχομένου.",
+        "Η πλατφόρμα που στέλνει αγοραστές, όχι απλώς θεατές.",
+        "Στοχευμένη εμβέλεια. Μετρήσιμο ROI."
+      ],
+      clothingBodies: [
+        "Ένα ολοκληρωμένο πρόγραμμα yoga για αρχαρίους. 4 εβδομάδες, 3 συνεδρίες ανά εβδομάδα, πλήρης εξέλιξη από μηδέν σε σίγουρη εξάσκηση. Τιμή €97. Αυτό είναι το μάθημα που θα μετατρέψει συνδρομητές email και ακόλουθους Instagram σε πληρώνοντες μαθητές. Κάθε πελάτης φυσικών προϊόντων είναι ένας θερμός υποψήφιος για αυτό το μάθημα.",
+        "Η Άρτεμη είναι μητέρα δύο παιδιών που βρήκε τη yoga ως άγκυρά της. Αυτό το μάθημα είναι αυτοβιογραφικό. Απευθύνεται απευθείας στην κουρασμένη μαμά που ξέρει ότι χρειάζεται κίνηση αλλά έχει το πολύ 20 λεπτά. Τιμή €127. Αυτή η εξειδίκευση έχει τεράστιο δυναμικό οργανικής εμβέλειας — το περιεχόμενο «yoga για μαμάδες» αποδίδει εξαιρετικά online.",
+        "Ένα premium 8-εβδομάδων μάθημα για εκπαιδευτές yoga ή προχωρημένους ασκούμενους που θέλουν να ενσωματώσουν τη βιωσιμότητα στη διδασκαλία τους. Τιμή €297. Μικρότερος όγκος, υψηλότερο περιθώριο — 50 μαθητές ανά χρόνο = €14.850 από ένα μάθημα μόνο.",
+        "Μια δωρεάν 7-ήμερη πρόκληση που συλλέγει email και θερμαίνει νέους ακόλουθους για τα πληρωμένα μαθήματα και την εφαρμογή. Παραδίδεται μέσω email ή φιλοξενείται στην πλατφόρμα. Αυτό βρίσκεται στην κορυφή κάθε funnel — κοινωνική διαφήμιση, TikTok, βίντεο YouTube — και μετατρέπει την προσοχή σε βάση δεδομένων θερμών υποψηφίων.",
+        "Κάνε μια σωστή προσφορά 72 ωρών για να ξεκαθαρίσεις το τρέχον απόθεμα αν χρειαστεί, μετά επανάφερε τις κανονικές τιμές μόνιμα. Χρησιμοποίησε σπανιότητα (περιορισμένα χρώματα, εποχιακές κυκλοφορίες) αντί για συνεχείς εκπτώσεις. Τα κολάν της Lululemon στα 128$ πουλάνε καλύτερα — όχι λόγω ποιότητας, αλλά λόγω αντιληπτής αξίας. Η τιμή επικοινωνεί ποιότητα.",
+        "Μετάβαση από «πάντα διαθέσιμο, πάντα σε έκπτωση» σε 2–3 εποχιακές κυκλοφορίες ανά χρόνο. Περιορισμένα χρώματα, καθορισμένα παράθυρα κυκλοφορίας, λίστες αναμονής. Έτσι η Supreme έχτισε λαχτάρα και η Lululemon διατηρεί τιμές πλήρους αξίας. Κάθε κυκλοφορία γίνεται ένα γεγονός που παράγει περιεχόμενο και ενθουσιασμό.",
+        "Τα ρούχα χρειάζονται οπτική ταυτότητα συνδεδεμένη με τις ελληνικές ρίζες της Άρτεμης. Μπλε ωκεανού, αμμώδεις ουδέτεροι τόνοι, επίγειες γήινες τέρρα — τα χρώματα είναι ήδη εκεί στα ονόματα προϊόντων (Balos Sand, Ocean Blue, Earth Clay). Αυτή είναι η οπτική γλώσσα. Κάνε τη σκόπιμη. Φωτογράφησε στην Ελλάδα αν είναι δυνατό.",
+        "Οι συνεργασίες με την Aleksandra αποδεικνύουν ήδη ότι λειτουργεί. Επέκτεινέ τη. Συνεργάσου με 5–8 εκπαιδευτές yoga που ο καθένας έχει 10K–100K engaged ακόλουθους. Στείλε τους τη συλλογή, δημιούργησε content μαζί, δώσε τους κωδικό έκπτωσης. Κάθε συνεργασία είναι μια μηχανή περιεχομένου και απόκτηση νέου κοινού. Κόστος: δείγματα προϊόντων. ROI: ενδεχομένως χιλιάδες νέοι πελάτες.",
+        "Η yoga είναι μία από τις καλύτερες κατηγορίες του TikTok. Μια Ελληνίδα ιδρύτρια, πρώην παγοδρόμος, μητέρα δύο παιδιών, που ζει στη Σουηδία, φτιάχνει mats από φελλό για να καταπολεμήσει τη μεσογειακή πλαστική ρύπανση — αυτή είναι μια ιστορία που ο αλγόριθμος ανταμείβει με εκατομμύρια προβολές. Ένα viral βίντεο μπορεί να φέρει 50.000 νέα μάτια στο brand μέσα σε μια νύχτα.",
+        "Η Yoga with Adriene έχτισε 12 εκατ. συνδρομητές και μια πολυεκατομμυριακή επιχείρηση σε δωρεάν περιεχόμενο YouTube. Κάθε μάθημα που ανεβάζει είναι ένα μόνιμο SEO asset — βρίσκεται από ανθρώπους που αναζητούν «yoga για αρχαρίους», «30-λεπτη yoga». Λανσάρουμε το κανάλι YouTube της Yalo με 2 μαθήματα ανά μήνα. Το περιεχόμενο αποδίδει για χρόνια μετά.",
+        "880 αναρτήσεις, 2.373 ακόλουθοι σημαίνει ότι το στατικό περιεχόμενο δεν λειτουργεί. Αλλάζουμε πλήρως τη στρατηγική Instagram: 80% Reels, 20% Stories. Μορφές Reels που λειτουργούν: 60-δευτερόλεπτα clips εξάσκησης, συγκρίσεις «cork mat vs. κανονικό mat», μεταβάσεις ελληνικής ακτογραμμής, behind-the-scenes παραγωγή mat. Κάθε Reel σχεδιάζεται για να φτάσει σε μη-ακόλουθους πρώτα.",
+        "Αντίθετα με το Instagram ή το TikTok, η λίστα email σου σου ανήκει — κανένας αλγόριθμος δεν μπορεί να τη σου πάρει. Χτίζουμε πλήρες σύστημα email marketing: ακολουθία καλωσορίσματος 5 email, εβδομαδιαίο newsletter (The Yalo Letter), αυτόματες ακολουθίες μετά την αγορά, και καμπάνιες κυκλοφορίας για κάθε νέο μάθημα. Το email μετατρέπεται 3–5× καλύτερα από τα social media.",
+        "Το blog υπάρχει αλλά δεν δουλεύει αρκετά σκληρά. Χτίζουμε στρατηγική cluster περιεχομένου: pillar pages για «cork yoga mat», «sustainable yoga mat», «yoga for beginners Sweden». Κάθε σελίδα προϊόντος λαμβάνει πλήρως βελτιστοποιημένες περιγραφές. 12–18 μήνες συνεπούς περιεχομένου SEO μπορεί να παράγει χιλιάδες επισκέπτες ανά μήνα χωρίς συνεχές κόστος.",
+        "Το πιο ισχυρό περιεχόμενο που μπορεί να παράγει η Yalo είναι η Άρτεμη να εξασκεί yoga σε ελληνική ακτή — cork mat σε χρυσαφένια άμμο, ελαιόδεντρα στο φόντο, γαλάζια νερά Αιγαίου. Συντονίζουμε ένα εστιασμένο content shoot: 3–4 ώρες, ρούχα + mats, πολλαπλές τοποθεσίες. Αποτέλεσμα: 200+ φωτογραφίες και 15–20 βίντεο που τροφοδοτούν όλα τα κανάλια για 3–6 μήνες.",
+        "Οι χρήστες Pinterest είναι σε «mode σχεδιασμού» — αναζητούν έμπνευση yoga, ιδέες βιώσιμης ζωής, αθλητική ένδυση. Ο οπτικός κόσμος της Yalo (μεσογειακά χρώματα, υφές φελλού, φύση) αποδίδει εξαιρετικά στο Pinterest. Τα pins έχουν διάρκεια ζωής μήνες, όχι ώρες. Δημιουργούμε παρουσία με βελτιστοποιημένους πίνακες και απευθείας συνδέσμους προϊόντων.",
+        "Μόλις τρέξει η μηχανή οργανικού περιεχομένου, η πληρωμένη διαφήμιση ενισχύει αυτό που λειτουργεί. Meta ads που στοχεύουν ασκούμενους yoga και καταναλωτές ευεξίας στην Ευρώπη και Βόρεια Αμερική. Καμπάνιες retargeting για επισκέπτες που δεν αγόρασαν. Αν γίνει σωστά, €500/μήνα σε διαφημίσεις μπορούν να παράγουν €2.000–5.000 σε έσοδα."
+      ],
+      flywheelH3: "Το flywheel περιεχομένου",
+      flywheelP: 'Το βίντεο TikTok γίνεται viral → οι άνθρωποι ανακαλύπτουν τη Yalo → επισκέπτονται το Instagram → ακολουθούν → βλέπουν τον σύνδεσμο → εγγράφονται στη δωρεάν πρόκληση 7 ημερών → λαμβάνουν ακολουθία email → αγοράζουν το μάθημα → γίνονται μέλη εφαρμογής → αγοράζουν ένα mat → μοιράζονται περιεχόμενο → νέοι θεατές TikTok ανακαλύπτουν το brand. <strong style="color:rgba(255,255,255,.9)">Κάθε κομμάτι περιεχομένου τροφοδοτεί κάθε άλλο μέρος της επιχείρησης.</strong>',
+      phaseTitles: [
+        "Φτιάξε τη Βάση — Σταμάτα την αιμορραγία",
+        "Κυκλοφορία Ψηφιακών Προϊόντων — Πρώτα έσοδα από γνώση",
+        "Μεταμόρφωση Social Media — Βρες νέα κοινά",
+        "Κυκλοφορία Εφαρμογής & Κοινότητα — Η μηχανή επαναλαμβανόμενων εσόδων"
+      ],
+      phaseTimes: ["Μήνας 1","Μήνας 1–3","Μήνας 2–4","Μήνας 4–8"],
+      phaseTasks: [
+        ["Πρόσθεσε «Ειδοποίησέ με όταν επανέλθει σε απόθεμα» στο Golden Hour Mat — σύλλαβε κάθε ενδιαφερόμενο αγοραστή","Τερμάτισε τη μόνιμη προσφορά στα αθλητικά ρούχα — επανάφερε κανονικές τιμές, προγραμμάτισε πρώτα μια πραγματική έκπτωση 72 ωρών","Ενημέρωσε το bio Instagram για να είναι ξεκάθαρο τι είναι και τι πουλάει η Yalo Yoga","Πρόσθεσε πακέτα προϊόντων: Mat + Μπλοκ + Τσάντα — αυξάνει τη μέση αξία παραγγελίας","Βελτιστοποίησε περιγραφές προϊόντων για SEO: «cork yoga mat», «sustainable yoga mat Sweden»","Ρύθμισε αυτοματισμό email επαναφοράς σε απόθεμα στο Shopify"],
+        ["Ηχογράφησε «7-Ήμερη Πρωινή Πρόκληση Yoga» — το δωρεάν lead magnet που χτίζει τη λίστα email","Χτίσε μάθημα «Foundations of Flow» 4 εβδομάδων στο Kajabi ή Teachable","Ρύθμισε ακολουθία καλωσορίσματος email που παρουσιάζει την ιστορία της Άρτεμης και πουλάει παθητικά το μάθημα","Κυκλοφόρησε λίστα αναμονής εφαρμογής με τιμή ιδρυτικού μέλους (€7,99/μήνα κλειδωμένο για τους πρώτους 500)","Ξεκίνα σχεδιασμό περιεχομένου για TikTok — ξεκίνα με την ιστορία καταγωγής της Άρτεμης"],
+        ["Κυκλοφορία TikTok — η Άρτεμη αφηγείται την ιστορία της σε 60 δευτερόλεπτα (υψηλό viral δυναμικό)","Κανάλι YouTube — 2 πλήρη μαθήματα yoga ανά μήνα (SEO ανατοκισμός με τον χρόνο)","Το Instagram στρέφεται σε Reels — σύντομες εξασκήσεις, γεγονότα βιωσιμότητας, behind-the-scenes περιεχόμενο","Επικοινώνησε με 5 micro-influencers yoga (10K–100K) για συνεργασία ρούχων και ανταλλαγή περιεχομένου","Shoot περιεχομένου στην Ελλάδα — αθλητικά ρούχα και mats με μεσογειακό φόντο"],
+        ["Κυκλοφορία MVP Εφαρμογής Yalo στο Uscreen — λίστα ιδρυτικών μελών μετατρέπεται σε επί πληρωμή συνδρομές","Ενσωμάτωση προϊόντος-εφαρμογής: Golden Hour Mat επανατροφοδοτείται με «3 μήνες εφαρμογής δωρεάν»","Μηνιαία ζωντανή εξάσκηση με την Άρτεμη για μέλη εφαρμογής — δημιουργεί διατήρηση και κοινότητα","Κυκλοφορία προγράμματος «Yalo Ambassador» — 20 εκπαιδευτές yoga, δωρεάν mat + ρούχα, μηνιαίο περιεχόμενο","Δεύτερο μάθημα: «Yoga για Απασχολημένες Μαμάδες» — αξιοποιεί το κοινό TikTok και YouTube από τη Φάση 3","Εποχιακή κυκλοφορία ρούχων — περιορισμένα χρώματα, λίστα αναμονής, σωστή καμπάνια κυκλοφορίας"]
+      ],
+      phaseImpacts: [
+        "🌿 Αναμενόμενος αντίκτυπος: Σύλληψη χαμένης ζήτησης, αύξηση αντιληπτής αξίας, έναρξη εμφάνισης στα αποτελέσματα αναζήτησης.",
+        "🌿 Αναμενόμενος αντίκτυπος: Πρώτα ψηφιακά έσοδα εντός 30 ημερών από την κυκλοφορία του μαθήματος. Η λίστα email αρχίζει να αναπτύσσεται γρήγορα.",
+        "🌿 Αναμενόμενος αντίκτυπος: Πρώτες viral στιγμές στο TikTok. Νέα κοινά ανακαλύπτουν τη Yalo. Συνεργασίες ρούχων παράγουν περιεχόμενο τρίτων.",
+        "🌿 Αναμενόμενος αντίκτυπος: Τα επαναλαμβανόμενα έσοδα ξεκινούν. Λειτουργεί επιχείρηση πολλαπλών ροών. Το brand αναγνωρίζεται στην εξειδίκευσή του."
+      ],
+      priceBadge: "Προτεινόμενο",
+      priceNames: ["Seed","Growth","Empire"],
+      pricePeriods: ["εφάπαξ","+ €1.900/μήνα διαχείριση","+ €3.900/μήνα διαχείριση"],
+      priceDescs: [
+        "Διόρθωσε τα άμεσα ζητήματα προϊόντων και κυκλοφόρησε το πρώτο σου ψηφιακό προϊόν για να επικυρώσεις το μοντέλο πριν δεσμευτείς περαιτέρω.",
+        "Πλήρης ψηφιακή κυκλοφορία. Πρώτο μάθημα ζωντανά, μηχανή περιεχομένου σε λειτουργία, λίστα αναμονής εφαρμογής χτισμένη, στρατηγική ρούχων εκτελεσμένη.",
+        "Πλήρης χτίσιμο brand σε όλα τα πέντε pillars — εφαρμογή, μαθήματα, ρούχα, περιεχόμενο και κοινότητα. Ολική μεταμόρφωση σε 6 μήνες."
+      ],
+      pricingNote: '<strong style="color:var(--text)">Σημείωση:</strong> Τα κόστη πλατφόρμας για Kajabi/Uscreen/Teachable (€100–300/μήνα) είναι ξεχωριστά. Ο προϋπολογισμός διαφήμισης για πληρωμένες καμπάνιες είναι επιπλέον. Όλες οι τιμές χωρίς ΦΠΑ.',
+      whyTitles: ["Ταχύτητα εκτέλεσης με AI","Πλήρης διαφάνεια μέσω ζωντανού dashboard","Καταλαβαίνουμε τον χώρο wellness brands","Σκεφτόμαστε σε business models, όχι σε deliverables"],
+      whyDescs: [
+        "Αναπτύσσουμε εξειδικευμένους AI agents για να λειτουργούν παράλληλα — περιεχόμενο, SEO, design, στρατηγική. Αυτό που παίρνει παραδοσιακές εταιρείες 3 μήνες, το παραδίδουμε σε 3 εβδομάδες χωρίς να χάνουμε ποιότητα.",
+        "Έχεις real-time πρόσβαση στο Command Center μας — δες κάθε task, κάθε agent σε λειτουργία, κάθε token που ξοδεύεται. Χωρίς μαύρα κουτιά, χωρίς μυστήριο για αυτό που κάνουμε ή γιατί.",
+        "Βιώσιμα brands, αφήγηση με ιδρυτή στο επίκεντρο, ανάπτυξη με κοινότητα πρώτα — αυτός είναι ο χώρος που ειδικευόμαστε. Ξέρουμε πώς λειτουργεί, ποιο είναι το κοινό και τι κινεί τη βελόνα.",
+        "Δεν χτίζουμε απλώς ένα website ή τρέχουμε μερικές διαφημίσεις. Σχεδιάζουμε συστήματα εσόδων. Το μοντέλο εφαρμογής + μαθημάτων + ρούχων + κοινότητας που έχουμε σκιαγραφήσει εδώ είναι μια μηχανή σύνθετης ανάπτυξης, όχι ένα εφάπαξ project."
+      ],
+      ctaH2: "Άρτεμη, έχεις χτίσει κάτι πραγματικό.<br>Ας το φέρουμε εκεί που αξίζει να είναι.",
+      ctaP: "Μια δωρεάν κλήση 30 λεπτών χωρίς δέσμευση. Θα παρουσιάσουμε το πλάνο, θα απαντήσουμε κάθε ερώτηση και θα ευθυγραμμιστούμε για τα επόμενα βήματα — αν ταιριάζει.",
+      ctaBtn: "Κλείσε μια κλήση →",
+      footerP: 'GKL Agency — Πρόταση ανάπτυξης για Yalo Yoga · Μάρτιος 2026<br>Η πρόταση ισχύει για 30 ημέρες. Όλες οι τιμές χωρίς ΦΠΑ.<br>Ερωτήσεις; <a href="mailto:info@gklagency.se" style="color:var(--terra)">info@gklagency.se</a>'
+    }
+  };
+
+  let lang = 'en';
+
+  function applyLang(l) {
+    const t = T[l];
+    const q = (s) => document.querySelectorAll(s);
+    const set = (els, vals, html) => {
+      const arr = Array.isArray(vals) ? vals : [vals];
+      els.forEach((el, i) => {
+        if (arr[i] !== undefined) html ? (el.innerHTML = arr[i]) : (el.textContent = arr[i]);
+      });
+    };
+
+    set(q('.cover__eyebrow'), t.coverEyebrow);
+    set(q('.cover__for'), t.coverFor);
+    set(q('.cover h1'), t.coverH1, true);
+    set(q('.cover__sub'), t.coverSub);
+    set(q('.cover__pillar strong'), t.pillarTitles);
+    set(q('.cover__pillar span'), t.pillarSubs);
+    set(q('.cover__date'), t.coverDate);
+    const sh = document.querySelector('.scroll-hint');
+    if (sh) sh.innerHTML = '<div class="scroll-arrow"></div>' + t.scrollHint;
+
+    set(q('.section__label'), t.sectionLabels);
+    set(q('.section__title'), t.sectionTitles, true);
+    set(q('.section__intro'), t.sectionIntros);
+
+    set(q('.score-text h3'), t.scoreH3);
+    set(q('.score-text p'), t.scoreP);
+    set(q('.audit-card__label'), t.auditLabels);
+    set(q('.audit-card__note'), t.auditNotes);
+    set(q('.finding__title'), t.findingTitles);
+    set(q('.finding__body'), t.findingBodies);
+
+    set(q('.pillar-title'), t.pillarCardTitles);
+    set(q('.pillar-desc'), t.pillarCardDescs);
+    set(q('.pillar-revenue'), t.pillarCardRevs);
+    set(q('.market-box h3'), t.marketH3);
+    set(q('.market-box p'), t.marketP, true);
+    set(q('.mnum__lbl'), t.mnumLbls);
+
+    set(q('.app-card h3'), t.appH3);
+    set(q('.app-card > div > p'), t.appP);
+    set(q('.app-features li'), t.appFeatures);
+    set(q('.app-revenue__label'), t.appRevLabel);
+    set(q('.app-scenario span'), t.appScenarioSpans);
+    set(q('.app-scenario strong'), t.appScenarioStrongs);
+    const abn = document.getElementById('app-build-note');
+    if (abn) abn.innerHTML = t.appBuildNote;
+
+    set(q('.clothing-card__label'), t.clothingLabels);
+    set(q('.clothing-card__title'), t.clothingTitles);
+    set(q('.clothing-card__body'), t.clothingBodies);
+
+    const fh3 = document.getElementById('flywheel-h3');
+    const fp = document.getElementById('flywheel-p');
+    if (fh3) fh3.textContent = t.flywheelH3;
+    if (fp) fp.innerHTML = t.flywheelP;
+
+    set(q('.phase__title'), t.phaseTitles);
+    set(q('.phase__time'), t.phaseTimes);
+    q('.phases .phase').forEach((phase, i) => {
+      if (!t.phaseTasks[i]) return;
+      const tasks = phase.querySelectorAll('.phase__tasks li');
+      tasks.forEach((li, j) => { if (t.phaseTasks[i][j]) li.textContent = t.phaseTasks[i][j]; });
+    });
+    set(q('.phase__impact'), t.phaseImpacts);
+
+    set(q('.price-badge'), t.priceBadge);
+    set(q('.price-name'), t.priceNames);
+    set(q('.price-period'), t.pricePeriods);
+    set(q('.price-desc'), t.priceDescs);
+    const pn = document.getElementById('pricing-note');
+    if (pn) pn.innerHTML = t.pricingNote;
+
+    set(q('.why-title'), t.whyTitles);
+    set(q('.why-desc'), t.whyDescs);
+
+    set(q('.cta-wrap h2'), t.ctaH2, true);
+    set(q('.cta-wrap > p'), t.ctaP);
+    set(q('.cta-btn'), t.ctaBtn);
+    set(q('footer p'), t.footerP, true);
+
+    document.getElementById('lang-btn').textContent = l === 'en' ? '🇬🇷 Ελληνικά' : '🇬🇧 English';
+    document.documentElement.lang = l === 'el' ? 'el' : 'en';
+  }
+
+  const T = translations;
+  window.toggleLang = function() {
+    lang = lang === 'en' ? 'el' : 'en';
+    applyLang(lang);
+  };
+})();
+</script>
 
 </body>
 </html>
