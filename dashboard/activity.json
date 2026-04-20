@@ -54,5 +54,75 @@
     "project": "yaloyoga",
     "type": "deliverable",
     "msg": "Growth proposal published — 9 sections covering app, courses, clothing, content creation & full execution plan. 3 pricing tiers: Seed €2,900 / Growth €7,900 / Empire €18,900."
+  },
+  {
+    "id": 1745100000001,
+    "ts": "2026-04-20T10:00:00.000Z",
+    "project": "merca-skroten",
+    "type": "milestone",
+    "msg": "Ny webbplats live lokalt på localhost:3000 — full Next.js platform (merca-platform) byggd från grunden"
+  },
+  {
+    "id": 1745100000002,
+    "ts": "2026-04-20T10:01:00.000Z",
+    "project": "merca-skroten",
+    "type": "deliverable",
+    "msg": "Bildelar-marknadsplats klar — sökbar katalog med märkesfilter, kategorier, marken/modell-navigering"
+  },
+  {
+    "id": 1745100000003,
+    "ts": "2026-04-20T10:02:00.000Z",
+    "project": "merca-skroten",
+    "type": "deliverable",
+    "msg": "Nya bildelar-sektion klar — 100+ fabriksnya motorer från abildelar.se via JSON-LD-skraper"
+  },
+  {
+    "id": 1745100000004,
+    "ts": "2026-04-20T10:03:00.000Z",
+    "project": "merca-skroten",
+    "type": "deliverable",
+    "msg": "Mercedes-dedikerad SEO-sida publicerad — /mercedes med modellguide och delar"
+  },
+  {
+    "id": 1745100000005,
+    "ts": "2026-04-20T10:04:00.000Z",
+    "project": "merca-skroten",
+    "type": "deliverable",
+    "msg": "Admin-panel klar — inventarie (delar + fordon), annonser, kunder, ordrar, fakturor, import, eftersök, dropship"
+  },
+  {
+    "id": 1745100000006,
+    "ts": "2026-04-20T10:05:00.000Z",
+    "project": "merca-skroten",
+    "type": "deliverable",
+    "msg": "Faktureringssystem byggt — Adam fortsätter sin nummerserie från 11101, stöd för vinstmarginalbeskattning (M-kod)"
+  },
+  {
+    "id": 1745100000007,
+    "ts": "2026-04-20T10:06:00.000Z",
+    "project": "merca-skroten",
+    "type": "deliverable",
+    "msg": "Kassan klar med Klarna, Stripe och Swish-stöd — order- och betalningsdatabas i Prisma/SQLite"
+  },
+  {
+    "id": 1745100000008,
+    "ts": "2026-04-20T10:07:00.000Z",
+    "project": "merca-skroten",
+    "type": "deliverable",
+    "msg": "CSV/XLSX-import-system för fordon och delar — full audit trail med ImportBatch"
+  },
+  {
+    "id": 1745100000009,
+    "ts": "2026-04-20T10:08:00.000Z",
+    "project": "merca-skroten",
+    "type": "deliverable",
+    "msg": "B2B-sektion, Eftersök (efterlysningar), Skrota bilen, Verkstad, FAQ, Garanti och Köpvillkor-sidor klara"
+  },
+  {
+    "id": 1745100000010,
+    "ts": "2026-04-20T10:09:00.000Z",
+    "project": "merca-skroten",
+    "type": "task_completed",
+    "msg": "Databas-schema klart — Vehicle, Part, PartImage, Order, OrderItem, Invoice, InvoiceItem, ImportBatch modeller"
   }
 ]

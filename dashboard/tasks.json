@@ -34,7 +34,7 @@
   {
     "id": 1774608948479,
     "ts": "2026-03-27T10:55:48.479Z",
-    "status": "todo",
+    "status": "done",
     "project": "merca-skroten",
     "title": "New website with SEO-friendly URL structure",
     "priority": "medium"
@@ -42,7 +42,7 @@
   {
     "id": 1774608948484,
     "ts": "2026-03-27T10:55:48.484Z",
-    "status": "todo",
+    "status": "done",
     "project": "merca-skroten",
     "title": "City landing pages: Enköping, Västerås, Uppsala, Mälardalen",
     "priority": "medium"
@@ -50,7 +50,7 @@
   {
     "id": 1774608948489,
     "ts": "2026-03-27T10:55:48.489Z",
-    "status": "todo",
+    "status": "done",
     "project": "merca-skroten",
     "title": "Mercedes parts dedicated SEO page",
     "priority": "medium"
@@ -70,6 +70,70 @@
     "project": "merca-skroten",
     "title": "Skicka offert till Adam",
     "priority": "high"
+  },
+  {
+    "id": 1745100100001,
+    "ts": "2026-04-20T10:00:00.000Z",
+    "status": "todo",
+    "project": "merca-skroten",
+    "title": "Ladda Adams lager i databasen via CSV/XLSX-import",
+    "priority": "high"
+  },
+  {
+    "id": 1745100100002,
+    "ts": "2026-04-20T10:00:00.000Z",
+    "status": "todo",
+    "project": "merca-skroten",
+    "title": "Adam signerar av på dataskapet — bekräfta modeller och prissättning",
+    "priority": "high"
+  },
+  {
+    "id": 1745100100003,
+    "ts": "2026-04-20T10:00:00.000Z",
+    "status": "todo",
+    "project": "merca-skroten",
+    "title": "Aktivera Klarna-betalning i produktion",
+    "priority": "high"
+  },
+  {
+    "id": 1745100100004,
+    "ts": "2026-04-20T10:00:00.000Z",
+    "status": "todo",
+    "project": "merca-skroten",
+    "title": "Driftsätt merca-platform till Render/Railway",
+    "priority": "high"
+  },
+  {
+    "id": 1745100100005,
+    "ts": "2026-04-20T10:00:00.000Z",
+    "status": "todo",
+    "project": "merca-skroten",
+    "title": "Koppla domän merca-skroten.se till produktion",
+    "priority": "high"
+  },
+  {
+    "id": 1745100100006,
+    "ts": "2026-04-20T10:00:00.000Z",
+    "status": "todo",
+    "project": "merca-skroten",
+    "title": "Sätt upp Google Analytics + Search Console",
+    "priority": "medium"
+  },
+  {
+    "id": 1745100100007,
+    "ts": "2026-04-20T10:00:00.000Z",
+    "status": "todo",
+    "project": "merca-skroten",
+    "title": "Lägg till produktbilder för befintligt lager",
+    "priority": "medium"
+  },
+  {
+    "id": 1745100100008,
+    "ts": "2026-04-20T10:00:00.000Z",
+    "status": "todo",
+    "project": "merca-skroten",
+    "title": "Testa och verifiera hela kassan end-to-end (Klarna sandbox)",
+    "priority": "medium"
   },
   {
     "id": 1774611288995,
