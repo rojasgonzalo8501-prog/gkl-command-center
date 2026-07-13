@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beställ — NordVital | Första månaden 99 kr</title>
+  <meta name="description" content="Beställ ditt kosttillskott direkt. Första lådan 99 kr med fri frakt — därefter löpande prenumeration 249 kr/mån tills du säger upp. Ingen bindningstid." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .checkout-wrap { max-width: 640px; margin: 0 auto; padding: 40px 24px 80px; }
+    .checkout-card { background: var(--white); border: 1px solid var(--cream-dark); border-radius: var(--radius); box-shadow: var(--shadow); padding: 32px 28px; }
+    .checkout-card h2 { font-size: 20px; font-weight: 800; color: var(--green-deep); margin: 26px 0 14px; }
+    .checkout-card h2:first-child { margin-top: 0; }
+
+    .product-picker { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    @media (max-width: 560px) { .product-picker { grid-template-columns: 1fr; } }
+    .pick {
+      display: flex; align-items: center; gap: 10px; border: 2px solid var(--cream-dark);
+      border-radius: 10px; padding: 13px 14px; cursor: pointer; background: var(--cream);
+      font-size: 15px; font-weight: 700; font-family: var(--font); text-align: left; width: 100%;
+      transition: border-color .15s, background .15s;
+    }
+    .pick:hover { border-color: var(--green-sage); }
+    .pick.selected { border-color: var(--green-deep); background: #eef5ee; }
+    .pick .p-icon { font-size: 22px; }
+    .pick .p-sub { display: block; font-size: 12px; font-weight: 500; color: var(--ink-soft); }
+
+    .pay-options { display: flex; flex-direction: column; gap: 10px; }
+    .pay {
+      display: flex; align-items: center; gap: 12px; border: 2px solid var(--cream-dark);
+      border-radius: 10px; padding: 13px 14px; cursor: pointer; background: var(--cream); font-size: 15px; font-weight: 600;
+    }
+    .pay input { accent-color: var(--green-deep); }
+
+    .terms-box {
+      background: var(--cream); border: 2px solid var(--green-sage); border-radius: var(--radius);
+      padding: 20px; margin: 26px 0 16px; font-size: 14px;
+    }
+    .terms-box h3 { font-size: 16px; color: var(--green-deep); margin-bottom: 10px; }
+    .terms-box ol { margin-left: 18px; }
+    .terms-box li { margin-bottom: 8px; }
+
+    .summary { display: flex; justify-content: space-between; font-size: 15px; padding: 8px 0; border-bottom: 1px solid var(--cream-dark); }
+    .summary.total { font-weight: 800; font-size: 17px; border-bottom: 0; color: var(--green-deep); }
+
+    .confirm { text-align: center; }
+    .confirm .big { font-size: 52px; margin-bottom: 10px; }
+    .confirm h2 { margin-top: 0; }
+    .confirm .next-info { background: var(--cream); border-radius: 10px; padding: 18px; margin: 18px 0; font-size: 14px; text-align: left; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">Nord<span>Vital</span></a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Hem</a></li>
+        <li><a href="produkter.html">Produkter</a></li>
+        <li><a href="index.html#sa-funkar-det">Så funkar det</a></li>
+        <li><a href="index.html#faq">Frågor &amp; svar</a></li>
+        <li><a href="kampanj.html">Tävling 🎁</a></li>
+      </ul>
+      <button class="nav__burger" id="burger" aria-label="Meny">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO SLIM -->
+  <header class="camp-hero" style="padding: 36px 0 30px;">
+    <div class="container">
+      <h1 style="font-size: clamp(26px, 4vw, 36px);">Beställ — första lådan <em>99 kr</em></h1>
+      <p>Fri frakt · Levereras i brevlådan inom 1–3 vardagar · Ingen bindningstid</p>
+    </div>
+  </header>
+
+  <div class="checkout-wrap">
+    <!-- STEG 1: FORMULÄR -->
+    <div class="checkout-card" id="orderView">
+      <h2>1. Välj din produkt</h2>
+      <div class="product-picker" id="productPicker">
+        <button class="pick" data-product="immun" data-name="Immun+">
+          <span class="p-icon">🛡️</span>
+          <span>Immun+<span class="p-sub">C · D · Zink · Selen · Betaglukaner</span></span>
+        </button>
+        <button class="pick" data-product="skonhet" data-name="Skönhet Inifrån">
+          <span class="p-icon">✨</span>
+          <span>Skönhet Inifrån<span class="p-sub">Hyaluronsyra · Biotin · Q10</span></span>
+        </button>
+        <button class="pick" data-product="leder" data-name="Flex Leder">
+          <span class="p-icon">🦴</span>
+          <span>Flex Leder<span class="p-sub">Kollagen · Vitamin C · Mangan</span></span>
+        </button>
+        <button class="pick" data-product="energi" data-name="Energi &amp; Balans">
+          <span class="p-icon">⚡</span>
+          <span>Energi &amp; Balans<span class="p-sub">Magnesium · B6 · B12 · Folsyra</span></span>
+        </button>
+      </div>
+
+      <form id="orderForm">
+        <h2>2. Dina uppgifter</h2>
+        <div class="form-field">
+          <label for="o-name">För- och efternamn</label>
+          <input type="text" id="o-name" required autocomplete="name" />
+        </div>
+        <div class="form-field">
+          <label for="o-email">E-postadress</label>
+          <input type="email" id="o-email" required autocomplete="email" />
+        </div>
+        <div class="form-field">
+          <label for="o-phone">Mobilnummer</label>
+          <input type="tel" id="o-phone" required autocomplete="tel" />
+        </div>
+        <div class="form-field">
+          <label for="o-street">Gatuadress</label>
+          <input type="text" id="o-street" required autocomplete="street-address" />
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 2fr; gap: 12px;">
+          <div class="form-field">
+            <label for="o-zip">Postnummer</label>
+            <input type="text" id="o-zip" required autocomplete="postal-code" inputmode="numeric" />
+          </div>
+          <div class="form-field">
+            <label for="o-city">Ort</label>
+            <input type="text" id="o-city" required autocomplete="address-level2" />
+          </div>
+        </div>
+
+        <h2>3. Betalsätt</h2>
+        <div class="pay-options">
+          <!-- Kopplas till Klarna/Stripe checkout vid lansering -->
+          <label class="pay"><input type="radio" name="pay" value="klarna" checked /> Klarna — betala nu eller faktura</label>
+          <label class="pay"><input type="radio" name="pay" value="kort" /> Kort — Visa / Mastercard</label>
+        </div>
+
+        <!-- VILLKOR — Konsumentverket kräver att detta står tydligt FÖRE köpknappen -->
+        <div class="terms-box">
+          <h3>Så fungerar ditt köp — läs innan du beställer</h3>
+          <ol>
+            <li>Idag betalar du <strong>99 kr</strong> för din första låda (30 dagsdoser) med fri frakt.</li>
+            <li>Om du inte avslutar övergår köpet <strong>automatiskt i en prenumeration</strong>: en ny låda
+                levereras och <strong>249 kr</strong> debiteras var 30:e dag, tills du säger upp.</li>
+            <li><strong>Ingen bindningstid.</strong> Avsluta när som helst på Mina sidor eller via e-post —
+                senast dagen före nästa leverans. Uppsägningen gäller direkt.</li>
+            <li>Vi mejlar dig en <strong>påminnelse innan varje debitering</strong>.</li>
+            <li>Du har <strong>14 dagars ångerrätt</strong> från att du tar emot din första leverans.</li>
+          </ol>
+        </div>
+
+        <label class="consent">
+          <input type="checkbox" id="o-terms" required />
+          <span>Jag förstår att köpet övergår i en löpande prenumeration på <strong>249 kr var 30:e dag</strong> efter
+          första månaden om jag inte avslutar, och godkänner <a href="#">köpvillkoren</a> och
+          <a href="#">integritetspolicyn</a>.</span>
+        </label>
+
+        <div style="margin: 18px 0 20px;">
+          <div class="summary"><span id="sum-product">Immun+ — första lådan (30 dagar)</span><span>99 kr</span></div>
+          <div class="summary"><span>Frakt</span><span>0 kr</span></div>
+          <div class="summary total"><span>Att betala idag</span><span>99 kr</span></div>
+          <div style="font-size: 12.5px; color: var(--ink-soft); margin-top: 6px;">
+            Därefter 249 kr var 30:e dag tills du avslutar. Nästa debitering: <span id="sum-next"></span>.
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--block">Slutför köp — 99 kr</button>
+        <p style="font-size:12px; color:var(--ink-soft); text-align:center; margin-top:12px;">
+          🔒 Säker betalning · 14 dagars ångerrätt · Avsluta med ett klick
+        </p>
+      </form>
+    </div>
+
+    <!-- STEG 2: BEKRÄFTELSE -->
+    <div class="checkout-card confirm" id="confirmView" style="display:none;">
+      <div class="big">📬</div>
+      <h2>Tack för din beställning!</h2>
+      <p style="color:var(--ink-soft);">Din första låda med <strong id="c-product">Immun+</strong> är på väg —
+      den landar i brevlådan inom 1–3 vardagar.</p>
+      <div class="next-info">
+        <strong>Bra att veta:</strong>
+        <ul style="margin: 8px 0 0 18px;">
+          <li>Orderbekräftelse och kvitto skickas till din e-post.</li>
+          <li>Din prenumeration fortsätter automatiskt: 249 kr var 30:e dag från <span id="c-next"></span>.</li>
+          <li>Du får alltid ett påminnelse-mejl innan vi debiterar.</li>
+          <li>Avsluta när som helst på Mina sidor — det tar under en minut.</li>
+        </ul>
+      </div>
+      <a href="index.html" class="btn btn--ghost">Till startsidan</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom" style="border-top:0; padding-top:0;">
+        © 2026 NordVital AB (arbetsnamn) · <a href="index.html">Hem</a> · Kosttillskott ersätter inte en varierad kost.
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -180,6 +180,8 @@ Stories dagligen (omröstningar, quiz med tävlingsfrågorna, countdown till må
 - [ ] Etikettkrav: ingrediensförteckning, dagsdos, varningstext
 
 ### Prenumerationen
+- [ ] Automatisk övergång provmånad → löpande prenumeration tydligt angiven i kassan,
+      med obligatorisk kryssruta ("Jag förstår att köpet övergår i 249 kr/mån om jag inte avslutar")
 - [ ] Villkor synliga FÖRE köp (pris, intervall, uppsägning)
 - [ ] Uppsägning lika enkel som tecknande — självservice, ett klick
 - [ ] Påminnelse före debitering (minskar bestridanden + Konsumentverket-anmälningar)

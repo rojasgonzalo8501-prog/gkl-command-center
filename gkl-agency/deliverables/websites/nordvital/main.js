@@ -42,3 +42,43 @@ if (leadForm) {
     goToStep(6);
   });
 }
+
+// Kassa (bestall.html)
+const orderForm = document.getElementById('orderForm');
+if (orderForm) {
+  const picks = document.querySelectorAll('.pick');
+  const sumProduct = document.getElementById('sum-product');
+  const confirmProduct = document.getElementById('c-product');
+
+  function selectProduct(pick) {
+    picks.forEach((p) => p.classList.remove('selected'));
+    pick.classList.add('selected');
+    sumProduct.textContent = `${pick.dataset.name} — första lådan (30 dagar)`;
+    confirmProduct.textContent = pick.dataset.name;
+  }
+
+  picks.forEach((pick) => {
+    pick.type = 'button';
+    pick.addEventListener('click', () => selectProduct(pick));
+  });
+
+  // Förval via ?produkt=immun|skonhet|leder|energi (länkas från produktsidan)
+  const param = new URLSearchParams(location.search).get('produkt');
+  const preselected = document.querySelector(`.pick[data-product="${param}"]`) || picks[0];
+  selectProduct(preselected);
+
+  // Nästa debiteringsdatum = idag + 30 dagar (visas före köp — krav på tydlighet)
+  const next = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
+    .toLocaleDateString('sv-SE', { day: 'numeric', month: 'long', year: 'numeric' });
+  document.getElementById('sum-next').textContent = next;
+  document.getElementById('c-next').textContent = next;
+
+  orderForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // TODO före lansering: ersätt med riktig checkout (Klarna/Stripe) + prenumerationssystem,
+    // och trigga Meta-pixelns köp-event: fbq('track', 'Purchase', {value: 99, currency: 'SEK'});
+    document.getElementById('orderView').style.display = 'none';
+    document.getElementById('confirmView').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
