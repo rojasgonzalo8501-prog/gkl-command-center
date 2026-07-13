@@ -1,121 +1,231 @@
-# Marknadsföringsplan — NordVital (arbetsnamn)
+# Fullständig marknadsföringsplan — NordVital
 
-**Kanaler:** Facebook + Instagram (Meta Ads + organiskt)
-**Mål:** Bygga en prenumerationsbas av kosttillskottskunder med CAC under 500 kr och churn under 15 %/mån.
-
----
-
-## 1. Funneln (hela kundresan)
-
-```
-FB/IG-annons
-   │
-   ├── VÄG A (kall trafik, volym): Kampanjsida — tävling/hälsoquiz (kampanj.html)
-   │      → 4 frågor → formulär med samtycke → tack-sida med prova-på-erbjudande (99 kr)
-   │      → e-post/SMS-flöde 7 dagar → prenumerationskund
-   │
-   └── VÄG B (varm trafik, retargeting): Direkt till produktsida (produkter.html)
-          → "Första månaden 99 kr, avsluta när du vill" → köp
-```
-
-**Väg A** ger billiga leads (mål-CPL 10–25 kr) och bygger e-postlista.
-**Väg B** används för retargeting av sidbesökare, videovisare och leads som inte köpt.
-
-### E-post/SMS-flödet efter tävlingsregistrering (7 dagar)
-| Dag | Utskick | Innehåll |
-|---|---|---|
-| 0 | E-post | Tack + bekräfta deltagande (dubbel opt-in) + "här är en välkomstgåva: första månaden 99 kr" |
-| 1 | E-post | Varumärkesstory: "Därför startade vi NordVital — kosttillskott utan fula trick" |
-| 3 | E-post | Utbildande: "Så vet du om ett kosttillskott är seriöst (5 kontrollpunkter)" |
-| 5 | SMS | Påminnelse: prova-på-erbjudandet går ut om 48 h |
-| 7 | E-post | Sista chansen + kundrecensioner + FAQ om att avsluta ("ett klick, vi lovar") |
-| Löpande | E-post 1×/vecka | Nyhetsbrev: hälsotips, produktnyheter, månadens vinnare i tävlingen |
+**Modell:** D2C-kosttillskott på prenumeration (utan bindningstid)
+**Kanaler:** 1) Leadgenerering (Hälsoklubben) → 2) Telemarketing → 3) Meta Ads (FB/IG) → 4) E-post/SMS
+**Mål år 1:** 2 000 aktiva prenumeranter · CAC < 500 kr · churn < 15 %/mån · LTV > 900 kr
 
 ---
 
-## 2. Annonsstrategi Meta (Facebook + Instagram)
+## 1. Systemet i helhet
 
-### Kontostruktur
-- **Kampanj 1 — Leads (Väg A):** Mål = Leads/Trafik till kampanjsidan. Bred målgrupp 35–65+, intressen: hälsa, kosttillskott, matlagning, träning. Advantage+ placeringar.
-- **Kampanj 2 — Försäljning (Väg B):** Mål = Köp (pixeloptimerad). Retargeting: sidbesökare 30 dgr, leads utan köp, 75 % videovisare.
-- **Kampanj 3 — Lookalike:** 1–3 % lookalike på kunder när vi har 100+ köp.
+Två varumärken, ett system (samma upplägg som Medvital + Sparklubben):
 
-### Budget (start)
+```
+┌─────────────────────────────┐        ┌──────────────────────────────┐
+│  HÄLSOKLUBBEN (leadmotor)   │        │  NORDVITAL (huvudvarumärke)  │
+│  Fristående kampanjsida     │        │  nordvital.se                │
+│  Tävling: 4 frågor + vinst  │        │  Produkter, villkor, FAQ,    │
+│  Samlar: namn, e-post,      │        │  Mina sidor, köp direkt      │
+│  telefon + SAMTYCKEN        │        │                              │
+└──────────┬──────────────────┘        └───────▲──────────▲───────────┘
+           │ leads (med tel-samtycke)          │          │
+           ▼                                   │          │
+   ┌───────────────────┐   säljer provmånad    │          │
+   │  TELEMARKETING    ├───────────────────────┘          │
+   │  (huvudsäljkanal) │                                  │
+   └───────────────────┘                                  │
+           │ leads utan köp / e-postsamtycke              │
+           ▼                                              │
+   ┌───────────────────┐   nurture + retargeting          │
+   │  E-POST/SMS + META├──────────────────────────────────┘
+   └───────────────────┘
+```
+
+**Varför två varumärken:** Hälsoklubben kan köra breda, billiga tävlingskampanjer utan att
+belasta NordVitals varumärke, och samma leadmotor kan återanvändas för framtida kunder/produkter.
+NordVital AB står alltid som arrangör i villkoren (lagkrav) — men annonsestetiken är separat.
+
+---
+
+## 2. Leadmotorn — Hälsoklubben (kampanj.html)
+
+**Mekanik:** FB/IG-annons → "Svara på 4 frågor, tävla om presentkort 5 000 kr" → kunskapsquiz →
+formulär (namn, e-post, telefon) med **tre separata samtyckesrutor**: villkor (obligatorisk),
+e-postmarknadsföring, **telefonkontakt** → tack-sida med direkterbjudande (99 kr provmånad).
+
+**Nyckeltal:**
+| Steg | Mål |
+|---|---|
+| CPM bred målgrupp 35–70 | 60–110 kr |
+| CTR på tävlingsannons | > 1,5 % |
+| Quiz-start → slutfört formulär | > 45 % |
+| CPL (komplett lead) | 10–25 kr |
+| Andel med telefonsamtycke | > 60 % (gör tel-rutan förkryssbar? NEJ — måste vara aktivt val enligt GDPR) |
+
+**Regler som gör tävlingen laglig:** gratis deltagande + kunskapsfrågor (inget lotteri) +
+publicerade villkor + arrangör angiven + 18-årsgräns. Vinstskatt betalas av vinnaren.
+
+**Leadhygien:** tidsstämpla varje samtycke (bevisbörda enligt GDPR), ring leads inom 72 h
+(kontaktgraden halveras efter en vecka), leads äldre än 90 dagar rings inte — flyttas till e-postflödet.
+
+---
+
+## 3. Telemarketing — huvudsäljkanalen
+
+### Upplägg
+- **Verktyg:** dialer med inspelning och lead-API (t.ex. Adversus eller LeadDesk — nordisk standard)
+- **Bemanning start:** 1–2 säljare (kan vara Gonzalo + inhyrd), skala till team när kalkylen bevisats
+- **Ringtider:** vardagar 09–20, lördag 10–15. Max 3 kontaktförsök per lead, sedan e-postflöde.
+- **Erbjudande i samtal:** provmånad 99 kr med fri frakt, därefter 249 kr/mån, ingen bindningstid
+
+### Samtalsmanus (grundflöde)
+1. **Öppning:** "Hej [namn]! Jag ringer från NordVital — du deltog i Hälsoklubbens tävling om
+   presentkortet på 5 000 kr och tackade ja till att vi fick höras. Har du en minut?"
+   *(Alltid: vem, varför, varifrån samtycket kommer. Respektera ett nej direkt.)*
+2. **Kvalificering:** "Kul! Du svarade rätt på frågorna — får jag fråga, tar du några vitaminer
+   eller tillskott idag?" *(lyssna, anteckna behov: energi/immun/leder/skönhet)*
+3. **Pitch (matcha behov):** "Då tror jag [produkt] passar dig. Det funkar så här: första månaden
+   99 kr med fri frakt, direkt i brevlådan. Sen 249 kr i månaden — men helt utan bindningstid,
+   du avslutar med ett klick på Mina sidor om det inte känns rätt."
+4. **Invändningar:**
+   - "Jag måste tänka" → "Absolut. Provmånaden finns just för det — testa 30 dagar för 99 kr, avsluta med ett klick om det inte passar."
+   - "Är det en sån där prenumerationsfälla?" → "Nej, och jag förstår frågan — branschen har förtjänat den. Hos oss: inget avtal förrän du bekräftat skriftligt, påminnelse-mejl före varje debitering, uppsägning med ett klick."
+   - "För dyrt" → "249 kr är ungefär 8 kr om dagen, och du kan pausa månader du inte behöver."
+5. **Avslut — SKRIFTLIGHETSKRAVET (lagkrav, se §6):** "Då skickar jag ett SMS nu med en länk där
+   du ser hela erbjudandet och bekräftar med ett klick. Beställningen gäller först när du bekräftat."
+6. **Efter samtal:** obekräftade avslut får 1 påminnelse-SMS efter 24 h, sedan e-postflödet.
+
+### Schysst säljkodex (varumärkesskydd — Medvitals Trustpilot är varningen)
+- Ett nej respekteras omedelbart och loggas — personen rings aldrig igen
+- Ingen press på personer som verkar osäkra eller förvirrade; misstänkt förvirring = avbryt artigt
+- Aldrig mörka priset efter provmånaden — säg alltid "sen 249 kr i månaden" oombett
+- Inga hälsopåståenden utanför EFSA-listan i samtal (säljare utbildas på tillåtna fraser, se §7)
+- Samtal spelas in (med upplysning) för kvalitet och tvistehantering
+
+### Telemarketing-kalkyl (mål)
+| Nyckeltal | Mål |
+|---|---|
+| Kontaktgrad (nådda av ringda) | 50–60 % |
+| Avslutsgrad på nådda | 8–12 % |
+| Skriftlig bekräftelsegrad på avslut | > 75 % |
+| Samtal per säljare och timme | 12–18 |
+| Bekräftade kunder per säljartimme | 0,5–1,0 |
+| CAC via TM (lead + säljartid) | 300–500 kr |
+
+---
+
+## 4. Meta Ads (Facebook + Instagram)
+
+### Kampanjstruktur
+| Kampanj | Mål | Målgrupp | Destination |
+|---|---|---|---|
+| 1. Leads | Leads/trafik | Bred 35–70, intressen hälsa/mat/träning | Hälsoklubben (kampanj.html) |
+| 2. Försäljning | Köp (pixel) | Retargeting: sidbesök 30 dgr, leads utan köp, 75 % videovisare | Produktsidan |
+| 3. Lookalike | Köp | 1–3 % LAL på kunder (vid 100+ köp) | Produktsidan |
+
+### Budget
 | Fas | Period | Budget | Fokus |
 |---|---|---|---|
-| Test | Vecka 1–2 | 300 kr/dag | 3 målgrupper × 3 annonser, hitta vinnare |
-| Skala | Vecka 3–8 | 500–1 000 kr/dag | Vinnande kombination + retargeting |
-| Tillväxt | Månad 3+ | ROAS-styrt | Skala det som ger CAC < 500 kr |
+| Test | Vecka 1–2 | 300 kr/dag | 3 målgrupper × 3 annonser mot leadsidan |
+| Skala | Vecka 3–8 | 500–1 500 kr/dag | Vinnare + retargeting; TM sätter takten (ring-kapacitet styr leadbudget!) |
+| Tillväxt | Månad 3+ | ROAS-styrt | Skala allt med CAC < 500 kr |
 
-### Annonsvinklar (creative angles) — testa alla i fas 1
-1. **Tävlingen** (Väg A): "Svara på 4 frågor — tävla om presentkort på 5 000 kr" (bild: presentkort/matkasse)
-2. **Transparens-vinkeln:** "Kosttillskott på prenumeration — som du faktiskt kan avsluta med ett klick" (adresserar branschens dåliga rykte, utan att nämna konkurrenter)
-3. **Bekvämlighet:** "Direkt i brevlådan var 30:e dag. Aldrig mer glömma köpa vitaminer." (video: paket dimper ner i brevlåda)
-4. **Utbildande UGC-stil:** "5 saker jag kollar innan jag köper kosttillskott" (talking head, byggd trovärdighet)
-5. **Erbjudande:** "Prova första månaden för 99 kr. Ingen bindningstid. Fri frakt."
+> **Viktig regel:** köp aldrig fler leads än telemarketingen hinner ringa inom 72 h.
+> Leadbudget = ringkapacitet × 25 kr CPL.
 
-### Regler för ALLT annonsmaterial (Meta + livsmedelslagstiftning)
-- ❌ Inga före/efter-bilder, inga sjukdomspåståenden, inga "mirakel"
-- ❌ Aldrig rikta mot personliga attribut: skriv INTE "Har du ont i lederna?" → skriv "För dig som vill stötta lederna"
-- ✅ Endast EFSA-godkända hälsopåståenden (se brief.md, tabellen per produkt)
-- ✅ Pris och prenumerationsvillkor synliga i annons/landningssida FÖRE köp
-- ✅ Tävlingsvillkor länkade på kampanjsidan, gratis deltagande, kunskapsfrågor
+### Annonsvinklar att testa (creative)
+1. **Tävlingen:** "Svara på 4 frågor — tävla om 5 000 kr till matkassen" (bild: matkasse/presentkort, Hälsoklubben-avsändare)
+2. **Transparens:** "Kosttillskott på prenumeration — som du faktiskt kan avsluta med ett klick"
+3. **Bekvämlighet:** video där månadsdosen dimper ner i brevlådan — "aldrig mer glömma vitaminerna"
+4. **UGC-stil:** "5 saker jag kollar innan jag köper kosttillskott" (talande huvud, bygger trovärdighet)
+5. **Erbjudande:** "Prova första månaden för 99 kr. Fri frakt. Ingen bindningstid."
 
----
-
-## 3. Organiskt innehåll FB/IG (30-dagars startkalender)
-
-**Mix per vecka (4–5 inlägg):** 2 utbildande · 1 bakom kulisserna/varumärke · 1 socialt bevis/tävling · 1 produkt/erbjudande
-
-| Vecka | Exempel på inlägg |
-|---|---|
-| 1 | Lanseringspost "Därför finns vi" · Reel: "Så funkar prenumerationen (15 sek)" · Karusell: "Vad betyder EFSA-godkänt?" · Tävlingspost |
-| 2 | Reel: packning/brevlådeleverans · Karusell: "Immunförsvarets 4 hjälpare: C, D, zink, selen" · Kundcitat · Fråge-sticker i Stories |
-| 3 | Reel: "Avsluta med ett klick — vi visar hur" (förtroendebyggare!) · Utbildande: magnesium & trötthet · Månadens vinnare · Produktfokus Skönhet |
-| 4 | UGC/recension · Karusell: "5 myter om kosttillskott" · Reel: grundarstory · Erbjudandepost 99 kr |
-
-**Stories dagligen:** omröstningar, quiz (samma frågor som tävlingen!), countdown till månadsdragning.
-**Hashtags (IG):** #kosttillskott #hälsa #svenskhälsa #vitaminer #immunförsvar + varumärkestagg.
+### Organiskt FB/IG (NordVital-kontona)
+4–5 inlägg/vecka: 2 utbildande · 1 bakom kulisserna · 1 socialt bevis/tävling · 1 erbjudande.
+Stories dagligen (omröstningar, quiz med tävlingsfrågorna, countdown till månadsdragning).
+30-dagarskalender: se tidigare version i git-historiken — återanvänd vecka 1–4-strukturen.
 
 ---
 
-## 4. Mätning & KPI:er
+## 5. E-post & SMS (nurture + retention)
 
-| KPI | Mål | Verktyg |
+### Nya leads (utan köp) — 7-dagarsflöde
+| Dag | Kanal | Innehåll |
 |---|---|---|
-| CPL (tävlingslead) | 10–25 kr | Meta Ads Manager |
-| Lead → kund | 3–8 % | E-postverktyg + butik |
-| CAC | < 500 kr | Blandad kalkyl |
-| Churn | < 15 %/mån | Butik/prenumerationssystem |
-| LTV | > 900 kr (6 mån snitt) | Butik |
+| 0 | E-post | Bekräfta tävlingsdeltagande (dubbel opt-in) + välkomstgåva 99 kr |
+| 1 | E-post | Varumärkesstory: "Kosttillskott utan fula trick" |
+| 3 | E-post | Utbildande: "Så vet du om ett kosttillskott är seriöst" |
+| 5 | SMS | "Din välkomstgåva går ut om 48 h — provmånad 99 kr" |
+| 7 | E-post | Sista chansen + recensioner + "avsluta med ett klick"-demo |
+
+### Kunder (retention — churn är hela affären!)
+- Före varje debitering: påminnelse-mejl (bygger förtroende, minskar kortbestridanden)
+- Dag 10 efter första leverans: "Så får du ut mest av [produkt]" + upsell andra produkten
+- Månad 3: lojalitetsförmån (t.ex. gratis månad vid årsprenumeration)
+- Vid uppsägning: exit-enkät + vinnbacka-erbjudande (pausa istället? 50 % en månad?)
+- Månadsbrev: hälsotips + månadens tävlingsvinnare (knyter ihop Hälsoklubben-loopen)
+
+---
+
+## 6. Juridik & compliance (BLOCKERANDE — gå igenom före lansering)
+
+### Telefonförsäljning
+- [ ] **Skriftlighetskravet** (distansavtalslagen sedan 2018): muntligt ja på telefon är INTE bindande.
+      Skicka anbudet skriftligt (SMS-länk/e-post) och kunden måste acceptera skriftligt efter samtalet.
+      Utan skriftlig accept = inget avtal, ingen debitering. Bygg detta i checkout-flödet från dag 1.
+- [ ] **NIX-Telefon:** kontrollera register före ringning — UTOM när aktivt samtycke finns (vår
+      tävlingsruta), då gäller samtycket. Dokumentera samtycke med tidsstämpel + formulärversion.
+- [ ] Inspelningsupplysning i samtalets början; ring endast 18+
+- [ ] Ångerrätt 14 dagar måste anges i samtalet och i den skriftliga bekräftelsen
+
+### Tävlingen (Hälsoklubben)
+- [ ] Gratis deltagande + kunskapsmoment = ingen lotterilicens krävs
+- [ ] Villkor publicerade: arrangör (NordVital AB), period, vinster, urvalsmetod, 18-årsgräns
+- [ ] Samtyckesrutor: separata, ej förkryssade, tydliga om VAD man tackar ja till (e-post resp. telefon)
+
+### Produkter & påståenden
+- [ ] Endast EFSA-godkända hälsopåståenden (se brief.md) — gäller sajt, annonser OCH säljsamtal
+- [ ] Registrering som livsmedelsföretagare hos kommunen
+- [ ] Meta-policys: inga före/efter, inga personliga attribut ("Har du ont i...?" förbjudet)
+- [ ] Etikettkrav: ingrediensförteckning, dagsdos, varningstext
+
+### Prenumerationen
+- [ ] Villkor synliga FÖRE köp (pris, intervall, uppsägning)
+- [ ] Uppsägning lika enkel som tecknande — självservice, ett klick
+- [ ] Påminnelse före debitering (minskar bestridanden + Konsumentverket-anmälningar)
+- [ ] Integritetspolicy + cookiesamtycke (Meta-pixeln kräver det)
+
+---
+
+## 7. Säljarutbildning — tillåtna fraser (EFSA-säkra)
+
+| Produkt | Säg så här | Säg ALDRIG |
+|---|---|---|
+| Immun+ | "Vitamin C, D, zink och selen bidrar till immunsystemets normala funktion" | "skyddar mot förkylning/sjukdom" |
+| Skönhet Inifrån | "Biotin bidrar till att bibehålla normalt hår och normal hud" | "ger tjockare hår", "tar bort rynkor" |
+| Flex Leder | "Vitamin C bidrar till normal kollagenbildning, viktig för brosket" | "tar bort ledvärk", "reparerar leder" |
+| Energi & Balans | "Magnesium och B6 bidrar till att minska trötthet och utmattning" | "botar utmattning", "ger energi som kaffe" |
+
+---
+
+## 8. KPI-tavla (följ varje vecka)
+
+| KPI | Mål | Källa |
+|---|---|---|
+| CPL (Hälsoklubben) | 10–25 kr | Meta Ads Manager |
+| Andel leads med tel-samtycke | > 60 % | Formulärdata |
+| Kontaktgrad inom 72 h | > 80 % av nya leads ringda | Dialer |
+| Avslutsgrad (nådda → bekräftad kund) | 6–9 % | Dialer + checkout |
+| CAC blandad | < 500 kr | Kalkyl |
+| Churn | < 15 %/mån | Prenumerationssystem |
+| LTV (6 mån snitt) | > 900 kr | Prenumerationssystem |
 | ROAS retargeting | > 3 | Meta + UTM |
+| Trustpilot-betyg | > 4,3 ⭐ | Trustpilot (be varje nöjd kund om omdöme i månad 2) |
 
-Spårning: Meta-pixel + Conversions API, UTM på alla länkar (`utm_source=facebook&utm_campaign=...`),
-separat kupongkod per kanal för dubbelkoll.
-
----
-
-## 5. Juridisk checklista före lansering (BLOCKERANDE)
-
-- [ ] Varumärkesnamn verifierat (domän, Bolagsverket, PRV, EUIPO)
-- [ ] Registrerad som livsmedelsföretagare hos kommunens miljöförvaltning
-- [ ] Alla hälsopåståenden kontrollerade mot EU-registret över godkända påståenden
-- [ ] Köpvillkor: pris, intervall, uppsägning, 14 dagars ångerrätt — synligt FÖRE köp
-- [ ] Uppsägning lika enkel som tecknande (självservice på Mina sidor / ett klick i mejl)
-- [ ] Tävlingsvillkor publicerade (arrangör, period, vinster, urval via kunskap, GDPR-info)
-- [ ] Integritetspolicy + cookiebanner (Meta-pixeln kräver samtycke)
-- [ ] Dubbel opt-in för e-post, separat samtyckesruta för SMS
-- [ ] INGEN telefonförsäljning — det är vårt varumärkeslöfte
+Spårning: Meta-pixel + Conversions API, UTM på alla länkar, unik kupongkod per kanal,
+lead-ID följer med från formulär → dialer → checkout (mät hela kedjan).
 
 ---
 
-## 6. Tidplan
+## 9. 90-dagarsplan
 
 | Vecka | Milstolpe |
 |---|---|
-| 1 | Namn + domän klart, hemsidan (denna leverans) anpassas och publiceras |
-| 2 | Meta Business Manager, pixel, e-postverktyg, betallösning |
-| 3 | Produktleverantör vald, första lager beställt, foton tagna |
-| 4 | Organisk lansering FB/IG + tävlingen öppnar |
-| 5–6 | Annonstest 300 kr/dag |
-| 7+ | Skala vinnarna, starta retargeting |
+| 1 | Namn verifierat (domän, Bolagsverket, PRV) · hemsida + kampanjsida publiceras |
+| 2 | Meta Business Manager + pixel · e-postverktyg · Klarna/Stripe · dialer väljs |
+| 3 | Private label-leverantör vald · första lager · produktfoton · livsmedelsregistrering |
+| 4 | Skriftlighetskrav-flödet (SMS-bekräftelse) byggt och testat · säljmanus tränas |
+| 5–6 | Meta-test 300 kr/dag mot Hälsoklubben · första 200–400 leads · börja ringa |
+| 7–8 | Mät kalkylen: CPL × kontaktgrad × avslut = CAC. Justera manus/annonser |
+| 9–12 | Skala: leadbudget upp i takt med ringkapacitet · retargeting · lookalikes · retention-flöden live |
+| 13 | Utvärdering: kanal-CAC, churn-kurva, beslut om säljare #2 och produkt #5 |

@@ -45,9 +45,10 @@ I utbyte samtycker deltagaren till nyhetsbrev/erbjudanden från arrangören.
 **URL:en innehåller `source`, `clickID`, `SSID`** — dvs. de kör affiliatetrafik med spårning.
 Vi gör samma spårning med UTM-parametrar + Meta-pixel istället.
 
-**Varning:** Denna typ av funnel har dåligt rykte när leads säljs vidare eller ringas upp av
-telefonförsäljare. Vi använder leadsen ENDAST till egen e-post/SMS-marknadsföring med tydligt
-samtycke — det är både lagligt tryggare och bättre för varumärket.
+**Varning:** Denna typ av funnel har dåligt rykte när leads säljs vidare eller pressas i telefon.
+Vi ringer VÅRA leads med aktivt telefonsamtycke från formuläret — aldrig köpta listor — och följer
+skriftlighetskravet plus en schysst säljkodex (se marketing-plan.md §3). Det är både lagligt
+tryggare och bättre för varumärket.
 
 ---
 
@@ -58,9 +59,9 @@ samtycke — det är både lagligt tryggare och bättre för varumärket.
 | Produkt | 4 kosttillskott: Immun, Skönhet, Leder, Energi (samma kategorier som Medvital) |
 | Pris | 249 kr/mån per produkt, första månaden 99 kr, fri frakt |
 | Modell | Prenumeration utan bindningstid, leverans i brevlådan var 30:e dag |
-| Kundanskaffning | FB/IG-annonser → kampanjsida (tävling/quiz) ELLER direkt till produktsida |
-| Uppföljning | E-post + SMS (med samtycke) — ALDRIG telefonförsäljning |
-| Differentiering | "Avsluta med ett klick" — transparens som säljargument |
+| Kundanskaffning | FB/IG-annonser → Hälsoklubben (tävling/quiz) → **telemarketing (huvudsäljkanal)** |
+| Uppföljning | E-post + SMS (med samtycke) + Meta-retargeting mot produktsidan |
+| Differentiering | "Avsluta med ett klick" + schysst säljkodex — transparens som säljargument |
 
 ### Enhetsekonomi att räkna på (mål)
 - Produktkostnad (vitpost/private label): ~40–60 kr/mån per kund

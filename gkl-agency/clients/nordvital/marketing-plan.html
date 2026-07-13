@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NordVital — Fullständig marknadsföringsplan</title>
+<style>
+  :root {
+    --green: #1d5c4d; --green-dark: #144238; --sage: #7fb069;
+    --cream: #faf7f2; --cream-dark: #f0e9de; --ink: #22302c; --soft: #5a6b65;
+    --gold: #d9a441; --red: #c0564b;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.6; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 22px 90px; }
+
+  header.hero { background: linear-gradient(160deg, var(--green), var(--green-dark)); color: #fff; padding: 60px 22px 50px; text-align: center; }
+  .hero .brand { font-size: 15px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--sage); margin-bottom: 14px; }
+  .hero h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 12px; }
+  .hero p { color: rgba(255,255,255,.85); max-width: 560px; margin: 0 auto; font-size: 17px; }
+  .hero .goals { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .goal { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); border-radius: 30px; padding: 7px 18px; font-size: 13px; font-weight: 700; }
+
+  section { margin-top: 56px; }
+  .eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: 12px; font-weight: 800; color: var(--sage); margin-bottom: 8px; }
+  h2 { font-size: 26px; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 8px; color: var(--green); }
+  .lead { color: var(--soft); margin-bottom: 24px; max-width: 640px; }
+
+  .card { background: #fff; border: 1px solid var(--cream-dark); border-radius: 14px; padding: 24px; box-shadow: 0 6px 24px rgba(29,92,77,.07); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 700px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
+
+  /* Systemdiagram */
+  .flow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .flow-box { border-radius: 14px; padding: 20px; }
+  .flow-box h3 { font-size: 16px; margin-bottom: 6px; }
+  .flow-box p { font-size: 13.5px; }
+  .fb-gold { background: #faf3e3; border: 2px solid var(--gold); }
+  .fb-green { background: #eef5ee; border: 2px solid var(--sage); }
+  .fb-deep { background: var(--green); color: #fff; border: 2px solid var(--green); grid-column: 1 / -1; text-align: center; }
+  .fb-deep p { color: rgba(255,255,255,.85); }
+  .arrow-row { text-align: center; font-size: 22px; color: var(--sage); margin: 2px 0 14px; font-weight: 800; }
+
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; font-size: 14px; }
+  th { background: var(--green); color: #fff; text-align: left; padding: 11px 14px; font-size: 13px; }
+  td { padding: 11px 14px; border-top: 1px solid var(--cream-dark); vertical-align: top; }
+  tr:nth-child(even) td { background: #fdfbf8; }
+  .table-scroll { overflow-x: auto; border-radius: 12px; box-shadow: 0 6px 24px rgba(29,92,77,.07); }
+
+  .num { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: var(--sage); color: #fff; font-weight: 800; font-size: 14px; flex-shrink: 0; }
+  .script-step { display: flex; gap: 14px; margin-bottom: 16px; }
+  .script-step h4 { font-size: 15px; margin-bottom: 3px; }
+  .script-step p { font-size: 14px; color: var(--soft); }
+  .quote { background: var(--cream); border-left: 4px solid var(--sage); border-radius: 0 10px 10px 0; padding: 10px 14px; font-style: italic; font-size: 13.5px; margin-top: 6px; color: var(--ink); }
+
+  .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 700px) { .do-dont { grid-template-columns: 1fr; } }
+  .do, .dont { border-radius: 14px; padding: 20px; }
+  .do { background: #eef5ee; border: 2px solid var(--sage); }
+  .dont { background: #f9ecea; border: 2px solid var(--red); }
+  .do h3 { color: var(--green); } .dont h3 { color: var(--red); }
+  .do ul, .dont ul { margin: 10px 0 0 18px; font-size: 14px; }
+  .do li, .dont li { margin-bottom: 7px; }
+
+  .check { list-style: none; }
+  .check li { padding: 9px 0 9px 34px; position: relative; border-bottom: 1px solid var(--cream-dark); font-size: 14.5px; }
+  .check li:last-child { border-bottom: 0; }
+  .check li::before { content: '☐'; position: absolute; left: 4px; color: var(--sage); font-size: 18px; }
+
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+  .kpi { background: #fff; border: 1px solid var(--cream-dark); border-radius: 12px; padding: 16px; text-align: center; }
+  .kpi .val { font-size: 22px; font-weight: 800; color: var(--green); }
+  .kpi .lbl { font-size: 12px; color: var(--soft); margin-top: 3px; }
+
+  footer { text-align: center; margin-top: 70px; padding-top: 24px; border-top: 1px solid var(--cream-dark); font-size: 12px; color: var(--soft); }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="brand">GKL Agency × NordVital</div>
+  <h1>Fullständig marknadsföringsplan</h1>
+  <p>D2C-kosttillskott på prenumeration — leadgenerering, telemarketing och Facebook/Instagram i ett sammanhängande system.</p>
+  <div class="goals">
+    <div class="goal">🎯 2 000 prenumeranter år 1</div>
+    <div class="goal">💰 CAC &lt; 500 kr</div>
+    <div class="goal">🔁 Churn &lt; 15 %/mån</div>
+    <div class="goal">📈 LTV &gt; 900 kr</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- SYSTEMET -->
+  <section>
+    <div class="eyebrow">Del 1 — Systemet</div>
+    <h2>Två varumärken, ett säljmaskineri</h2>
+    <p class="lead">Samma beprövade upplägg som Medvital + Sparklubben: en fristående leadmotor som matar telefonförsäljningen, och ett huvudvarumärke som bär trovärdigheten.</p>
+    <div class="flow">
+      <div class="flow-box fb-gold">
+        <h3>💚 Hälsoklubben <span style="font-weight:400; font-size:12px;">(leadmotor)</span></h3>
+        <p>Fristående tävlingssida: "Svara på 4 frågor — vinn 5 000 kr till matkassen". Samlar namn, e-post, telefon + separata samtycken. Mål-CPL: 10–25 kr.</p>
+      </div>
+      <div class="flow-box fb-green">
+        <h3>🌿 NordVital <span style="font-weight:400; font-size:12px;">(huvudvarumärke)</span></h3>
+        <p>nordvital.se — produkter, villkor, FAQ, Mina sidor. Provmånad 99 kr → 249 kr/mån utan bindningstid. "Avsluta med ett klick."</p>
+      </div>
+    </div>
+    <div class="arrow-row">▼ leads med telefonsamtycke ▼</div>
+    <div class="flow">
+      <div class="flow-box fb-deep">
+        <h3>📞 Telemarketing — huvudsäljkanalen</h3>
+        <p>Ringer tävlingsleads inom 72 h och säljer provmånaden. Skriftlig bekräftelse via SMS-länk (lagkrav). Leads utan köp → e-post/SMS-flöden + Meta-retargeting.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TELEMARKETING -->
+  <section>
+    <div class="eyebrow">Del 2 — Telemarketing</div>
+    <h2>Samtalsmanus i 6 steg</h2>
+    <p class="lead">Verktyg: dialer med inspelning och lead-API (Adversus/LeadDesk). Ringtider vardagar 09–20, lördag 10–15. Max 3 försök per lead.</p>
+    <div class="card">
+      <div class="script-step"><span class="num">1</span><div>
+        <h4>Öppning — vem, varför, varifrån samtycket</h4>
+        <div class="quote">"Hej [namn]! Jag ringer från NordVital — du deltog i Hälsoklubbens tävling om presentkortet på 5 000 kr och tackade ja till att vi fick höras. Har du en minut?"</div>
+      </div></div>
+      <div class="script-step"><span class="num">2</span><div>
+        <h4>Kvalificering — lyssna efter behovet</h4>
+        <div class="quote">"Tar du några vitaminer eller tillskott idag?" → anteckna: energi / immun / leder / skönhet</div>
+      </div></div>
+      <div class="script-step"><span class="num">3</span><div>
+        <h4>Pitch — matcha produkt mot behov, säg alltid hela priset</h4>
+        <div class="quote">"Första månaden 99 kr med fri frakt, direkt i brevlådan. Sen 249 kr i månaden — men helt utan bindningstid, du avslutar med ett klick."</div>
+      </div></div>
+      <div class="script-step"><span class="num">4</span><div>
+        <h4>Invändningar</h4>
+        <p>"Måste tänka" → provmånaden finns just för det. "Prenumerationsfälla?" → inget avtal förrän skriftlig bekräftelse + påminnelse före varje debitering. "För dyrt" → 8 kr om dagen, pausa när du vill.</p>
+      </div></div>
+      <div class="script-step"><span class="num">5</span><div>
+        <h4>Avslut — skriftlighetskravet (LAGKRAV)</h4>
+        <div class="quote">"Jag skickar ett SMS med en länk där du ser hela erbjudandet och bekräftar med ett klick. Beställningen gäller först när du bekräftat."</div>
+      </div></div>
+      <div class="script-step" style="margin-bottom:0;"><span class="num">6</span><div>
+        <h4>Efter samtal</h4>
+        <p>Obekräftat avslut → 1 påminnelse-SMS efter 24 h → sedan e-postflödet. Ett nej loggas och personen rings aldrig igen.</p>
+      </div></div>
+    </div>
+
+    <h2 style="margin-top:36px;">Schysst säljkodex</h2>
+    <p class="lead">Medvitals Trustpilot-klagomål (aggressiv försäljning, pressade äldre) är varningen — och vår möjlighet. Kodexen skyddar varumärket och kalkylen.</p>
+    <div class="do-dont">
+      <div class="do">
+        <h3>✅ Alltid</h3>
+        <ul>
+          <li>Säg hela priset (99 kr → 249 kr/mån) oombett</li>
+          <li>Respektera ett nej direkt — logga och ring aldrig igen</li>
+          <li>Skriftlig bekräftelse före varje avtal</li>
+          <li>Avbryt artigt vid minsta tecken på förvirring</li>
+          <li>Endast EFSA-godkända fraser om produkterna</li>
+          <li>Upplys om inspelning och ångerrätt</li>
+        </ul>
+      </div>
+      <div class="dont">
+        <h3>❌ Aldrig</h3>
+        <ul>
+          <li>Ringa köpta listor eller leads utan samtycke</li>
+          <li>Pressa osäkra eller äldre personer</li>
+          <li>Lova hälsoeffekter ("botar", "tar bort värk")</li>
+          <li>Mörka prenumerationspriset efter provmånaden</li>
+          <li>Fler än 3 kontaktförsök per lead</li>
+          <li>Debitera utan skriftlig accept</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 style="margin-top:36px;">Telemarketing-kalkylen</h2>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="val">50–60 %</div><div class="lbl">Kontaktgrad</div></div>
+      <div class="kpi"><div class="val">8–12 %</div><div class="lbl">Avslut på nådda</div></div>
+      <div class="kpi"><div class="val">&gt; 75 %</div><div class="lbl">Skriftlig bekräftelse</div></div>
+      <div class="kpi"><div class="val">0,5–1,0</div><div class="lbl">Kunder / säljartimme</div></div>
+      <div class="kpi"><div class="val">300–500 kr</div><div class="lbl">CAC via telefon</div></div>
+    </div>
+  </section>
+
+  <!-- META ADS -->
+  <section>
+    <div class="eyebrow">Del 3 — Facebook &amp; Instagram</div>
+    <h2>Annonsstruktur och budget</h2>
+    <p class="lead"><strong>Gyllene regel:</strong> köp aldrig fler leads än telefonteamet hinner ringa inom 72 h. Leadbudget = ringkapacitet × 25 kr CPL.</p>
+    <div class="table-scroll"><table>
+      <tr><th>Kampanj</th><th>Mål</th><th>Målgrupp</th><th>Destination</th></tr>
+      <tr><td><strong>1. Leads</strong></td><td>Leads/trafik</td><td>Bred 35–70, intressen hälsa/mat/träning</td><td>Hälsoklubben</td></tr>
+      <tr><td><strong>2. Försäljning</strong></td><td>Köp (pixel)</td><td>Retargeting: besökare 30 dgr, leads utan köp, videovisare</td><td>Produktsidan</td></tr>
+      <tr><td><strong>3. Lookalike</strong></td><td>Köp</td><td>1–3 % LAL på kunder (vid 100+ köp)</td><td>Produktsidan</td></tr>
+    </table></div>
+    <div class="table-scroll" style="margin-top:16px;"><table>
+      <tr><th>Fas</th><th>Period</th><th>Budget</th><th>Fokus</th></tr>
+      <tr><td>Test</td><td>Vecka 1–2</td><td>300 kr/dag</td><td>3 målgrupper × 3 annonser mot leadsidan</td></tr>
+      <tr><td>Skala</td><td>Vecka 3–8</td><td>500–1 500 kr/dag</td><td>Vinnare + retargeting — ringkapacitet styr takten</td></tr>
+      <tr><td>Tillväxt</td><td>Månad 3+</td><td>ROAS-styrt</td><td>Skala allt med CAC &lt; 500 kr</td></tr>
+    </table></div>
+
+    <h2 style="margin-top:36px;">5 annonsvinklar att testa</h2>
+    <div class="grid2">
+      <div class="card"><strong>1. Tävlingen 🎁</strong><br><span style="font-size:14px; color:var(--soft);">"Svara på 4 frågor — tävla om 5 000 kr till matkassen." Avsändare: Hälsoklubben. Bild: matkasse/presentkort.</span></div>
+      <div class="card"><strong>2. Transparens 🔓</strong><br><span style="font-size:14px; color:var(--soft);">"Kosttillskott på prenumeration — som du faktiskt kan avsluta med ett klick."</span></div>
+      <div class="card"><strong>3. Bekvämlighet 📬</strong><br><span style="font-size:14px; color:var(--soft);">Video: månadsdosen dimper ner i brevlådan. "Aldrig mer glömma vitaminerna."</span></div>
+      <div class="card"><strong>4. UGC-stil 🎥</strong><br><span style="font-size:14px; color:var(--soft);">"5 saker jag kollar innan jag köper kosttillskott" — talande huvud, bygger trovärdighet.</span></div>
+      <div class="card" style="grid-column:1/-1;"><strong>5. Erbjudandet 💰</strong><br><span style="font-size:14px; color:var(--soft);">"Prova första månaden för 99 kr. Fri frakt. Ingen bindningstid." — används främst i retargeting.</span></div>
+    </div>
+    <p class="lead" style="margin-top:18px; font-size:14px;"><strong>Meta-regler:</strong> inga före/efter-bilder · inga personliga attribut ("Har du ont i lederna?" är förbjudet — skriv "För dig som vill stötta lederna") · endast EFSA-godkända påståenden · pris och villkor synliga före köp.</p>
+  </section>
+
+  <!-- EMAIL/SMS -->
+  <section>
+    <div class="eyebrow">Del 4 — E-post &amp; SMS</div>
+    <h2>Nurture för leads, retention för kunder</h2>
+    <div class="table-scroll"><table>
+      <tr><th>Dag</th><th>Kanal</th><th>Leads utan köp (7-dagarsflöde)</th></tr>
+      <tr><td>0</td><td>E-post</td><td>Bekräfta tävlingsdeltagande (dubbel opt-in) + välkomstgåva 99 kr</td></tr>
+      <tr><td>1</td><td>E-post</td><td>Varumärkesstory: "Kosttillskott utan fula trick"</td></tr>
+      <tr><td>3</td><td>E-post</td><td>Utbildande: "Så vet du om ett kosttillskott är seriöst"</td></tr>
+      <tr><td>5</td><td>SMS</td><td>"Din välkomstgåva går ut om 48 h"</td></tr>
+      <tr><td>7</td><td>E-post</td><td>Sista chansen + recensioner + "avsluta med ett klick"-demo</td></tr>
+    </table></div>
+    <p class="lead" style="margin-top:18px; font-size:14px;"><strong>Retention (churn är hela affären):</strong> påminnelse före varje debitering · dag 10: användartips + upsell · månad 3: lojalitetsförmån · vid uppsägning: pausa-alternativ + vinnbacka-rabatt · månadsbrev med tävlingsvinnare som knyter ihop Hälsoklubben-loopen.</p>
+  </section>
+
+  <!-- JURIDIK -->
+  <section>
+    <div class="eyebrow">Del 5 — Juridik (blockerande före lansering)</div>
+    <h2>Compliance-checklista</h2>
+    <div class="card">
+      <ul class="check">
+        <li><strong>Skriftlighetskravet:</strong> muntligt ja i telefon är inte bindande — SMS-bekräftelseflöde byggt före första samtalet</li>
+        <li><strong>NIX-Telefon:</strong> kontroll före ringning (aktivt samtycke från formuläret går före) — samtycken tidsstämplas</li>
+        <li>Separata, ej förkryssade samtyckesrutor för e-post respektive telefon/SMS (GDPR)</li>
+        <li>Tävlingsvillkor publicerade: arrangör NordVital AB, period, vinster, 18-årsgräns</li>
+        <li>Endast EFSA-godkända hälsopåståenden — sajt, annonser OCH säljsamtal</li>
+        <li>Registrering som livsmedelsföretagare hos kommunen</li>
+        <li>Prenumerationsvillkor synliga före köp · uppsägning lika enkel som tecknande</li>
+        <li>Påminnelse-mejl före varje debitering</li>
+        <li>Integritetspolicy + cookiesamtycke (krävs för Meta-pixeln)</li>
+        <li>Varumärkesnamn verifierat: domän, Bolagsverket, PRV, EUIPO</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 90 DAGAR -->
+  <section>
+    <div class="eyebrow">Del 6 — Tidplan</div>
+    <h2>90-dagarsplanen</h2>
+    <div class="table-scroll"><table>
+      <tr><th>Vecka</th><th>Milstolpe</th></tr>
+      <tr><td>1</td><td>Namn verifierat · hemsida + Hälsoklubben publiceras</td></tr>
+      <tr><td>2</td><td>Meta Business Manager + pixel · e-postverktyg · Klarna/Stripe · dialer väljs</td></tr>
+      <tr><td>3</td><td>Private label-leverantör · första lager · produktfoton · livsmedelsregistrering</td></tr>
+      <tr><td>4</td><td>SMS-bekräftelseflödet byggt och testat · säljmanus tränas</td></tr>
+      <tr><td>5–6</td><td>Meta-test 300 kr/dag · första 200–400 leads · börja ringa</td></tr>
+      <tr><td>7–8</td><td>Mät kalkylen: CPL × kontaktgrad × avslut = CAC · justera manus/annonser</td></tr>
+      <tr><td>9–12</td><td>Skala leadbudget i takt med ringkapacitet · retargeting · lookalikes · retention live</td></tr>
+      <tr><td>13</td><td>Utvärdering: kanal-CAC, churn-kurva, beslut om säljare #2 och produkt #5</td></tr>
+    </table></div>
+  </section>
+
+  <footer>
+    GKL Agency · NordVital (arbetsnamn — verifiera domän/PRV) · Konfidentiellt · 2026<br>
+    Detaljversion med alla nyckeltal: <code>marketing-plan.md</code>
+  </footer>
+
+</div>
+</body>
+</html>
