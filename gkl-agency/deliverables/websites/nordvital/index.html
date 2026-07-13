@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NordVital — Kosttillskott utan krångel | Prenumeration utan bindningstid</title>
+  <meta name="description" content="Svenska kosttillskott på prenumeration. Levereras direkt i brevlådan var 30:e dag. Ingen bindningstid — avsluta med ett klick. Första månaden 99 kr." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">Nord<span>Vital</span></a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html" class="active">Hem</a></li>
+        <li><a href="produkter.html">Produkter</a></li>
+        <li><a href="index.html#sa-funkar-det">Så funkar det</a></li>
+        <li><a href="index.html#faq">Frågor &amp; svar</a></li>
+        <li><a href="kampanj.html">Tävling 🎁</a></li>
+      </ul>
+      <a href="produkter.html" class="btn btn--primary btn--sm nav__cta">Prova för 99 kr</a>
+      <button class="nav__burger" id="burger" aria-label="Meny">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container hero__inner">
+      <div class="hero__badge">🇸🇪 Svenskt företag · Fri frakt · Ingen bindningstid</div>
+      <h1>Kosttillskott utan krångel.<br /><em>Och utan fula trick.</em></h1>
+      <p class="hero__sub">
+        Dina vitaminer levereras direkt i brevlådan var 30:e dag. Pausa eller avsluta
+        när du vill — med ett klick, inte ett telefonsamtal.
+      </p>
+      <div class="hero__cta">
+        <a href="produkter.html" class="btn btn--gold">Prova första månaden för 99 kr</a>
+        <a href="#sa-funkar-det" class="btn btn--ghost">Så funkar det</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="container trust-bar__inner">
+      <div class="trust-item"><span class="dot"></span> Levereras i brevlådan 1–3 vardagar</div>
+      <div class="trust-item"><span class="dot"></span> Ingen bindningstid</div>
+      <div class="trust-item"><span class="dot"></span> Avsluta med ett klick</div>
+      <div class="trust-item"><span class="dot"></span> 14 dagars ångerrätt</div>
+      <div class="trust-item"><span class="dot"></span> Tillverkat inom EU</div>
+    </div>
+  </div>
+
+  <!-- PRODUKTER -->
+  <section class="section" id="produkter">
+    <div class="container">
+      <div class="section__head">
+        <div class="section__eyebrow">Våra produkter</div>
+        <h2>Fyra tillskott. Inga överdrifter.</h2>
+        <p>Vi säger bara det forskningen tillåter — varje produkt bygger på näringsämnen med godkända hälsopåståenden inom EU.</p>
+      </div>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-card__icon">🛡️</div>
+          <h3>Immun+</h3>
+          <div class="product-card__tag">Betaglukaner · C · D · Zink · Selen</div>
+          <div class="product-card__claim">Vitamin C, D, zink och selen bidrar till immunsystemets normala funktion.</div>
+          <div class="product-card__price"><strong>99 kr</strong> första månaden <s>249 kr</s></div>
+          <a href="produkter.html" class="btn btn--primary btn--sm">Läs mer</a>
+        </div>
+        <div class="product-card">
+          <div class="product-card__icon">✨</div>
+          <h3>Skönhet Inifrån</h3>
+          <div class="product-card__tag">Hyaluronsyra · Biotin · Q10 · Zink</div>
+          <div class="product-card__claim">Biotin bidrar till att bibehålla normalt hår och normal hud.</div>
+          <div class="product-card__price"><strong>99 kr</strong> första månaden <s>249 kr</s></div>
+          <a href="produkter.html" class="btn btn--primary btn--sm">Läs mer</a>
+        </div>
+        <div class="product-card">
+          <div class="product-card__icon">🦴</div>
+          <h3>Flex Leder</h3>
+          <div class="product-card__tag">Kollagen · Vitamin C · Mangan</div>
+          <div class="product-card__claim">Vitamin C bidrar till normal kollagenbildning som har betydelse för broskets normala funktion.</div>
+          <div class="product-card__price"><strong>99 kr</strong> första månaden <s>249 kr</s></div>
+          <a href="produkter.html" class="btn btn--primary btn--sm">Läs mer</a>
+        </div>
+        <div class="product-card">
+          <div class="product-card__icon">⚡</div>
+          <h3>Energi &amp; Balans</h3>
+          <div class="product-card__tag">Magnesium · B6 · B12 · Folsyra</div>
+          <div class="product-card__claim">Magnesium och vitamin B6 bidrar till att minska trötthet och utmattning.</div>
+          <div class="product-card__price"><strong>99 kr</strong> första månaden <s>249 kr</s></div>
+          <a href="produkter.html" class="btn btn--primary btn--sm">Läs mer</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SÅ FUNKAR DET -->
+  <section class="section section--white" id="sa-funkar-det">
+    <div class="container">
+      <div class="section__head">
+        <div class="section__eyebrow">Så funkar det</div>
+        <h2>Tre steg. Sedan sköter det sig självt.</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__num">1</div>
+          <h3>Välj ditt tillskott</h3>
+          <p>Prova första månaden för 99 kr med fri frakt. Ingen bindningstid, inga dolda villkor.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">2</div>
+          <h3>Få det i brevlådan</h3>
+          <p>Din månadsdos kommer i en brevlådevänlig förpackning inom 1–3 vardagar. Ingen utlämning, inga köer.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">3</div>
+          <h3>Ändra dig när du vill</h3>
+          <p>Pausa, byt produkt eller avsluta med ett klick på Mina sidor. Ingen ringer upp dig. Vi lovar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VÅRT LÖFTE -->
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <div class="section__eyebrow">Vårt löfte</div>
+        <h2>Vi startade NordVital för att branschen behövde det</h2>
+        <p>Kosttillskott på prenumeration har fått dåligt rykte — svåravslutade avtal och påstridiga säljsamtal. Vi gör tvärtom.</p>
+      </div>
+      <div class="promise-grid">
+        <div class="promise">
+          <div class="promise__icon">🔓</div>
+          <h3>Avsluta med ett klick</h3>
+          <p>Uppsägningen är lika enkel som köpet. En knapp på Mina sidor — klart. Ingen väntetid, inga övertalningsförsök.</p>
+        </div>
+        <div class="promise">
+          <div class="promise__icon">📵</div>
+          <h3>Vi ringer aldrig upp dig</h3>
+          <p>Ingen telefonförsäljning. Någonsin. All kommunikation sker via e-post som du själv valt att ta emot.</p>
+        </div>
+        <div class="promise">
+          <div class="promise__icon">🔬</div>
+          <h3>Bara godkända påståenden</h3>
+          <p>Vi lovar aldrig mirakel. Varje hälsopåstående vi använder är godkänt enligt EU:s regler.</p>
+        </div>
+        <div class="promise">
+          <div class="promise__icon">💳</div>
+          <h3>Priset du ser är priset du betalar</h3>
+          <p>249 kr/månad med fri frakt efter din provmånad. Inga tillägg, inga överraskningar på fakturan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--white" id="faq">
+    <div class="container">
+      <div class="section__head">
+        <div class="section__eyebrow">Frågor &amp; svar</div>
+        <h2>Det här undrar de flesta</h2>
+      </div>
+      <div class="faq">
+        <div class="faq__item">
+          <button class="faq__q">Hur avslutar jag min prenumeration?</button>
+          <div class="faq__a">Logga in på Mina sidor och klicka på "Avsluta prenumeration". Det tar under en minut och gäller direkt — du behöver inte prata med någon eller ange någon anledning.</div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q">Finns det någon bindningstid?</button>
+          <div class="faq__a">Nej. Du kan pausa eller avsluta när du vill, även efter provmånaden. Beställningar som redan skickats påverkas inte.</div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q">Hur levereras produkterna?</button>
+          <div class="faq__a">Din månadsdos skickas i en tunn förpackning som får plats i brevlådan. Leveranstid är 1–3 vardagar och frakten är alltid fri. Vi levererar endast inom Sverige.</div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q">Vad kostar det efter provmånaden?</button>
+          <div class="faq__a">249 kr per månad och produkt, med fri frakt. Du ser alltid nästa debiteringsdatum på Mina sidor och får en påminnelse via e-post innan varje leverans.</div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q">Har jag ångerrätt?</button>
+          <div class="faq__a">Ja, du har alltid 14 dagars ångerrätt från att du tagit emot din första leverans, enligt distansavtalslagen.</div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q">Kan era produkter bota eller behandla sjukdomar?</button>
+          <div class="faq__a">Nej. Kosttillskott ersätter inte en varierad kost eller läkemedel. Våra produkter är ett komplement till en hälsosam livsstil. Rådgör alltid med läkare om du är gravid, ammar eller tar mediciner.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container cta-banner">
+      <h2>Redo att testa?</h2>
+      <p>Välj din produkt och prova första månaden för 99 kr med fri frakt. Gillar du den inte? Avsluta med ett klick.</p>
+      <a href="produkter.html" class="btn btn--gold">Se alla produkter</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">Nord<span>Vital</span></div>
+          <p>Svenska kosttillskott på prenumeration — utan bindningstid, utan krångel och utan telefonförsäljning.</p>
+        </div>
+        <div>
+          <h4>Handla</h4>
+          <ul>
+            <li><a href="produkter.html">Produkter</a></li>
+            <li><a href="kampanj.html">Tävling</a></li>
+            <li><a href="index.html#faq">Frågor &amp; svar</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Villkor</h4>
+          <ul>
+            <li><a href="#">Köpvillkor</a></li>
+            <li><a href="#">Integritetspolicy</a></li>
+            <li><a href="#">Ångerrätt</a></li>
+            <li><a href="#">Kontakta oss</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        © 2026 NordVital AB (arbetsnamn) · Kosttillskott ersätter inte en varierad kost. Rekommenderad dos bör inte överskridas. Förvaras utom räckhåll för små barn.
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

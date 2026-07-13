@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produkter — NordVital | Kosttillskott på prenumeration</title>
+  <meta name="description" content="Immun+, Skönhet Inifrån, Flex Leder och Energi & Balans. Prova första månaden för 99 kr — fri frakt, ingen bindningstid." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">Nord<span>Vital</span></a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Hem</a></li>
+        <li><a href="produkter.html" class="active">Produkter</a></li>
+        <li><a href="index.html#sa-funkar-det">Så funkar det</a></li>
+        <li><a href="index.html#faq">Frågor &amp; svar</a></li>
+        <li><a href="kampanj.html">Tävling 🎁</a></li>
+      </ul>
+      <a href="#immun" class="btn btn--primary btn--sm nav__cta">Prova för 99 kr</a>
+      <button class="nav__burger" id="burger" aria-label="Meny">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" style="padding: 56px 0 48px;">
+    <div class="container hero__inner">
+      <div class="hero__badge">Prova första månaden för 99 kr · Fri frakt</div>
+      <h1>Våra produkter</h1>
+      <p class="hero__sub">
+        Fyra tillskott framtagna för vardagen — alla med näringsämnen vars effekt har
+        godkända hälsopåståenden inom EU. Alltid utan bindningstid.
+      </p>
+    </div>
+  </header>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="container trust-bar__inner">
+      <div class="trust-item"><span class="dot"></span> Fri frakt</div>
+      <div class="trust-item"><span class="dot"></span> Ingen bindningstid</div>
+      <div class="trust-item"><span class="dot"></span> Avsluta med ett klick</div>
+      <div class="trust-item"><span class="dot"></span> 14 dagars ångerrätt</div>
+    </div>
+  </div>
+
+  <!-- PRODUKT: IMMUN+ -->
+  <section class="section" id="immun">
+    <div class="container">
+      <div class="products-grid" style="grid-template-columns: 1fr; max-width: 760px; margin: 0 auto;">
+        <div class="product-card">
+          <div class="product-card__icon">🛡️</div>
+          <h3>Immun+</h3>
+          <div class="product-card__tag">30 dagsdoser · Betaglukaner · Vitamin C · Vitamin D · Zink · Selen</div>
+          <div class="product-card__claim">
+            Ett dagligt stöd för immunförsvaret. Vitamin C, D, zink och selen bidrar till immunsystemets
+            normala funktion. Zink och selen bidrar dessutom till att skydda cellerna mot oxidativ stress.
+          </div>
+          <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
+            <strong>Rekommenderad dos:</strong> 1 kapsel dagligen i samband med måltid.
+            Innehåller per dagsdos: betaglukaner 200 mg, vitamin C 80 mg (100 % DRI*), vitamin D 25 µg (500 % DRI),
+            zink 10 mg (100 % DRI), selen 55 µg (100 % DRI). <em>*Dagligt referensintag.</em>
+          </p>
+          <div class="product-card__price"><strong>99 kr</strong> första månaden, därefter <strong>249 kr</strong>/mån · fri frakt</div>
+          <a href="#" class="btn btn--primary">Starta prenumeration — 99 kr</a>
+        </div>
+
+        <div class="product-card" id="skonhet">
+          <div class="product-card__icon">✨</div>
+          <h3>Skönhet Inifrån</h3>
+          <div class="product-card__tag">30 dagsdoser · Hyaluronsyra · Biotin · Q10 · Zink · Vitamin C</div>
+          <div class="product-card__claim">
+            Skönhet börjar inifrån. Biotin och zink bidrar till att bibehålla normalt hår och normal hud.
+            Vitamin C bidrar till normal kollagenbildning som har betydelse för hudens normala funktion.
+          </div>
+          <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
+            <strong>Rekommenderad dos:</strong> 1 kapsel dagligen. Innehåller per dagsdos: hyaluronsyra 120 mg,
+            biotin 50 µg (100 % DRI), koenzym Q10 100 mg, zink 10 mg (100 % DRI), vitamin C 80 mg (100 % DRI).
+          </p>
+          <div class="product-card__price"><strong>99 kr</strong> första månaden, därefter <strong>249 kr</strong>/mån · fri frakt</div>
+          <a href="#" class="btn btn--primary">Starta prenumeration — 99 kr</a>
+        </div>
+
+        <div class="product-card" id="leder">
+          <div class="product-card__icon">🦴</div>
+          <h3>Flex Leder</h3>
+          <div class="product-card__tag">30 dagsdoser · Kollagen · Vitamin C · Mangan</div>
+          <div class="product-card__claim">
+            För dig som vill stötta lederna i vardagen. Vitamin C bidrar till normal kollagenbildning som har
+            betydelse för broskets normala funktion. Mangan bidrar till att bibehålla normal benstomme.
+          </div>
+          <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
+            <strong>Rekommenderad dos:</strong> 2 kapslar dagligen. Innehåller per dagsdos: hydrolyserat kollagen
+            1 000 mg, vitamin C 80 mg (100 % DRI), mangan 2 mg (100 % DRI).
+          </p>
+          <div class="product-card__price"><strong>99 kr</strong> första månaden, därefter <strong>249 kr</strong>/mån · fri frakt</div>
+          <a href="#" class="btn btn--primary">Starta prenumeration — 99 kr</a>
+        </div>
+
+        <div class="product-card" id="energi">
+          <div class="product-card__icon">⚡</div>
+          <h3>Energi &amp; Balans</h3>
+          <div class="product-card__tag">30 dagsdoser · Magnesium · Vitamin B6 · Vitamin B12 · Folsyra</div>
+          <div class="product-card__claim">
+            För en vardag i balans. Magnesium, vitamin B6, B12 och folsyra bidrar till att minska trötthet
+            och utmattning samt till normal energiomsättning.
+          </div>
+          <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
+            <strong>Rekommenderad dos:</strong> 1 tablett dagligen. Innehåller per dagsdos: magnesium 300 mg
+            (80 % DRI), vitamin B6 1,4 mg (100 % DRI), vitamin B12 2,5 µg (100 % DRI), folsyra 200 µg (100 % DRI).
+          </p>
+          <div class="product-card__price"><strong>99 kr</strong> första månaden, därefter <strong>249 kr</strong>/mån · fri frakt</div>
+          <a href="#" class="btn btn--primary">Starta prenumeration — 99 kr</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VILLKOR I KORTHET -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="section__head">
+        <div class="section__eyebrow">Innan du beställer</div>
+        <h2>Prenumerationen i korthet</h2>
+        <p>Vi vill att du vet exakt vad du tackar ja till — därför står det här, tydligt, före köpet.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__num">✓</div>
+          <h3>Provmånad 99 kr</h3>
+          <p>Därefter 249 kr var 30:e dag per produkt, med fri frakt. Du får e-post innan varje debitering.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">✓</div>
+          <h3>Ingen bindningstid</h3>
+          <p>Pausa eller avsluta när du vill på Mina sidor — även under provmånaden. Ett klick räcker.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">✓</div>
+          <h3>14 dagars ångerrätt</h3>
+          <p>Enligt distansavtalslagen, räknat från att du tar emot din första leverans.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container cta-banner">
+      <h2>Osäker på vilken du ska välja?</h2>
+      <p>Tävla i vår månadsutlottning och få vår guide "Så väljer du rätt kosttillskott" på köpet.</p>
+      <a href="kampanj.html" class="btn btn--gold">Till tävlingen 🎁</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">Nord<span>Vital</span></div>
+          <p>Svenska kosttillskott på prenumeration — utan bindningstid, utan krångel och utan telefonförsäljning.</p>
+        </div>
+        <div>
+          <h4>Handla</h4>
+          <ul>
+            <li><a href="produkter.html">Produkter</a></li>
+            <li><a href="kampanj.html">Tävling</a></li>
+            <li><a href="index.html#faq">Frågor &amp; svar</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Villkor</h4>
+          <ul>
+            <li><a href="#">Köpvillkor</a></li>
+            <li><a href="#">Integritetspolicy</a></li>
+            <li><a href="#">Ångerrätt</a></li>
+            <li><a href="#">Kontakta oss</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        © 2026 NordVital AB (arbetsnamn) · Kosttillskott ersätter inte en varierad kost. Rekommenderad dos bör inte överskridas. Förvaras utom räckhåll för små barn.
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
