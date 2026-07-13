@@ -52,22 +52,37 @@ tryggare och bättre för varumärket.
 
 ---
 
-## Vår affärsmodell (sammanfattning)
+## Vår affärsmodell (sammanfattning) — DROPSHIP-SAMARBETE
+
+**Vi processar inga betalningar och håller inget lager.** Vi har direkt samarbete med
+produktleverantören: sajten och telemarketingen tar emot beställningar och skickar dem till
+partnern, som packar, levererar och **fakturerar kunden (faktura medföljer lådan)**.
+Vår roll = varumärke + trafik + leads + försäljning. Partnerns roll = produkt + logistik + betalning.
 
 | Del | Val |
 |---|---|
 | Produkt | 4 kosttillskott: Immun, Skönhet, Leder, Energi (samma kategorier som Medvital) |
-| Pris | 249 kr/mån per produkt, första månaden 99 kr, fri frakt |
-| Modell | Prenumeration utan bindningstid, leverans i brevlådan var 30:e dag |
+| Pris mot kund | 249 kr/mån per produkt, första lådan 99 kr, fri frakt, betalning mot faktura |
+| Modell | Prenumeration utan bindningstid, leverans i brevlådan var 30:e dag (partnern skickar) |
 | Kundanskaffning | FB/IG-annonser → Hälsoklubben (tävling/quiz) → **telemarketing (huvudsäljkanal)** |
+| Orderflöde | Sajt/telemarketing → order till partnern (API/e-post) → partnern levererar + fakturerar |
 | Uppföljning | E-post + SMS (med samtycke) + Meta-retargeting mot produktsidan |
-| Differentiering | "Avsluta med ett klick" + schysst säljkodex — transparens som säljargument |
+| Differentiering | Enkel uppsägning + schysst säljkodex — transparens som säljargument |
 
 ### Enhetsekonomi att räkna på (mål)
-- Produktkostnad (vitpost/private label): ~40–60 kr/mån per kund
-- Porto brevlådeförsändelse: ~20–30 kr
-- Marginal per månad: ~150–180 kr → en kund som stannar 4+ månader bär en CAC på ~400–600 kr
+- Vår intäkt: provision/marginal per order eller per aktiv kund — **förhandlas med partnern**
+  (vanligt i nischen: fast belopp per bekräftad ny kund + andel av månadsintäkten)
+- Ingen lagerrisk, ingen betalrisk (fakturarisk ligger hos partnern) — vår kostnad är annonser + säljartid
 - Mål-CPL via tävlingsfunnel: 10–25 kr | Lead→kund: 3–8 % → CAC 125–830 kr (optimera mot under 500 kr)
+- Break-even: provisionen per kund måste överstiga CAC inom kundens snittlivslängd — räkna på
+  detta så fort partnerns ersättningsmodell är satt
+
+### Att avtala med partnern (viktigt!)
+1. Ersättning: per bekräftad order? per aktiv månad? klumpsumma + revshare?
+2. Vem äger kundregistret och leadsen? (Vi bör äga leadsen — de är vår tillgång)
+3. Vem är juridisk säljare på fakturan/villkoren? (styr vem Konsumentverket granskar)
+4. Returhantering, ångerrätt och kundservice — vem svarar?
+5. Orderformat: API, fil eller e-post + hur uppsägningar synkas tillbaka till oss
 
 ---
 

@@ -14,6 +14,11 @@ tävlings-/leadgenereringssidor i stil med **sparklubben.nu/ICA** (referens 2) �
   varumärkesregister innan lansering. Alternativ finns i `brief.md`.
 
 ## Affärsmodell (kort)
+**Dropship-samarbete:** vi processar INGA betalningar och håller inget lager. Beställningar
+från sajten och telemarketingen skickas till leverantörspartnern som packar, levererar och
+fakturerar kunden (faktura medföljer lådan). Vår roll: varumärke, trafik, leads, försäljning.
+Skriv aldrig in kortbetalning/Klarna i sajt eller copy — betalning sker alltid mot faktura via partnern.
+
 Två varumärken, ett system:
 - **Hälsoklubben** (kampanj.html) — fristående leadgen-sida: tävling/quiz som samlar leads
   med separata samtycken för e-post respektive telefon/SMS

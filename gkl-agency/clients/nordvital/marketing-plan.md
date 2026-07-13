@@ -1,6 +1,8 @@
 # Fullständig marknadsföringsplan — NordVital
 
-**Modell:** D2C-kosttillskott på prenumeration (utan bindningstid)
+**Modell:** D2C-kosttillskott på prenumeration (utan bindningstid) — **dropship-samarbete:**
+partnern sköter lager, leverans och fakturering (faktura medföljer lådan); vi sköter varumärke,
+trafik, leads och försäljning. Inga betalningar processas på sajten.
 **Kanaler:** 1) Leadgenerering (Hälsoklubben) → 2) Telemarketing → 3) Meta Ads (FB/IG) → 4) E-post/SMS
 **Mål år 1:** 2 000 aktiva prenumeranter · CAC < 500 kr · churn < 15 %/mån · LTV > 900 kr
 
@@ -175,7 +177,8 @@ Stories dagligen (omröstningar, quiz med tävlingsfrågorna, countdown till må
 
 ### Produkter & påståenden
 - [ ] Endast EFSA-godkända hälsopåståenden (se brief.md) — gäller sajt, annonser OCH säljsamtal
-- [ ] Registrering som livsmedelsföretagare hos kommunen
+- [ ] Livsmedelsföretagare-registrering: klargör med partnern vem som bär ansvaret —
+      den som säljer under eget varumärke räknas normalt som livsmedelsföretagare även utan eget lager
 - [ ] Meta-policys: inga före/efter, inga personliga attribut ("Har du ont i...?" förbjudet)
 - [ ] Etikettkrav: ingrediensförteckning, dagsdos, varningstext
 
@@ -224,8 +227,8 @@ lead-ID följer med från formulär → dialer → checkout (mät hela kedjan).
 | Vecka | Milstolpe |
 |---|---|
 | 1 | Namn verifierat (domän, Bolagsverket, PRV) · hemsida + kampanjsida publiceras |
-| 2 | Meta Business Manager + pixel · e-postverktyg · Klarna/Stripe · dialer väljs |
-| 3 | Private label-leverantör vald · första lager · produktfoton · livsmedelsregistrering |
+| 2 | Meta Business Manager + pixel · e-postverktyg · dialer väljs |
+| 3 | Partneravtal klart (ersättning, orderformat, kundregister, kundservice) · orderflödet sajt→partner testat · produktfoton |
 | 4 | Skriftlighetskrav-flödet (SMS-bekräftelse) byggt och testat · säljmanus tränas |
 | 5–6 | Meta-test 300 kr/dag mot Hälsoklubben · första 200–400 leads · börja ringa |
 | 7–8 | Mät kalkylen: CPL × kontaktgrad × avslut = CAC. Justera manus/annonser |

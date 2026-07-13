@@ -67,7 +67,7 @@ if (orderForm) {
   const preselected = document.querySelector(`.pick[data-product="${param}"]`) || picks[0];
   selectProduct(preselected);
 
-  // Nästa debiteringsdatum = idag + 30 dagar (visas före köp — krav på tydlighet)
+  // Nästa leveransdatum = idag + 30 dagar (visas före köp — krav på tydlighet)
   const next = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
     .toLocaleDateString('sv-SE', { day: 'numeric', month: 'long', year: 'numeric' });
   document.getElementById('sum-next').textContent = next;
@@ -75,8 +75,9 @@ if (orderForm) {
 
   orderForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    // TODO före lansering: ersätt med riktig checkout (Klarna/Stripe) + prenumerationssystem,
-    // och trigga Meta-pixelns köp-event: fbq('track', 'Purchase', {value: 99, currency: 'SEK'});
+    // TODO före lansering: skicka ordern till leverantörspartnern (API eller e-post) som
+    // packar, skickar och fakturerar (dropship). Ingen betalning sker på sajten.
+    // Trigga Meta-pixelns köp-event: fbq('track', 'Purchase', {value: 99, currency: 'SEK'});
     document.getElementById('orderView').style.display = 'none';
     document.getElementById('confirmView').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
