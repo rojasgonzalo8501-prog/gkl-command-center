@@ -69,20 +69,40 @@ Vår roll = varumärke + trafik + leads + försäljning. Partnerns roll = produk
 | Uppföljning | E-post + SMS (med samtycke) + Meta-retargeting mot produktsidan |
 | Differentiering | Enkel uppsägning + schysst säljkodex — transparens som säljargument |
 
-### Enhetsekonomi att räkna på (mål)
-- Vår intäkt: provision/marginal per order eller per aktiv kund — **förhandlas med partnern**
-  (vanligt i nischen: fast belopp per bekräftad ny kund + andel av månadsintäkten)
-- Ingen lagerrisk, ingen betalrisk (fakturarisk ligger hos partnern) — vår kostnad är annonser + säljartid
-- Mål-CPL via tävlingsfunnel: 10–25 kr | Lead→kund: 3–8 % → CAC 125–830 kr (optimera mot under 500 kr)
-- Break-even: provisionen per kund måste överstiga CAC inom kundens snittlivslängd — räkna på
-  detta så fort partnerns ersättningsmodell är satt
+### Partneravtalet — ÖVERENSKOMMET
+| Punkt | Utfall |
+|---|---|
+| Ersättning | **400 kr per bekräftat avtal** (engångsbelopp) |
+| Juridiskt säljansvar | Partnern |
+| Kundservice, ångerrätt, returer | Partnern |
+| Fakturering & betalrisk | Partnern |
+| Leads & leadregister | **Vi äger** — vår enda men viktigaste tillgång |
 
-### Att avtala med partnern (viktigt!)
-1. Ersättning: per bekräftad order? per aktiv månad? klumpsumma + revshare?
-2. Vem äger kundregistret och leadsen? (Vi bör äga leadsen — de är vår tillgång)
-3. Vem är juridisk säljare på fakturan/villkoren? (styr vem Konsumentverket granskar)
-4. Returhantering, ångerrätt och kundservice — vem svarar?
-5. Orderformat: API, fil eller e-post + hur uppsägningar synkas tillbaka till oss
+**Kvar att klargöra med partnern:**
+1. NÄR utlöses 400 kr — vid skriftligt bekräftat avtal, efter ångerfristens 14 dagar,
+   eller vid första betald faktura? (Stor skillnad i kassaflöde och risk)
+2. Clawback — dras ersättningen tillbaka vid ånger/obetald faktura?
+3. Orderformat (API/fil/e-post) + hur uppsägningar rapporteras tillbaka så vi inte ringer avslutade kunder
+4. Får vi använda leadsen för framtida egna/andra erbjudanden? (Vi äger dem — säkra det skriftligt)
+
+### Enhetsekonomi — kalkylen med 400 kr/avtal (VIKTIG!)
+Intäkten är fast: 400 kr per bekräftat avtal. Då MÅSTE kostnaden per avtal under 400 kr:
+
+**Telemarketing-vägen (per bekräftat avtal):**
+- Kedjan: kontaktgrad ~55 % × avslut ~10 % × skriftlig bekräftelse ~75 % ≈ **4 % av leads blir avtal** → ~24 leads per avtal
+- Leadkostnad: 24 × 15 kr CPL ≈ 360 kr … plus ~1,5–2 h säljartid ≈ 300–400 kr → **totalt 650–750 kr = FÖRLUST**
+- Kalkylen går ihop först vid: CPL ≤ 10 kr OCH avslut ≥ 12 % OCH billig säljartid (egen tid i starten)
+  → då ~180 kr leads + ~200 kr tid ≈ 380 kr per avtal = knapp vinst
+
+**Direktorder via sajten (per bekräftat avtal):**
+- Ingen säljartid. Meta-annons direkt mot bestall.html: CAC 200–350 kr i denna nisch → **marginal 50–200 kr/avtal**
+
+**Slutsatser (styr hela strategin):**
+1. **Direktordrar via sajten är den mest lönsamma kanalen** — prioritera retargeting och köp-kampanjer
+2. Telemarketing funkar som volymkanal bara med topptrimmad funnel — mät kostnad per avtal varje vecka i admin-portalen
+3. **Förhandla mer med partnern så fort vi visar volym:** revshare på månad 2+ eller höjning till
+   500–600 kr/avtal. 400 kr engångs är lågt när kundens LTV för partnern är 900+ kr
+4. Ring alltid färska leads (< 72 h) — varje procentenhet i avslutsgrad är skillnaden mellan vinst och förlust
 
 ---
 

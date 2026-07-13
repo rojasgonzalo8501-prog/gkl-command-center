@@ -1,10 +1,11 @@
 # Fullständig marknadsföringsplan — NordVital
 
 **Modell:** D2C-kosttillskott på prenumeration (utan bindningstid) — **dropship-samarbete:**
-partnern sköter lager, leverans och fakturering (faktura medföljer lådan); vi sköter varumärke,
-trafik, leads och försäljning. Inga betalningar processas på sajten.
+partnern sköter lager, leverans, fakturering, kundservice, ångerrätt och allt juridiskt säljansvar;
+vi sköter varumärke, trafik, leads och försäljning. Inga betalningar processas på sajten.
+**Vår intäkt: 400 kr per bekräftat avtal.** Vi äger leadsen.
 **Kanaler:** 1) Leadgenerering (Hälsoklubben) → 2) Telemarketing → 3) Meta Ads (FB/IG) → 4) E-post/SMS
-**Mål år 1:** 2 000 aktiva prenumeranter · CAC < 500 kr · churn < 15 %/mån · LTV > 900 kr
+**Mål år 1:** 2 000 bekräftade avtal (= 800 000 kr) · kostnad per avtal < 350 kr · CPL < 12 kr
 
 ---
 
@@ -205,17 +206,20 @@ Stories dagligen (omröstningar, quiz med tävlingsfrågorna, countdown till må
 
 ## 8. KPI-tavla (följ varje vecka)
 
+Med fast ersättning på 400 kr/avtal är **kostnad per bekräftat avtal** det enda tal som avgör
+vinst eller förlust — följ det per kanal (telemarketing vs direktorder) varje vecka i admin-portalen.
+
 | KPI | Mål | Källa |
 |---|---|---|
-| CPL (Hälsoklubben) | 10–25 kr | Meta Ads Manager |
-| Andel leads med tel-samtycke | > 60 % | Formulärdata |
-| Kontaktgrad inom 72 h | > 80 % av nya leads ringda | Dialer |
-| Avslutsgrad (nådda → bekräftad kund) | 6–9 % | Dialer + checkout |
-| CAC blandad | < 500 kr | Kalkyl |
-| Churn | < 15 %/mån | Prenumerationssystem |
-| LTV (6 mån snitt) | > 900 kr | Prenumerationssystem |
-| ROAS retargeting | > 3 | Meta + UTM |
-| Trustpilot-betyg | > 4,3 ⭐ | Trustpilot (be varje nöjd kund om omdöme i månad 2) |
+| CPL (Hälsoklubben) | < 12 kr (över 15 kr = pausa och byt annons) | Meta Ads Manager |
+| Andel leads med tel-samtycke | > 60 % | Admin-portalen |
+| Kontaktgrad inom 72 h | > 80 % av nya leads ringda | Dialer + admin-portalen |
+| Avslutsgrad (nådda → bekräftat avtal) | > 10 % | Dialer + partnerrapport |
+| **Kostnad per bekräftat avtal — telemarketing** | **< 350 kr** (intäkt 400 kr) | Kalkyl i admin-portalen |
+| **Kostnad per bekräftat avtal — direktorder** | **< 300 kr** | Meta + admin-portalen |
+| Bekräftade avtal per vecka | 10 (mån 1) → 40+ (mån 3) | Partnerrapport |
+| ROAS retargeting mot bestall.html | > 3 | Meta + UTM |
+| Trustpilot-betyg | > 4,3 ⭐ (skyddar avslutsgraden i telefon) | Trustpilot |
 
 Spårning: Meta-pixel + Conversions API, UTM på alla länkar, unik kupongkod per kanal,
 lead-ID följer med från formulär → dialer → checkout (mät hela kedjan).

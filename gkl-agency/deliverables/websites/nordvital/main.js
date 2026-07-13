@@ -1,4 +1,17 @@
-// NordVital — delad JS: mobilmeny, FAQ-accordion, tävlingsquiz
+// NordVital — delad JS: mobilmeny, FAQ-accordion, tävlingsquiz, kassa
+
+// Prototyplagring för admin-portalen (/admin). I produktion ersätts detta av en
+// riktig backend/databas — localStorage delas bara inom samma webbläsare.
+function nvSave(key, record) {
+  const list = JSON.parse(localStorage.getItem(key) || '[]');
+  list.unshift(Object.assign({
+    id: 'NV-' + Date.now().toString(36).toUpperCase(),
+    tid: new Date().toISOString(),
+    kalla: new URLSearchParams(location.search).get('utm_source') || 'direkt',
+    status: 'ny',
+  }, record));
+  localStorage.setItem(key, JSON.stringify(list));
+}
 
 // Mobilmeny
 const burger = document.getElementById('burger');
@@ -39,6 +52,13 @@ if (leadForm) {
     e.preventDefault();
     // TODO före lansering: skicka leadet till backend/e-postverktyg (t.ex. Klaviyo/Mailchimp API)
     // och trigga Meta-pixelns Lead-event: fbq('track', 'Lead');
+    nvSave('nv_leads', {
+      namn: document.getElementById('name').value,
+      epost: document.getElementById('email').value,
+      telefon: document.getElementById('phone').value,
+      samtyckeEpost: leadForm.querySelector('input[name="consent_email"]').checked,
+      samtyckeTelefon: leadForm.querySelector('input[name="consent_phone"]').checked,
+    });
     goToStep(6);
   });
 }
@@ -78,6 +98,14 @@ if (orderForm) {
     // TODO före lansering: skicka ordern till leverantörspartnern (API eller e-post) som
     // packar, skickar och fakturerar (dropship). Ingen betalning sker på sajten.
     // Trigga Meta-pixelns köp-event: fbq('track', 'Purchase', {value: 99, currency: 'SEK'});
+    nvSave('nv_ordrar', {
+      produkt: document.querySelector('.pick.selected').dataset.name,
+      namn: document.getElementById('o-name').value,
+      epost: document.getElementById('o-email').value,
+      telefon: document.getElementById('o-phone').value,
+      adress: `${document.getElementById('o-street').value}, ${document.getElementById('o-zip').value} ${document.getElementById('o-city').value}`,
+      status: 'skickad till partner',
+    });
     document.getElementById('orderView').style.display = 'none';
     document.getElementById('confirmView').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -59,5 +59,14 @@ Detta är en **reglerad bransch** (hälsa). Innan något publiceras:
 - `brief.md` — analys av de två referenssidorna + affärsmodell + namnförslag
 - `marketing-plan.md` — komplett Facebook/Instagram-plan med funnel, budget och innehållskalender
 
+## Partneravtal (överenskommet)
+- **Ersättning: 400 kr per bekräftat avtal** (engångs). Partnern har allt juridiskt säljansvar,
+  kundservice, ångerrätt, fakturering. **Vi äger leadsen.**
+- Kvar att klargöra: när 400 kr utlöses, ev. clawback vid ånger — se brief.md
+
 ## Leveranser
-- Hemsida: `deliverables/websites/nordvital/` — index.html (hem), produkter.html, kampanj.html (leadgen)
+- Hemsida: `deliverables/websites/nordvital/` — index.html (hem), produkter.html,
+  kampanj.html (Hälsoklubben leadgen), bestall.html (direktorder mot faktura)
+- Admin-portal: `deliverables/websites/nordvital/admin/` — back office för leads/ordrar/ersättning.
+  Prototyp på localStorage (formulären på sajten skriver till den); byts mot riktig databas
+  (Supabase/Airtable) före lansering. PIN 1234 — endast demo, kräver riktig auth i produktion.
