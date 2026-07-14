@@ -163,10 +163,11 @@ Historik: första arbetsnamnet var *NordVital*, men nordvital.com visade sig upp
 valde **Vivanord** — "viva" = liv, fungerar på både svenska och spanska (bonus för ES-målgruppen)
 — och **vivanord.se är bekräftat ledigt**. Allt material är omdöpt.
 
-**Gör OMEDELBART (lediga domäner försvinner):**
-1. Registrera **vivanord.se** (huvuddomän) + **vivanord.nu** som skydd (~200 kr/år styck)
-2. Sök "vivanord" i PRV:s varumärkesdatabas + EUIPO eSearch — juridisk slutkoll före lansering
-3. Överväg varumärkesregistrering hos PRV (~2 000 kr, klass 5 kosttillskott) — billig försäkring
+**Status domän:**
+1. ✅ **vivanord.se KÖPT** (2026-07-14) — sajten kan kopplas, se `DEPLOY.md`
+2. ☐ Sök "vivanord" i PRV:s varumärkesdatabas + EUIPO eSearch — juridisk slutkoll före lansering
+3. ☐ Överväg varumärkesregistrering hos PRV (~2 000 kr, klass 5 kosttillskott) — billig försäkring
+4. ☐ Ev. vivanord.nu som skydd (~200 kr/år)
 
 **Varumärkeslöfte:** "Kosttillskott utan krångel — och utan fula trick."
 

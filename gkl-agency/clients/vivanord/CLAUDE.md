@@ -7,11 +7,12 @@
 som återförsäljare åt Medvital. Kundanskaffning via tävlings-/leadgenereringssidor i stil
 med sparklubben.nu — under eget varumärke.
 
-- **Status:** Byggt och namnbeslutat — inväntar domänregistrering + Medvitals produktkatalog
+- **Status:** Byggt, namnbeslutat och **vivanord.se KÖPT (2026-07-14)** — nästa: publicera sajten
+  (se `DEPLOY.md`) + Medvitals produktkatalog
 - **Språk:** Svenska (+ spansk sajtversion för spansktalande i Sverige)
 - **Kanaler:** Facebook + Instagram (Meta Ads) → landningssidor → telemarketing (Medvital) + e-post/SMS
-- **Varumärkesnamn:** **Vivanord — BESLUTAT 2026-07-14.** vivanord.se bekräftat ledigt;
-  registrera direkt + slutkoll i PRV/EUIPO (se brief.md). Tidigare arbetsnamn: NordVital.
+- **Varumärkesnamn:** **Vivanord** — beslutat, domän säkrad. Kvar: PRV/EUIPO-slutkoll.
+  Tidigare arbetsnamn: NordVital.
 
 ## Affärsmodell (kort)
 **Dropship-samarbete:** vi processar INGA betalningar och håller inget lager. Beställningar
