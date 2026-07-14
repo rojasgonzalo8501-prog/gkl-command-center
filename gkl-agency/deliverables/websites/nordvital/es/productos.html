@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Productos — NordVital | Suplementos por suscripción</title>
+  <meta name="description" content="Immun+, Belleza Interior, Flex+ y Equilibrio Digestivo. Prueba la primera caja por 99 kr — sin permanencia, paga contra factura." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <!-- REVENDEDOR DE MEDVITAL: igual que la versión sueca — Flex+ sincronizado con datos
+       confirmados; nombres/precios de los demás productos pendientes de la ficha de Medvital.
+       Ver clients/nordvital/medvital-katalog.md -->
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">Nord<span>Vital</span></a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="productos.html" class="active">Productos</a></li>
+        <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+        <li><a href="index.html#faq">Preguntas frecuentes</a></li>
+        <li><a href="campana.html">Sorteo 🎁</a></li>
+        <li><a href="../produkter.html" lang="sv">🇸🇪 Svenska</a></li>
+      </ul>
+      <a href="#immun" class="btn btn--primary btn--sm nav__cta">Pruébalo por 99 kr</a>
+      <button class="nav__burger" id="burger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" style="padding: 56px 0 48px;">
+    <div class="container hero__inner">
+      <div class="hero__badge">Prueba la primera caja por 99 kr · Paga contra factura</div>
+      <h1>Nuestros productos</h1>
+      <p class="hero__sub">
+        Cuatro suplementos para el día a día — todos con nutrientes cuyos efectos tienen
+        declaraciones de salud aprobadas en la UE. Siempre sin permanencia.
+      </p>
+    </div>
+  </header>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="container trust-bar__inner">
+      <div class="trust-item"><span class="dot"></span> Entrega en el buzón</div>
+      <div class="trust-item"><span class="dot"></span> Sin permanencia</div>
+      <div class="trust-item"><span class="dot"></span> Cancela cuando quieras</div>
+      <div class="trust-item"><span class="dot"></span> 14 días de desistimiento</div>
+    </div>
+  </div>
+
+  <!-- PRODUCTOS -->
+  <section class="section" id="immun">
+    <div class="container">
+      <div class="products-grid" style="grid-template-columns: 1fr; max-width: 760px; margin: 0 auto;">
+        <div class="product-card">
+          <div class="product-card__icon">🛡️</div>
+          <h3>Immun+</h3>
+          <div class="product-card__tag">30 dosis diarias · Betaglucanos · Vitamina C · Vitamina D · Zinc · Selenio</div>
+          <div class="product-card__claim">
+            Apoyo diario para las defensas. Las vitaminas C y D, el zinc y el selenio contribuyen al
+            funcionamiento normal del sistema inmunitario. El zinc y el selenio contribuyen además a la
+            protección de las células frente al estrés oxidativo.
+          </div>
+          <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
+            <strong>Dosis recomendada:</strong> 1 cápsula al día con la comida.
+          </p>
+          <div class="product-card__price"><strong>99 kr</strong> el primer mes, después <strong>399 kr/mes</strong> · nueva caja cada 3 meses</div>
+          <a href="pedido.html?produkt=immun" class="btn btn--primary">Pedir ahora — 99 kr</a>
+        </div>
+
+        <div class="product-card" id="belleza">
+          <div class="product-card__icon">✨</div>
+          <h3>Belleza Interior</h3>
+          <div class="product-card__tag">30 dosis diarias · Ácido hialurónico · Biotina · Q10 · Zinc · Vitamina C</div>
+          <div class="product-card__claim">
+            La belleza empieza por dentro. La biotina y el zinc contribuyen al mantenimiento del cabello
+            y la piel en condiciones normales. La vitamina C contribuye a la formación normal de colágeno
+            para el funcionamiento normal de la piel.
+          </div>
+          <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
+            <strong>Dosis recomendada:</strong> 1 cápsula al día.
+          </p>
+          <div class="product-card__price"><strong>99 kr</strong> el primer mes, después <strong>399 kr/mes</strong> · nueva caja cada 3 meses</div>
+          <a href="pedido.html?produkt=skonhet" class="btn btn--primary">Pedir ahora — 99 kr</a>
+        </div>
+
+        <div class="product-card" id="flex">
+          <div class="product-card__icon">🦴</div>
+          <h3>Flex+</h3>
+          <div class="product-card__tag">MSM · Glucosamina · Condroitina · Colágeno marino · Escaramujo · Jengibre · C · D · Zinc · Manganeso</div>
+          <div class="product-card__claim">
+            Para quienes quieren cuidar articulaciones, movilidad y función diaria — especialmente con
+            rigidez o articulaciones que envejecen. La vitamina C contribuye a la formación normal de
+            colágeno, importante para huesos y cartílago. La vitamina D, el zinc y el manganeso
+            contribuyen al mantenimiento de los huesos en condiciones normales.
+          </div>
+          <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
+            <strong>Contenido:</strong> metilsulfonilmetano (MSM), glucosamina, condroitina, colágeno
+            marino hidrolizado (<strong>pescado</strong>), extracto de escaramujo, extracto de raíz de
+            jengibre, vitaminas C, D y E, zinc, manganeso, calcio.
+            <em>Contiene pescado. La declaración nutricional completa acompaña al producto.</em>
+          </p>
+          <div class="product-card__price"><strong>99 kr</strong> el primer mes, después <strong>399 kr/mes</strong> · nueva caja cada 3 meses</div>
+          <a href="pedido.html?produkt=leder" class="btn btn--primary">Pedir ahora — 99 kr</a>
+        </div>
+
+        <div class="product-card" id="digestivo">
+          <div class="product-card__icon">🌿</div>
+          <h3>Equilibrio Digestivo</h3>
+          <div class="product-card__tag">Bacterias lácticas · Enzimas de fruta · Magnesio</div>
+          <div class="product-card__claim">
+            Apoyo diario para el estómago. Bacterias lácticas y enzimas de fruta combinadas con magnesio,
+            que contribuye a disminuir el cansancio y la fatiga y al funcionamiento normal de los músculos.
+          </div>
+          <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
+            <strong>Contenido:</strong> bacterias lácticas, enzimas de fruta y magnesio.
+            <em>Nombre del producto y declaración completa pendientes de la ficha de Medvital.</em>
+          </p>
+          <div class="product-card__price"><strong>99 kr</strong> el primer mes, después <strong>399 kr/mes</strong> · nueva caja cada 3 meses</div>
+          <a href="pedido.html?produkt=mage" class="btn btn--primary">Pedir ahora — 99 kr</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONDICIONES EN BREVE -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="section__head">
+        <div class="section__eyebrow">Antes de pedir</div>
+        <h2>La suscripción en resumen</h2>
+        <p>Queremos que sepas exactamente a qué dices que sí — por eso está aquí, claro, antes de la compra.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__num">✓</div>
+          <h3>Mes de prueba: 99 kr</h3>
+          <p>Pagas contra factura incluida en la caja. Si no cancelas, la compra se convierte automáticamente en una suscripción: una caja con tres dosis mensuales cada tres meses, facturada a 1 197 kr (399 kr/mes) + 59 kr de envío, con recordatorio por correo antes de cada entrega.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">✓</div>
+          <h3>Sin permanencia</h3>
+          <p>Pausa o cancela cuando quieras — incluso durante el mes de prueba. Basta un correo o una llamada, y es efectivo de inmediato.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">✓</div>
+          <h3>14 días de desistimiento</h3>
+          <p>Según la ley sueca de contratos a distancia, contados desde que recibes tu primera entrega.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container cta-banner">
+      <h2>¿No sabes cuál elegir?</h2>
+      <p>Participa en nuestro sorteo mensual y recibe además nuestra guía "Cómo elegir un buen suplemento".</p>
+      <a href="campana.html" class="btn btn--gold">Ir al sorteo 🎁</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">Nord<span>Vital</span></div>
+          <p>Suplementos suecos por suscripción — sin permanencia, sin complicaciones y sin condiciones ocultas. Atención en español.</p>
+        </div>
+        <div>
+          <h4>Comprar</h4>
+          <ul>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="campana.html">Sorteo</a></li>
+            <li><a href="index.html#faq">Preguntas frecuentes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Condiciones</h4>
+          <ul>
+            <li><a href="#">Condiciones de compra</a></li>
+            <li><a href="#">Política de privacidad</a></li>
+            <li><a href="#">Derecho de desistimiento</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        © 2026 NordVital AB (nombre provisional) · Los suplementos alimenticios no sustituyen una dieta variada. No superar la dosis diaria recomendada. Mantener fuera del alcance de los niños pequeños.
+      </div>
+    </div>
+  </footer>
+
+  <script src="../main.js"></script>
+</body>
+</html>

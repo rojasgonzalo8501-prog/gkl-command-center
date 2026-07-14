@@ -46,8 +46,9 @@ bekräftas direkt med Medvital innan sidorna går live.
 - **Frakt: minst 59 kr** porto/hantering på ALLA leveranser om inget annat avtalats — **INTE fri frakt!**
 - 14 dagars ångerrätt från mottagandet (distansavtalslagen)
 - Leverans till brevlådan inom 1–3 vardagar, endast Sverige
-- Leveransintervall: automatiska leveranser "med jämna mellanrum" — källor nämner både
-  "var 8:e vecka" och "påfyllning var tredje månad" ⚠️ bekräfta intervall per produkt
+- Leveransintervall: **bekräftat av kunden 2026-07-14 — första månaden 99 kr, därefter var
+  tredje månad.** Sajten visar 1 197 kr (3 × 399 kr) + 59 kr frakt per kvartalsleverans —
+  ⚠️ bekräfta fakturabeloppet per leverans med Medvital (vår tolkning av "399 kr/mån")
 
 ## Konsekvenser för våra sidor (åtgärdat)
 1. "Fri frakt"-löften borttagna — ersatta med "+ 59 kr frakt per leverans"

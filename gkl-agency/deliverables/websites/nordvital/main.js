@@ -4,10 +4,13 @@
 // riktig backend/databas — localStorage delas bara inom samma webbläsare.
 function nvSave(key, record) {
   const list = JSON.parse(localStorage.getItem(key) || '[]');
+  const kalla = new URLSearchParams(location.search).get('utm_source') || 'direkt';
+  // Spanska sidor märker sina leads/ordrar med "· ES" så telefonteamet ringer på rätt språk
+  const sprak = document.documentElement.lang === 'es' ? ' · ES' : '';
   list.unshift(Object.assign({
     id: 'NV-' + Date.now().toString(36).toUpperCase(),
     tid: new Date().toISOString(),
-    kalla: new URLSearchParams(location.search).get('utm_source') || 'direkt',
+    kalla: kalla + sprak,
     status: 'ny',
   }, record));
   localStorage.setItem(key, JSON.stringify(list));
@@ -87,9 +90,11 @@ if (orderForm) {
   const preselected = document.querySelector(`.pick[data-product="${param}"]`) || picks[0];
   selectProduct(preselected);
 
-  // Nästa leveransdatum = idag + 30 dagar (visas före köp — krav på tydlighet)
+  // Nästa leveransdatum = idag + 30 dagar (första lådan täcker en månad, sedan kvartalsvis).
+  // Datumformat följer sidans språk (svenska/spanska).
+  const locale = document.documentElement.lang === 'es' ? 'es-ES' : 'sv-SE';
   const next = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
-    .toLocaleDateString('sv-SE', { day: 'numeric', month: 'long', year: 'numeric' });
+    .toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' });
   document.getElementById('sum-next').textContent = next;
   document.getElementById('c-next').textContent = next;
 

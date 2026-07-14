@@ -140,6 +140,18 @@ leadaffären; bra samtal höjer avslutsgraden och därmed våra 400 kr-utbetalni
 4. **UGC-stil:** "5 saker jag kollar innan jag köper kosttillskott" (talande huvud, bygger trovärdighet)
 5. **Erbjudande:** "Prova första lådan för 99 kr. Ingen bindningstid."
 
+### Spansktalande målgrupp 🇪🇸 (egen kampanjgren)
+Sajten finns på spanska (`/es/` — inicio, productos, sorteo, pedido) och spanska leads
+märks automatiskt "· ES" i admin-portalen så de kan ringas på spanska.
+- **Målgrupp:** Meta-inriktning Sverige + språk "Spanish (all)". Stor, underbetjänad grupp
+  med LÅG konkurrens = billigare CPM/CPL än den svenska breda målgruppen
+- **Kreativ:** egna annonser på spanska (aldrig maskinöversatta svenska annonser rakt av) —
+  vinkel "Suplementos suecos de calidad — ahora con atención en español"
+- **Destination:** annons på spanska → `es/campana.html` (sorteo) eller `es/pedido.html`
+- **Krav:** spansktalande säljare hos Medvital för ES-märkta leads — annars säljs de inte;
+  ta upp i partneravtalet. Kundservice på spanska är också säljargumentet på sajten
+- **Test:** kör som egen kampanj med egen budget (start 100–150 kr/dag) så CPL kan jämföras rent
+
 ### Organiskt FB/IG (NordVital-kontona)
 4–5 inlägg/vecka: 2 utbildande · 1 bakom kulisserna · 1 socialt bevis/tävling · 1 erbjudande.
 Stories dagligen (omröstningar, quiz med tävlingsfrågorna, countdown till månadsdragning).
