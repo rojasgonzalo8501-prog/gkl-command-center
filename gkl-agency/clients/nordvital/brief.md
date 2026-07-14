@@ -165,6 +165,22 @@ domän (nordvital.se), Bolagsverket, PRV:s varumärkesdatabas, EUIPO.
 
 **Varumärkeslöfte:** "Kosttillskott utan krångel — och utan fula trick."
 
+### Domänbeslut (2026-07-14): nordvital.com är upptaget
+.com spelar liten roll för svensk D2C — all trafik kommer från annonser (klick, ingen skriver
+in adressen) och trovärdighetsstandarden i Sverige är **.se** (Medvital kör .se). Beslutsregel:
+
+1. **Kolla vad nordvital.com ÄR** (öppna sidan): aktivt hälso-/kosttillskottsbolag i EU =
+   varumärkeskollision → **byt namn nu** (billigt idag, brutalt dyrt efter lansering).
+   Parkerad sida eller obesläktad bransch utanför Norden = låg risk, namnet kan behållas.
+2. **Kolla nordvital.se** på internetstiftelsen.se: ledigt → registrera .se som huvuddomän
+   + .nu som skydd (~200 kr/år styck) och strunta i .com. Upptaget av hälsobolag → byt namn.
+3. **Kolla PRV:s varumärkesdatabas + EUIPO eSearch** på "nordvital" — det juridiska avgör,
+   inte domänerna.
+4. .nu som huvuddomän är OK i Sverige (Sparklubben kör .nu i exakt denna nisch) men bara om
+   .se är borta OCH ingen konflikt finns enligt 1+3.
+
+**Om namnbyte:** alternativen nedan gäller — sajtbytet är en sökning/ersättning (~15 min).
+
 **Visuell identitet (används på hemsidan):**
 - Färger: djupgrön (#1d5c4d) + krämvit (#faf7f2) + accent salviagrön (#7fb069)
 - Typografi: ren sans-serif, mycket luft, stora trygghetsbadges
