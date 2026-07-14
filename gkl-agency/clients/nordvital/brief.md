@@ -108,11 +108,14 @@ Självkostnad per säljbart lead = (annonskostnad + verktyg + egen tid)
 - Ta betalt för **exklusivitet** (endast partnern får ringa) och **färskhet** (< 72 h — äldre leads
   är värda hälften). Golv: aldrig under självkostnad + 50 %.
 
-**⚠️ GDPR vid leadförsäljning:** samtyckestexten på Hälsoklubben säger idag att *NordVital* får
-kontakta per telefon. Så länge partnern ringer **på NordVitals uppdrag** (personuppgiftsbiträde,
-kräver biträdesavtal) är det OK. Ska leads **överlåtas** till partnern som egen part måste
-samtyckestexten uppdateras till att nämna partnern/kategorin — annars är listan olaglig att sälja.
-Lös detta i partneravtalet innan första listan levereras.
+**GDPR — LÖST (överlåtelse-modellen):** leadsen ÖVERLÅTS till partnerbolaget som gör
+telefonmarknadsföringen i eget namn. Samtyckestexten på Hälsoklubben är uppdaterad så att
+telefonrutan uttryckligen samtycker till överlåtelse till partnern, som blir självständigt
+personuppgiftsansvarig.
+**⚠️ BLOCKERANDE före lansering:** platshållaren **[PARTNERBOLAGET AB]** i kampanj.html
+(två ställen: samtyckesrutan + personuppgiftstexten) MÅSTE ersättas med partnerns juridiska
+bolagsnamn — samtycke till överlåtelse är bara giltigt om mottagaren namnges. Leads insamlade
+FÖRE namnbytet får inte överlåtas.
 
 ### Enhetsekonomi — kalkylen med 400 kr/avtal (VIKTIG!)
 Intäkten är fast: 400 kr per bekräftat avtal. Då MÅSTE kostnaden per avtal under 400 kr:

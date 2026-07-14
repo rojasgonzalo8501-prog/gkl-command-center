@@ -62,9 +62,11 @@ Detta är en **reglerad bransch** (hälsa). Innan något publiceras:
 ## Partneravtal (överenskommet)
 - **Ersättning: 400 kr per bekräftat avtal** (engångs), **utbetalas vid bekräftat avtal**.
   Partnern har allt juridiskt säljansvar, kundservice, ångerrätt, fakturering. **Vi äger leadsen.**
-- **Intäktsström 2: leadlistan säljs per lead.** Endast leads med telefonsamtycke är säljbara.
-  Pris = självkostnad + minst 50 % — räknas i admin-portalens Leadkalkyl-flik. GDPR: partnern
-  måste ringa som personuppgiftsbiträde åt NordVital (biträdesavtal!) annars krävs ny samtyckestext.
+- **Intäktsström 2: leadlistan säljs per lead** och **ÖVERLÅTS** till partnerbolaget som ringer
+  i eget namn. Endast leads med telefonsamtycke är säljbara. Pris = självkostnad + minst 50 % —
+  räknas i admin-portalens Leadkalkyl-flik. Samtyckestexten på kampanj.html är skriven för
+  överlåtelse — **platshållaren [PARTNERBOLAGET AB] måste ersättas med partnerns juridiska namn
+  före lansering**, annars är överlåtelsen ogiltig enligt GDPR.
 - Kvar att klargöra: ev. clawback vid ånger, orderformat, pris per lead — se brief.md
 
 ## Leveranser
