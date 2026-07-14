@@ -1,17 +1,17 @@
-# CLAUDE.md — NordVital (arbetsnamn)
+# CLAUDE.md — Vivanord
 
 > **Viktigt:** Svensk kund — allt innehåll skrivs på **svenska** om inget annat sägs.
 
 ## Vad är detta?
-**NordVital** är arbetsnamnet för en ny D2C-kund som säljer **kosttillskott på prenumeration** i Sverige.
-Samma produkttyp och affärsmodell som **medvital.se** (referens 1), med kundanskaffning via
-tävlings-/leadgenereringssidor i stil med **sparklubben.nu/ICA** (referens 2) — men under eget varumärke.
+**Vivanord** är en ny D2C-kund som säljer **kosttillskott på prenumeration** i Sverige,
+som återförsäljare åt Medvital. Kundanskaffning via tävlings-/leadgenereringssidor i stil
+med sparklubben.nu — under eget varumärke.
 
-- **Status:** Uppstart — varumärke, hemsida och marknadsföringsplan byggs
-- **Språk:** Svenska
-- **Kanaler:** Facebook + Instagram (Meta Ads) → landningssidor → e-post/SMS
-- **Varumärkesnamn:** "NordVital" är ETT ARBETSNAMN. Kolla domän (.se), Bolagsverket/PRV och
-  varumärkesregister innan lansering. Alternativ finns i `brief.md`.
+- **Status:** Byggt och namnbeslutat — inväntar domänregistrering + Medvitals produktkatalog
+- **Språk:** Svenska (+ spansk sajtversion för spansktalande i Sverige)
+- **Kanaler:** Facebook + Instagram (Meta Ads) → landningssidor → telemarketing (Medvital) + e-post/SMS
+- **Varumärkesnamn:** **Vivanord — BESLUTAT 2026-07-14.** vivanord.se bekräftat ledigt;
+  registrera direkt + slutkoll i PRV/EUIPO (se brief.md). Tidigare arbetsnamn: NordVital.
 
 ## Affärsmodell (kort)
 **Dropship-samarbete:** vi processar INGA betalningar och håller inget lager. Beställningar
@@ -22,7 +22,7 @@ Skriv aldrig in kortbetalning/Klarna i sajt eller copy — betalning sker alltid
 Två varumärken, ett system:
 - **Hälsoklubben** (kampanj.html) — fristående leadgen-sida: tävling/quiz som samlar leads
   med separata samtycken för e-post respektive telefon/SMS
-- **NordVital** (nordvital.se) — huvudvarumärket: produkter, villkor, FAQ, Mina sidor
+- **Vivanord** (vivanord.se) — huvudvarumärket: produkter, villkor, FAQ, Mina sidor
 
 Flödet: FB/IG-annonser → Hälsoklubben → leads med telefonsamtycke **överlåts till Medvital,
 som ringer i eget namn och säljer** → vi får betalt per lead + 400 kr per bekräftat avtal.
@@ -40,7 +40,7 @@ Vi är **återförsäljare åt Medvital** och säljer leadlistan till dem. Konse
 
 ## Positionering — VIKTIGT
 Branschen (inklusive partnern) har Trustpilot-klagomål om aggressiv telefonförsäljning.
-**NordVital säljer via telefon MEN gör det schysst — det är hela värdet vi tillför Medvital:**
+**Vivanord säljer via telefon MEN gör det schysst — det är hela värdet vi tillför Medvital:**
 - "Avsluta med ett klick" — ingen bindningstid, uppsägning via självservice
 - Skriftlighetskravet som löfte: inget avtal förrän kunden bekräftat skriftligt efter samtalet
 - Schysst säljkodex: nej respekteras direkt, priset efter provmånaden sägs alltid oombett,
@@ -63,7 +63,7 @@ Detta är en **reglerad bransch** (hälsa). Innan något publiceras:
 5. **Konsumentskydd:** 14 dagars ångerrätt, tydliga prenumerationsvillkor FÖRE köp,
    uppsägning ska vara lika enkel som tecknande (Konsumentverkets krav).
 6. **Tävlingar:** Gratis deltagande + kunskapsmoment (frågor) = OK utan lotterilicens.
-   Tävlingsvillkor måste finnas länkade på kampanjsidan, med NordVital AB angiven som arrangör.
+   Tävlingsvillkor måste finnas länkade på kampanjsidan, med Vivanord AB angiven som arrangör.
 
 ## Filer i denna mapp
 - `brief.md` — analys av de två referenssidorna + affärsmodell + namnförslag
@@ -75,13 +75,12 @@ Detta är en **reglerad bransch** (hälsa). Innan något publiceras:
 - **Intäktsström 2: leadlistan säljs per lead** och **ÖVERLÅTS** till partnerbolaget som ringer
   i eget namn. Endast leads med telefonsamtycke är säljbara. Pris = självkostnad + minst 50 % —
   räknas i admin-portalens Leadkalkyl-flik. Samtyckestexten på kampanj.html är skriven för
-  överlåtelse — **platshållaren [PARTNERBOLAGET AB] måste ersättas med partnerns juridiska namn
-  före lansering**, annars är överlåtelsen ogiltig enligt GDPR.
+  överlåtelse och namnger Medvital Sverige AB (org.nr 559421-2093) som mottagare ✅
 - Kvar att klargöra: ev. clawback vid ånger, orderformat, pris per lead — se brief.md
 
 ## Leveranser
-- Hemsida: `deliverables/websites/nordvital/` — index.html (hem), produkter.html,
+- Hemsida: `deliverables/websites/vivanord/` — index.html (hem), produkter.html,
   kampanj.html (Hälsoklubben leadgen), bestall.html (direktorder mot faktura)
-- Admin-portal: `deliverables/websites/nordvital/admin/` — back office för leads/ordrar/ersättning.
+- Admin-portal: `deliverables/websites/vivanord/admin/` — back office för leads/ordrar/ersättning.
   Prototyp på localStorage (formulären på sajten skriver till den); byts mot riktig databas
   (Supabase/Airtable) före lansering. PIN 1234 — endast demo, kräver riktig auth i produktion.

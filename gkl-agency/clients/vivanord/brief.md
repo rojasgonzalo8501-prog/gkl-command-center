@@ -1,4 +1,4 @@
-# Brief — NordVital (arbetsnamn)
+# Brief — Vivanord
 
 ## Uppdraget
 Ny kund med samma produkter och affärsmodell som Medvital, under eget varumärke.
@@ -23,7 +23,7 @@ till dem. Det ändrar tre saker:
    vår påhittade Energi-produkt. Full faktalista + kvarvarande luckor: **`medvital-katalog.md`**.
    Kvar att bekräfta: produktnamn/pris för skönhet, immun, mage; leveransintervall; kampanjpriset
    99 kr för första lådan (vårt förslag); definitiv uppsägningsregel.
-3. **Vårt varumärke NordVital är förvärvskanalen** — Medvital får en fräsch avsändare mot
+3. **Vårt varumärke Vivanord är förvärvskanalen** — Medvital får en fräsch avsändare mot
    målgrupper där deras eget namn är bränt (Trustpilot). Vår schyssta profil skyddar båda.
 
 ## Analys av Medvital.se (nu partnerns modell — vi ärver den)
@@ -44,7 +44,7 @@ med prenumerationsmodell.
 
 **Deras förtroendeproblem (nu VÅRT gemensamma problem):** Trustpilot visar återkommande klagomål
 om aggressiv telefonförsäljning och att äldre känner sig lurade. Som deras återförsäljare och
-leadleverantör är detta affärsrisken att hantera: NordVitals fräscha varumärke + schysst säljkodex
+leadleverantör är detta affärsrisken att hantera: Vivanords fräscha varumärke + schysst säljkodex
 är precis det Medvital köper av oss. Om leads vi levererar ringer och klagar på oss, dör affären —
 håll den schyssta profilen av rent kommersiella skäl.
 
@@ -158,28 +158,17 @@ Intäkten är fast: 400 kr per bekräftat avtal. Då MÅSTE kostnaden per avtal 
 
 ## Varumärke
 
-**Arbetsnamn: NordVital** — nordiskt, hälsa, trovärdigt. MÅSTE verifieras innan lansering:
-domän (nordvital.se), Bolagsverket, PRV:s varumärkesdatabas, EUIPO.
+### Namnet är BESLUTAT: Vivanord ✅ (2026-07-14)
+Historik: första arbetsnamnet var *NordVital*, men nordvital.com visade sig upptaget. Kunden
+valde **Vivanord** — "viva" = liv, fungerar på både svenska och spanska (bonus för ES-målgruppen)
+— och **vivanord.se är bekräftat ledigt**. Allt material är omdöpt.
 
-**Alternativ om namnet är upptaget:** Vivanord, Friskform, Livskraft Nordic, Purnord, Vitalum.
+**Gör OMEDELBART (lediga domäner försvinner):**
+1. Registrera **vivanord.se** (huvuddomän) + **vivanord.nu** som skydd (~200 kr/år styck)
+2. Sök "vivanord" i PRV:s varumärkesdatabas + EUIPO eSearch — juridisk slutkoll före lansering
+3. Överväg varumärkesregistrering hos PRV (~2 000 kr, klass 5 kosttillskott) — billig försäkring
 
 **Varumärkeslöfte:** "Kosttillskott utan krångel — och utan fula trick."
-
-### Domänbeslut (2026-07-14): nordvital.com är upptaget
-.com spelar liten roll för svensk D2C — all trafik kommer från annonser (klick, ingen skriver
-in adressen) och trovärdighetsstandarden i Sverige är **.se** (Medvital kör .se). Beslutsregel:
-
-1. **Kolla vad nordvital.com ÄR** (öppna sidan): aktivt hälso-/kosttillskottsbolag i EU =
-   varumärkeskollision → **byt namn nu** (billigt idag, brutalt dyrt efter lansering).
-   Parkerad sida eller obesläktad bransch utanför Norden = låg risk, namnet kan behållas.
-2. **Kolla nordvital.se** på internetstiftelsen.se: ledigt → registrera .se som huvuddomän
-   + .nu som skydd (~200 kr/år styck) och strunta i .com. Upptaget av hälsobolag → byt namn.
-3. **Kolla PRV:s varumärkesdatabas + EUIPO eSearch** på "nordvital" — det juridiska avgör,
-   inte domänerna.
-4. .nu som huvuddomän är OK i Sverige (Sparklubben kör .nu i exakt denna nisch) men bara om
-   .se är borta OCH ingen konflikt finns enligt 1+3.
-
-**Om namnbyte:** alternativen nedan gäller — sajtbytet är en sökning/ersättning (~15 min).
 
 **Visuell identitet (används på hemsidan):**
 - Färger: djupgrön (#1d5c4d) + krämvit (#faf7f2) + accent salviagrön (#7fb069)

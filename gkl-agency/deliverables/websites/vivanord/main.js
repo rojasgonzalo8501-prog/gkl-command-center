@@ -1,4 +1,4 @@
-// NordVital — delad JS: mobilmeny, FAQ-accordion, tävlingsquiz, kassa
+// Vivanord — delad JS: mobilmeny, FAQ-accordion, tävlingsquiz, kassa
 
 // Prototyplagring för admin-portalen (/admin). I produktion ersätts detta av en
 // riktig backend/databas — localStorage delas bara inom samma webbläsare.
@@ -8,7 +8,7 @@ function nvSave(key, record) {
   // Spanska sidor märker sina leads/ordrar med "· ES" så telefonteamet ringer på rätt språk
   const sprak = document.documentElement.lang === 'es' ? ' · ES' : '';
   list.unshift(Object.assign({
-    id: 'NV-' + Date.now().toString(36).toUpperCase(),
+    id: 'VN-' + Date.now().toString(36).toUpperCase(),
     tid: new Date().toISOString(),
     kalla: kalla + sprak,
     status: 'ny',

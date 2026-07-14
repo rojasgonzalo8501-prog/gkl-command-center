@@ -1,4 +1,4 @@
-# Fullständig marknadsföringsplan — NordVital
+# Fullständig marknadsföringsplan — Vivanord
 
 **Modell:** D2C-kosttillskott på prenumeration (utan bindningstid) — **dropship-samarbete:**
 partnern sköter lager, leverans, fakturering, kundservice, ångerrätt och allt juridiskt säljansvar;
@@ -17,8 +17,8 @@ Två varumärken, ett system — vi är återförsäljare åt Medvital Sverige A
 
 ```
 ┌─────────────────────────────┐        ┌──────────────────────────────┐
-│  HÄLSOKLUBBEN (leadmotor)   │        │  NORDVITAL (huvudvarumärke)  │
-│  Fristående kampanjsida     │        │  nordvital.se                │
+│  HÄLSOKLUBBEN (leadmotor)   │        │  VIVANORD (huvudvarumärke)  │
+│  Fristående kampanjsida     │        │  vivanord.se                │
 │  Tävling: 4 frågor + vinst  │        │  Produkter, villkor, FAQ,    │
 │  Samlar: namn, e-post,      │        │  Mina sidor, köp direkt      │
 │  telefon + SAMTYCKEN        │        │                              │
@@ -37,8 +37,8 @@ Två varumärken, ett system — vi är återförsäljare åt Medvital Sverige A
 ```
 
 **Varför två varumärken:** Hälsoklubben kan köra breda, billiga tävlingskampanjer utan att
-belasta NordVitals varumärke, och samma leadmotor kan återanvändas för framtida kunder/produkter.
-NordVital AB står alltid som arrangör i villkoren (lagkrav) — men annonsestetiken är separat.
+belasta Vivanords varumärke, och samma leadmotor kan återanvändas för framtida kunder/produkter.
+Vivanord AB står alltid som arrangör i villkoren (lagkrav) — men annonsestetiken är separat.
 
 ---
 
@@ -155,7 +155,7 @@ pausad och avlänkad tills Medvital bekräftat spansktalande säljare för telef
 - **Fas 2 (senare):** aktivera `es/campana.html` (sorteo) när spansktalande säljare finns hos
   Medvital — ES-märkta leads (admin-portalen taggar dem automatiskt) är värdelösa i luren utan det
 
-### Organiskt FB/IG (NordVital-kontona)
+### Organiskt FB/IG (Vivanord-kontona)
 4–5 inlägg/vecka: 2 utbildande · 1 bakom kulisserna · 1 socialt bevis/tävling · 1 erbjudande.
 Stories dagligen (omröstningar, quiz med tävlingsfrågorna, countdown till månadsdragning).
 30-dagarskalender: se tidigare version i git-historiken — återanvänd vecka 1–4-strukturen.
@@ -195,7 +195,7 @@ Stories dagligen (omröstningar, quiz med tävlingsfrågorna, countdown till må
 
 ### Tävlingen (Hälsoklubben)
 - [ ] Gratis deltagande + kunskapsmoment = ingen lotterilicens krävs
-- [ ] Villkor publicerade: arrangör (NordVital AB), period, vinster, urvalsmetod, 18-årsgräns
+- [ ] Villkor publicerade: arrangör (Vivanord AB), period, vinster, urvalsmetod, 18-årsgräns
 - [ ] Samtyckesrutor: separata, ej förkryssade, tydliga om VAD man tackar ja till (e-post resp. telefon)
 
 ### Produkter & påståenden

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>NordVital Admin — Leads & Ordrar</title>
+<title>Vivanord Admin — Leads & Ordrar</title>
 <style>
   :root {
     --bg: #0f1614; --panel: #18211e; --border: #2a3833; --ink: #e8efec; --soft: #8fa39c;
@@ -86,7 +86,7 @@
 <div id="lockScreen">
   <div class="lock-card">
     <div style="font-size:34px;">🔐</div>
-    <h1>NordVital Admin</h1>
+    <h1>Vivanord Admin</h1>
     <p>Ange PIN-kod (prototyp: 1234)</p>
     <input type="password" id="pin" inputmode="numeric" maxlength="4" autofocus />
     <button class="btn primary" style="width:100%;" onclick="unlock()">Logga in</button>
@@ -94,7 +94,7 @@
 </div>
 
 <header>
-  <div class="logo">Nord<span>Vital</span> Admin <span class="tag">Back office — leads & ordrar</span></div>
+  <div class="logo">Viva<span>nord</span> Admin <span class="tag">Back office — leads & ordrar</span></div>
   <div class="header-actions">
     <button class="btn" onclick="seedDemo()">Ladda demodata</button>
     <button class="btn" onclick="exportCSV()">Exportera CSV</button>
@@ -320,7 +320,7 @@ function exportCSV() {
   ).join('\n');
   const a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' }));
-  a.download = `nordvital-${view}-${new Date().toISOString().slice(0, 10)}.csv`;
+  a.download = `vivanord-${view}-${new Date().toISOString().slice(0, 10)}.csv`;
   a.click();
 }
 
@@ -341,18 +341,18 @@ function seedDemo() {
     ['Lars Nyström', 'lars.n@example.com', '070-4443322', false, true, 'facebook', 'bekräftad', 26],
     ['Karin Ek', 'karin.e@example.com', '', true, false, 'instagram', 'nej', 30],
   ].map(([namn, epost, telefon, se, st, kalla, status, h], i) => ({
-    id: 'NV-DEMO-L' + i, tid: new Date(now - h * 3600e3).toISOString(),
+    id: 'VN-DEMO-L' + i, tid: new Date(now - h * 3600e3).toISOString(),
     namn, epost, telefon, samtyckeEpost: se, samtyckeTelefon: st, kalla, status,
   }));
   const demoOrdrar = [
     ['Immun+', 'Peter Holm', 'peter.h@example.com', '070-1112233', 'Storgatan 4, 111 22 Stockholm', 'bekräftad', 20],
     ['Energi & Balans', 'Sofia Berg', 'sofia.b@example.com', '073-3334455', 'Kyrkvägen 9, 856 33 Sundsvall', 'skickad till partner', 2],
   ].map(([produkt, namn, epost, telefon, adress, status, h], i) => ({
-    id: 'NV-DEMO-O' + i, tid: new Date(now - h * 3600e3).toISOString(),
+    id: 'VN-DEMO-O' + i, tid: new Date(now - h * 3600e3).toISOString(),
     produkt, namn, epost, telefon, adress, kalla: 'direkt', status,
   }));
-  save('nv_leads', demoLeads.concat(load('nv_leads').filter((l) => !l.id.startsWith('NV-DEMO'))));
-  save('nv_ordrar', demoOrdrar.concat(load('nv_ordrar').filter((o) => !o.id.startsWith('NV-DEMO'))));
+  save('nv_leads', demoLeads.concat(load('nv_leads').filter((l) => !l.id.startsWith('VN-DEMO'))));
+  save('nv_ordrar', demoOrdrar.concat(load('nv_ordrar').filter((o) => !o.id.startsWith('VN-DEMO'))));
   render();
 }
 
