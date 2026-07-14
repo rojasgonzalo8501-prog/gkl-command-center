@@ -13,7 +13,7 @@ admin-portalens Leadkalkyl-flik (golv: självkostnad + 50 %; riktmärke 25–75 
 
 ## 1. Systemet i helhet
 
-Två varumärken, ett system (samma upplägg som Medvital + Sparklubben):
+Två varumärken, ett system — vi är återförsäljare åt Medvital Sverige AB, som tar emot både ordrar och den överlåtna leadlistan:
 
 ```
 ┌─────────────────────────────┐        ┌──────────────────────────────┐
@@ -65,16 +65,21 @@ publicerade villkor + arrangör angiven + 18-årsgräns. Vinstskatt betalas av v
 
 ---
 
-## 3. Telemarketing — huvudsäljkanalen
+## 3. Telemarketing — huvudsäljkanalen (UTFÖRS AV MEDVITAL)
 
-### Upplägg
-- **Verktyg:** dialer med inspelning och lead-API (t.ex. Adversus eller LeadDesk — nordisk standard)
-- **Bemanning start:** 1–2 säljare (kan vara Gonzalo + inhyrd), skala till team när kalkylen bevisats
-- **Ringtider:** vardagar 09–20, lördag 10–15. Max 3 kontaktförsök per lead, sedan e-postflöde.
-- **Erbjudande i samtal:** provmånad 99 kr med fri frakt, därefter 249 kr/mån, ingen bindningstid
+**Rollfördelning:** leadsen överlåts till Medvital som ringer i eget namn med egna säljare.
+Manus, kodex och nyckeltal nedan är **vår rekommendation och våra kvalitetskrav** — skriv in dem
+i partneravtalet. Dåliga samtal på våra leads bränner vårt varumärke och sänker värdet på hela
+leadaffären; bra samtal höjer avslutsgraden och därmed våra 400 kr-utbetalningar.
+
+### Upplägg (rekommendation till Medvital)
+- **Ringtider:** vardagar 09–20, lördag 10–15. Max 3 kontaktförsök per lead, sedan retur till oss
+  för e-postflöde.
+- **Färskhet:** leads ska ringas inom 72 h från överlåtelse — kontaktgraden halveras efter en vecka
+- **Erbjudande i samtal:** Medvitals aktuella kampanjpris (synka med deras katalog)
 
 ### Samtalsmanus (grundflöde)
-1. **Öppning:** "Hej [namn]! Jag ringer från NordVital — du deltog i Hälsoklubbens tävling om
+1. **Öppning:** "Hej [namn]! Jag ringer från Medvital — du deltog i Hälsoklubbens tävling om
    presentkortet på 5 000 kr och tackade ja till att vi fick höras. Har du en minut?"
    *(Alltid: vem, varför, varifrån samtycket kommer. Respektera ett nej direkt.)*
 2. **Kvalificering:** "Kul! Du svarade rätt på frågorna — får jag fråga, tar du några vitaminer
@@ -90,7 +95,7 @@ publicerade villkor + arrangör angiven + 18-årsgräns. Vinstskatt betalas av v
    du ser hela erbjudandet och bekräftar med ett klick. Beställningen gäller först när du bekräftat."
 6. **Efter samtal:** obekräftade avslut får 1 påminnelse-SMS efter 24 h, sedan e-postflödet.
 
-### Schysst säljkodex (varumärkesskydd — Medvitals Trustpilot är varningen)
+### Schysst säljkodex (varumärkesskydd — branschens Trustpilot-rykte är varningen, och vår schyssta profil är precis det partnern köper av oss)
 - Ett nej respekteras omedelbart och loggas — personen rings aldrig igen
 - Ingen press på personer som verkar osäkra eller förvirrade; misstänkt förvirring = avbryt artigt
 - Aldrig mörka priset efter provmånaden — säg alltid "sen 249 kr i månaden" oombett

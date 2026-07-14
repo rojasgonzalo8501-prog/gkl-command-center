@@ -10,7 +10,25 @@ Vi bygger: varumärke, hemsida och marknadsföring via Facebook + Instagram.
 
 ---
 
-## Analys av referens 1: Medvital.se
+## PARTNERN ÄR MEDVITAL — vi är deras återförsäljare
+
+**Avslöjat 2026-07-14:** "referenssidan" medvital.se är i själva verket vår partner.
+**Vi blir återförsäljare åt Medvital Sverige AB (org.nr 559421-2093)** och säljer leadlistan
+till dem. Det ändrar tre saker:
+1. **Kritisera aldrig Medvital** i copy, annonser eller säljmaterial — de är uppdragsgivaren.
+   Den generiska formuleringen "branschen har fått dåligt rykte — vi gör tvärtom" är OK,
+   men aldrig något som pekar mot Medvital.
+2. **Produkter, priser och villkor på våra sidor måste synkas mot Medvitals riktiga katalog**
+   innan lansering — som återförsäljare får vi inte utlova annat än vad Medvital (juridisk
+   säljare) tillämpar. Känt hittills: Flex+ (leder) kostar **399 kr/mån** med leverans
+   **var 8:e vecka**, uppsägning senast **14 dagar före nästa leverans** via kundtjänst.
+   Våra nuvarande 99/249 kr och "uppsägning dagen före" är PLATSHÅLLARE.
+   → Begär av Medvital: produktblad, återförsäljarprislista, kampanjpris för första lådan,
+   exakta prenumerationsvillkor och produktbilder.
+3. **Vårt varumärke NordVital är förvärvskanalen** — Medvital får en fräsch avsändare mot
+   målgrupper där deras eget namn är bränt (Trustpilot). Vår schyssta profil skyddar båda.
+
+## Analys av Medvital.se (nu partnerns modell — vi ärver den)
 
 **Vad de är:** Medvital Sverige AB (org.nr 559421-2093, Stockholm). Svenskt kosttillskottsbolag
 med prenumerationsmodell.
@@ -26,9 +44,11 @@ med prenumerationsmodell.
 - Endast leverans inom Sverige
 - Enkel, trygg ton: "Enkelt att ta hand om sin hälsa"
 
-**Deras svaghet (utnyttja denna):** Trustpilot visar återkommande klagomål om aggressiv
-telefonförsäljning, dyra SMS-erbjudanden och att äldre känner sig lurade. Företag i denna nisch
-har ett förtroendeproblem. **Vår öppning: bygg varumärket på transparens och enkel uppsägning.**
+**Deras förtroendeproblem (nu VÅRT gemensamma problem):** Trustpilot visar återkommande klagomål
+om aggressiv telefonförsäljning och att äldre känner sig lurade. Som deras återförsäljare och
+leadleverantör är detta affärsrisken att hantera: NordVitals fräscha varumärke + schysst säljkodex
+är precis det Medvital köper av oss. Om leads vi levererar ringer och klagar på oss, dör affären —
+håll den schyssta profilen av rent kommersiella skäl.
 
 ## Analys av referens 2: Sparklubben.nu/ICA
 

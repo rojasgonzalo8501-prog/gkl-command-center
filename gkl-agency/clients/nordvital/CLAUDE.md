@@ -24,13 +24,23 @@ Två varumärken, ett system:
   med separata samtycken för e-post respektive telefon/SMS
 - **NordVital** (nordvital.se) — huvudvarumärket: produkter, villkor, FAQ, Mina sidor
 
-Flödet: FB/IG-annonser → Hälsoklubben → leads med telefonsamtycke → **telemarketing säljer
-provmånaden (huvudsäljkanal)** → prenumeration utan bindningstid, leverans i brevlådan var 30:e dag.
-Leads utan köp går till e-post/SMS-flöden och Meta-retargeting mot produktsidan.
+Flödet: FB/IG-annonser → Hälsoklubben → leads med telefonsamtycke **överlåts till Medvital,
+som ringer i eget namn och säljer** → vi får betalt per lead + 400 kr per bekräftat avtal.
+Leads utan telefonsamtycke stannar hos oss för e-post/SMS-flöden och Meta-retargeting mot
+produktsidan (direktordrar skickas till Medvital som dropship-ordrar).
+
+## PARTNERN ÄR MEDVITAL SVERIGE AB (org.nr 559421-2093)
+Vi är **återförsäljare åt Medvital** och säljer leadlistan till dem. Konsekvenser:
+- **Kritisera ALDRIG Medvital** i något material — de är uppdragsgivaren. Generisk bransch-
+  kritik ("branschen har dåligt rykte") är OK, riktad kritik är förbjuden.
+- Produkter/priser/villkor på sajten är PLATSHÅLLARE tills Medvitals riktiga katalog kommer
+  (känt: Flex+ 399 kr/mån, leverans var 8:e vecka, uppsägning 14 dgr före leverans).
+  Synka villkorstexterna mot Medvitals köpvillkor — de är juridisk säljare.
+- Telefonsamtycket på kampanj.html namnger nu Medvital som mottagare av överlåtna leads ✅
 
 ## Positionering — VIKTIGT
-Medvital har återkommande Trustpilot-klagomål om aggressiv telefonförsäljning och svåravslutade
-prenumerationer. **NordVital säljer via telefon MEN gör det schysst — det är differentieringen:**
+Branschen (inklusive partnern) har Trustpilot-klagomål om aggressiv telefonförsäljning.
+**NordVital säljer via telefon MEN gör det schysst — det är hela värdet vi tillför Medvital:**
 - "Avsluta med ett klick" — ingen bindningstid, uppsägning via självservice
 - Skriftlighetskravet som löfte: inget avtal förrän kunden bekräftat skriftligt efter samtalet
 - Schysst säljkodex: nej respekteras direkt, priset efter provmånaden sägs alltid oombett,
