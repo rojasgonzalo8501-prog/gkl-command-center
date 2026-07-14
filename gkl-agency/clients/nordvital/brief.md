@@ -18,13 +18,11 @@ till dem. Det ändrar tre saker:
 1. **Kritisera aldrig Medvital** i copy, annonser eller säljmaterial — de är uppdragsgivaren.
    Den generiska formuleringen "branschen har fått dåligt rykte — vi gör tvärtom" är OK,
    men aldrig något som pekar mot Medvital.
-2. **Produkter, priser och villkor på våra sidor måste synkas mot Medvitals riktiga katalog**
-   innan lansering — som återförsäljare får vi inte utlova annat än vad Medvital (juridisk
-   säljare) tillämpar. Känt hittills: Flex+ (leder) kostar **399 kr/mån** med leverans
-   **var 8:e vecka**, uppsägning senast **14 dagar före nästa leverans** via kundtjänst.
-   Våra nuvarande 99/249 kr och "uppsägning dagen före" är PLATSHÅLLARE.
-   → Begär av Medvital: produktblad, återförsäljarprislista, kampanjpris för första lådan,
-   exakta prenumerationsvillkor och produktbilder.
+2. **Produkter, priser och villkor synkade mot det som är bekräftat** (2026-07-14): sajten visar
+   nu Flex+ med riktiga ingredienser, 399 kr/mån + 59 kr frakt, och Medvitals magprodukt ersätter
+   vår påhittade Energi-produkt. Full faktalista + kvarvarande luckor: **`medvital-katalog.md`**.
+   Kvar att bekräfta: produktnamn/pris för skönhet, immun, mage; leveransintervall; kampanjpriset
+   99 kr för första lådan (vårt förslag); definitiv uppsägningsregel.
 3. **Vårt varumärke NordVital är förvärvskanalen** — Medvital får en fräsch avsändare mot
    målgrupper där deras eget namn är bränt (Trustpilot). Vår schyssta profil skyddar båda.
 
@@ -82,7 +80,7 @@ Vår roll = varumärke + trafik + leads + försäljning. Partnerns roll = produk
 | Del | Val |
 |---|---|
 | Produkt | 4 kosttillskott: Immun, Skönhet, Leder, Energi (samma kategorier som Medvital) |
-| Pris mot kund | 249 kr/mån per produkt, första lådan 99 kr, fri frakt, betalning mot faktura |
+| Pris mot kund | 399 kr/mån + 59 kr frakt per produkt (Flex+ bekräftat — se medvital-katalog.md), första lådan 99 kr (vårt kampanjförslag ⚠️), betalning mot faktura |
 | Modell | Prenumeration utan bindningstid, leverans i brevlådan var 30:e dag (partnern skickar) |
 | Kundanskaffning | FB/IG-annonser → Hälsoklubben (tävling/quiz) → **telemarketing (huvudsäljkanal)** |
 | Orderflöde | Sajt/telemarketing → order till partnern (API/e-post) → partnern levererar + fakturerar |

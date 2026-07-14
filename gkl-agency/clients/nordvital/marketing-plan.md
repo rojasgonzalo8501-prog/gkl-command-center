@@ -85,12 +85,12 @@ leadaffären; bra samtal höjer avslutsgraden och därmed våra 400 kr-utbetalni
 2. **Kvalificering:** "Kul! Du svarade rätt på frågorna — får jag fråga, tar du några vitaminer
    eller tillskott idag?" *(lyssna, anteckna behov: energi/immun/leder/skönhet)*
 3. **Pitch (matcha behov):** "Då tror jag [produkt] passar dig. Det funkar så här: första månaden
-   99 kr med fri frakt, direkt i brevlådan. Sen 249 kr i månaden — men helt utan bindningstid,
+   99 kr, direkt i brevlådan. Sen 399 kr i månaden plus 59 kr frakt — men helt utan bindningstid,
    du avslutar med ett klick på Mina sidor om det inte känns rätt."
 4. **Invändningar:**
    - "Jag måste tänka" → "Absolut. Provmånaden finns just för det — testa 30 dagar för 99 kr, avsluta med ett klick om det inte passar."
    - "Är det en sån där prenumerationsfälla?" → "Nej, och jag förstår frågan — branschen har förtjänat den. Hos oss: inget avtal förrän du bekräftat skriftligt, påminnelse-mejl före varje debitering, uppsägning med ett klick."
-   - "För dyrt" → "249 kr är ungefär 8 kr om dagen, och du kan pausa månader du inte behöver."
+   - "För dyrt" → "399 kr är ungefär 13 kr om dagen, och du kan pausa eller hoppa över leveranser när du vill."
 5. **Avslut — SKRIFTLIGHETSKRAVET (lagkrav, se §6):** "Då skickar jag ett SMS nu med en länk där
    du ser hela erbjudandet och bekräftar med ett klick. Beställningen gäller först när du bekräftat."
 6. **Efter samtal:** obekräftade avslut får 1 påminnelse-SMS efter 24 h, sedan e-postflödet.
@@ -98,7 +98,7 @@ leadaffären; bra samtal höjer avslutsgraden och därmed våra 400 kr-utbetalni
 ### Schysst säljkodex (varumärkesskydd — branschens Trustpilot-rykte är varningen, och vår schyssta profil är precis det partnern köper av oss)
 - Ett nej respekteras omedelbart och loggas — personen rings aldrig igen
 - Ingen press på personer som verkar osäkra eller förvirrade; misstänkt förvirring = avbryt artigt
-- Aldrig mörka priset efter provmånaden — säg alltid "sen 249 kr i månaden" oombett
+- Aldrig mörka priset efter provmånaden — säg alltid "sen 399 kr i månaden plus frakt" oombett
 - Inga hälsopåståenden utanför EFSA-listan i samtal (säljare utbildas på tillåtna fraser, se §7)
 - Samtal spelas in (med upplysning) för kvalitet och tvistehantering
 
@@ -138,7 +138,7 @@ leadaffären; bra samtal höjer avslutsgraden och därmed våra 400 kr-utbetalni
 2. **Transparens:** "Kosttillskott på prenumeration — som du faktiskt kan avsluta med ett klick"
 3. **Bekvämlighet:** video där månadsdosen dimper ner i brevlådan — "aldrig mer glömma vitaminerna"
 4. **UGC-stil:** "5 saker jag kollar innan jag köper kosttillskott" (talande huvud, bygger trovärdighet)
-5. **Erbjudande:** "Prova första månaden för 99 kr. Fri frakt. Ingen bindningstid."
+5. **Erbjudande:** "Prova första lådan för 99 kr. Ingen bindningstid."
 
 ### Organiskt FB/IG (NordVital-kontona)
 4–5 inlägg/vecka: 2 utbildande · 1 bakom kulisserna · 1 socialt bevis/tävling · 1 erbjudande.
@@ -192,7 +192,7 @@ Stories dagligen (omröstningar, quiz med tävlingsfrågorna, countdown till må
 
 ### Prenumerationen
 - [ ] Automatisk övergång provmånad → löpande prenumeration tydligt angiven i kassan,
-      med obligatorisk kryssruta ("Jag förstår att köpet övergår i 249 kr/mån om jag inte avslutar")
+      med obligatorisk kryssruta ("Jag förstår att köpet övergår i 399 kr + frakt per leverans om jag inte avslutar")
 - [ ] Villkor synliga FÖRE köp (pris, intervall, uppsägning)
 - [ ] Uppsägning lika enkel som tecknande — självservice, ett klick
 - [ ] Påminnelse före debitering (minskar bestridanden + Konsumentverket-anmälningar)
