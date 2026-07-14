@@ -1,19 +1,37 @@
 // Vivanord — delad JS: mobilmeny, FAQ-accordion, tävlingsquiz, kassa
 
-// Prototyplagring för admin-portalen (/admin). I produktion ersätts detta av en
-// riktig backend/databas — localStorage delas bara inom samma webbläsare.
+// Lagring av leads/ordrar. Med Supabase konfigurerat (supabase-config.js) skickas
+// posten till databasen — annars prototypläge med enbart localStorage.
+// En lokal kopia sparas alltid som offline-skydd.
 function nvSave(key, record) {
-  const list = JSON.parse(localStorage.getItem(key) || '[]');
   const kalla = new URLSearchParams(location.search).get('utm_source') || 'direkt';
   // Spanska sidor märker sina leads/ordrar med "· ES" så telefonteamet ringer på rätt språk
   const sprak = document.documentElement.lang === 'es' ? ' · ES' : '';
-  list.unshift(Object.assign({
+  const rec = Object.assign({
     id: 'VN-' + Date.now().toString(36).toUpperCase(),
     tid: new Date().toISOString(),
     kalla: kalla + sprak,
-    status: 'ny',
-  }, record));
+    status: key === 'nv_ordrar' ? 'skickad till partner' : 'ny',
+  }, record);
+
+  const list = JSON.parse(localStorage.getItem(key) || '[]');
+  list.unshift(rec);
   localStorage.setItem(key, JSON.stringify(list));
+
+  const cfg = window.NV_SUPABASE;
+  if (cfg && cfg.url && cfg.anonKey) {
+    // RLS tillåter anon-nyckeln att ENBART lägga till rader — aldrig läsa/ändra
+    fetch(`${cfg.url}/rest/v1/${key === 'nv_leads' ? 'leads' : 'ordrar'}`, {
+      method: 'POST',
+      headers: {
+        apikey: cfg.anonKey,
+        Authorization: `Bearer ${cfg.anonKey}`,
+        'Content-Type': 'application/json',
+        Prefer: 'return=minimal',
+      },
+      body: JSON.stringify(rec),
+    }).catch((err) => console.error('Kunde inte spara till Supabase (lokal kopia finns):', err));
+  }
 }
 
 // Mobilmeny

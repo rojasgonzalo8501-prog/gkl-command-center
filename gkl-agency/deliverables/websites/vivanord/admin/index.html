@@ -146,6 +146,10 @@
   .lock-card p { color: var(--soft); font-size: 13px; margin-bottom: 18px; }
   .lock-card input { width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--ink); border-radius: 8px; padding: 11px; font-size: 16px; text-align: center; letter-spacing: 6px; margin-bottom: 12px; font-family: inherit; }
   .hidden { display: none !important; }
+  .lock-card input[type="email"], .lock-card input[type="password"].pw { text-align: left; letter-spacing: normal; font-size: 14px; }
+  .lock-err { color: var(--red); font-size: 12.5px; margin-top: 8px; min-height: 16px; }
+  .mode-tag { font-size: 10.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; border-radius: 999px; padding: 3px 10px; border: 1px solid var(--border); color: var(--soft); }
+  .mode-tag.live { color: var(--accent); border-color: var(--accent); }
 
   /* ---------- Mobil ---------- */
   @media (max-width: 760px) {
@@ -158,17 +162,21 @@
     .topbar { padding: 12px 16px; flex-wrap: wrap; } main { padding: 16px 16px 60px; }
   }
 </style>
+<script src="../supabase-config.js"></script>
 </head>
 <body>
 
-<!-- PIN-låsning — ENDAST prototyp. I produktion: riktig inloggning (t.ex. Supabase Auth). -->
+<!-- Inloggning: Supabase Auth när konfigurerat (supabase-config.js), annars PIN-prototyp -->
 <div id="lockScreen">
   <div class="lock-card">
     <div style="font-size:34px;">🔐</div>
     <h1>Vivanord Admin</h1>
-    <p>Ange PIN-kod (prototyp: 1234)</p>
+    <p id="lockHint">Ange PIN-kod (prototyp: 1234)</p>
     <input type="password" id="pin" inputmode="numeric" maxlength="4" autofocus />
+    <input type="email" id="sb-email" class="hidden" placeholder="E-postadress" autocomplete="username" />
+    <input type="password" id="sb-pass" class="pw hidden" placeholder="Lösenord" autocomplete="current-password" />
     <button class="btn primary" style="width:100%;" onclick="unlock()">Logga in</button>
+    <div class="lock-err" id="lockErr"></div>
   </div>
 </div>
 
@@ -185,10 +193,12 @@
   <div class="maincol">
     <header class="topbar">
       <h1 id="viewTitle">Översikt</h1>
+      <span class="mode-tag" id="modeTag">Prototyp</span>
       <div class="actions">
-        <button class="btn sm" onclick="seedDemo()">Ladda demodata</button>
+        <button class="btn sm hidden" id="refreshBtn" onclick="refresh()">↻ Uppdatera</button>
+        <button class="btn sm" id="demoBtn" onclick="seedDemo()">Ladda demodata</button>
         <button class="btn sm" id="exportBtn" onclick="exportCSV()">Exportera CSV</button>
-        <button class="btn sm danger" onclick="clearAll()">Rensa allt</button>
+        <button class="btn sm danger" id="clearBtn" onclick="clearAll()">Rensa allt</button>
       </div>
     </header>
     <main id="viewHost"></main>
@@ -207,21 +217,113 @@ let view = 'oversikt';
 let filters = { q: '', status: '', lang: '' };
 let expanded = null;
 
-/* ---------- Grund ---------- */
-function unlock() {
-  if (document.getElementById('pin').value === '1234') {
-    sessionStorage.setItem('nv_admin', '1');
-    document.getElementById('lockScreen').classList.add('hidden');
-  } else {
-    const p = document.getElementById('pin');
-    p.value = ''; p.placeholder = 'Fel kod';
+/* ---------- Datalager: Supabase (live) eller localStorage (prototyp) ---------- */
+const SB = (window.NV_SUPABASE && window.NV_SUPABASE.url && window.NV_SUPABASE.anonKey) ? window.NV_SUPABASE : null;
+const TABLE = { nv_leads: 'leads', nv_ordrar: 'ordrar' };
+const CACHE = { nv_leads: [], nv_ordrar: [] };
+
+const lsLoad = (k) => JSON.parse(localStorage.getItem(k) || '[]');
+const lsSave = (k, v) => localStorage.setItem(k, JSON.stringify(v));
+const load = (k) => CACHE[k];
+
+function sbFetch(path, opts = {}) {
+  const token = sessionStorage.getItem('nv_sb_token') || SB.anonKey;
+  return fetch(SB.url + path, Object.assign({}, opts, {
+    headers: Object.assign({
+      apikey: SB.anonKey,
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    }, opts.headers || {}),
+  }));
+}
+
+async function refresh(silent) {
+  if (!SB) {
+    CACHE.nv_leads = lsLoad('nv_leads');
+    CACHE.nv_ordrar = lsLoad('nv_ordrar');
+    render();
+    return;
+  }
+  try {
+    for (const k of ['nv_leads', 'nv_ordrar']) {
+      const res = await sbFetch(`/rest/v1/${TABLE[k]}?select=*&order=tid.desc`);
+      if (res.status === 401) { logout(); return; }
+      if (res.ok) CACHE[k] = await res.json();
+    }
+    render();
+    if (!silent) toast('Uppdaterat från databasen');
+  } catch (e) {
+    if (!silent) toast('Kunde inte nå databasen — försök igen');
   }
 }
-document.getElementById('pin').addEventListener('keydown', (e) => { if (e.key === 'Enter') unlock(); });
-if (sessionStorage.getItem('nv_admin') === '1') document.getElementById('lockScreen').classList.add('hidden');
 
-const load = (k) => JSON.parse(localStorage.getItem(k) || '[]');
-const save = (k, v) => localStorage.setItem(k, JSON.stringify(v));
+/* ---------- Inloggning: Supabase Auth eller PIN-prototyp ---------- */
+function setupLock() {
+  if (SB) {
+    document.getElementById('lockHint').textContent = 'Logga in med ditt admin-konto';
+    document.getElementById('pin').classList.add('hidden');
+    document.getElementById('sb-email').classList.remove('hidden');
+    document.getElementById('sb-pass').classList.remove('hidden');
+    document.getElementById('modeTag').textContent = 'Live · Supabase';
+    document.getElementById('modeTag').classList.add('live');
+    document.getElementById('refreshBtn').classList.remove('hidden');
+    // Demodata/rensning avstängt i live-läge — riktig data hanteras i databasen
+    document.getElementById('demoBtn').classList.add('hidden');
+    document.getElementById('clearBtn').classList.add('hidden');
+    if (sessionStorage.getItem('nv_sb_token')) enter();
+  } else if (sessionStorage.getItem('nv_admin') === '1') {
+    enter();
+  }
+}
+
+async function unlock() {
+  const err = document.getElementById('lockErr');
+  err.textContent = '';
+  if (!SB) {
+    if (document.getElementById('pin').value === '1234') {
+      sessionStorage.setItem('nv_admin', '1');
+      enter();
+    } else {
+      const p = document.getElementById('pin');
+      p.value = ''; p.placeholder = 'Fel kod';
+    }
+    return;
+  }
+  try {
+    const res = await fetch(`${SB.url}/auth/v1/token?grant_type=password`, {
+      method: 'POST',
+      headers: { apikey: SB.anonKey, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: document.getElementById('sb-email').value.trim(),
+        password: document.getElementById('sb-pass').value,
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok || !data.access_token) {
+      err.textContent = 'Fel e-post eller lösenord.';
+      return;
+    }
+    sessionStorage.setItem('nv_sb_token', data.access_token);
+    enter();
+  } catch (e) {
+    err.textContent = 'Kunde inte nå databasen — kontrollera anslutningen.';
+  }
+}
+
+function logout() {
+  sessionStorage.removeItem('nv_sb_token');
+  sessionStorage.removeItem('nv_admin');
+  document.getElementById('lockScreen').classList.remove('hidden');
+}
+
+function enter() {
+  document.getElementById('lockScreen').classList.add('hidden');
+  refresh(true);
+  if (SB) setInterval(() => refresh(true), 60000); // auto-uppdatera varje minut i live-läge
+}
+
+['pin', 'sb-pass'].forEach((id) =>
+  document.getElementById(id).addEventListener('keydown', (e) => { if (e.key === 'Enter') unlock(); }));
 const langOf = (r) => (r.kalla || '').includes('ES') ? 'ES' : 'SV';
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmtDate = (iso) => new Date(iso).toLocaleString('sv-SE', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
@@ -427,11 +529,28 @@ function rerenderKeepFocus(inputEl) {
 
 function toggleDetail(id) { expanded = expanded === id ? null : id; render(); }
 
-function setStatus(key, id, status) {
-  const list = load(key);
-  const item = list.find((x) => x.id === id);
-  if (item) { item.status = status; save(key, list); toast(`Status uppdaterad: ${status}`); }
+async function setStatus(key, id, status) {
+  const item = CACHE[key].find((x) => x.id === id);
+  if (!item) return;
+  const prev = item.status;
+  item.status = status;
   render();
+  if (SB) {
+    const res = await sbFetch(`/rest/v1/${TABLE[key]}?id=eq.${encodeURIComponent(id)}`, {
+      method: 'PATCH',
+      headers: { Prefer: 'return=minimal' },
+      body: JSON.stringify({ status }),
+    }).catch(() => null);
+    if (!res || !res.ok) {
+      item.status = prev;
+      render();
+      toast('Kunde inte spara statusändringen — försök igen');
+      return;
+    }
+  } else {
+    lsSave(key, CACHE[key]);
+  }
+  toast(`Status uppdaterad: ${status}`);
 }
 
 /* ---------- Leadkalkyl ---------- */
@@ -515,15 +634,18 @@ function exportCSV() {
 }
 
 function clearAll() {
+  if (SB) return; // avstängt i live-läge
   if (confirm('Rensa ALLA leads och ordrar i den här webbläsaren?')) {
     localStorage.removeItem('nv_leads');
     localStorage.removeItem('nv_ordrar');
+    CACHE.nv_leads = []; CACHE.nv_ordrar = [];
     toast('Allt rensat');
     render();
   }
 }
 
 function seedDemo() {
+  if (SB) return; // avstängt i live-läge
   const now = Date.now(), h = 3600e3, d = 24 * h;
   const demoLeads = [
     ['Anna Lindqvist', 'anna.l@example.com', '070-1234567', true, true, 'facebook', 'ny', 2 * h],
@@ -550,12 +672,16 @@ function seedDemo() {
     id: 'VN-DEMO-O' + i, tid: new Date(now - ago).toISOString(),
     produkt, namn, epost, telefon, adress, kalla, status,
   }));
-  save('nv_leads', demoLeads.concat(load('nv_leads').filter((l) => !String(l.id).startsWith('VN-DEMO'))));
-  save('nv_ordrar', demoOrdrar.concat(load('nv_ordrar').filter((o) => !String(o.id).startsWith('VN-DEMO'))));
+  CACHE.nv_leads = demoLeads.concat(lsLoad('nv_leads').filter((l) => !String(l.id).startsWith('VN-DEMO')));
+  CACHE.nv_ordrar = demoOrdrar.concat(lsLoad('nv_ordrar').filter((o) => !String(o.id).startsWith('VN-DEMO')));
+  lsSave('nv_leads', CACHE.nv_leads);
+  lsSave('nv_ordrar', CACHE.nv_ordrar);
   toast('Demodata laddad');
   render();
 }
 
+setupLock();
+if (!SB) { CACHE.nv_leads = lsLoad('nv_leads'); CACHE.nv_ordrar = lsLoad('nv_ordrar'); }
 switchView('oversikt');
 </script>
 </body>
