@@ -140,17 +140,20 @@ leadaffären; bra samtal höjer avslutsgraden och därmed våra 400 kr-utbetalni
 4. **UGC-stil:** "5 saker jag kollar innan jag köper kosttillskott" (talande huvud, bygger trovärdighet)
 5. **Erbjudande:** "Prova första lådan för 99 kr. Ingen bindningstid."
 
-### Spansktalande målgrupp 🇪🇸 (egen kampanjgren)
-Sajten finns på spanska (`/es/` — inicio, productos, sorteo, pedido) och spanska leads
-märks automatiskt "· ES" i admin-portalen så de kan ringas på spanska.
+### Spansktalande målgrupp 🇪🇸 (egen kampanjgren — DIREKTKÖP FÖRST)
+Sajten finns på spanska (`/es/` — inicio, productos, pedido). **Strategi: driv trafiken direkt
+till köp på `es/pedido.html`** — ingen leadgen på spanska i fas 1 (sorteo-sidan är byggd men
+pausad och avlänkad tills Medvital bekräftat spansktalande säljare för telefonuppföljning).
 - **Målgrupp:** Meta-inriktning Sverige + språk "Spanish (all)". Stor, underbetjänad grupp
-  med LÅG konkurrens = billigare CPM/CPL än den svenska breda målgruppen
+  med LÅG konkurrens = billigare CPM än den svenska breda målgruppen
+- **Kampanjmål:** Köp (pixeloptimerad) direkt mot `es/pedido.html` — direktordrar är dessutom
+  vår mest lönsamma kanal (ingen säljartid, hela 400 kr-ersättningen minus annonskostnad)
 - **Kreativ:** egna annonser på spanska (aldrig maskinöversatta svenska annonser rakt av) —
   vinkel "Suplementos suecos de calidad — ahora con atención en español"
-- **Destination:** annons på spanska → `es/campana.html` (sorteo) eller `es/pedido.html`
-- **Krav:** spansktalande säljare hos Medvital för ES-märkta leads — annars säljs de inte;
-  ta upp i partneravtalet. Kundservice på spanska är också säljargumentet på sajten
-- **Test:** kör som egen kampanj med egen budget (start 100–150 kr/dag) så CPL kan jämföras rent
+- **Test:** egen kampanj med egen budget (start 100–150 kr/dag) så kostnad per avtal kan
+  jämföras rent mot den svenska grenen
+- **Fas 2 (senare):** aktivera `es/campana.html` (sorteo) när spansktalande säljare finns hos
+  Medvital — ES-märkta leads (admin-portalen taggar dem automatiskt) är värdelösa i luren utan det
 
 ### Organiskt FB/IG (NordVital-kontona)
 4–5 inlägg/vecka: 2 utbildande · 1 bakom kulisserna · 1 socialt bevis/tävling · 1 erbjudande.
