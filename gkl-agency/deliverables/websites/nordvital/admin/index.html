@@ -54,6 +54,21 @@
   .pill.bekraftad { background: rgba(217,164,65,.15); color: var(--gold); }
 
   .empty { text-align: center; padding: 44px 20px; color: var(--soft); }
+
+  .calc { padding: 22px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 26px; }
+  @media (max-width: 760px) { .calc { grid-template-columns: 1fr; } }
+  .calc h3 { font-size: 14px; margin-bottom: 12px; color: var(--soft); text-transform: uppercase; letter-spacing: 1px; }
+  .calc-field { margin-bottom: 13px; }
+  .calc-field label { display: block; font-size: 12.5px; color: var(--soft); margin-bottom: 4px; }
+  .calc-field input { width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--ink); border-radius: 8px; padding: 9px 12px; font-family: inherit; font-size: 15px; }
+  .calc-out { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 12px; }
+  .calc-out .row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; }
+  .calc-out .row.big { font-size: 17px; font-weight: 800; border-top: 1px solid var(--border); margin-top: 6px; padding-top: 10px; }
+  .calc-out .row.big span:last-child { color: var(--gold); }
+  .price-table { width: 100%; border-collapse: collapse; }
+  .price-table th, .price-table td { padding: 8px 10px; font-size: 13.5px; border-bottom: 1px solid var(--border); text-align: right; }
+  .price-table th:first-child, .price-table td:first-child { text-align: left; }
+  .price-table .rec td { color: var(--green); font-weight: 800; }
   .note { font-size: 12px; color: var(--soft); margin-top: 16px; line-height: 1.6; }
   .note strong { color: var(--gold); }
 
@@ -93,9 +108,10 @@
   <div class="tabs">
     <button class="tab active" data-view="leads" onclick="switchView('leads')">📋 Leads</button>
     <button class="tab" data-view="ordrar" onclick="switchView('ordrar')">📦 Ordrar</button>
+    <button class="tab" data-view="kalkyl" onclick="switchView('kalkyl')">🧮 Leadkalkyl</button>
   </div>
 
-  <div class="toolbar">
+  <div class="toolbar" id="toolbar">
     <input type="search" id="search" placeholder="Sök namn, e-post, telefon..." oninput="render()" />
     <select id="statusFilter" onchange="render()">
       <option value="">Alla statusar</option>
@@ -137,9 +153,12 @@ function save(key, list) { localStorage.setItem(key, JSON.stringify(list)); }
 function switchView(v) {
   view = v;
   document.querySelectorAll('.tab').forEach((t) => t.classList.toggle('active', t.dataset.view === v));
-  const filter = document.getElementById('statusFilter');
-  const statuses = v === 'leads' ? LEAD_STATUSES : ORDER_STATUSES;
-  filter.innerHTML = '<option value="">Alla statusar</option>' + statuses.map((s) => `<option>${s}</option>`).join('');
+  document.getElementById('toolbar').style.display = v === 'kalkyl' ? 'none' : 'flex';
+  if (v !== 'kalkyl') {
+    const filter = document.getElementById('statusFilter');
+    const statuses = v === 'leads' ? LEAD_STATUSES : ORDER_STATUSES;
+    filter.innerHTML = '<option value="">Alla statusar</option>' + statuses.map((s) => `<option>${s}</option>`).join('');
+  }
   render();
 }
 
@@ -175,6 +194,7 @@ function setStatus(key, id, status) {
 
 function render() {
   renderStats();
+  if (view === 'kalkyl') { renderCalc(); return; }
   const q = document.getElementById('search').value.toLowerCase();
   const sf = document.getElementById('statusFilter').value;
   const key = view === 'leads' ? 'nv_leads' : 'nv_ordrar';
@@ -208,7 +228,89 @@ function render() {
   document.getElementById('tableHost').innerHTML = `<table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>`;
 }
 
+// Leadkalkyl: vad kostar en lead oss → vad ska leadlistan kosta partnern?
+const CALC_DEFAULTS = { annons: 3000, leads: 200, ovrigt: 500, tidTim: 5, timkostnad: 300, telAndel: 60 };
+
+function calcInputs() {
+  return JSON.parse(localStorage.getItem('nv_kalkyl') || JSON.stringify(CALC_DEFAULTS));
+}
+
+function renderCalc() {
+  const c = calcInputs();
+  // Förifyll samtyckesandel från riktig data om det finns leads
+  const leads = load('nv_leads');
+  const liveAndel = leads.length >= 10
+    ? Math.round(100 * leads.filter((l) => l.samtyckeTelefon).length / leads.length) : null;
+
+  const totalCost = c.annons + c.ovrigt + c.tidTim * c.timkostnad;
+  const perLead = c.leads ? totalCost / c.leads : 0;
+  const saljbara = Math.round(c.leads * c.telAndel / 100);
+  const perSaljbar = saljbara ? totalCost / saljbara : 0;
+  const priceRow = (label, m, rec) => {
+    const pris = Math.ceil(perSaljbar * (1 + m / 100));
+    return `<tr class="${rec ? 'rec' : ''}"><td>${label}</td><td>${pris} kr</td>
+      <td>${(pris - perSaljbar).toFixed(0)} kr</td><td>${((pris - perSaljbar) * saljbara).toLocaleString('sv-SE')} kr</td></tr>`;
+  };
+
+  document.getElementById('tableHost').innerHTML = `
+    <div class="calc">
+      <div>
+        <h3>Våra kostnader (per månad/kampanj)</h3>
+        <div class="calc-field"><label>Annonskostnad Meta (kr)</label>
+          <input type="number" id="k-annons" value="${c.annons}" oninput="saveCalc()" /></div>
+        <div class="calc-field"><label>Antal insamlade leads</label>
+          <input type="number" id="k-leads" value="${c.leads}" oninput="saveCalc()" /></div>
+        <div class="calc-field"><label>Övriga kostnader — verktyg, domän, e-postsystem (kr)</label>
+          <input type="number" id="k-ovrigt" value="${c.ovrigt}" oninput="saveCalc()" /></div>
+        <div class="calc-field"><label>Egen arbetstid (timmar)</label>
+          <input type="number" id="k-tid" value="${c.tidTim}" oninput="saveCalc()" /></div>
+        <div class="calc-field"><label>Värde per arbetstimme (kr)</label>
+          <input type="number" id="k-timkostnad" value="${c.timkostnad}" oninput="saveCalc()" /></div>
+        <div class="calc-field"><label>Andel leads med telefonsamtycke (%)${liveAndel !== null ? ` — live från era leads: ${liveAndel} %` : ''}</label>
+          <input type="number" id="k-tel" value="${c.telAndel}" oninput="saveCalc()" /></div>
+      </div>
+      <div>
+        <h3>Vad kostar en lead oss?</h3>
+        <div class="calc-out">
+          <div class="row"><span>Total kostnad</span><span>${totalCost.toLocaleString('sv-SE')} kr</span></div>
+          <div class="row"><span>Kostnad per lead (alla)</span><span>${perLead.toFixed(2)} kr</span></div>
+          <div class="row"><span>Säljbara leads (med telefonsamtycke)</span><span>${saljbara} st</span></div>
+          <div class="row big"><span>Självkostnad per säljbart lead</span><span>${perSaljbar.toFixed(2)} kr</span></div>
+        </div>
+        <h3>Prisförslag till partnern (per lead)</h3>
+        <table class="price-table">
+          <tr><th>Marginal</th><th>Pris/lead</th><th>Vinst/lead</th><th>Vinst totalt</th></tr>
+          ${priceRow('+50 %', 50, false)}
+          ${priceRow('+100 % (rekommenderat golv)', 100, true)}
+          ${priceRow('+150 %', 150, false)}
+        </table>
+        <p class="note" style="margin-top:12px;">
+          Riktmärke i Sverige: färska, exklusiva telefonsamtyckes-leads inom hälsa säljs normalt för
+          <strong>25–75 kr/st</strong>. Begär mer för exklusivitet (bara partnern får ringa) och färskhet
+          (&lt; 72 h). Sälj ALDRIG under självkostnad — och kom ihåg att bekräftade avtal dessutom
+          ger 400 kr styck ovanpå leadpriset.
+        </p>
+      </div>
+    </div>`;
+}
+
+function saveCalc() {
+  localStorage.setItem('nv_kalkyl', JSON.stringify({
+    annons: +document.getElementById('k-annons').value || 0,
+    leads: +document.getElementById('k-leads').value || 0,
+    ovrigt: +document.getElementById('k-ovrigt').value || 0,
+    tidTim: +document.getElementById('k-tid').value || 0,
+    timkostnad: +document.getElementById('k-timkostnad').value || 0,
+    telAndel: Math.min(100, +document.getElementById('k-tel').value || 0),
+  }));
+  // Rita bara om utdatat — behåll fokus i fältet användaren skriver i
+  const focused = document.activeElement && document.activeElement.id;
+  renderCalc();
+  if (focused) { const el = document.getElementById(focused); if (el) el.focus(); }
+}
+
 function exportCSV() {
+  if (view === 'kalkyl') return alert('Växla till Leads eller Ordrar för att exportera.');
   const key = view === 'leads' ? 'nv_leads' : 'nv_ordrar';
   const rows = load(key);
   if (!rows.length) return alert('Inget att exportera.');

@@ -3,7 +3,9 @@
 **Modell:** D2C-kosttillskott på prenumeration (utan bindningstid) — **dropship-samarbete:**
 partnern sköter lager, leverans, fakturering, kundservice, ångerrätt och allt juridiskt säljansvar;
 vi sköter varumärke, trafik, leads och försäljning. Inga betalningar processas på sajten.
-**Vår intäkt: 400 kr per bekräftat avtal.** Vi äger leadsen.
+**Vår intäkt — två strömmar:** 1) **400 kr per bekräftat avtal** (utbetalas vid bekräftelse) och
+2) **leadlistan säljs per lead** till partnern — pris sätts via självkostnadskalkylen i
+admin-portalens Leadkalkyl-flik (golv: självkostnad + 50 %; riktmärke 25–75 kr/lead). Vi äger leadsen.
 **Kanaler:** 1) Leadgenerering (Hälsoklubben) → 2) Telemarketing → 3) Meta Ads (FB/IG) → 4) E-post/SMS
 **Mål år 1:** 2 000 bekräftade avtal (= 800 000 kr) · kostnad per avtal < 350 kr · CPL < 12 kr
 

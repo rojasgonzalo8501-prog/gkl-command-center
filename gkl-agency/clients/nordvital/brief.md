@@ -73,17 +73,46 @@ Vår roll = varumärke + trafik + leads + försäljning. Partnerns roll = produk
 | Punkt | Utfall |
 |---|---|
 | Ersättning | **400 kr per bekräftat avtal** (engångsbelopp) |
+| Utbetalning | **Vid bekräftat avtal** — inte efter ångerfrist eller betald faktura ✅ |
 | Juridiskt säljansvar | Partnern |
 | Kundservice, ångerrätt, returer | Partnern |
 | Fakturering & betalrisk | Partnern |
 | Leads & leadregister | **Vi äger** — vår enda men viktigaste tillgång |
 
+> Utbetalning vid bekräftat avtal = bästa möjliga kassaflöde: pengarna kommer innan
+> annonsfakturan förfaller, så vinnande kampanjer kan skalas direkt utan att binda kapital.
+
 **Kvar att klargöra med partnern:**
-1. NÄR utlöses 400 kr — vid skriftligt bekräftat avtal, efter ångerfristens 14 dagar,
-   eller vid första betald faktura? (Stor skillnad i kassaflöde och risk)
-2. Clawback — dras ersättningen tillbaka vid ånger/obetald faktura?
-3. Orderformat (API/fil/e-post) + hur uppsägningar rapporteras tillbaka så vi inte ringer avslutade kunder
-4. Får vi använda leadsen för framtida egna/andra erbjudanden? (Vi äger dem — säkra det skriftligt)
+1. Clawback — dras ersättningen tillbaka vid ånger/obetald faktura? (Om nej: bekräftat avtal = säkrade
+   400 kr. Om ja: håll buffert och följ ånger-statusen i admin-portalen)
+2. Orderformat (API/fil/e-post) + hur uppsägningar rapporteras tillbaka så vi inte ringer avslutade kunder
+3. Får vi använda leadsen för framtida egna/andra erbjudanden? (Vi äger dem — säkra det skriftligt)
+4. **Pris per lead för leadlistan** — sätts efter vår självkostnadskalkyl, se nedan
+
+## Intäktsström 2: Leadlistan (betalt per lead)
+
+Utöver 400 kr/avtal säljer vi leadlistan till partnern **per lead**. Prissättningen görs i
+admin-portalens flik **🧮 Leadkalkyl** — mata in verkliga siffror så räknar den åt oss.
+
+**Formeln:**
+```
+Självkostnad per säljbart lead = (annonskostnad + verktyg + egen tid)
+                                 ÷ (antal leads × andel med telefonsamtycke)
+```
+- Bara leads med **telefonsamtycke** är säljbara till telemarketing — vid 60 % samtyckesandel är
+  självkostnaden per säljbart lead ~67 % högre än rå CPL. Räkna aldrig på rå CPL!
+- Räkneexempel: 3 000 kr annons + 500 kr verktyg + 5 h à 300 kr = 5 000 kr → 200 leads varav
+  120 säljbara → **självkostnad ~42 kr/säljbart lead** → pris till partnern 80–100 kr (+100 %)
+- Vid bättre CPL (10–15 kr rå) landar självkostnaden på 20–30 kr → pris 40–60 kr
+- **Riktmärke Sverige:** färska, exklusiva hälso-leads med telefonsamtycke säljs för 25–75 kr/st
+- Ta betalt för **exklusivitet** (endast partnern får ringa) och **färskhet** (< 72 h — äldre leads
+  är värda hälften). Golv: aldrig under självkostnad + 50 %.
+
+**⚠️ GDPR vid leadförsäljning:** samtyckestexten på Hälsoklubben säger idag att *NordVital* får
+kontakta per telefon. Så länge partnern ringer **på NordVitals uppdrag** (personuppgiftsbiträde,
+kräver biträdesavtal) är det OK. Ska leads **överlåtas** till partnern som egen part måste
+samtyckestexten uppdateras till att nämna partnern/kategorin — annars är listan olaglig att sälja.
+Lös detta i partneravtalet innan första listan levereras.
 
 ### Enhetsekonomi — kalkylen med 400 kr/avtal (VIKTIG!)
 Intäkten är fast: 400 kr per bekräftat avtal. Då MÅSTE kostnaden per avtal under 400 kr:

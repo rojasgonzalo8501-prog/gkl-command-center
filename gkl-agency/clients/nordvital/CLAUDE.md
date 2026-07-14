@@ -60,9 +60,12 @@ Detta är en **reglerad bransch** (hälsa). Innan något publiceras:
 - `marketing-plan.md` — komplett Facebook/Instagram-plan med funnel, budget och innehållskalender
 
 ## Partneravtal (överenskommet)
-- **Ersättning: 400 kr per bekräftat avtal** (engångs). Partnern har allt juridiskt säljansvar,
-  kundservice, ångerrätt, fakturering. **Vi äger leadsen.**
-- Kvar att klargöra: när 400 kr utlöses, ev. clawback vid ånger — se brief.md
+- **Ersättning: 400 kr per bekräftat avtal** (engångs), **utbetalas vid bekräftat avtal**.
+  Partnern har allt juridiskt säljansvar, kundservice, ångerrätt, fakturering. **Vi äger leadsen.**
+- **Intäktsström 2: leadlistan säljs per lead.** Endast leads med telefonsamtycke är säljbara.
+  Pris = självkostnad + minst 50 % — räknas i admin-portalens Leadkalkyl-flik. GDPR: partnern
+  måste ringa som personuppgiftsbiträde åt NordVital (biträdesavtal!) annars krävs ny samtyckestext.
+- Kvar att klargöra: ev. clawback vid ånger, orderformat, pris per lead — se brief.md
 
 ## Leveranser
 - Hemsida: `deliverables/websites/nordvital/` — index.html (hem), produkter.html,
