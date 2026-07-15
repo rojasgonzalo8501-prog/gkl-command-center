@@ -14,6 +14,7 @@
     --c-avatars:#a371f7; --c-trading:#3fb950; --c-youtube:#ff4444;
     --c-whoop:#00e5a0; --c-system:#6e7681;
     --c-andas:#ffa657; --c-exhale:#79c0ff; --c-brand:#f78166;
+    --c-vivanord:#7fb069;
   }
 
   body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; background:var(--bg); color:var(--text); height:100vh; display:flex; flex-direction:column; overflow:hidden; font-size:13px; }
@@ -322,9 +323,9 @@
 
 <script>
 // ── Config ────────────────────────────────────────────────
-const PC = { andasuthemma:'var(--c-andas)',exhaleplr:'var(--c-exhale)','gkl-agency':'var(--c-brand)',ecom:'var(--c-ecom)',avatars:'var(--c-avatars)',trading:'var(--c-trading)',youtube:'var(--c-youtube)',whoop:'var(--c-whoop)',system:'var(--c-system)',overview:'var(--c-overview)' };
+const PC = { andasuthemma:'var(--c-andas)',exhaleplr:'var(--c-exhale)','gkl-agency':'var(--c-brand)','merca-skroten':'var(--c-trading)',yaloyoga:'var(--c-whoop)',vivanord:'var(--c-vivanord)',ecom:'var(--c-ecom)',avatars:'var(--c-avatars)',trading:'var(--c-trading)',youtube:'var(--c-youtube)',whoop:'var(--c-whoop)',system:'var(--c-system)',overview:'var(--c-overview)' };
 const AT = { 'general-purpose':{label:'General Purpose',color:'var(--c-overview)'},'Explore':{label:'Explore',color:'var(--c-exhale)'},'Plan':{label:'Plan',color:'var(--c-avatars)'},'claude-code-guide':{label:'Code Guide',color:'var(--c-andas)'} };
-const CM = { andasuthemma:{emoji:'🏋️',color:'var(--c-andas)',desc:'Personal training & wellness coaching'},exhaleplr:{emoji:'🧘',color:'var(--c-exhale)',desc:'Breathwork & mindfulness platform'},'gkl-agency':{emoji:'🏢',color:'var(--c-brand)',desc:'Agency brand & website'},'merca-skroten':{emoji:'🚗',color:'var(--c-trading)',desc:'Car scrapping & Mercedes parts — Enköping, Sweden'},yaloyoga:{emoji:'🌿',color:'var(--c-whoop)',desc:'Sustainable cork yoga brand — app, courses & clothing'} };
+const CM = { andasuthemma:{emoji:'🏋️',color:'var(--c-andas)',desc:'Personal training & wellness coaching'},exhaleplr:{emoji:'🧘',color:'var(--c-exhale)',desc:'Breathwork & mindfulness platform'},'gkl-agency':{emoji:'🏢',color:'var(--c-brand)',desc:'Agency brand & website'},'merca-skroten':{emoji:'🚗',color:'var(--c-trading)',desc:'Car scrapping & Mercedes parts — Enköping, Sweden'},yaloyoga:{emoji:'🌿',color:'var(--c-whoop)',desc:'Sustainable cork yoga brand — app, courses & clothing'},vivanord:{emoji:'💊',color:'var(--c-vivanord)',desc:'Kosttillskott på prenumeration — Meta Ads reseller for Medvital (SV+ES)'} };
 const NP = {
   ecom:    {icon:'🛒',color:'var(--c-ecom)',    title:'E-Commerce',      desc:'Stores, products, and automated fulfilment pipelines with AI-driven product research.',       pillars:['🔍 Product & niche research','🏪 Store setup — Shopify / WooCommerce','📦 Supplier sourcing & dropship automation','📣 Paid ads + influencer seeding','📊 Analytics, pricing, inventory ops']},
   avatars: {icon:'🤖',color:'var(--c-avatars)', title:'AI Avatars',       desc:'Hyper-realistic AI avatars for brand representation and virtual influencer campaigns.',       pillars:['🎭 Avatar design & persona definition','🎬 Video generation (HeyGen / Runway)','🗣️ Voice cloning & lip-sync automation','📱 Multi-platform distribution','🤝 Brand deal strategy']},
@@ -335,7 +336,7 @@ const NP = {
 
 // ── State ─────────────────────────────────────────────────
 let S = { data:null, activity:[], agents:[], tokens:null, tasks:[], links:{} };
-let activeTab='overview', activeClient='andasuthemma', activeSTab='activity';
+let activeTab='overview', activeClient='vivanord', activeSTab='activity';
 
 // ── Clock ─────────────────────────────────────────────────
 setInterval(()=>{ document.getElementById('clock').textContent = new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit'}); },1000);
@@ -587,7 +588,7 @@ function renderOverview(el){
 // ── GKL Agency ────────────────────────────────────────────
 function renderGKL(el){
   const {projects}=S.data;
-  const cks=['andasuthemma','exhaleplr','gkl-agency','merca-skroten','yaloyoga'];
+  const cks=['vivanord','andasuthemma','exhaleplr','gkl-agency','merca-skroten','yaloyoga'];
   const m=CM[activeClient]; const proj=projects[activeClient]||{clientFiles:[],deliverables:[]};
   const cAgents=S.agents.filter(a=>a.project===activeClient);
   const subNav=cks.map(k=>{const cm=CM[k];const on=activeClient===k;return`<div class="stab2${on?' on':''}" onclick="setClient('${k}')" ${on?`style="--sc:${cm.color};border-color:${cm.color}"`:''}>${cm.emoji} ${k}</div>`;}).join('');

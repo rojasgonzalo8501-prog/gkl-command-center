@@ -1,4 +1,46 @@
 {
+  "vivanord": [
+    {
+      "id": 1789300000001,
+      "label": "Client Presentation (public)",
+      "url": "https://rojasgonzalo8501-prog.github.io/gkl-command-center/gkl-agency/clients/vivanord/presentation.html"
+    },
+    {
+      "id": 1789300000002,
+      "label": "Website — Home",
+      "url": "http://localhost:3737/sites/deliverables/websites/vivanord/index.html"
+    },
+    {
+      "id": 1789300000003,
+      "label": "Website — Hälsoklubben (contest)",
+      "url": "http://localhost:3737/sites/deliverables/websites/vivanord/kampanj.html"
+    },
+    {
+      "id": 1789300000004,
+      "label": "Website — Checkout",
+      "url": "http://localhost:3737/sites/deliverables/websites/vivanord/bestall.html"
+    },
+    {
+      "id": 1789300000005,
+      "label": "Website — Español",
+      "url": "http://localhost:3737/sites/deliverables/websites/vivanord/es/index.html"
+    },
+    {
+      "id": 1789300000006,
+      "label": "Admin — Back Office",
+      "url": "http://localhost:3737/sites/deliverables/websites/vivanord/admin/index.html"
+    },
+    {
+      "id": 1789300000007,
+      "label": "Marketing Plan (visual)",
+      "url": "http://localhost:3737/sites/clients/vivanord/marketing-plan.html"
+    },
+    {
+      "id": 1789300000008,
+      "label": "GitHub branch (feature)",
+      "url": "https://github.com/rojasgonzalo8501-prog/gkl-command-center/tree/claude/new-customer-website-marketing-mn8fl9"
+    }
+  ],
   "merca-skroten": [
     {
       "id": 1774608948499,
