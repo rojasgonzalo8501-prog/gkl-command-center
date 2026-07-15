@@ -34,23 +34,23 @@ direktförsäljning. Allt nedan är copy-paste-klart för Ads Manager. Total sta
 | Placeringar | Advantage+ (auto) |
 | Destination | vivanord.se/kampanj.html?utm_source=facebook&utm_campaign=halsoklubben |
 
-**Annons 1A — Tävlingen (bild: matkasse/presentkort, gul badge "5 000 kr"):**
+**Annons 1A — Tävlingen (bild: matkasse/presentkort, gul badge "10 000 kr"):**
 > **Primärtext:** Svara rätt på 4 enkla hälsofrågor — så är du med och tävlar om ett
-> presentkort på 5 000 kr till valfri matbutik. 🛒 Gratis att delta, tar under en minut.
+> presentkort på 10 000 kr till valfri matbutik. 🛒 Gratis att delta, tar under en minut.
 > Ny vinnare varje månad!
-> **Rubrik:** Tävla om 5 000 kr till matkassen
+> **Rubrik:** Tävla om 10 000 kr till matkassen
 > **Beskrivning:** 4 frågor · 1 minut · Gratis
 > **Knapp:** Läs mer
 
 **Annons 1B — Quizvinkeln (video/reel: person som svarar på frågorna i mobilen):**
 > **Primärtext:** Vilket vitamin bildar kroppen av solljus? ☀️ Om du kan svaret har du
-> chans på månadens presentkort på 5 000 kr. Fyra frågor — sen är du med i dragningen.
+> chans på månadens presentkort på 10 000 kr. Fyra frågor — sen är du med i dragningen.
 > **Rubrik:** Kan du svaren? Tävla nu
 > **Knapp:** Läs mer
 
-**Annons 1C — Enkel bildannons (ren grafik i varumärkesgrönt, texten "4 frågor. 5 000 kr."):**
+**Annons 1C — Enkel bildannons (ren grafik i varumärkesgrönt, texten "4 frågor. 10 000 kr."):**
 > **Primärtext:** Hälsoklubbens månadsutlottning är öppen. Svara på fyra korta frågor om
-> hälsa och delta i dragningen om ett presentkort på 5 000 kr. Kostnadsfritt — alltid.
+> hälsa och delta i dragningen om ett presentkort på 10 000 kr. Kostnadsfritt — alltid.
 > **Rubrik:** Månadens dragning är öppen
 > **Knapp:** Registrera dig
 
@@ -75,9 +75,10 @@ direktförsäljning. Allt nedan är copy-paste-klart för Ads Manager. Total sta
 > **Knapp:** Beställ nu
 
 **Annons 2B — Transparensvinkeln (talking head-video eller textgrafik):**
-> **Primärtext:** Trött på prenumerationer som är omöjliga att avsluta? Vi med. Därför
-> byggde vi Vivanord tvärtom: priset står överallt (99 kr första månaden, sen 399 kr/mån),
-> fakturan kommer med lådan, och uppsägningen tar en minut. Testa själv.
+> **Primärtext:** Prenumerationer med dolda villkor har gett branschen dåligt rykte.
+> Vivanord är byggt tvärtom: priset står överallt (99 kr första månaden, sen 399 kr/mån),
+> fakturan kommer med lådan, och uppsägningen tar en minut via mejl. Enkelt att testa —
+> och lika enkelt att avsluta.
 > **Rubrik:** Kosttillskott utan fula trick
 > **Knapp:** Läs mer
 
@@ -107,19 +108,53 @@ direktförsäljning. Allt nedan är copy-paste-klart för Ads Manager. Total sta
 > **Knapp:** Pedir ahora
 
 **Annons 3B — Förtroendevinkeln:**
-> **Primärtext:** ¿Vitaminas de confianza en Suecia, explicadas en tu idioma? Vivanord es
-> una marca sueca con página, pedido y atención al cliente en español. Primer mes 99 kr,
-> después 399 kr/mes — y lo cancelas cuando quieras.
+> **Primärtext:** Vivanord es una marca sueca de suplementos con página web, proceso de
+> pedido y atención al cliente disponibles en español. Primer mes 99 kr, después
+> 399 kr/mes — sin permanencia, con cancelación en un minuto por correo.
 > **Rubrik:** Calidad sueca, atención en español
 > **Knapp:** Más información
 
 ---
 
-## Regler för ALLT annonsmaterial (Meta avvisar/stänger konton annars)
-- ❌ Aldrig personliga attribut: inte "Har du ont i lederna?" / "¿Te duelen las articulaciones?"
-- ❌ Inga före/efter-bilder, inga sjukdomspåståenden, inga "botar/hjälper mot"
-- ✅ Priset 99 kr → 399 kr/mån synligt i annonstexten (skyddar mot klagomål OCH höjer leadkvaliteten)
-- ✅ Endast EFSA-fraser om produkterna nämns specifikt (se säljarutbildningen i marketing-plan.md §7)
+## POLICY-GENOMGÅNG — så skyddar vi Business Manager-kontot
+
+All copy ovan är granskad mot Metas annonsstandarder (2026). Varje annons och regeln
+den prövats mot:
+
+| Annons | Riskpunkt prövad | Utfall |
+|---|---|---|
+| 1A, 1C | Tävlingsannonser: får inte antyda Meta-koppling, villkor måste finnas på landningssidan | ✅ Villkor + Meta-friskrivning finns på kampanjsidan; ingen Meta-logga i kreativen |
+| 1B | "Om du kan svaret" — kunskapsfråga, inte personligt attribut | ✅ OK (quiz om allmänbildning, inget om personen) |
+| 2A, 2C | Prenumerationsupplägg (negative option): villkoren måste anges tydligt | ✅ Både 99 kr OCH 399 kr/mån står i själva annonstexten |
+| 2B | Omskriven: "Trött på...? Vi med." (du-fråga om upplevelse) → neutral konstaterande-form | ✅ Åtgärdad |
+| 3A | "tu buzón" = leveransbeskrivning, inte attribut | ✅ OK |
+| 3B | Omskriven: "¿...en tu idioma?" antydde kännedom om språklig/etnisk identitet (förbjudet personligt attribut) → beskriver nu bara vår tjänst | ✅ Åtgärdad |
+| Alla | Hälsopåståenden | ✅ Ingen annons påstår någon hälsoeffekt alls — bara pris, leverans, villkor och tävling |
+
+### Absoluta regler när ny copy skrivs (bryts någon = annonsen avvisas, upprepat = kontot stängs)
+- ❌ **Personliga attribut:** aldrig påstå/antyda något om mottagarens hälsa, ålder, ekonomi,
+  etnicitet eller språk. Inte "Har du ont i lederna?", inte "För dig som är över 50",
+  inte "en tu idioma". Skriv om PRODUKTEN och TJÄNSTEN, aldrig om PERSONEN.
+- ❌ Inga före/efter-bilder, inga kroppsnärbilder med negativ vinkel, inga sjukdomsord
+  ("botar", "behandlar", "mot värk/oro/sömnproblem")
+- ❌ Inga orealistiska löften eller resultatgarantier; inga "GRATIS!!!"-versaler, clickbait
+  eller falsk brådska ("bara idag!") — triggar låg kvalitet-klassning
+- ❌ Ingen Meta/Facebook/Instagram-logga eller formulering som antyder att Meta står bakom tävlingen
+- ✅ Prenumerationsvillkoren (99 kr → 399 kr/mån) i varje sälj-annons — Metas krav för
+  negative option-erbjudanden och vårt bästa skydd mot anmälningar
+- ✅ Landningssidan måste matcha annonsen (samma erbjudande, samma pris) — mismatch är
+  en vanlig avvisningsorsak
+
+### Kontoskydd (gör detta i Business Manager)
+1. **Tvåfaktorsautentisering** på alla admin-profiler + lägg till en reservadmin
+2. **Värm upp kontot:** starta dag 1 med ENBART Kampanj 1 på 250 kr/dag i 3–4 dagar innan
+   resten slås på — nya konton som direkt kör flera kampanjer flaggas oftare
+3. Redigera aldrig en annons medan den är "Under granskning" — det nollställer kön
+4. Betala första fakturorna manuellt i förtid (bygger betalningsförtroende)
+5. Om en annons avvisas: begär granskning EN gång via knappen — skapa aldrig om samma
+   annons flera gånger (det mönstret stänger konton)
+6. Håll Trustpilot/kommentarsfält under uppsikt — negativ feedback-score på annonserna
+   väger tyngre än det mesta; svara på arga kommentarer, dölj aldrig
 
 ## Vecka 1: så läser du av det (i Ads Manager + admin-portalen)
 | Signal | Grönt | Rött → åtgärd |

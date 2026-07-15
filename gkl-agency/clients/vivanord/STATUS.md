@@ -53,9 +53,10 @@ Uppdateras löpande. ✅ = klart · 🔶 = byggt men kräver din åtgärd för a
 4. **Skriftlighetskravet i praktiken**: Medvitals säljare måste skicka skriftlig bekräftelse
    efter samtal — bekräfta att deras flöde redan gör detta (de är juridisk säljare, men
    våra leads bränns om de slarvar).
-5. **Vinsten till Hälsoklubben**: vem betalar presentkortet på 5 000 kr — ni eller Medvital?
-   (Marknadsföringskostnad ~60 000 kr/år vid månadsvinster à 5 000 kr; kan sänkas till
-   1 000 kr/mån i starten.)
+5. ~~Vinsten till Hälsoklubben~~ **LÖST (2026-07-14): vinsten är höjd till 10 000 kr/mån
+   och Medvital tillhandahåller och betalar ut den.** Tävlingsvillkoren på båda språken
+   uppdaterade. ⚠️ Få in detta skriftligt i Medvital-avtalet — 120 000 kr/år är ett
+   åtagande de ska stå bakom på papper, inte bara muntligt.
 
 ## Vägen till första annonskronan (ordning)
 Supabase (du 20 min → jag 10 min) → Netlify + DNS (du 15 min) → Meta-konton (du 1 h → jag

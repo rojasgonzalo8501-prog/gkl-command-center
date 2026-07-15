@@ -44,7 +44,7 @@ Vivanord AB står alltid som arrangör i villkoren (lagkrav) — men annonsestet
 
 ## 2. Leadmotorn — Hälsoklubben (kampanj.html)
 
-**Mekanik:** FB/IG-annons → "Svara på 4 frågor, tävla om presentkort 5 000 kr" → kunskapsquiz →
+**Mekanik:** FB/IG-annons → "Svara på 4 frågor, tävla om presentkort 10 000 kr" → kunskapsquiz →
 formulär (namn, e-post, telefon) med **tre separata samtyckesrutor**: villkor (obligatorisk),
 e-postmarknadsföring, **telefonkontakt** → tack-sida med direkterbjudande (99 kr provmånad).
 
@@ -80,7 +80,7 @@ leadaffären; bra samtal höjer avslutsgraden och därmed våra 400 kr-utbetalni
 
 ### Samtalsmanus (grundflöde)
 1. **Öppning:** "Hej [namn]! Jag ringer från Medvital — du deltog i Hälsoklubbens tävling om
-   presentkortet på 5 000 kr och tackade ja till att vi fick höras. Har du en minut?"
+   presentkortet på 10 000 kr och tackade ja till att vi fick höras. Har du en minut?"
    *(Alltid: vem, varför, varifrån samtycket kommer. Respektera ett nej direkt.)*
 2. **Kvalificering:** "Kul! Du svarade rätt på frågorna — får jag fråga, tar du några vitaminer
    eller tillskott idag?" *(lyssna, anteckna behov: energi/immun/leder/skönhet)*
@@ -134,7 +134,7 @@ leadaffären; bra samtal höjer avslutsgraden och därmed våra 400 kr-utbetalni
 > Leadbudget = ringkapacitet × 25 kr CPL.
 
 ### Annonsvinklar att testa (creative)
-1. **Tävlingen:** "Svara på 4 frågor — tävla om 5 000 kr till matkassen" (bild: matkasse/presentkort, Hälsoklubben-avsändare)
+1. **Tävlingen:** "Svara på 4 frågor — tävla om 10 000 kr till matkassen" (bild: matkasse/presentkort, Hälsoklubben-avsändare)
 2. **Transparens:** "Kosttillskott på prenumeration — som du faktiskt kan avsluta med ett klick"
 3. **Bekvämlighet:** video där månadsdosen dimper ner i brevlådan — "aldrig mer glömma vitaminerna"
 4. **UGC-stil:** "5 saker jag kollar innan jag köper kosttillskott" (talande huvud, bygger trovärdighet)
