@@ -247,6 +247,17 @@
   .idea-item{padding:5px 0;font-size:12px;border-bottom:1px solid var(--border)}
   .idea-item:last-child{border-bottom:none}
 
+  /* ── Featured project pages ── */
+  .feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-bottom:16px}
+  .feat-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .15s,transform .1s}
+  .feat-card:hover{border-color:var(--fc,var(--c-overview));transform:translateX(2px)}
+  .feat-emoji{font-size:24px;width:36px;text-align:center;flex-shrink:0}
+  .feat-body{flex:1;min-width:0}
+  .feat-label{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .feat-desc{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .feat-open{font-size:14px;color:var(--muted);flex-shrink:0;text-decoration:none;padding:4px 6px;border-radius:6px}
+  .feat-open:hover{color:var(--fc,var(--c-overview));background:var(--s2)}
+
   .btn{display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:5px 10px;background:var(--s2);border:1px solid var(--border);border-radius:5px;color:var(--text);font-size:11.5px;cursor:pointer;transition:background .15s}
   .btn:hover{background:#2d333b}
   .empty{text-align:center;padding:28px 16px;color:var(--muted)}
@@ -286,6 +297,7 @@
 
 <div class="tab-bar" id="tab-bar">
   <div class="tab active" data-tab="overview"  style="--tc:var(--c-overview)">⌂ Overview</div>
+  <div class="tab" data-tab="vivanord" style="--tc:var(--c-vivanord)">💊 Vivanord</div>
   <div class="tab" data-tab="gkl"     style="--tc:var(--c-gkl)">🚀 GKL Agency</div>
   <div class="tab" data-tab="ecom"    style="--tc:var(--c-ecom)">🛒 E-Commerce</div>
   <div class="tab" data-tab="avatars" style="--tc:var(--c-avatars)">🤖 Avatars</div>
@@ -336,7 +348,7 @@ const NP = {
 
 // ── State ─────────────────────────────────────────────────
 let S = { data:null, activity:[], agents:[], tokens:null, tasks:[], links:{} };
-let activeTab='overview', activeClient='vivanord', activeSTab='activity';
+let activeTab='overview', activeClient='andasuthemma', activeSTab='activity';
 
 // ── Clock ─────────────────────────────────────────────────
 setInterval(()=>{ document.getElementById('clock').textContent = new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit'}); },1000);
@@ -548,14 +560,69 @@ function renderMain(){
   const el=document.getElementById('main');
   if(!S.data){el.innerHTML=`<div class="loading"><div class="spinner"></div></div>`;return;}
   if(activeTab==='overview')        renderOverview(el);
+  else if(activeTab==='vivanord')   renderVivanord(el);
   else if(activeTab==='gkl')        renderGKL(el);
   else if(NP[activeTab])            renderNewProject(el,activeTab);
+}
+
+// ── Vivanord (dedicated project page) ────────────────────
+function renderVivanord(el){
+  const proj=(S.data.projects||{}).vivanord||{clientFiles:[],deliverables:[]};
+  const pAgents=S.agents.filter(a=>a.project==='vivanord');
+  const pt=S.tokens?.totals?.by_project?.vivanord||{tokens_in:0,tokens_out:0,cost:0};
+  const SITE='/sites/deliverables/websites/vivanord';
+
+  const featured=[
+    {emoji:'📄',label:'Client Presentation',desc:'Shareable overview for Medvital',
+     local:`/sites/clients/vivanord/presentation.html`,
+     open:'https://rojasgonzalo8501-prog.github.io/gkl-command-center/gkl-agency/clients/vivanord/presentation.html'},
+    {emoji:'🇸🇪',label:'Website — Svenska',desc:'Hem, produkter, kassa',
+     local:`${SITE}/index.html`, open:`${SITE}/index.html`},
+    {emoji:'🎁',label:'Hälsoklubben',desc:'Tävling · vinst 10 000 kr',
+     local:`${SITE}/kampanj.html`, open:`${SITE}/kampanj.html`},
+    {emoji:'🇪🇸',label:'Website — Español',desc:'Sitio completo en español',
+     local:`${SITE}/es/index.html`, open:`${SITE}/es/index.html`},
+  ];
+  const featuredHTML=featured.map(f=>`
+    <div class="feat-card" style="--fc:var(--c-vivanord)" onclick="previewFile('${esc(f.local)}','${esc(f.label)}')">
+      <div class="feat-emoji">${f.emoji}</div>
+      <div class="feat-body">
+        <div class="feat-label">${esc(f.label)}</div>
+        <div class="feat-desc">${esc(f.desc)}</div>
+      </div>
+      <a class="feat-open" href="${esc(f.open)}" target="_blank" onclick="event.stopPropagation()" title="Open in new tab">↗</a>
+    </div>`).join('');
+
+  el.innerHTML=`
+    <div class="page-hdr">
+      <div class="page-av" style="background:var(--c-vivanord)22">💊</div>
+      <div><div class="page-title" style="color:var(--c-vivanord)">Vivanord</div><div class="page-desc">Kosttillskott på prenumeration — Meta Ads reseller för Medvital (SV + ES)</div></div>
+      ${pill('active')}
+    </div>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-lbl">Client Files</div><div class="stat-val" style="color:var(--c-vivanord)">${proj.clientFiles?.length||0}</div></div>
+      <div class="stat"><div class="stat-lbl">Deliverables</div><div class="stat-val" style="color:var(--c-vivanord)">${proj.deliverables?.length||0}</div></div>
+      <div class="stat"><div class="stat-lbl">Agent Runs</div><div class="stat-val" style="color:var(--c-trading)">${pAgents.length}</div></div>
+      <div class="stat"><div class="stat-lbl">Tokens</div><div class="stat-val" style="color:var(--c-overview)">${fmtTok(pt.tokens_in+pt.tokens_out)}</div><div class="stat-sub">$${pt.cost.toFixed(4)}</div></div>
+    </div>
+    <div class="sec">Project Pages <span class="sec-action" style="color:var(--muted)">Click to preview · ↗ to open</span></div>
+    <div class="feat-grid">${featuredHTML}</div>
+    <div class="sec">Quick Links <span class="sec-action" onclick="addLink('vivanord')">+ Add</span></div>
+    ${linksHTML('vivanord')}
+    ${siteCardsHTML(proj.deliverables, 'var(--c-vivanord)')}
+    <div class="sec">Task Board <span class="sec-action" onclick="addTask('vivanord','todo')">+ Task</span></div>
+    ${kanbanHTML('vivanord')}
+    ${pAgents.length?`<div class="sec">Agent History</div>${agentGridHTML(pAgents.slice(0,4))}`:''}
+    <div class="two-col">
+      <div><div class="sec">Client Files</div>${fileListHTML(proj.clientFiles)}</div>
+      <div><div class="sec">Deliverables</div>${fileListHTML(proj.deliverables)}</div>
+    </div>`;
 }
 
 // ── Overview ──────────────────────────────────────────────
 function renderOverview(el){
   const {projects,workflows,allFiles}=S.data;
-  const ks=Object.keys(projects);
+  const ks=Object.keys(projects).filter(k=>k!=='vivanord'); // Vivanord has its own top-level project tab
   const totalD=ks.reduce((s,k)=>s+(projects[k].deliverables?.length||0),0);
   const t=S.tokens?.totals||{};
   el.innerHTML=`
@@ -572,6 +639,10 @@ function renderOverview(el){
     ${agentGridHTML(S.agents.slice(0,4))}
     <div class="sec">All Projects</div>
     <div class="proj-grid">
+      <div class="proj-card" style="--pc:var(--c-vivanord)" onclick="go('vivanord')">
+        <div class="pc-top"><span class="pc-icon">💊</span><span class="pc-name">Vivanord</span><span class="pc-badge">${pill('active')}</span></div>
+        <div class="pc-desc">${(projects.vivanord?.clientFiles?.length||0)+(projects.vivanord?.deliverables?.length||0)} files · SV + ES</div>
+      </div>
       <div class="proj-card" style="--pc:var(--c-gkl)" onclick="go('gkl')">
         <div class="pc-top"><span class="pc-icon">🚀</span><span class="pc-name">GKL Agency</span><span class="pc-badge">${pill('active')}</span></div>
         <div class="pc-desc">${ks.length} clients · ${totalD} deliverables</div>
@@ -588,7 +659,7 @@ function renderOverview(el){
 // ── GKL Agency ────────────────────────────────────────────
 function renderGKL(el){
   const {projects}=S.data;
-  const cks=['vivanord','andasuthemma','exhaleplr','gkl-agency','merca-skroten','yaloyoga'];
+  const cks=['andasuthemma','exhaleplr','gkl-agency','merca-skroten','yaloyoga'];
   const m=CM[activeClient]; const proj=projects[activeClient]||{clientFiles:[],deliverables:[]};
   const cAgents=S.agents.filter(a=>a.project===activeClient);
   const subNav=cks.map(k=>{const cm=CM[k];const on=activeClient===k;return`<div class="stab2${on?' on':''}" onclick="setClient('${k}')" ${on?`style="--sc:${cm.color};border-color:${cm.color}"`:''}>${cm.emoji} ${k}</div>`;}).join('');
