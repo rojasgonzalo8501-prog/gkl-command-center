@@ -12,6 +12,7 @@
 // OBS: anon-nyckeln är gjord för att vara publik (den kan bara göra det som
 // databasens RLS-policys tillåter: lägga till leads/ordrar — aldrig läsa dem).
 window.NV_SUPABASE = {
-  url: '',      // t.ex. 'https://abcdefgh.supabase.co'
-  anonKey: '',  // Project Settings → API keys → anon/publishable
+  url: 'https://itwayrczvhzzfvsoxhcc.supabase.co',  // bekräftad från project_ref
+  anonKey: '',  // KVAR: klistra in anon/publishable-nyckeln (Project Settings → API keys → anon public)
 };
+// Obs: sajten är kvar i prototypläge tills anonKey är ifylld (båda krävs).
