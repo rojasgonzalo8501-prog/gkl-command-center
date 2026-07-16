@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Club de Salud — Sorteo de una tarjeta regalo de 10 000 kr</title>
+  <meta name="description" content="Responde 4 preguntas rápidas sobre salud y participa en el sorteo de una tarjeta regalo de 10 000 kr para el supermercado. Gratis. Nuevo ganador cada mes." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media=&#39;all&#39;" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
+  <link rel="stylesheet" href="../styles.css" />
+  <!-- PAUSAD (2026-07-14): ES-strategin är direktköp först — denna leadgen-sida lanseras
+       INTE förrän Medvital bekräftat spansktalande säljare för ES-leads. Sidan är avlänkad
+       från es-navigationen men behålls färdig för snabb aktivering. -->
+</head>
+<body>
+
+  <!-- HERO DE CAMPAÑA -->
+  <header class="camp-hero">
+    <div class="container">
+      <div style="font-size:18px; font-weight:800; margin-bottom:18px;">💚 Club de Salud <span style="font-weight:500; font-size:13px;">(Hälsoklubben)</span></div>
+      <div class="camp-prize">🎁 Premio del mes: tarjeta regalo de 10 000 kr</div>
+      <h1>Responde 4 preguntas —<br /><em>participa por 10 000 kr</em> para tu compra</h1>
+      <p>Participar es gratis. Tarda menos de un minuto. Cada mes hay un nuevo ganador.</p>
+    </div>
+  </header>
+
+  <!-- QUIZ -->
+  <div class="quiz-wrap">
+    <div class="quiz-card">
+      <div class="quiz-progress"><div class="quiz-progress__bar" id="progressBar"></div></div>
+
+      <!-- Pasos 1–4: preguntas de conocimiento (hacen legal el concurso sin licencia de lotería) -->
+      <div class="quiz-step active" data-step="1">
+        <h2>Pregunta 1 de 4</h2>
+        <p class="quiz-hint">¿Qué vitamina produce el cuerpo cuando el sol toca la piel?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-next>Vitamina D</button>
+          <button class="quiz-option" data-next>Vitamina C</button>
+          <button class="quiz-option" data-next>Vitamina B12</button>
+        </div>
+      </div>
+
+      <div class="quiz-step" data-step="2">
+        <h2>Pregunta 2 de 4</h2>
+        <p class="quiz-hint">¿Cuántas horas de sueño se recomiendan normalmente para un adulto?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-next>7–9 horas</button>
+          <button class="quiz-option" data-next>4–5 horas</button>
+          <button class="quiz-option" data-next>Al menos 11 horas</button>
+        </div>
+      </div>
+
+      <div class="quiz-step" data-step="3">
+        <h2>Pregunta 3 de 4</h2>
+        <p class="quiz-hint">¿Qué mineral se asocia con la disminución del cansancio y la fatiga?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-next>Magnesio</button>
+          <button class="quiz-option" data-next>Plomo</button>
+          <button class="quiz-option" data-next>Mercurio</button>
+        </div>
+      </div>
+
+      <div class="quiz-step" data-step="4">
+        <h2>Pregunta 4 de 4</h2>
+        <p class="quiz-hint">¿Qué describe mejor lo que es un suplemento alimenticio?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" data-next>Un complemento a una dieta variada</button>
+          <button class="quiz-option" data-next>Un sustituto de la comida</button>
+          <button class="quiz-option" data-next>Un medicamento</button>
+        </div>
+      </div>
+
+      <!-- Paso 5: datos de contacto + consentimientos -->
+      <div class="quiz-step" data-step="5">
+        <h2>¡Muy bien! 🎉</h2>
+        <p class="quiz-hint">Rellena tus datos para participar en el sorteo de este mes.</p>
+        <form id="leadForm">
+          <div class="form-field">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" required autocomplete="given-name" />
+          </div>
+          <div class="form-field">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" required autocomplete="email" />
+          </div>
+          <div class="form-field">
+            <label for="phone">Móvil (para avisarte antes si ganas)</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" />
+          </div>
+
+          <label class="consent">
+            <input type="checkbox" required />
+            <span>Acepto las <a href="#condiciones">condiciones del sorteo</a> y que el organizador Vivanord AB trate mis datos según la <a href="privacidad.html">política de privacidad</a>. <strong>(Obligatorio)</strong></span>
+          </label>
+          <label class="consent">
+            <input type="checkbox" name="consent_email" />
+            <span>Sí, quiero recibir por correo el boletín y ofertas de salud y suplementos de Vivanord. Puedo darme de baja en cualquier momento con un clic.</span>
+          </label>
+          <!-- Socio: Medvital Sverige AB — el consentimiento de cesión exige nombrar al receptor (RGPD art. 4.11 + 7) -->
+          <label class="consent">
+            <input type="checkbox" name="consent_phone" />
+            <span>Sí, mis datos de contacto pueden cederse a <strong>Medvital Sverige AB (n.º org. 559421-2093)</strong>, que
+            podrá contactarme por teléfono y SMS con ofertas de salud y suplementos.
+            Puedo revocar el consentimiento en cualquier momento, directamente con ellos o a través de Vivanord.</span>
+          </label>
+
+          <button type="submit" class="btn btn--primary btn--block" style="margin-top:10px;">Participar en el sorteo →</button>
+          <p style="font-size:12px; color:var(--ink-soft); text-align:center; margin-top:12px;">
+            Participar es gratis. Tú decides a qué dices que sí — tus datos nunca se comparten con nadie más que lo que indican expresamente las casillas de arriba.
+          </p>
+        </form>
+      </div>
+
+      <!-- Paso 6: gracias + oferta -->
+      <div class="quiz-step quiz-thanks" data-step="6">
+        <div class="big">🎉</div>
+        <h2>¡Ya estás participando!</h2>
+        <p>Te escribiremos si ganas. Revisa tu bandeja de entrada — allí te espera también un enlace de confirmación.</p>
+        <div class="offer-box">
+          <strong>Regalo de bienvenida por participar:</strong>
+          <p style="margin:8px 0 14px;">Prueba el suplemento que quieras — la primera caja por <strong>99 kr</strong>. Sin permanencia, cancela cuando quieras.</p>
+          <a href="productos.html" class="btn btn--gold btn--block">Ver los productos →</a>
+        </div>
+        <a href="index.html" style="font-size:14px; color:var(--ink-soft);">No, gracias — llévame a la página de inicio</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONDICIONES -->
+  <div class="camp-legal" id="condiciones">
+    <h3>Condiciones del sorteo (resumen — completar con asesoría jurídica antes del lanzamiento)</h3>
+    <p>
+      Organizador: Vivanord AB, Suecia. La participación es gratuita y el concurso
+      es mensual; se elige un (1) ganador por mes natural entre quienes hayan respondido las preguntas de
+      conocimiento y dejado datos de contacto válidos. Premio: tarjeta regalo por valor de 10 000 kr para
+      cualquier cadena de supermercados sueca — <strong>el premio lo proporciona y abona Medvital Sverige AB
+      (n.º org. 559421-2093)</strong>. Un jurado elige al ganador entre las respuestas correctas y
+      se le avisa por correo electrónico. El eventual impuesto sobre el premio corre a cargo del ganador.
+      Los participantes deben tener 18 años y residir en Suecia. Los empleados del organizador o de Medvital
+      no pueden participar. <strong>Este concurso no tiene ninguna relación con Meta, Facebook o Instagram,
+      ni está patrocinado, administrado o respaldado por ellos.</strong>
+    </p>
+    <h3>Datos personales</h3>
+    <p>
+      El responsable del tratamiento es Vivanord AB. Tus datos se usan para administrar el sorteo.
+      Solo si marcas activamente las casillas de consentimiento se usan para marketing: la casilla de
+      correo permite a Vivanord enviarte el boletín, y la casilla de teléfono implica que tus datos de
+      contacto se ceden a Medvital Sverige AB (n.º org. 559421-2093), que pasa a ser responsable
+      independiente del tratamiento para su telemarketing. Cada consentimiento se registra con fecha y
+      hora y puede revocarse en cualquier momento — ante cada empresa o mediante el enlace incluido en
+      cada envío. Los datos nunca se entregan a otros destinatarios distintos de los aquí indicados.
+      Más información en nuestra política de privacidad.
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom" style="border-top:0; padding-top:0;">
+        © 2026 Club de Salud (Hälsoklubben) — un servicio de Vivanord AB · <a href="index.html">vivanord.se/es</a> · Los suplementos no sustituyen una dieta variada.
+      </div>
+    </div>
+  </footer>
+
+  <script src="../supabase-config.js"></script>
+  <script src="../cookies.js"></script>
+  <script src="../main.js"></script>
+</body>
+</html>

@@ -61,7 +61,7 @@ function getFilesFlat(dir, baseDir, excludes=[]) {
 }
 
 function getProjectData() {
-  const clients = ['andasuthemma','exhaleplr','gkl-agency','merca-skroten','yaloyoga'];
+  const clients = ['andasuthemma','exhaleplr','gkl-agency','merca-skroten','yaloyoga','vivanord'];
   const projects = {};
   for (const client of clients) {
     const files = getFilesFlat(path.join(AGENCY_DIR,'clients',client), AGENCY_DIR, ['node_modules']);

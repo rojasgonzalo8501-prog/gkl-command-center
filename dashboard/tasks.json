@@ -1,5 +1,69 @@
 [
   {
+    "id": 1789300100001,
+    "ts": "2026-07-14T12:00:00.000Z",
+    "status": "todo",
+    "project": "vivanord",
+    "title": "Skapa Supabase-projekt, kör supabase-setup.sql, skicka URL + anon-nyckel (se SUPABASE.md)",
+    "priority": "high"
+  },
+  {
+    "id": 1789300100002,
+    "ts": "2026-07-14T12:00:00.000Z",
+    "status": "todo",
+    "project": "vivanord",
+    "title": "Publicera sajten på vivanord.se via Netlify + peka DNS (se DEPLOY.md)",
+    "priority": "high"
+  },
+  {
+    "id": 1789300100003,
+    "ts": "2026-07-14T12:00:00.000Z",
+    "status": "todo",
+    "project": "vivanord",
+    "title": "Skapa Meta Business Manager, FB-sida, IG-konto, pixel, annonskonto — skicka pixel-ID",
+    "priority": "high"
+  },
+  {
+    "id": 1789300100004,
+    "ts": "2026-07-14T12:00:00.000Z",
+    "status": "todo",
+    "project": "vivanord",
+    "title": "Medvital-möte: produktblad/priser, pris per lead, skriftligt åtagande om 10 000 kr tävlingsvinst/mån",
+    "priority": "high"
+  },
+  {
+    "id": 1789300100005,
+    "ts": "2026-07-14T12:00:00.000Z",
+    "status": "todo",
+    "project": "vivanord",
+    "title": "PRV/EUIPO-slutkoll på varumärket \"Vivanord\"",
+    "priority": "medium"
+  },
+  {
+    "id": 1789300100006,
+    "ts": "2026-07-14T12:00:00.000Z",
+    "status": "todo",
+    "project": "vivanord",
+    "title": "Juridisk granskning: köpvillkor, integritetspolicy, tävlingsvillkor",
+    "priority": "medium"
+  },
+  {
+    "id": 1789300100007,
+    "ts": "2026-07-14T12:00:00.000Z",
+    "status": "todo",
+    "project": "vivanord",
+    "title": "Skapa e-postverktyg (Brevo) för välkomstflödet",
+    "priority": "medium"
+  },
+  {
+    "id": 1789300100008,
+    "ts": "2026-07-14T12:00:00.000Z",
+    "status": "todo",
+    "project": "vivanord",
+    "title": "Starta Meta-annonserna enligt meta-lansering.md (550 kr/dag, 3 kampanjer)",
+    "priority": "low"
+  },
+  {
     "id": 1774608948456,
     "ts": "2026-03-27T10:55:48.456Z",
     "status": "todo",

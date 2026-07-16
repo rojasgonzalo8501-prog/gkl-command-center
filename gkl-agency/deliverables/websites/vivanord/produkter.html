@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produkter — Vivanord | Kosttillskott på prenumeration</title>
+  <meta name="description" content="Immun+, Skönhet Inifrån, Flex+ och Magbalans. Prova första lådan för 99 kr — ingen bindningstid, betala mot faktura." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media=&#39;all&#39;" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- ÅTERFÖRSÄLJARE ÅT MEDVITAL: Flex+ är synkad mot bekräftad data (399 kr/mån + 59 kr frakt,
+       riktiga ingredienser). Skönhet/Immun/Magbalans har bekräftade innehållsprofiler men namn,
+       pris och full deklaration måste verifieras mot Medvitals produktblad före lansering.
+       Kampanjpriset 99 kr för första lådan är VÅRT förslag — kräver Medvitals godkännande.
+       Alla kända fakta + luckor: clients/vivanord/medvital-katalog.md -->
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">Viva<span>nord</span></a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html">Hem</a></li>
+        <li><a href="produkter.html" class="active">Produkter</a></li>
+        <li><a href="index.html#sa-funkar-det">Så funkar det</a></li>
+        <li><a href="index.html#faq">Frågor &amp; svar</a></li>
+        <li><a href="kampanj.html">Tävling 🎁</a></li>
+        <li><a href="es/productos.html" lang="es">🇪🇸 Español</a></li>
+      </ul>
+      <a href="#immun" class="btn btn--primary btn--sm nav__cta">Prova för 99 kr</a>
+      <button class="nav__burger" id="burger" aria-label="Meny">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" style="padding: 56px 0 48px;">
+    <div class="container hero__inner">
+      <div class="hero__badge">Prova första lådan för 99 kr · Betala mot faktura</div>
+      <h1>Våra produkter</h1>
+      <p class="hero__sub">
+        Fyra tillskott framtagna för vardagen — alla med näringsämnen vars effekt har
+        godkända hälsopåståenden inom EU. Alltid utan bindningstid.
+      </p>
+    </div>
+  </header>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="container trust-bar__inner">
+      <div class="trust-item"><span class="dot"></span> Leverans i brevlådan</div>
+      <div class="trust-item"><span class="dot"></span> Ingen bindningstid</div>
+      <div class="trust-item"><span class="dot"></span> Avsluta när du vill</div>
+      <div class="trust-item"><span class="dot"></span> 14 dagars ångerrätt</div>
+    </div>
+  </div>
+
+  <!-- PRODUKT: IMMUN+ -->
+  <section class="section" id="immun">
+    <div class="container">
+      <div class="products-grid" style="grid-template-columns: 1fr; max-width: 760px; margin: 0 auto;">
+        <div class="product-card">
+          <div class="product-card__icon">🛡️</div>
+          <h3>Immun+</h3>
+          <div class="product-card__tag">30 dagsdoser · Betaglukaner · Vitamin C · Vitamin D · Zink · Selen</div>
+          <div class="product-card__claim">
+            Ett dagligt stöd för immunförsvaret. Vitamin C, D, zink och selen bidrar till immunsystemets
+            normala funktion. Zink och selen bidrar dessutom till att skydda cellerna mot oxidativ stress.
+          </div>
+          <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
+            <strong>Rekommenderad dos:</strong> 1 kapsel dagligen i samband med måltid.
+            Innehåller per dagsdos: betaglukaner 200 mg, vitamin C 80 mg (100 % DRI*), vitamin D 25 µg (500 % DRI),
+            zink 10 mg (100 % DRI), selen 55 µg (100 % DRI). <em>*Dagligt referensintag.</em>
+          </p>
+          <div class="product-card__price"><strong>99 kr</strong> första månaden, därefter <strong>399 kr/mån</strong> · ny låda var 3:e månad</div>
+          <a href="bestall.html?produkt=immun" class="btn btn--primary">Beställ nu — 99 kr</a>
+        </div>
+
+        <div class="product-card" id="skonhet">
+          <div class="product-card__icon">✨</div>
+          <h3>Skönhet Inifrån</h3>
+          <div class="product-card__tag">30 dagsdoser · Hyaluronsyra · Biotin · Q10 · Zink · Vitamin C</div>
+          <div class="product-card__claim">
+            Skönhet börjar inifrån. Biotin och zink bidrar till att bibehålla normalt hår och normal hud.
+            Vitamin C bidrar till normal kollagenbildning som har betydelse för hudens normala funktion.
+          </div>
+          <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
+            <strong>Rekommenderad dos:</strong> 1 kapsel dagligen. Innehåller per dagsdos: hyaluronsyra 120 mg,
+            biotin 50 µg (100 % DRI), koenzym Q10 100 mg, zink 10 mg (100 % DRI), vitamin C 80 mg (100 % DRI).
+          </p>
+          <div class="product-card__price"><strong>99 kr</strong> första månaden, därefter <strong>399 kr/mån</strong> · ny låda var 3:e månad</div>
+          <a href="bestall.html?produkt=skonhet" class="btn btn--primary">Beställ nu — 99 kr</a>
+        </div>
+
+        <div class="product-card" id="leder">
+          <div class="product-card__icon">🦴</div>
+          <h3>Flex+</h3>
+          <div class="product-card__tag">MSM · Glukosamin · Kondroitin · Marint kollagen · Nypon · Ingefära · C · D · Zink · Mangan</div>
+          <div class="product-card__claim">
+            För dig som vill stötta leder, rörlighet och vardagsfunktion — särskilt vid stelhet och åldrande
+            leder. Vitamin C bidrar till normal kollagenbildning, viktigt för benens och broskets normala
+            funktion. Vitamin D, zink och mangan bidrar till att bibehålla normala ben.
+          </div>
+          <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
+            <strong>Innehåll:</strong> metylsulfonylmetan (MSM), glukosamin, kondroitin, hydrolyserat marint
+            kollagen (<strong>fisk</strong>), nyponextrakt, ingefärarotextrakt, vitamin C, vitamin D, E-vitamin,
+            zink, mangan, kalcium. <em>Innehåller fisk. Fullständig näringsdeklaration medföljer produkten.</em>
+          </p>
+          <div class="product-card__price"><strong>99 kr</strong> första månaden, därefter <strong>399 kr/mån</strong> · ny låda var 3:e månad</div>
+          <a href="bestall.html?produkt=leder" class="btn btn--primary">Beställ nu — 99 kr</a>
+        </div>
+
+        <div class="product-card" id="mage">
+          <div class="product-card__icon">🌿</div>
+          <h3>Magbalans</h3>
+          <div class="product-card__tag">Mjölksyrabakterier · Fruktenzymer · Magnesium</div>
+          <div class="product-card__claim">
+            Ett dagligt stöd för magen. Mjölksyrabakterier och fruktenzymer kombinerat med magnesium,
+            som bidrar till att minska trötthet och utmattning och till normal muskelfunktion.
+          </div>
+          <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
+            <strong>Innehåll:</strong> mjölksyrabakterier, fruktenzymer och magnesium.
+            <em>Produktnamn och fullständig deklaration bekräftas mot Medvitals produktblad.</em>
+          </p>
+          <div class="product-card__price"><strong>99 kr</strong> första månaden, därefter <strong>399 kr/mån</strong> · ny låda var 3:e månad</div>
+          <a href="bestall.html?produkt=mage" class="btn btn--primary">Beställ nu — 99 kr</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VILLKOR I KORTHET -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="section__head">
+        <div class="section__eyebrow">Innan du beställer</div>
+        <h2>Prenumerationen i korthet</h2>
+        <p>Vi vill att du vet exakt vad du tackar ja till — därför står det här, tydligt, före köpet.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__num">✓</div>
+          <h3>Provmånad 99 kr</h3>
+          <p>Betala mot faktura som medföljer lådan. Om du inte avslutar övergår köpet automatiskt i en prenumeration: en låda med tre månadsdoser levereras var tredje månad och faktureras 1 197 kr (399 kr/mån) + 59 kr frakt, med påminnelse-mejl före varje leverans.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">✓</div>
+          <h3>Ingen bindningstid</h3>
+          <p>Pausa eller avsluta när du vill — även under provmånaden. Ett mejl eller samtal räcker och det gäller direkt.</p>
+        </div>
+        <div class="step">
+          <div class="step__num">✓</div>
+          <h3>14 dagars ångerrätt</h3>
+          <p>Enligt distansavtalslagen, räknat från att du tar emot din första leverans.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--green">
+    <div class="container cta-banner">
+      <h2>Osäker på vilken du ska välja?</h2>
+      <p>Tävla i vår månadsutlottning och få vår guide "Så väljer du rätt kosttillskott" på köpet.</p>
+      <a href="kampanj.html" class="btn btn--gold">Till tävlingen 🎁</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">Viva<span>nord</span></div>
+          <p>Svenska kosttillskott på prenumeration — utan bindningstid, utan krångel och utan dolda villkor.</p>
+        </div>
+        <div>
+          <h4>Handla</h4>
+          <ul>
+            <li><a href="produkter.html">Produkter</a></li>
+            <li><a href="kampanj.html">Tävling</a></li>
+            <li><a href="index.html#faq">Frågor &amp; svar</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Villkor</h4>
+          <ul>
+            <li><a href="villkor.html">Köpvillkor</a></li>
+            <li><a href="integritetspolicy.html">Integritetspolicy</a></li>
+            <li><a href="villkor.html#angerratt">Ångerrätt</a></li>
+            <li><a href="villkor.html">Kontakta oss</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        © 2026 Vivanord AB · Kosttillskott ersätter inte en varierad kost. Rekommenderad dos bör inte överskridas. Förvaras utom räckhåll för små barn.
+      </div>
+    </div>
+  </footer>
+
+  <script src="supabase-config.js"></script>
+  <script src="cookies.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

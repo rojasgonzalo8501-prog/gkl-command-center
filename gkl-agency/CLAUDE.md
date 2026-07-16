@@ -26,8 +26,9 @@ Always follow the WAT framework. Before starting any client job:
 | 🚗 Merca Skroten | `clients/merca-skroten/` | Proposal sent | **Swedish** |
 | 📦 ExhalePLR | `clients/exhaleplr/` | Build phase | English |
 | 🏢 GKL Agency | `clients/gkl-agency/` | Own brand | English |
+| 💊 Vivanord | `clients/vivanord/` | Brand + website + FB/IG plan built | **Swedish** |
 
-> **Important:** Andasuthemma and Merca Skroten are Swedish-language clients. All content for them must be written in Swedish unless told otherwise.
+> **Important:** Andasuthemma, Merca Skroten and Vivanord are Swedish-language clients. All content for them must be written in Swedish unless told otherwise.
 
 ## Running the Swarm
 
