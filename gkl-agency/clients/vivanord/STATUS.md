@@ -13,7 +13,8 @@ Uppdateras löpande. ✅ = klart · 🔶 = byggt men kräver din åtgärd för a
 | ✅ Admin-portal | Back office med sidomeny: Översikt (graf, språkfördelning, aktivitet), Leads/Ordrar (SV/ES-filter, sök, raddetaljer, statusflöde, CSV), Leadkalkyl |
 | ✅ Supabase-koppling | Kod + SQL + guide färdig och testad — formulär skriver, admin läser/uppdaterar med riktig inloggning. Aktiveras med 2 rader konfig (se nedan) |
 | ✅ Marknadsplan | Fullständig strategi (marketing-plan.md) + copy-paste-färdig Meta-lansering med annonstexter SV/ES (meta-lansering.md) |
-| ✅ Deployguide | DEPLOY.md — Netlify + DNS steg för steg |
+| ✅ Deployguide | DEPLOY.md — Vercel + DNS steg för steg |
+| ✅ Juridiska sidor | villkor.html, integritetspolicy.html, tavlingsvillkor.html byggda och länkade (SV). Utkast — kräver juristgranskning + ifyllda [hakparenteser] |
 | ✅ Kundpresentation | Delbar länk (claude.ai-artefakt) + kopia i repot |
 
 ## 🔶 DU MÅSTE GÖRA — kräver dina konton/pengar/beslut (jag kan inte)
@@ -21,11 +22,11 @@ Uppdateras löpande. ✅ = klart · 🔶 = byggt men kräver din åtgärd för a
 | # | Uppgift | Tid | Guide |
 |---|---|---|---|
 | 1 | **Supabase-konto**: skapa projekt, kör SQL-filen, skapa admin-användare, skicka mig URL + anon-nyckel | 20 min | SUPABASE.md |
-| 2 | **Publicera sajten**: Netlify-konto, koppla repot, peka DNS för vivanord.se | 15 min + DNS-väntan | DEPLOY.md |
+| 2 | **Publicera sajten**: Vercel-konto, koppla repot (Root Directory = sajtmappen), peka DNS för vivanord.se | 15 min + DNS-väntan | DEPLOY.md |
 | 3 | **Meta Business Manager**: skapa BM, FB-sida, IG-konto, pixel, annonskonto med kort, verifiera domänen — skicka mig pixel-ID + domänverifierings-tagg | 1 h | meta-lansering.md |
 | 4 | **Medvital-mötet**: produktblad + priser (3 produkter saknas), godkänt 99 kr-kampanjpris, pris per lead, clawback-frågan, leadleveransformat, spansktalande säljare?, kundservicenummer till sajten | möte | medvital-katalog.md |
 | 5 | **PRV/EUIPO-slutkoll** på "vivanord" (5 min, gratis) + överväg varumärkesregistrering (~2 000 kr) | 5 min | brief.md |
-| 6 | **Juridiska texter**: låt någon med juridisk kompetens granska köpvillkor + integritetspolicy + tävlingsvillkor innan lansering (jag skriver utkasten — se nedan) | — | — |
+| 6 | **Juridiska texter**: sidorna finns nu som utkast — låt någon med juridisk kompetens granska köpvillkor + integritetspolicy + tävlingsvillkor och fyll i alla [hakparenteser] (org.nr, kontakt) före skarp lansering | — | villkor.html m.fl. |
 | 7 | **E-postverktyg**: skapa konto (rekommendation: Brevo — gratis 300 mejl/dag, funkar i Sverige) för välkomstflödet | 15 min | marketing-plan.md §5 |
 
 ## ☐ JAG GÖR — så fort du levererar ovanstående
@@ -35,7 +36,7 @@ Uppdateras löpande. ✅ = klart · 🔶 = byggt men kräver din åtgärd för a
 | 1 | Klistra in Supabase-nycklarna + verifiera live-läget | Din punkt 1 |
 | 2 | Installera Meta-pixeln + Lead/Purchase-events + cookiebanner på alla sidor | Ditt pixel-ID (punkt 3) |
 | 3 | Lägga in domänverifierings-taggen | Din tagg (punkt 3) |
-| 4 | Skriva utkast: köpvillkor, integritetspolicy, tävlingsvillkor (fullständiga sidor) | Kan göras direkt — säg till |
+| 4 | ✅ KLART: köpvillkor, integritetspolicy, tävlingsvillkor byggda och länkade (SV). ES-versioner kvar | — |
 | 5 | Uppdatera produktsidorna med Medvitals riktiga katalog + kvartalsfakturans belopp | Ditt Medvital-möte (punkt 4) |
 | 6 | Bygga orderexport till Medvital (format enligt deras önskemål) | Ditt Medvital-möte (punkt 4) |
 | 7 | Skriva e-postflödet (5 mejl + SMS) i Brevo-format | Din punkt 7 |
@@ -59,6 +60,6 @@ Uppdateras löpande. ✅ = klart · 🔶 = byggt men kräver din åtgärd för a
    åtagande de ska stå bakom på papper, inte bara muntligt.
 
 ## Vägen till första annonskronan (ordning)
-Supabase (du 20 min → jag 10 min) → Netlify + DNS (du 15 min) → Meta-konton (du 1 h → jag
-pixlar 1 h) → villkorssidor (jag utkast → din granskning) → **annonserna live enligt
+Supabase (du 20 min → jag 10 min) → Vercel + DNS (du 15 min) → Meta-konton (du 1 h → jag
+pixlar 1 h) → villkorssidor (✅ klara — din granskning) → **annonserna live enligt
 meta-lansering.md**. Realistiskt: 2–4 dagar om Medvital-mötet inte blockerar.
