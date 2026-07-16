@@ -42,10 +42,12 @@ create index if not exists ordrar_tid_idx on ordrar (tid desc);
 alter table leads enable row level security;
 alter table ordrar enable row level security;
 
+-- Anon får bara skapa rader med STARTSTATUS — hindrar att någon POST:ar ett
+-- lead/order med status 'bekräftad' och blåser upp intäktsräkningen.
 create policy "besokare_far_skapa_leads" on leads
-  for insert to anon with check (true);
+  for insert to anon with check (status = 'ny');
 create policy "besokare_far_skapa_ordrar" on ordrar
-  for insert to anon with check (true);
+  for insert to anon with check (status = 'skickad till partner');
 
 create policy "inloggade_laser_leads" on leads
   for select to authenticated using (true);

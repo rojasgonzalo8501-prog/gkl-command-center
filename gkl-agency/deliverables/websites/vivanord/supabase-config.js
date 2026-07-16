@@ -12,7 +12,8 @@
 // OBS: anon-nyckeln är gjord för att vara publik (den kan bara göra det som
 // databasens RLS-policys tillåter: lägga till leads/ordrar — aldrig läsa dem).
 window.NV_SUPABASE = {
-  url: 'https://itwayrczvhzzfvsoxhcc.supabase.co',  // bekräftad från project_ref
-  anonKey: '',  // KVAR: klistra in anon/publishable-nyckeln (Project Settings → API keys → anon public)
+  url: 'https://itwayrczvhzzfvsoxhcc.supabase.co',
+  anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml0d2F5cmN6dmh6emZ2c294aGNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQxOTMyMzUsImV4cCI6MjA5OTc2OTIzNX0.n46_VysT6xRqqDCOAR1cyXS4dZkzBjkO-RY3IC1ahWM',
 };
-// Obs: sajten är kvar i prototypläge tills anonKey är ifylld (båda krävs).
+// LIVE-läge aktivt. anon-nyckeln är publik (RLS skyddar databasen: anon får bara
+// skapa rader med startstatus, aldrig läsa/ändra). Admin-portalen kräver inloggning.
