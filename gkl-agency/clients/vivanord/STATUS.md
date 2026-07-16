@@ -27,7 +27,7 @@ Uppdateras löpande. ✅ = klart · 🔶 = byggt men kräver din åtgärd för a
 | 4 | **Medvital-mötet**: produktblad + priser (3 produkter saknas), godkänt 99 kr-kampanjpris, pris per lead, clawback-frågan, leadleveransformat, spansktalande säljare?, kundservicenummer till sajten | möte | medvital-katalog.md |
 | 5 | **PRV/EUIPO-slutkoll** på "vivanord" (5 min, gratis) + överväg varumärkesregistrering (~2 000 kr) | 5 min | brief.md |
 | 6 | **Juridiska texter**: sidorna finns nu som utkast — låt någon med juridisk kompetens granska köpvillkor + integritetspolicy + tävlingsvillkor och fyll i alla [hakparenteser] (org.nr, kontakt) före skarp lansering | — | villkor.html m.fl. |
-| 7 | **E-postverktyg**: skapa konto (rekommendation: Brevo — gratis 300 mejl/dag, funkar i Sverige) för välkomstflödet | 15 min | marketing-plan.md §5 |
+| 7 | **E-postverktyg**: e-postflödets copy är KLAR (email-flode.md, 4 mejl + SMS + retention). Kvar: skapa Brevo-konto och klistra in flödet | 15 min | email-flode.md |
 
 ## ☐ JAG GÖR — så fort du levererar ovanstående
 
@@ -39,7 +39,7 @@ Uppdateras löpande. ✅ = klart · 🔶 = byggt men kräver din åtgärd för a
 | 4 | ✅ KLART: köpvillkor, integritetspolicy, tävlingsvillkor byggda och länkade (SV). ES-versioner kvar | — |
 | 5 | Uppdatera produktsidorna med Medvitals riktiga katalog + kvartalsfakturans belopp | Ditt Medvital-möte (punkt 4) |
 | 6 | Bygga orderexport till Medvital (format enligt deras önskemål) | Ditt Medvital-möte (punkt 4) |
-| 7 | Skriva e-postflödet (5 mejl + SMS) i Brevo-format | Din punkt 7 |
+| 7 | ✅ KLART: e-postflödet skrivet (email-flode.md) — kvar är bara Brevo-kontot | — |
 | 8 | Aktivera spanska sorteo-sidan | Medvital bekräftar ES-säljare |
 
 ## ☐ SAKNAS ÄNNU — beslut/frågor ingen äger just nu (du frågade "vad fattas?")
