@@ -4,8 +4,10 @@ Tre kampanjer: svensk leadgen (Hälsoklubben), svensk direktförsäljning och sp
 direktförsäljning. Allt nedan är copy-paste-klart för Ads Manager. Total startbudget:
 **550 kr/dag** (~16 500 kr/mån) — skalas först när siffrorna i admin-portalen bär.
 
-> **Blockerare innan någon annons går live:** sajten publicerad på vivanord.se,
-> Supabase aktiverat (annars försvinner leads!), pixel installerad, villkorssidor uppe.
+> **Status 2026-07-18:** sajten är LIVE på **vivanord.se** och tävlingen på
+> **halsoklubben.vivanord.se**. Supabase sparar (formulären skriver på riktigt). Kvar innan
+> skarpa annonser: pixel-ID ifyllt, Rojdix + Vivanord org.nr i samtycket, Supabase admin-användare
+> + registrering avstängd. Se [[LANSERING]] steg 0.
 > Se STATUS.md.
 
 ---
@@ -32,7 +34,7 @@ direktförsäljning. Allt nedan är copy-paste-klart för Ads Manager. Total sta
 | Budget | 250 kr/dag, kampanjnivå (CBO) |
 | Målgrupp | Sverige · 35–65+ · Alla kön · intressen: hälsa & välbefinnande, kosttillskott, vitaminer, matlagning, promenader |
 | Placeringar | Advantage+ (auto) |
-| Destination | vivanord.se/kampanj.html?utm_source=facebook&utm_campaign=halsoklubben |
+| Destination | **halsoklubben.vivanord.se**/?utm_source=facebook&utm_campaign=halsoklubben (egen subdomän — tävlingen flyttad hit 2026-07-17) |
 
 **Annons 1A — Tävlingen (bild: matkasse/presentkort, gul badge "10 000 kr"):**
 > **Primärtext:** Svara rätt på 4 enkla hälsofrågor — så är du med och tävlar om ett

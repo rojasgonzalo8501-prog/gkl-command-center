@@ -1,54 +1,64 @@
-# SUPABASE.md — Aktivera riktig lagring (~20 minuter)
+# SUPABASE.md — admin-inloggning + säkerhet före skarp trafik
 
-Koden är redan byggd och testad. Sajten och admin-portalen körs i **prototypläge**
-(localStorage) tills du fyller i två rader i en konfigfil — sedan sparas allt på riktigt:
-formulären skriver till databasen, admin-portalen läser från den, och hela teamet ser
-samma data oavsett enhet.
+> [!success] Var vi står (verifierat 2026-07-18)
+> Projektet **lever** (`itwayrczvhzzfvsoxhcc`, region eu-west-2). Schemat är deployat, RLS
+> är på och korrekt, och anon-nyckeln är inlagd i `supabase-config.js` — **formulären sparar
+> på riktigt**. Steg 1, 2 och 4 i den gamla guiden är alltså redan gjorda.
+>
+> **Två saker kvar innan skarp trafik — båda i Supabase-panelen, ~2 min totalt.**
 
-## Det DU måste göra (kräver dina konton — jag kan inte göra detta åt dig)
+## Vad jag verifierade åt dig
 
-### 1. Skapa projektet (5 min)
-1. Gå till **supabase.com** → Sign up (GitHub-kontot funkar) → **New project**
-2. Namn: `vivanord` · Region: **eu-north-1 (Stockholm)** · välj ett starkt databas-lösenord
-3. Vänta ~2 min medan projektet startas
+| Kontroll | Resultat |
+|---|---|
+| Tabeller `leads` + `ordrar` med RLS på | ✅ |
+| Anon får bara **INSERT** (besökare skickar formulär, kan inte läsa) | ✅ |
+| Inloggad (`authenticated`) får **SELECT + UPDATE** → admin läser + hanterar status | ✅ |
+| Ingen DELETE-policy (data kan inte raderas via API) | ✅ |
+| Admin-användare finns | ❌ **`auth.users` är tom — måste skapas (nedan)** |
 
-### 2. Skapa databasen (2 min)
-1. I projektet: **SQL Editor** → New query
-2. Klistra in HELA innehållet i `deliverables/websites/vivanord/supabase-setup.sql` → **Run**
-3. Klart — tabellerna `leads` och `ordrar` finns nu, med säkerhetsregler:
-   besökare kan bara LÄGGA TILL, aldrig läsa; admin kräver inloggning
+Portalen fungerar alltså direkt när användaren finns. Men läs säkerhetssteget — det är
+lika viktigt som själva inloggningen.
 
-### 3. Skapa admin-kontot (1 min)
-1. **Authentication → Users → Add user → Create new user**
-2. Din e-post + ett starkt lösenord · bocka i **Auto Confirm User**
-3. (Lägg till fler användare senare för teamet — en per person, dela aldrig konton)
+---
 
-### 4. Klistra in nycklarna (2 min)
-1. **Project Settings → API**: kopiera **Project URL** och **anon public**-nyckeln
-2. Öppna `deliverables/websites/vivanord/supabase-config.js` och fyll i:
-   ```js
-   window.NV_SUPABASE = {
-     url: 'https://DITTPROJEKT.supabase.co',
-     anonKey: 'eyJhbGciOi...',
-   };
-   ```
-3. Committa och pusha (eller be mig göra det) — deployen uppdateras automatiskt
+## 🔴 Steg A — skapa admin-användaren (30 sek)
 
-### 5. Verifiera (2 min)
-1. Öppna sajten → skicka en testbeställning
-2. Öppna `/admin/` → nu möts du av **e-post + lösenord** istället för PIN → logga in
-3. Taggen uppe till vänster ska visa **"Live · Supabase"** och din testorder ska synas
-4. Kolla även Supabase-panelen: **Table Editor → ordrar** — raden ska ligga där
+1. Supabase → **Authentication → Users → Add user → Create new user**
+2. Din e-post + ett **starkt** lösenord · bocka i **Auto Confirm User**
+3. Fler i teamet? En användare per person. **Dela aldrig konton** — spårbarheten försvinner.
 
-## Vad som händer tekniskt (redan byggt ✅)
-- Formulären POST:ar varje lead/order till databasen (och behåller en lokal kopia som offline-skydd)
-- Admin-portalen loggar in via Supabase Auth, läser båda tabellerna, uppdaterar status
-  med optimistisk låsning (återställs + felmeddelande om nätverket sviker) och
-  auto-uppdaterar varje minut
-- Demodata/Rensa-knapparna stängs av automatiskt i live-läge — riktig data hanteras i databasen
-- anon-nyckeln är designad att vara publik: säkerheten ligger i databasens RLS-policys
+## 🔴 Steg B — STÄNG AV publik registrering (30 sek) — säkerhetskritiskt
 
-## Kvar att bygga senare (säg till när det behövs)
-- [ ] E-postnotis till dig vid varje ny order (Supabase Edge Function → Resend, ~1 h jobb)
-- [ ] Automatisk leadexport till Medvital (schemalagd CSV eller API-push)
+**Authentication → Sign In / Providers → Email →** slå av **"Allow new users to sign up"**
+(Enable Signups = OFF).
+
+**Varför detta är lika viktigt som steg A:** admin-portalen låter *vilken inloggad användare
+som helst* läsa alla leads och ordrar — det är meningen, inloggad = admin. Men om publik
+registrering är **på** kan vem som helst skapa ett konto, bli "inloggad", och då läsa alla dina
+kunders namn, e-post, telefon och adress. Det vore ett GDPR-läckage. Med registrering avstängd
+betyder "inloggad" bara de användare *du* lagt till i steg A — och då är modellen tät.
+
+> [!warning] Säkerhetsadvisorn flaggade två WARN (permissiva UPDATE-policyer)
+> `inloggade_uppdaterar_leads` och `..._ordrar` använder `USING (true)` — vilken inloggad
+> användare som helst kan uppdatera vilken rad som helst. **Det är acceptabelt för det här
+> interna verktyget** (admins ändrar status på alla ordrar — det är hela jobbet) **förutsatt
+> att steg B är gjort.** Är registreringen öppen blir samma policy en läcka. Gör steg B, så är
+> varningen ofarlig. [Om du vill härda mer](https://supabase.com/docs/guides/database/database-linter?lint=0024_permissive_rls_policy).
+
+---
+
+## Verifiera (2 min)
+
+1. Öppna sajten (https://vivanord.vercel.app) → skicka en testbeställning
+2. Öppna `/admin/` → du möts nu av **e-post + lösenord** i stället för PIN → logga in
+3. Taggen uppe till vänster ska visa **"Live · Supabase"** och testordern ska synas
+4. Dubbelkolla i Supabase: **Table Editor → ordrar** — raden ska ligga där
+5. Testa säkerheten: logga ut, försök nå `/admin/`-datan utan inloggning → ska nekas
+
+## Kvar att bygga senare (säg till)
+- [ ] E-postnotis vid varje ny order (Edge Function → Resend, ~1 h)
+- [ ] Automatisk leadexport till Medvital / Rojdix (format enligt avtalet — se [[rojdix-leadmottagare]])
 - [ ] Radera-rutin med audit-logg för GDPR-begäranden
+
+*Relaterat: [[LANSERING]] · [[DEPLOY]] · [[rojdix-leadmottagare]]*

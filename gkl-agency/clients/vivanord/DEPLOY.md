@@ -3,6 +3,21 @@
 > **Omskriven 2026-07-17.** Det är **två** Vercel-projekt nu, inte ett: dropship-sajten och
 > Hälsoklubben på egen subdomän. Se [[halsoklubben-subdoman]] för varför.
 
+> [!success] DEPLOYAT 2026-07-18 via Vercel CLI (konto gonza1 / rojasgonzalo8501-1102)
+> - **Dropship-sajten:** https://vivanord.vercel.app — live, verifierad (6 produkter, 0× 99 kr)
+> - **Hälsoklubben:** https://vivanord-halsoklubben.vercel.app — live
+> - Deployade direkt från de lokala mapparna (bara sajten laddades upp, inga docs).
+>
+> **KVAR — DNS hos Strato** (domänen ligger där, nameservers `*.rzone.de`). Sätt A-poster:
+> | Namn | Typ | Värde |
+> |---|---|---|
+> | `vivanord.se` | A | `76.76.21.21` |
+> | `www.vivanord.se` | A | `76.76.21.21` |
+> | `halsoklubben.vivanord.se` | A | `76.76.21.21` |
+>
+> Alla tre domäner är redan tillagda i respektive Vercel-projekt. När A-posterna slår igenom
+> verifierar Vercel automatiskt och utfärdar HTTPS. Sen svarar vivanord.se på riktigt.
+
 ## ⚠️ Tre saker att ALDRIG göra
 
 1. **Peka aldrig vivanord.se på hela command center-repot.** Repot innehåller konfidentiellt

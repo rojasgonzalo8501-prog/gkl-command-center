@@ -2,7 +2,7 @@
 titel: Vivanord — Projektöversikt
 typ: projekt-moc
 kund: Vivanord
-status: pre-launch
+status: live-preview
 uppdaterad: 2026-07-16
 taggar: [vivanord, klient, kosttillskott, meta-ads, medvital, d2c]
 ---
@@ -12,8 +12,8 @@ taggar: [vivanord, klient, kosttillskott, meta-ads, medvital, d2c]
 > [!info] Snabbfakta
 > **Vad:** D2C-kosttillskott på prenumeration, återförsäljare åt Medvital.
 > **Marknad:** Sverige (svenska först) + spansktalande i Sverige (spansk sajt).
-> **Status:** Byggt & klart — väntar på att domänen `vivanord.se` godkänns, sedan lansering.
-> **Domän köpt:** ja · **Sajt live:** nej (väntar domän) · **Databas:** live (Supabase)
+> **Status:** 🟢 LIVE (förhandsvisning) på vivanord.se + halsoklubben.vivanord.se sedan 2026-07-18.
+> **Sajt live:** ja (2026-07-18, Vercel+HTTPS) · **Databas:** live (Supabase)
 
 ## 🤝 Affären med Medvital
 - Vi är **återförsäljare** åt **Medvital Sverige AB** (org.nr 559421-2093).
@@ -43,7 +43,7 @@ taggar: [vivanord, klient, kosttillskott, meta-ads, medvital, d2c]
 - **GitHub-branch:** `claude/new-customer-website-marketing-mn8fl9` i repot `gkl-command-center`
 - **Supabase-projekt:** `itwayrczvhzzfvsoxhcc` (URL: https://itwayrczvhzzfvsoxhcc.supabase.co)
 - **Command Center (lokalt):** http://localhost:3737 → fliken 💊 Vivanord
-- **Framtida sajt:** https://vivanord.se (ej live än)
+- **🟢 LIVE:** https://vivanord.se · tävlingen https://halsoklubben.vivanord.se
 
 ## 📦 Vad som är byggt (allt i GitHub)
 - **Sajt SV:** hem, produkter, kassa (mot faktura), Hälsoklubben-tävling
@@ -65,7 +65,7 @@ taggar: [vivanord, klient, kosttillskott, meta-ads, medvital, d2c]
 
 > [!warning] Du måste göra (kräver dina konton/beslut)
 > - [ ] **Supabase admin-login** (30 sek): Authentication → Users → Add user (Auto Confirm)
-> - [ ] **Vercel-deploy** när domänen godkänts (Root Directory = sajtmappen) — se [[DEPLOY]]
+> - [x] ✅ **Vercel-deploy + DNS** klart 2026-07-18 — sajten live
 > - [ ] **Meta Business Manager** + FB/IG + pixel + annonskonto → skicka pixel-ID
 > - [ ] **Medvital-mötet:** produktblad/priser, pris per lead, skriftligt om 10 000 kr-vinsten, ES-säljare?
 > - [ ] **PRV/EUIPO-slutkoll** på namnet "Vivanord"

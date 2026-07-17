@@ -1,12 +1,28 @@
 # 🚀 LANSERING — vägen till första annonskronan
 
-> **Uppdaterad 2026-07-17.** Avtalen med Medvital och Rojdix är klara. Det som återstår är att
-> få ut uppgifterna ur avtalen och in i koden, plus fyra konton som kräver dig.
+> **Uppdaterad 2026-07-18.** 🟢 Sajterna är LIVE — **vivanord.se** + **halsoklubben.vivanord.se**
+> (Vercel, HTTPS, DNS klart). Men detta är fortfarande en **förhandsvisning**, inte skarp trafik.
+> Steg 1 (deploy + DNV) är avbockat nedan; kvar är steg 0 (org.nr + Supabase-säkerhet) och
+> steg 2–3 (pixel, Meta-konton, annonser).
 >
-> Ordningen spelar roll. Vissa steg tar dagar av väntan (DNS, Meta-granskning) — starta dem
-> först. Andra tar 30 sekunder men blockerar allt (Rojdix org.nr).
+> Ordningen spelar roll. Vissa steg tar dagar av väntan (Meta-granskning) — starta dem först.
+> Andra tar 30 sekunder men blockerar skarp trafik (Rojdix org.nr, Supabase-registrering av).
 
 ---
+
+## ⚠️ ÖPPEN RISK — repot är publikt (beslut 2026-07-17: behåll tills vidare)
+
+`gkl-command-center` är ett **publikt** GitHub-repo. Det betyder att dina konfidentiella
+dokument är webbåtkomliga för vem som helst som hittar URL:en — verifierat 2026-07-17:
+`brief.md` (400 kr/avtal + hela leadkalkylen), `marketing-plan.md`, `medvital-mote.md`,
+`rojdix-leadmottagare.md`, `medvital-katalog.md`. Din affärsuppgörelse, dina marginaler och
+Rojdix-upplägget är alltså öppet googlingsbara. Du valde att behålla det publikt för nu så att
+den delade presentationslänken (github.io) fortsätter fungera.
+
+**Fixen när du vill stänga det:** `gh repo edit rojasgonzalo8501-prog/gkl-command-center
+--visibility private` (Vercel deployar fint från privata repon; men github.io-länkarna slutar
+fungera — ersätt presentationslänken med Vercel-URL:en då). Renast på sikt: flytta de
+konfidentiella docsen till ett separat privat repo så bara sajten någonsin kan exponeras.
 
 ## 🔴 STEG 0 — det som stoppar allt (gör idag)
 
@@ -14,7 +30,8 @@
 |---|---|---|---|
 | 1 | **Rojdix org.nr + juridiskt bolagsnamn** | 2 min | Samtyckesrutan säger `[org.nr XXXXXX-XXXX]` på 8 ställen. Ett överlåtelsesamtycke är bara giltigt om mottagaren namnges (GDPR art. 4.11 + 7). Utan det får Rojdix **inte ringa ett enda lead** — oavsett vad avtalet säger. |
 | 2 | **Vivanord AB org.nr** (eller besked om bolagsformen) | 2 min | Villkoren påstår redan att bolaget finns, på 6 ställen. Stämmer det inte är villkorstexten felaktig innan första ordern. |
-| 3 | **Supabase admin-användare** | 30 sek | `auth.users` är tom (kontrollerat 2026-07-17). Admin-portalen går inte att logga in i. Authentication → Users → Add user, kryssa **Auto Confirm**. |
+| 3 | **Supabase admin-användare** | 30 sek | `auth.users` är tom. Admin-portalen går inte att logga in i. Authentication → Users → Add user, kryssa **Auto Confirm**. Steg-för-steg: [[SUPABASE]]. |
+| 3b | **Stäng av publik registrering i Supabase** 🔴 | 30 sek | Säkerhetskritiskt. Authentication → Email → **Enable Signups = OFF**. Annars kan vem som helst registrera sig, bli "inloggad" och läsa **alla kunders namn/e-post/telefon/adress** (GDPR-läcka). Verifierat via säkerhetsadvisorn 2026-07-18. Se [[SUPABASE]]. |
 
 ⚠️ Jag hittade `rojdix.se` men bara ett **estniskt** ROJDIX INC OÜ (14200872) i register. Gissa
 inte — ta numret från avtalet. Är motparten estnisk behöver integritetspolicyns EU/EES-stycke
@@ -31,12 +48,12 @@ ses över också.
 
 ---
 
-## STEG 1 — starta klockan på det som tar tid (idag)
+## STEG 1 — starta klockan på det som tar tid
 
 | # | Vad | Tid | Not |
 |---|---|---|---|
-| 4 | **Vercel-deploy, projekt 1** (dropship-sajten) | 15 min | **Vänta inte på domänen.** Du får `vivanord-xxxx.vercel.app` direkt och kan testa hela funneln på riktigt. Domänen kopplas sen — det är bara en DNS-post. Se [[DEPLOY]]. |
-| 5 | **Vercel-deploy, projekt 2** (Hälsoklubben) | 10 min | Annan Root Directory, egen subdomän. Se [[halsoklubben-subdoman]]. |
+| 4 | ✅ **Vercel-deploy, projekt 1** (dropship-sajten) | KLART 2026-07-18 | Live på **vivanord.se** + vivanord.vercel.app |
+| 5 | ✅ **Vercel-deploy, projekt 2** (Hälsoklubben) | KLART 2026-07-18 | Live på **halsoklubben.vivanord.se** + vivanord-halsoklubben.vercel.app |
 | 6 | **Meta Business Manager** + FB-sida + IG + annonskonto | 1 h | **Längsta stången.** Nya konton får trust-restriktioner och sidor mår bra av att åldras. Starta idag även om annonserna dröjer. |
 | 7 | **PRV/EUIPO-slutkoll** på "vivanord" | 5 min | Gratis. Gör det innan varumärket syns publikt. |
 | 8 | **Juristgranskning** av villkor + integritetspolicy + tävlingsvillkor | — | Skicka idag, svaret dröjer. Sidorna är utkast och märkta som sådana. |

@@ -1,12 +1,12 @@
 # HANDOFF — Vivanord (läs denna först i en ny session)
 
 > Komprimerad helhetsbild så en ny Claude Code-chatt kan fortsätta sömlöst.
-> Uppdaterad 2026-07-16. Djupare detaljer: [[Obsidian-Vivanord]], [[STATUS]], [[brief]].
+> Uppdaterad 2026-07-18 (sajten live). Djupare detaljer: [[LANSERING]], [[Obsidian-Vivanord]], [[STATUS]].
 
 ## Vad projektet är
 **Vivanord** = D2C-kosttillskott på prenumeration i Sverige, **återförsäljare åt Medvital**.
-Tidigare arbetsnamn: NordVital (bytt för nordvital.com var taget). Domänen **vivanord.se är köpt**
-(väntar på .se-registrets godkännande innan DNS/deploy). Målgrupp: Sverige (svenska först) +
+Tidigare arbetsnamn: NordVital (bytt för nordvital.com var taget). Domänen **vivanord.se är LIVE** (2026-07-18, Vercel + HTTPS). Tävlingen på egen subdomän
+halsoklubben.vivanord.se. Målgrupp: Sverige (svenska först) +
 spansktalande i Sverige (komplett spansk sajt finns).
 
 ## Affären (viktigast att minnas)
@@ -17,9 +17,10 @@ spansktalande i Sverige (komplett spansk sajt finns).
 - Medvital = juridisk säljare, sköter leverans/fakturering/kundservice/ångerrätt. **Vi äger leadsen.**
 - 🔴 **Leads med telefonsamtycke överlåts till [[rojdix-leadmottagare|Rojdix Telemarketing]] — INTE
   Medvital.** Det är Rojdix som ringer. Ändrat 2026-07-16; samtyckestexten SV+ES är omskriven.
-  **Rojdix org.nr saknas fortfarande** — sajten får inte gå live förrän det är ifyllt, annars är
-  överlåtelsesamtycket ogiltigt. Öppna frågor (vem betalar per lead? hur hänger 400 kr ihop?)
-  står i [[rojdix-leadmottagare]].
+  **Rojdix org.nr saknas fortfarande.** Sajten är live som förhandsvisning, men får inte ta
+  **skarp trafik / samla riktiga leads** förrän numret är ifyllt — annars är överlåtelsesamtycket
+  ogiltigt. Platshållaren `[org.nr XXXXXX-XXXX]` togs bort för förhandsvisningen. Öppna frågor
+  (vem betalar per lead? hur hänger 400 kr ihop?) står i [[rojdix-leadmottagare]].
 - Modell: dropship, ingen betalning på sajten — kunden betalar mot faktura.
 
 ## Pris mot kund — speglar medvital.se exakt (verifierat i rå HTML 2026-07-16)
@@ -39,8 +40,9 @@ nästa leverans** (deras köpvillkor — deras produktsidor säger felaktigt "n�
 
 ## Två varumärken
 - **Vivanord** (vivanord.se) — huvudsajt: hem, produkter, kassa.
-- **Hälsoklubben** (kampanj.html) — fristående tävling: 4 frågor → lead. Vinst **10 000 kr/mån,
-  betalas av Medvital**. Meta-friskrivning i villkoren.
+- **Hälsoklubben** (halsoklubben.vivanord.se, eget Vercel-projekt `vivanord-halsoklubben/`) —
+  fristående tävling: 4 frågor → lead. Vinst **10 000 kr/mån, betalas av Medvital**.
+  Meta-friskrivning i villkoren. Avlänkad från dropship-sajten, se [[halsoklubben-subdoman]].
 
 ## Teknik (allt byggt & i GitHub)
 - **Sajt:** ren statisk HTML. SV i roten, ES i `/es/`. Delad `styles.css` + `main.js`.
@@ -59,7 +61,7 @@ nästa leverans** (deras köpvillkor — deras produktsidor säger felaktigt "n�
 ## Deploy
 **Vercel** (inte Netlify). Root Directory = `gkl-agency/deliverables/websites/vivanord` så bara
 sajtmappen publiceras (INTE hela repot — det innehåller interna kalkyler). DNS-poster i DEPLOY.md.
-Väntar bara på att domänen godkänns.
+🟢 LIVE på vivanord.se + halsoklubben.vivanord.se (förhandsvisning — ej skarp trafik än).
 
 ## Marknadsföring
 - `meta-lansering.md`: 3 kampanjer (SV leadgen 250 kr/dag, SV direktköp 200, ES direktköp 100),
@@ -70,7 +72,7 @@ Väntar bara på att domänen godkänns.
 ## Status: kvar att göra
 **Du (kräver dina konton/beslut):**
 1. Supabase admin-användare (30 sek).
-2. Vercel-deploy när domänen godkänts.
+2. ✅ Vercel-deploy + DNS KLART (2026-07-18). Kvar: Supabase admin + stäng av registrering.
 3. Meta Business Manager + FB/IG + pixel → skicka pixel-ID + domänverifierings-tagg.
 4. Medvital-mötet: produktblad/priser, pris per lead, skriftligt om 10k-vinsten, ES-säljare?
 5. PRV/EUIPO-slutkoll på namnet. 6. Juristgranska villkoren. 7. Brevo-konto.

@@ -1,4 +1,9 @@
-# STATUS.md — Vivanord: var vi står (2026-07-14)
+# STATUS.md — Vivanord: var vi står (2026-07-18)
+
+> [!success] 🟢 SAJTEN ÄR LIVE (2026-07-18)
+> vivanord.se + halsoklubben.vivanord.se, Vercel + HTTPS, Supabase sparar. Förhandsvisning —
+> ännu inte skarp trafik. Aktuell checklista och ordning: **[[LANSERING]]**. Denna fil är den
+> äldre statusöversikten; LANSERING.md är sanningen för vad som återstår.
 
 Uppdateras löpande. ✅ = klart · 🔶 = byggt men kräver din åtgärd för att aktiveras · ☐ = kvar
 
