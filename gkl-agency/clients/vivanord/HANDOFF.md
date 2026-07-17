@@ -15,13 +15,27 @@ spansktalande i Sverige (komplett spansk sajt finns).
 - **Intäkt 2:** leadlistan säljs per lead (endast leads med telefonsamtycke), pris via admin-portalens
   Leadkalkyl (golv självkostnad +50 %, riktmärke 25–75 kr/lead).
 - Medvital = juridisk säljare, sköter leverans/fakturering/kundservice/ångerrätt. **Vi äger leadsen.**
-- Leads med telefonsamtycke **överlåts** till Medvital (GDPR-korrekt, Medvital namngiven i samtycket).
+- 🔴 **Leads med telefonsamtycke överlåts till [[rojdix-leadmottagare|Rojdix Telemarketing]] — INTE
+  Medvital.** Det är Rojdix som ringer. Ändrat 2026-07-16; samtyckestexten SV+ES är omskriven.
+  **Rojdix org.nr saknas fortfarande** — sajten får inte gå live förrän det är ifyllt, annars är
+  överlåtelsesamtycket ogiltigt. Öppna frågor (vem betalar per lead? hur hänger 400 kr ihop?)
+  står i [[rojdix-leadmottagare]].
 - Modell: dropship, ingen betalning på sajten — kunden betalar mot faktura.
 
-## Pris mot kund
-Första månaden **99 kr** → sedan **399 kr/mån**, låda med 3 månadsdoser **var 3:e månad**
-(~1 197 kr + 59 kr frakt/leverans). Ingen bindningstid. ⚠️ Kvartalsbeloppet + 3 produkter
-bekräftas på Medvital-mötet.
+## Pris mot kund — speglar medvital.se exakt (verifierat i rå HTML 2026-07-16)
+
+| Produkt | Första leveransen | Löpande |
+|---|---|---|
+| Flex+ · Immun+ · Beauty+ · Man+ · Woman+ | 399 kr + 59 kr frakt | 1 197 kr + 59 kr **var 3:e månad** |
+| **Absorb+** | **199 kr** (50 % rabatt) + 59 kr frakt | **399 kr var 4:e vecka** |
+
+**Vi är återförsäljare — priset måste matcha Medvitals faktura. Hitta aldrig på ett tal.**
+"99 kr" fanns aldrig hos Medvital; det var vår egen konstruktion och togs bort ur hela sajten
+2026-07-16 (105 förekomster, SV + ES). Återinför det inte.
+
+Fem av sex produkter har **inget intropris**. Absorb+ 199 kr är enda annonskroken — och den är
+märkt *"tidsbegränsat erbjudande"*. Ingen bindningstid, men uppsägning **senast 14 dagar före
+nästa leverans** (deras köpvillkor — deras produktsidor säger felaktigt "när som helst").
 
 ## Två varumärken
 - **Vivanord** (vivanord.se) — huvudsajt: hem, produkter, kassa.

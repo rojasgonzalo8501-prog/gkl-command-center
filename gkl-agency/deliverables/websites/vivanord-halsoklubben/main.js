@@ -48,10 +48,7 @@ document.querySelectorAll('.faq__q').forEach((btn) => {
   });
 });
 
-// Tävlingsquiz — DÖD KOD i denna mapp sedan 2026-07-17.
-// Hälsoklubben flyttade till vivanord-halsoklubben/ (eget Vercel-projekt, egen subdomän).
-// Blocken no-oppar via if (leadForm)/if (steps) och är kvar för att main.js hålls identisk
-// i båda mapparna — ändrar du här, ändra där också. Se clients/vivanord/halsoklubben-subdoman.md
+// Tävlingsquiz (index.html) — detta är huvudlogiken i detta projekt.
 const steps = document.querySelectorAll('.quiz-step');
 const progressBar = document.getElementById('progressBar');
 const TOTAL_STEPS = 6;
@@ -89,7 +86,8 @@ if (leadForm) {
   });
 }
 
-// Kassa (bestall.html)
+// Kassa — DÖD KOD i denna mapp. Kassan bor på dropship-sajten (vivanord/bestall.html).
+// No-oppar via if (orderForm). Kvar för att main.js hålls identisk i båda mapparna.
 const orderForm = document.getElementById('orderForm');
 if (orderForm) {
   const picks = document.querySelectorAll('.pick');

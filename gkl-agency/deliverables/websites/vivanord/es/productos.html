@@ -1,205 +1,254 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Productos — Vivanord | Suplementos por suscripción</title>
-  <meta name="description" content="Immun+, Belleza Interior, Flex+ y Equilibrio Digestivo. Prueba la primera caja por 99 kr — sin permanencia, paga contra factura." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media=&#39;all&#39;" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
-  <link rel="stylesheet" href="../styles.css" />
-  <!-- REVENDEDOR DE MEDVITAL: igual que la versión sueca — Flex+ sincronizado con datos
-       confirmados; nombres/precios de los demás productos pendientes de la ficha de Medvital.
-       Ver clients/vivanord/medvital-katalog.md -->
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Productos — Vivanord | Suplementos por suscripción</title>
+ <meta name="description" content="Flex+, Immun+, Beauty+, Absorb+, Man+ y Woman+. Desde 399 kr el primer envío — sin permanencia, paga contra factura." />
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media=&#39;all&#39;" />
+ <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
+ <link rel="stylesheet" href="../styles.css" />
+ <!-- REVENDEDOR DE MEDVITAL: igual que la versión sueca — Flex+ sincronizado con datos
+ confirmados; nombres/precios de los demás productos pendientes de la ficha de Medvital.
+ Ver clients/vivanord/medvital-katalog.md -->
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="container nav__inner">
-      <a href="index.html" class="nav__logo">Viva<span>nord</span></a>
-      <ul class="nav__links" id="navLinks">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="productos.html" class="active">Productos</a></li>
-        <li><a href="index.html#como-funciona">Cómo funciona</a></li>
-        <li><a href="index.html#faq">Preguntas frecuentes</a></li>
-        <li><a href="../produkter.html" lang="sv">🇸🇪 Svenska</a></li>
-      </ul>
-      <a href="#immun" class="btn btn--primary btn--sm nav__cta">Pruébalo por 99 kr</a>
-      <button class="nav__burger" id="burger" aria-label="Menú">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+ <!-- NAV -->
+ <nav class="nav">
+ <div class="container nav__inner">
+ <a href="index.html" class="nav__logo">Viva<span>nord</span></a>
+ <ul class="nav__links" id="navLinks">
+ <li><a href="index.html">Inicio</a></li>
+ <li><a href="productos.html" class="active">Productos</a></li>
+ <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+ <li><a href="index.html#faq">Preguntas frecuentes</a></li>
+ <li><a href="../produkter.html" lang="sv">🇸🇪 Svenska</a></li>
+ </ul>
+ <a href="#leder" class="btn btn--primary btn--sm nav__cta">Ver los productos</a>
+ <button class="nav__burger" id="burger" aria-label="Menú">
+ <span></span><span></span><span></span>
+ </button>
+ </div>
+ </nav>
 
-  <!-- HERO -->
-  <header class="hero" style="padding: 56px 0 48px;">
-    <div class="container hero__inner">
-      <div class="hero__badge">Prueba la primera caja por 99 kr · Paga contra factura</div>
-      <h1>Nuestros productos</h1>
-      <p class="hero__sub">
-        Cuatro suplementos para el día a día — todos con nutrientes cuyos efectos tienen
-        declaraciones de salud aprobadas en la UE. Siempre sin permanencia.
-      </p>
-    </div>
-  </header>
+ <!-- HERO -->
+ <header class="hero" style="padding: 56px 0 48px;">
+ <div class="container hero__inner">
+ <div class="hero__badge">Desde 399 kr el primer envío · Paga contra factura</div>
+ <h1>Nuestros productos</h1>
+ <p class="hero__sub">
+ Seis suplementos para el día a día — todos con nutrientes cuyos efectos tienen
+ declaraciones de salud aprobadas en la UE. Siempre sin permanencia.
+ </p>
+ </div>
+ </header>
 
-  <!-- TRUST BAR -->
-  <div class="trust-bar">
-    <div class="container trust-bar__inner">
-      <div class="trust-item"><span class="dot"></span> Entrega en el buzón</div>
-      <div class="trust-item"><span class="dot"></span> Sin permanencia</div>
-      <div class="trust-item"><span class="dot"></span> Cancela cuando quieras</div>
-      <div class="trust-item"><span class="dot"></span> 14 días de desistimiento</div>
-    </div>
-  </div>
+ <!-- TRUST BAR -->
+ <div class="trust-bar">
+ <div class="container trust-bar__inner">
+ <div class="trust-item"><span class="dot"></span> Entrega en el buzón</div>
+ <div class="trust-item"><span class="dot"></span> Sin permanencia</div>
+ <div class="trust-item"><span class="dot"></span> Cancela cuando quieras</div>
+ <div class="trust-item"><span class="dot"></span> 14 días de desistimiento</div>
+ </div>
+ </div>
 
-  <!-- PRODUCTOS -->
-  <section class="section" id="immun">
-    <div class="container">
-      <div class="products-grid" style="grid-template-columns: 1fr; max-width: 760px; margin: 0 auto;">
-        <div class="product-card">
-          <div class="product-card__icon">🛡️</div>
-          <h3>Immun+</h3>
-          <div class="product-card__tag">30 dosis diarias · Betaglucanos · Vitamina C · Vitamina D · Zinc · Selenio</div>
-          <div class="product-card__claim">
-            Apoyo diario para las defensas. Las vitaminas C y D, el zinc y el selenio contribuyen al
-            funcionamiento normal del sistema inmunitario. El zinc y el selenio contribuyen además a la
-            protección de las células frente al estrés oxidativo.
-          </div>
-          <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
-            <strong>Dosis recomendada:</strong> 1 cápsula al día con la comida.
-          </p>
-          <div class="product-card__price"><strong>99 kr</strong> el primer mes, después <strong>399 kr/mes</strong> · nueva caja cada 3 meses</div>
-          <a href="pedido.html?produkt=immun" class="btn btn--primary">Pedir ahora — 99 kr</a>
-        </div>
+ <!-- PRODUCTOS -->
+ <section class="section" id="immun">
+ <div class="container">
+ <div class="products-grid" style="grid-template-columns: 1fr; max-width: 760px; margin: 0 auto;">
+ <div class="product-card" id="leder">
+ <div class="product-card__icon">🦴</div>
+ <h3>Flex+</h3>
+ <div class="product-card__tag">30 cápsulas · MSM · Glucosamina · Condroitina · Colágeno marino · Escaramujo · Jengibre · C · D · Zinc · Manganeso</div>
+ <div class="product-card__claim">
+ Para quienes quieren cuidar articulaciones, movilidad y función diaria — especialmente con
+ rigidez o articulaciones que envejecen. La vitamina C contribuye a la formación normal de
+ colágeno, importante para huesos y cartílago. La vitamina D, el zinc y el manganeso
+ contribuyen al mantenimiento de los huesos en condiciones normales.
+ </div>
+ <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
+ <strong>Contenido:</strong> metilsulfonilmetano (MSM), glucosamina, condroitina, colágeno
+ marino hidrolizado (<strong>pescado</strong>), extracto de escaramujo, extracto de raíz de
+ jengibre, vitaminas C, D y E, zinc, manganeso, calcio.
+ <em>Contiene pescado. La declaración nutricional completa acompaña al producto.</em>
+ </p>
+ <div class="product-card__price"><strong>399 kr</strong> el primer envío + 59 kr de envío · después <strong>399 kr/mes</strong> — 1 197 kr + 59 kr de envío cada 3 meses</div>
+ <a href="pedido.html?produkt=leder" class="btn btn--primary">Pedir Flex+</a>
+ </div>
 
-        <div class="product-card" id="belleza">
-          <div class="product-card__icon">✨</div>
-          <h3>Belleza Interior</h3>
-          <div class="product-card__tag">30 dosis diarias · Ácido hialurónico · Biotina · Q10 · Zinc · Vitamina C</div>
-          <div class="product-card__claim">
-            La belleza empieza por dentro. La biotina y el zinc contribuyen al mantenimiento del cabello
-            y la piel en condiciones normales. La vitamina C contribuye a la formación normal de colágeno
-            para el funcionamiento normal de la piel.
-          </div>
-          <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
-            <strong>Dosis recomendada:</strong> 1 cápsula al día.
-          </p>
-          <div class="product-card__price"><strong>99 kr</strong> el primer mes, después <strong>399 kr/mes</strong> · nueva caja cada 3 meses</div>
-          <a href="pedido.html?produkt=skonhet" class="btn btn--primary">Pedir ahora — 99 kr</a>
-        </div>
+ <div class="product-card" id="immun2">
+ <div class="product-card__icon">🛡️</div>
+ <h3>Immun+</h3>
+ <div class="product-card__tag">30 cápsulas · Betaglucanos · Vitamina C · Vitamina D · Zinc · Selenio · Ácido fólico</div>
+ <div class="product-card__claim">
+ Apoyo diario para las defensas. Las vitaminas C y D, el zinc y el selenio contribuyen al
+ funcionamiento normal del sistema inmunitario. El zinc y el selenio contribuyen además a la
+ protección de las células frente al estrés oxidativo.
+ </div>
+ <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
+ <strong>Dosis recomendada:</strong> 1 cápsula al día con agua. Contiene por dosis diaria:
+ betaglucano 1,3/1,6 de levadura 450 mg, vitamina C 150 mg, vitamina D3 20 µg, ácido fólico
+ 200 µg, además de vitamina A, vitamina E, zinc y selenio. <em>No apto para menores de 18 años.</em>
+ </p>
+ <div class="product-card__price"><strong>399 kr</strong> el primer envío + 59 kr de envío · después <strong>399 kr/mes</strong> — 1 197 kr + 59 kr de envío cada 3 meses</div>
+ <a href="pedido.html?produkt=immun" class="btn btn--primary">Pedir Immun+</a>
+ </div>
 
-        <div class="product-card" id="flex">
-          <div class="product-card__icon">🦴</div>
-          <h3>Flex+</h3>
-          <div class="product-card__tag">MSM · Glucosamina · Condroitina · Colágeno marino · Escaramujo · Jengibre · C · D · Zinc · Manganeso</div>
-          <div class="product-card__claim">
-            Para quienes quieren cuidar articulaciones, movilidad y función diaria — especialmente con
-            rigidez o articulaciones que envejecen. La vitamina C contribuye a la formación normal de
-            colágeno, importante para huesos y cartílago. La vitamina D, el zinc y el manganeso
-            contribuyen al mantenimiento de los huesos en condiciones normales.
-          </div>
-          <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
-            <strong>Contenido:</strong> metilsulfonilmetano (MSM), glucosamina, condroitina, colágeno
-            marino hidrolizado (<strong>pescado</strong>), extracto de escaramujo, extracto de raíz de
-            jengibre, vitaminas C, D y E, zinc, manganeso, calcio.
-            <em>Contiene pescado. La declaración nutricional completa acompaña al producto.</em>
-          </p>
-          <div class="product-card__price"><strong>99 kr</strong> el primer mes, después <strong>399 kr/mes</strong> · nueva caja cada 3 meses</div>
-          <a href="pedido.html?produkt=leder" class="btn btn--primary">Pedir ahora — 99 kr</a>
-        </div>
+ <div class="product-card" id="beauty">
+ <div class="product-card__icon">✨</div>
+ <h3>Beauty+</h3>
+ <div class="product-card__tag">60 cápsulas · Ácido hialurónico · Biotina · CoQ10 · Vitamina C · Zinc · Selenio</div>
+ <div class="product-card__claim">
+ La belleza empieza por dentro. La biotina y el zinc contribuyen al mantenimiento del cabello
+ y la piel en condiciones normales. La vitamina C contribuye a la formación normal de colágeno
+ para el funcionamiento normal de la piel.
+ </div>
+ <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
+ <strong>Dosis recomendada:</strong> 2 cápsulas al día con la comida. 19 ingredientes activos,
+ entre ellos ácido hialurónico 60 mg y biotina 150 µg por dosis diaria, además de vitaminas C,
+ A, D3, E, B2, B3 y B5, zinc, selenio, cobre, manganeso, extracto de corteza de pino, extracto
+ de semilla de uva, hoja de bambú, CoQ10, <em>Lactobacillus plantarum</em> L-137, MSM,
+ L-cisteína y betacaroteno. <em>No apto para menores de 18 años.</em>
+ </p>
+ <div class="product-card__price"><strong>399 kr</strong> el primer envío + 59 kr de envío · después <strong>399 kr/mes</strong> — 1 197 kr + 59 kr de envío cada 3 meses</div>
+ <a href="pedido.html?produkt=beauty" class="btn btn--primary">Pedir Beauty+</a>
+ </div>
 
-        <div class="product-card" id="digestivo">
-          <div class="product-card__icon">🌿</div>
-          <h3>Equilibrio Digestivo</h3>
-          <div class="product-card__tag">Bacterias lácticas · Enzimas de fruta · Magnesio</div>
-          <div class="product-card__claim">
-            Apoyo diario para el estómago. Bacterias lácticas y enzimas de fruta combinadas con magnesio,
-            que contribuye a disminuir el cansancio y la fatiga y al funcionamiento normal de los músculos.
-          </div>
-          <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
-            <strong>Contenido:</strong> bacterias lácticas, enzimas de fruta y magnesio.
-            <em>Nombre del producto y declaración completa pendientes de la ficha de Medvital.</em>
-          </p>
-          <div class="product-card__price"><strong>99 kr</strong> el primer mes, después <strong>399 kr/mes</strong> · nueva caja cada 3 meses</div>
-          <a href="pedido.html?produkt=mage" class="btn btn--primary">Pedir ahora — 99 kr</a>
-        </div>
-      </div>
-    </div>
-  </section>
+ <div class="product-card" id="mage">
+ <div class="product-card__icon">🌿</div>
+ <h3>Absorb+</h3>
+ <div class="product-card__tag">60 cápsulas · Bacterias lácticas · Enzimas de fruta · Magnesio · Calcio</div>
+ <div class="product-card__claim">
+ Apoyo diario para el estómago y el intestino. Bacterias lácticas y enzimas naturales de fruta
+ combinadas con magnesio, que contribuye a disminuir el cansancio y la fatiga y al
+ funcionamiento normal de los músculos.
+ </div>
+ <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
+ <strong>Dosis recomendada:</strong> 2 cápsulas al día con la comida. Contiene por dosis diaria:
+ bacterias lácticas 5,4 × 10⁸ UFC, mezcla de enzimas de fruta 415 mg (de los cuales papaína
+ 60 mg), magnesio 350 mg (93 % VRN*), calcio 120 mg (15 % VRN).
+ <em>*Valor de referencia de nutrientes. No apto para menores de 18 años.</em>
+ </p>
+ <div class="product-card__price"><strong>199 kr</strong> el primer mes (50 % de descuento) · después <strong>399 kr</strong> por entrega <strong>cada 4 semanas</strong></div>
+ <a href="pedido.html?produkt=mage" class="btn btn--primary">Pedir Absorb+ — 199 kr</a>
+ </div>
 
-  <!-- CONDICIONES EN BREVE -->
-  <section class="section section--white">
-    <div class="container">
-      <div class="section__head">
-        <div class="section__eyebrow">Antes de pedir</div>
-        <h2>La suscripción en resumen</h2>
-        <p>Queremos que sepas exactamente a qué dices que sí — por eso está aquí, claro, antes de la compra.</p>
-      </div>
-      <div class="steps">
-        <div class="step">
-          <div class="step__num">✓</div>
-          <h3>Mes de prueba: 99 kr</h3>
-          <p>Pagas contra factura incluida en la caja. Si no cancelas, la compra se convierte automáticamente en una suscripción: una caja con tres dosis mensuales cada tres meses, facturada a 1 197 kr (399 kr/mes) + 59 kr de envío, con recordatorio por correo antes de cada entrega.</p>
-        </div>
-        <div class="step">
-          <div class="step__num">✓</div>
-          <h3>Sin permanencia</h3>
-          <p>Pausa o cancela cuando quieras — incluso durante el mes de prueba. Basta un correo o una llamada, y es efectivo de inmediato.</p>
-        </div>
-        <div class="step">
-          <div class="step__num">✓</div>
-          <h3>14 días de desistimiento</h3>
-          <p>Según la ley sueca de contratos a distancia, contados desde que recibes tu primera entrega.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+ <div class="product-card" id="man">
+ <div class="product-card__icon">💪</div>
+ <h3>Man+</h3>
+ <div class="product-card__tag">50 cápsulas · Extractos vegetales · Zinc · Vitamina B6 · Cromo</div>
+ <div class="product-card__claim">
+ Suplemento para hombres con extractos vegetales, vitaminas y minerales. El zinc contribuye a la
+ síntesis proteica normal, al mantenimiento de niveles normales de testosterona en sangre y a la
+ protección de las células frente al estrés oxidativo. La vitamina B6 contribuye a la función
+ psicológica normal.
+ </div>
+ <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
+ <strong>Dosis recomendada:</strong> 2 cápsulas al día, con el desayuno. Contiene extractos
+ vegetales naturales, zinc, vitamina B6 y cromo. El cromo contribuye al metabolismo normal de
+ los macronutrientes.
+ <em>Declaración nutricional completa solicitada a Medvital — se publicará al recibirla.</em>
+ </p>
+ <div class="product-card__price"><strong>399 kr</strong> el primer envío + 59 kr de envío · después <strong>399 kr/mes</strong> — 1 197 kr + 59 kr de envío cada 3 meses</div>
+ <a href="pedido.html?produkt=man" class="btn btn--primary">Pedir Man+</a>
+ </div>
 
-  <!-- CTA -->
-  <section class="section section--green">
-    <div class="container cta-banner">
-      <h2>¿Listo para empezar?</h2>
-      <p>Elige tu producto y prueba la primera caja por 99 kr — sin permanencia, paga contra factura.</p>
-      <a href="pedido.html" class="btn btn--gold">Hacer mi pedido — 99 kr</a>
-    </div>
-  </section>
+ <div class="product-card" id="woman">
+ <div class="product-card__icon">🌸</div>
+ <h3>Woman+</h3>
+ <div class="product-card__tag">50 cápsulas · Frijol terciopelo · Ortiga · Muira Puama · Cardo mariano · Zinc · B6 · B5 · Cromo</div>
+ <div class="product-card__claim">
+ Suplemento para mujeres con extractos vegetales, vitaminas y minerales. La vitamina B6 y el
+ ácido pantoténico contribuyen a disminuir el cansancio y la fatiga. La vitamina B6 contribuye
+ a regular la actividad hormonal y a la función psicológica normal.
+ </div>
+ <p style="font-size:14px; color:var(--ink-soft); margin-bottom:16px;">
+ <strong>Dosis recomendada:</strong> 2 cápsulas al día con la comida. Contiene frijol terciopelo,
+ ortiga, muira puama, cardo mariano, piperina, zinc, vitamina B6, ácido pantoténico (B5) y cromo.
+ El cromo contribuye al metabolismo normal de los macronutrientes.
+ <em>Declaración nutricional completa solicitada a Medvital — se publicará al recibirla.</em>
+ </p>
+ <div class="product-card__price"><strong>399 kr</strong> el primer envío + 59 kr de envío · después <strong>399 kr/mes</strong> — 1 197 kr + 59 kr de envío cada 3 meses</div>
+ <a href="pedido.html?produkt=woman" class="btn btn--primary">Pedir Woman+</a>
+ </div>
+ </div>
+ </div>
+ </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div>
-          <div class="footer__logo">Viva<span>nord</span></div>
-          <p>Suplementos suecos por suscripción — sin permanencia, sin complicaciones y sin condiciones ocultas. Atención en español.</p>
-        </div>
-        <div>
-          <h4>Comprar</h4>
-          <ul>
-            <li><a href="productos.html">Productos</a></li>
-                  <li><a href="index.html#faq">Preguntas frecuentes</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Condiciones</h4>
-          <ul>
-            <li><a href="condiciones.html">Condiciones de compra</a></li>
-            <li><a href="privacidad.html">Política de privacidad</a></li>
-            <li><a href="condiciones.html#desistimiento">Derecho de desistimiento</a></li>
-            <li><a href="condiciones.html">Contacto</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        © 2026 Vivanord AB · Los suplementos alimenticios no sustituyen una dieta variada. No superar la dosis diaria recomendada. Mantener fuera del alcance de los niños pequeños.
-      </div>
-    </div>
-  </footer>
+ <!-- CONDICIONES EN BREVE -->
+ <section class="section section--white">
+ <div class="container">
+ <div class="section__head">
+ <div class="section__eyebrow">Antes de pedir</div>
+ <h2>La suscripción en resumen</h2>
+ <p>Queremos que sepas exactamente a qué dices que sí — por eso está aquí, claro, antes de la compra.</p>
+ </div>
+ <div class="steps">
+ <div class="step">
+ <div class="step__num">✓</div>
+ <h3>Paga contra factura</h3>
+ <p>Pagas contra factura incluida en la caja. Si no cancelas, la compra se convierte automáticamente en una suscripción: una caja con tres dosis mensuales cada tres meses, facturada a 1 197 kr (399 kr/mes) + 59 kr de envío, con recordatorio por correo antes de cada entrega.</p>
+ </div>
+ <div class="step">
+ <div class="step__num">✓</div>
+ <h3>Sin permanencia</h3>
+ <p>Pausa o cancela cuando quieras — incluso durante el mes de prueba. Basta un correo o una llamada al menos 14 días antes del próximo envío.</p>
+ </div>
+ <div class="step">
+ <div class="step__num">✓</div>
+ <h3>14 días de desistimiento</h3>
+ <p>Según la ley sueca de contratos a distancia, contados desde que recibes tu primera entrega.</p>
+ </div>
+ </div>
+ </div>
+ </section>
 
-  <script src="../supabase-config.js"></script>
-  <script src="../cookies.js"></script>
-  <script src="../main.js"></script>
+ <!-- CTA -->
+ <section class="section section--green">
+ <div class="container cta-banner">
+ <h2>¿Listo para empezar?</h2>
+ <p>Elige tu producto — sin permanencia, paga contra factura.</p>
+ <a href="pedido.html" class="btn btn--gold">Hacer mi pedido</a>
+ </div>
+ </section>
+
+ <!-- FOOTER -->
+ <footer class="footer">
+ <div class="container">
+ <div class="footer__grid">
+ <div>
+ <div class="footer__logo">Viva<span>nord</span></div>
+ <p>Suplementos suecos por suscripción — sin permanencia, sin complicaciones y sin condiciones ocultas. Atención en español.</p>
+ </div>
+ <div>
+ <h4>Comprar</h4>
+ <ul>
+ <li><a href="productos.html">Productos</a></li>
+ <li><a href="index.html#faq">Preguntas frecuentes</a></li>
+ </ul>
+ </div>
+ <div>
+ <h4>Condiciones</h4>
+ <ul>
+ <li><a href="condiciones.html">Condiciones de compra</a></li>
+ <li><a href="privacidad.html">Política de privacidad</a></li>
+ <li><a href="condiciones.html#desistimiento">Derecho de desistimiento</a></li>
+ <li><a href="condiciones.html">Contacto</a></li>
+ </ul>
+ </div>
+ </div>
+ <div class="footer__bottom">
+ © 2026 Vivanord AB · Los suplementos alimenticios no sustituyen una dieta variada. No superar la dosis diaria recomendada. Mantener fuera del alcance de los niños pequeños.
+ </div>
+ </div>
+ </footer>
+
+ <script src="../supabase-config.js"></script>
+ <script src="../cookies.js"></script>
+ <script src="../pixel.js"></script>
+ <script src="../main.js"></script>
 </body>
 </html>

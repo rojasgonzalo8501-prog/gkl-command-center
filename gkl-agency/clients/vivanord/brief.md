@@ -13,16 +13,22 @@ Vi bygger: varumärke, hemsida och marknadsföring via Facebook + Instagram.
 ## PARTNERN ÄR MEDVITAL — vi är deras återförsäljare
 
 **Avslöjat 2026-07-14:** "referenssidan" medvital.se är i själva verket vår partner.
-**Vi blir återförsäljare åt Medvital Sverige AB (org.nr 559421-2093)** och säljer leadlistan
-till dem. Det ändrar tre saker:
+**Vi blir återförsäljare åt Medvital Sverige AB (org.nr 559421-2093)** och säljer leadlistan.
+
+> 🔴 **Ändrat 2026-07-16:** leadsen överlåts inte till Medvital utan till **Rojdix Telemarketing**
+> — det är de som ringer. Medvital är juridisk säljare och sköter leverans, fakturering och
+> kundservice. Vem vi fakturerar per lead är därmed en öppen fråga. Se [[rojdix-leadmottagare]].
+
+Det ändrar tre saker:
 1. **Kritisera aldrig Medvital** i copy, annonser eller säljmaterial — de är uppdragsgivaren.
    Den generiska formuleringen "branschen har fått dåligt rykte — vi gör tvärtom" är OK,
    men aldrig något som pekar mot Medvital.
 2. **Produkter, priser och villkor synkade mot det som är bekräftat** (2026-07-14): sajten visar
    nu Flex+ med riktiga ingredienser, 399 kr/mån + 59 kr frakt, och Medvitals magprodukt ersätter
    vår påhittade Energi-produkt. Full faktalista + kvarvarande luckor: **`medvital-katalog.md`**.
-   Kvar att bekräfta: produktnamn/pris för skönhet, immun, mage; leveransintervall; kampanjpriset
-   99 kr för första lådan (vårt förslag); definitiv uppsägningsregel.
+   **Löst 2026-07-16:** hela sortimentet, alla priser, ingredienser, leveransintervall och
+   uppsägningsregel hämtade ur medvital.se rå HTML. 99 kr-förslaget är skrotat — det fanns aldrig
+   hos Medvital, och vi speglar deras priser exakt. Kvar: näringsdeklaration för Man+/Woman+.
 3. **Vårt varumärke Vivanord är förvärvskanalen** — Medvital får en fräsch avsändare mot
    målgrupper där deras eget namn är bränt (Trustpilot). Vår schyssta profil skyddar båda.
 
@@ -79,8 +85,8 @@ Vår roll = varumärke + trafik + leads + försäljning. Partnerns roll = produk
 
 | Del | Val |
 |---|---|
-| Produkt | 4 kosttillskott: Immun, Skönhet, Leder, Energi (samma kategorier som Medvital) |
-| Pris mot kund | 399 kr/mån + 59 kr frakt per produkt (Flex+ bekräftat — se medvital-katalog.md), första lådan 99 kr (vårt kampanjförslag ⚠️), betalning mot faktura |
+| Produkt | Hela Medvitals sortiment om 6 kosttillskott: Flex+, Immun+, Beauty+, Absorb+, Man+, Woman+ |
+| Pris mot kund | Speglar medvital.se exakt: 399 kr första leveransen + 59 kr frakt, sedan 1 197 kr + 59 kr var 3:e månad. **Absorb+:** 199 kr första månaden, sedan 399 kr var 4:e vecka. Betalning mot faktura. Se medvital-katalog.md — hitta aldrig på ett pris |
 | Modell | Prenumeration utan bindningstid, leverans i brevlådan var 30:e dag (partnern skickar) |
 | Kundanskaffning | FB/IG-annonser → Hälsoklubben (tävling/quiz) → **telemarketing (huvudsäljkanal)** |
 | Orderflöde | Sajt/telemarketing → order till partnern (API/e-post) → partnern levererar + fakturerar |
@@ -126,14 +132,22 @@ Självkostnad per säljbart lead = (annonskostnad + verktyg + egen tid)
 - Ta betalt för **exklusivitet** (endast partnern får ringa) och **färskhet** (< 72 h — äldre leads
   är värda hälften). Golv: aldrig under självkostnad + 50 %.
 
-**GDPR — LÖST (överlåtelse-modellen):** leadsen ÖVERLÅTS till partnerbolaget som gör
-telefonmarknadsföringen i eget namn. Samtyckestexten på Hälsoklubben är uppdaterad så att
-telefonrutan uttryckligen samtycker till överlåtelse till partnern, som blir självständigt
-personuppgiftsansvarig.
-**⚠️ BLOCKERANDE före lansering:** platshållaren **[PARTNERBOLAGET AB]** i kampanj.html
-(två ställen: samtyckesrutan + personuppgiftstexten) MÅSTE ersättas med partnerns juridiska
-bolagsnamn — samtycke till överlåtelse är bara giltigt om mottagaren namnges. Leads insamlade
-FÖRE namnbytet får inte överlåtas.
+**GDPR — överlåtelse-modellen:** leadsen ÖVERLÅTS till det bolag som gör telefonmarknadsföringen
+i eget namn. Telefonrutan på Hälsoklubben samtycker uttryckligen till den överlåtelsen, och
+mottagaren blir självständigt personuppgiftsansvarig.
+
+**🔴 Mottagaren är ROJDIX TELEMARKETING — inte Medvital.** Ändrat 2026-07-16. Samtyckestexten
+hade felaktigt fyllts i med "Medvital Sverige AB"; den är nu omskriven till Rojdix på svenska
+och spanska (kampanj.html, tavlingsvillkor.html, integritetspolicy.html + es-motsvarigheterna).
+Medvital är fortfarande juridisk säljare och sköter leverans/fakturering/kundservice — men de
+ringer inte.
+
+**⚠️ BLOCKERANDE före lansering:** platshållaren **[org.nr XXXXXX-XXXX]** för Rojdix (sex
+ställen, SV + ES) MÅSTE ersättas med deras juridiska bolagsnamn och organisationsnummer —
+samtycke till överlåtelse är bara giltigt om mottagaren namnges. Leads insamlade FÖRE
+namnbytet får inte överlåtas. *(Kontrollerat 2026-07-16: Supabase innehåller 0 leads och
+0 ordrar — inget är insamlat under fel bolagsnamn, så inget behöver kasseras.)*
+Detaljer och öppna frågor: [[rojdix-leadmottagare]].
 
 ### Enhetsekonomi — kalkylen med 400 kr/avtal (VIKTIG!)
 Intäkten är fast: 400 kr per bekräftat avtal. Då MÅSTE kostnaden per avtal under 400 kr:
@@ -181,9 +195,9 @@ valde **Vivanord** — "viva" = liv, fungerar på både svenska och spanska (bon
 | Produkt | Innehåll | Godkänt påstående (exempel) |
 |---|---|---|
 | **Immun+** | Betaglukaner, C, D, zink, selen | "Vitamin C, D, zink och selen bidrar till immunsystemets normala funktion" |
-| **Skönhet Inifrån** | Hyaluronsyra, biotin, Q10, zink | "Biotin bidrar till att bibehålla normalt hår och normal hud" |
-| **Flex Leder** | Kollagen, vitamin C, mangan | "Vitamin C bidrar till normal kollagenbildning som har betydelse för broskets normala funktion" |
-| **Energi & Balans** | Magnesium, B6, B12, folsyra | "Magnesium och vitamin B6 bidrar till att minska trötthet och utmattning" |
+| **Beauty+** | Hyaluronsyra, biotin, CoQ10, zink | "Biotin bidrar till att bibehålla normalt hår och normal hud" |
+| **Flex+** | Kollagen, vitamin C, mangan | "Vitamin C bidrar till normal kollagenbildning som har betydelse för broskets normala funktion" |
+| **Absorb+** | Mjölksyrabakterier, fruktenzymer, magnesium, kalcium | "Magnesium bidrar till att minska trötthet och utmattning" |
 
 > Obs: hyaluronsyra, kollagen och Q10 har INGA godkända EFSA-påståenden — påståenden kopplas
 > alltid till vitaminet/mineralet i produkten, aldrig till dessa ingredienser direkt.

@@ -1,209 +1,227 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pedido — Vivanord | Primer mes 99 kr</title>
-  <meta name="description" content="Pide tu suplemento directamente. Primer mes 99 kr contra factura — después tres dosis mensuales cada tres meses, 399 kr/mes + envío, hasta que canceles. Sin permanencia." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media=&#39;all&#39;" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
-  <link rel="stylesheet" href="../styles.css" />
-  <style>
-    .checkout-wrap { max-width: 640px; margin: 0 auto; padding: 40px 24px 80px; }
-    .checkout-card { background: var(--white); border: 1px solid var(--cream-dark); border-radius: var(--radius); box-shadow: var(--shadow); padding: 32px 28px; }
-    .checkout-card h2 { font-size: 20px; font-weight: 800; color: var(--green-deep); margin: 26px 0 14px; }
-    .checkout-card h2:first-child { margin-top: 0; }
-    .product-picker { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    @media (max-width: 560px) { .product-picker { grid-template-columns: 1fr; } }
-    .pick {
-      display: flex; align-items: center; gap: 10px; border: 2px solid var(--cream-dark);
-      border-radius: 10px; padding: 13px 14px; cursor: pointer; background: var(--cream);
-      font-size: 15px; font-weight: 700; font-family: var(--font); text-align: left; width: 100%;
-      transition: border-color .15s, background .15s;
-    }
-    .pick:hover { border-color: var(--green-sage); }
-    .pick.selected { border-color: var(--green-deep); background: #eef5ee; }
-    .pick .p-icon { font-size: 22px; }
-    .pick .p-sub { display: block; font-size: 12px; font-weight: 500; color: var(--ink-soft); }
-    .pay-options { display: flex; flex-direction: column; gap: 10px; }
-    .pay {
-      display: flex; align-items: center; gap: 12px; border: 2px solid var(--cream-dark);
-      border-radius: 10px; padding: 13px 14px; background: var(--cream); font-size: 15px; font-weight: 600;
-    }
-    .terms-box {
-      background: var(--cream); border: 2px solid var(--green-sage); border-radius: var(--radius);
-      padding: 20px; margin: 26px 0 16px; font-size: 14px;
-    }
-    .terms-box h3 { font-size: 16px; color: var(--green-deep); margin-bottom: 10px; }
-    .terms-box ol { margin-left: 18px; }
-    .terms-box li { margin-bottom: 8px; }
-    .summary { display: flex; justify-content: space-between; font-size: 15px; padding: 8px 0; border-bottom: 1px solid var(--cream-dark); }
-    .summary.total { font-weight: 800; font-size: 17px; border-bottom: 0; color: var(--green-deep); }
-    .confirm { text-align: center; }
-    .confirm .big { font-size: 52px; margin-bottom: 10px; }
-    .confirm h2 { margin-top: 0; }
-    .confirm .next-info { background: var(--cream); border-radius: 10px; padding: 18px; margin: 18px 0; font-size: 14px; text-align: left; }
-  </style>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Pedido — Vivanord | Desde 399 kr el primer envío</title>
+ <meta name="description" content="Pide tu suplemento directamente. Desde 399 kr el primer envío contra factura — después tres dosis mensuales cada tres meses, 399 kr/mes + envío, hasta que canceles. Sin permanencia." />
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media=&#39;all&#39;" />
+ <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
+ <link rel="stylesheet" href="../styles.css" />
+ <style>
+ .checkout-wrap { max-width: 640px; margin: 0 auto; padding: 40px 24px 80px; }
+ .checkout-card { background: var(--white); border: 1px solid var(--cream-dark); border-radius: var(--radius); box-shadow: var(--shadow); padding: 32px 28px; }
+ .checkout-card h2 { font-size: 20px; font-weight: 800; color: var(--green-deep); margin: 26px 0 14px; }
+ .checkout-card h2:first-child { margin-top: 0; }
+ .product-picker { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+ @media (max-width: 560px) { .product-picker { grid-template-columns: 1fr; } }
+ .pick {
+ display: flex; align-items: center; gap: 10px; border: 2px solid var(--cream-dark);
+ border-radius: 10px; padding: 13px 14px; cursor: pointer; background: var(--cream);
+ font-size: 15px; font-weight: 700; font-family: var(--font); text-align: left; width: 100%;
+ transition: border-color .15s, background .15s;
+ }
+ .pick:hover { border-color: var(--green-sage); }
+ .pick.selected { border-color: var(--green-deep); background: #eef5ee; }
+ .pick .p-icon { font-size: 22px; }
+ .pick .p-sub { display: block; font-size: 12px; font-weight: 500; color: var(--ink-soft); }
+ .pay-options { display: flex; flex-direction: column; gap: 10px; }
+ .pay {
+ display: flex; align-items: center; gap: 12px; border: 2px solid var(--cream-dark);
+ border-radius: 10px; padding: 13px 14px; background: var(--cream); font-size: 15px; font-weight: 600;
+ }
+ .terms-box {
+ background: var(--cream); border: 2px solid var(--green-sage); border-radius: var(--radius);
+ padding: 20px; margin: 26px 0 16px; font-size: 14px;
+ }
+ .terms-box h3 { font-size: 16px; color: var(--green-deep); margin-bottom: 10px; }
+ .terms-box ol { margin-left: 18px; }
+ .terms-box li { margin-bottom: 8px; }
+ .summary { display: flex; justify-content: space-between; font-size: 15px; padding: 8px 0; border-bottom: 1px solid var(--cream-dark); }
+ .summary.total { font-weight: 800; font-size: 17px; border-bottom: 0; color: var(--green-deep); }
+ .confirm { text-align: center; }
+ .confirm .big { font-size: 52px; margin-bottom: 10px; }
+ .confirm h2 { margin-top: 0; }
+ .confirm .next-info { background: var(--cream); border-radius: 10px; padding: 18px; margin: 18px 0; font-size: 14px; text-align: left; }
+ </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="container nav__inner">
-      <a href="index.html" class="nav__logo">Viva<span>nord</span></a>
-      <ul class="nav__links" id="navLinks">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="productos.html">Productos</a></li>
-        <li><a href="index.html#como-funciona">Cómo funciona</a></li>
-        <li><a href="index.html#faq">Preguntas frecuentes</a></li>
-        <li><a href="../bestall.html" lang="sv">🇸🇪 Svenska</a></li>
-      </ul>
-      <button class="nav__burger" id="burger" aria-label="Menú">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+ <!-- NAV -->
+ <nav class="nav">
+ <div class="container nav__inner">
+ <a href="index.html" class="nav__logo">Viva<span>nord</span></a>
+ <ul class="nav__links" id="navLinks">
+ <li><a href="index.html">Inicio</a></li>
+ <li><a href="productos.html">Productos</a></li>
+ <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+ <li><a href="index.html#faq">Preguntas frecuentes</a></li>
+ <li><a href="../bestall.html" lang="sv">🇸🇪 Svenska</a></li>
+ </ul>
+ <button class="nav__burger" id="burger" aria-label="Menú">
+ <span></span><span></span><span></span>
+ </button>
+ </div>
+ </nav>
 
-  <!-- HERO -->
-  <header class="camp-hero" style="padding: 36px 0 30px;">
-    <div class="container">
-      <h1 style="font-size: clamp(26px, 4vw, 36px);">Pedido — primera caja <em>99 kr</em></h1>
-      <p>Paga contra factura · Entrega en el buzón en 1–3 días laborables · Sin permanencia</p>
-    </div>
-  </header>
+ <!-- HERO -->
+ <header class="camp-hero" style="padding: 36px 0 30px;">
+ <div class="container">
+ <h1 style="font-size: clamp(26px, 4vw, 36px);">Pedido — <em>paga contra factura</em></h1>
+ <p>Paga contra factura · Entrega en el buzón en 1–3 días laborables · Sin permanencia</p>
+ </div>
+ </header>
 
-  <div class="checkout-wrap">
-    <!-- PASO 1: FORMULARIO -->
-    <div class="checkout-card" id="orderView">
-      <h2>1. Elige tu producto</h2>
-      <div class="product-picker" id="productPicker">
-        <button class="pick" data-product="immun" data-name="Immun+">
-          <span class="p-icon">🛡️</span>
-          <span>Immun+<span class="p-sub">C · D · Zinc · Selenio · Betaglucanos</span></span>
-        </button>
-        <button class="pick" data-product="skonhet" data-name="Belleza Interior">
-          <span class="p-icon">✨</span>
-          <span>Belleza Interior<span class="p-sub">Ácido hialurónico · Biotina · Q10</span></span>
-        </button>
-        <button class="pick" data-product="leder" data-name="Flex+">
-          <span class="p-icon">🦴</span>
-          <span>Flex+<span class="p-sub">MSM · Glucosamina · Colágeno · Escaramujo</span></span>
-        </button>
-        <button class="pick" data-product="mage" data-name="Equilibrio Digestivo">
-          <span class="p-icon">🌿</span>
-          <span>Equilibrio Digestivo<span class="p-sub">Bacterias lácticas · Enzimas · Magnesio</span></span>
-        </button>
-      </div>
+ <div class="checkout-wrap">
+ <!-- PASO 1: FORMULARIO -->
+ <div class="checkout-card" id="orderView">
+ <h2>1. Elige tu producto</h2>
+ <div class="product-picker" id="productPicker">
+ <button class="pick" data-product="leder" data-name="Flex+"
+ data-first="399" data-caps="30" data-cadence="kvartal">
+ <span class="p-icon">🦴</span>
+ <span>Flex+<span class="p-sub">MSM · Glucosamina · Colágeno · Escaramujo</span></span>
+ </button>
+ <button class="pick" data-product="immun" data-name="Immun+"
+ data-first="399" data-caps="30" data-cadence="kvartal">
+ <span class="p-icon">🛡️</span>
+ <span>Immun+<span class="p-sub">C · D · Zinc · Selenio · Betaglucanos</span></span>
+ </button>
+ <button class="pick" data-product="beauty" data-name="Beauty+"
+ data-first="399" data-caps="60" data-cadence="kvartal">
+ <span class="p-icon">✨</span>
+ <span>Beauty+<span class="p-sub">Ácido hialurónico · Biotina · CoQ10</span></span>
+ </button>
+ <button class="pick" data-product="mage" data-name="Absorb+"
+ data-first="199" data-caps="60" data-cadence="4veckor">
+ <span class="p-icon">🌿</span>
+ <span>Absorb+<span class="p-sub">Bacterias lácticas · Enzimas · Magnesio</span></span>
+ </button>
+ <button class="pick" data-product="man" data-name="Man+"
+ data-first="399" data-caps="50" data-cadence="kvartal">
+ <span class="p-icon">💪</span>
+ <span>Man+<span class="p-sub">Extractos vegetales · Zinc · B6 · Cromo</span></span>
+ </button>
+ <button class="pick" data-product="woman" data-name="Woman+"
+ data-first="399" data-caps="50" data-cadence="kvartal">
+ <span class="p-icon">🌸</span>
+ <span>Woman+<span class="p-sub">Frijol terciopelo · Ortiga · Zinc · B6 · B5</span></span>
+ </button>
+ </div>
 
-      <form id="orderForm">
-        <h2>2. Tus datos</h2>
-        <div class="form-field">
-          <label for="o-name">Nombre y apellidos</label>
-          <input type="text" id="o-name" required autocomplete="name" />
-        </div>
-        <div class="form-field">
-          <label for="o-email">Correo electrónico</label>
-          <input type="email" id="o-email" required autocomplete="email" />
-        </div>
-        <div class="form-field">
-          <label for="o-phone">Móvil</label>
-          <input type="tel" id="o-phone" required autocomplete="tel" />
-        </div>
-        <div class="form-field">
-          <label for="o-street">Dirección</label>
-          <input type="text" id="o-street" required autocomplete="street-address" />
-        </div>
-        <div style="display:grid; grid-template-columns: 1fr 2fr; gap: 12px;">
-          <div class="form-field">
-            <label for="o-zip">Código postal</label>
-            <input type="text" id="o-zip" required autocomplete="postal-code" inputmode="numeric" />
-          </div>
-          <div class="form-field">
-            <label for="o-city">Localidad</label>
-            <input type="text" id="o-city" required autocomplete="address-level2" />
-          </div>
-        </div>
+ <form id="orderForm">
+ <h2>2. Tus datos</h2>
+ <div class="form-field">
+ <label for="o-name">Nombre y apellidos</label>
+ <input type="text" id="o-name" required autocomplete="name" />
+ </div>
+ <div class="form-field">
+ <label for="o-email">Correo electrónico</label>
+ <input type="email" id="o-email" required autocomplete="email" />
+ </div>
+ <div class="form-field">
+ <label for="o-phone">Móvil</label>
+ <input type="tel" id="o-phone" required autocomplete="tel" />
+ </div>
+ <div class="form-field">
+ <label for="o-street">Dirección</label>
+ <input type="text" id="o-street" required autocomplete="street-address" />
+ </div>
+ <div style="display:grid; grid-template-columns: 1fr 2fr; gap: 12px;">
+ <div class="form-field">
+ <label for="o-zip">Código postal</label>
+ <input type="text" id="o-zip" required autocomplete="postal-code" inputmode="numeric" />
+ </div>
+ <div class="form-field">
+ <label for="o-city">Localidad</label>
+ <input type="text" id="o-city" required autocomplete="address-level2" />
+ </div>
+ </div>
 
-        <h2>3. Pago</h2>
-        <div class="pay-options">
-          <!-- Sin pago online — el pedido se envía al socio (Medvital) que factura (dropship) -->
-          <div class="pay" style="cursor: default;">
-            <span style="font-size:20px;">🧾</span>
-            <span>Paga contra factura — no pagas nada ahora.<br />
-            <span style="font-size: 13px; font-weight: 500; color: var(--ink-soft);">La factura de 99 kr viene con tu primera caja. 14 días de plazo de pago.</span></span>
-          </div>
-        </div>
+ <h2>3. Pago</h2>
+ <div class="pay-options">
+ <!-- Sin pago online — el pedido se envía al socio (Medvital) que factura (dropship) -->
+ <div class="pay" style="cursor: default;">
+ <span style="font-size:20px;">🧾</span>
+ <span>Paga contra factura — no pagas nada ahora.<br />
+ <span style="font-size: 13px; font-weight: 500; color: var(--ink-soft);">La factura viene con tu primera caja. 14 días de plazo de pago.</span></span>
+ </div>
+ </div>
 
-        <!-- CONDICIONES — deben estar claras ANTES del botón de compra (Konsumentverket) -->
-        <div class="terms-box">
-          <h3>Así funciona tu compra — lee antes de pedir</h3>
-          <ol>
-            <li>No pagas nada online. Tu primera caja llega a tu casa con una
-                <strong>factura de 99 kr</strong> (envío incluido).</li>
-            <li>Si no cancelas, la compra se convierte <strong>automáticamente en una suscripción</strong>:
-                una caja con <strong>tres dosis mensuales</strong> se entrega cada tres meses con una
-                factura de <strong>1 197 kr (399 kr/mes) + 59 kr de envío</strong>, hasta que la canceles.</li>
-            <li><strong>Sin permanencia.</strong> Cancela cuando quieras por correo o teléfono —
-                a más tardar el día antes del próximo envío. La cancelación es efectiva de inmediato.</li>
-            <li>Te enviamos un <strong>recordatorio por correo antes de cada nueva entrega</strong>.</li>
-            <li>Tienes <strong>14 días de derecho de desistimiento</strong> desde que recibes tu primera entrega.</li>
-          </ol>
-        </div>
+ <!-- CONDICIONES — deben estar claras ANTES del botón de compra (Konsumentverket) -->
+ <div class="terms-box">
+ <h3>Así funciona tu compra — lee antes de pedir</h3>
+ <ol>
+ <li>No pagas nada online. Tu primera caja llega a tu casa con una
+ la factura la acompaña: <strong>399 kr + 59 kr de envío</strong> para Flex+, Immun+, Beauty+, Man+ y Woman+. <strong>Absorb+ cuesta 199 kr</strong> el primer mes (+ 59 kr de envío).</li>
+ <li>Si no cancelas, la compra se convierte <strong>automáticamente en una suscripción</strong>:
+ una caja con <strong>tres dosis mensuales</strong> se entrega cada tres meses con una
+ factura de <strong>1 197 kr (399 kr/mes) + 59 kr de envío</strong>, hasta que la canceles.</li>
+ <li><strong>Sin permanencia.</strong> Cancela por correo o teléfono al servicio de
+ atención al cliente <strong>al menos 14 días antes del próximo envío</strong>, y ese
+ envío no se realizará.</li>
+ <li>Te enviamos un <strong>recordatorio por correo antes de cada nueva entrega</strong>.</li>
+ <li>Tienes <strong>14 días de derecho de desistimiento</strong> desde que recibes tu primera entrega.</li>
+ </ol>
+ </div>
 
-        <label class="consent">
-          <input type="checkbox" id="o-terms" required />
-          <span>Entiendo que la compra se convierte en una suscripción continua después del primer mes si no
-          cancelo — <strong>1 197 kr (399 kr/mes) + 59 kr de envío cada tres meses</strong> — y acepto las
-          <a href="condiciones.html">condiciones de compra</a> y la <a href="privacidad.html">política de privacidad</a>.</span>
-        </label>
+ <label class="consent">
+ <input type="checkbox" id="o-terms" required />
+ <span>Entiendo que la compra se convierte en una suscripción continua si no cancelo —
+ <span id="terms-recurring"><strong>1 197 kr (399 kr/mes) + 59 kr de envío cada tres meses</strong></span> —
+ y acepto las <a href="condiciones.html">condiciones de compra</a> y la
+ <a href="privacidad.html">política de privacidad</a>.</span>
+ </label>
 
-        <div style="margin: 18px 0 20px;">
-          <div class="summary"><span id="sum-product">Immun+ — primera caja (30 días)</span><span>99 kr</span></div>
-          <div class="summary"><span>Envío</span><span>0 kr (incluido en el precio de campaña)</span></div>
-          <div class="summary total"><span>A pagar contra factura</span><span>99 kr</span></div>
-          <div style="font-size: 12.5px; color: var(--ink-soft); margin-top: 6px;">
-            Después, 1 197 kr (399 kr/mes) + 59 kr de envío cada tres meses hasta que canceles. Próxima entrega hacia el: <span id="sum-next"></span>.
-          </div>
-        </div>
+ <div style="margin: 18px 0 20px;">
+ <div class="summary"><span id="sum-product">Flex+ — primer envío (30 cápsulas)</span><span id="sum-first">399 kr</span></div>
+ <div class="summary"><span>Envío</span><span>59 kr</span></div>
+ <div class="summary total"><span>A pagar contra factura</span><span id="sum-total">458 kr</span></div>
+ <div style="font-size: 12.5px; color: var(--ink-soft); margin-top: 6px;">
+ <span id="sum-recurring">Después 1 197 kr (399 kr/mes) + 59 kr de envío cada tres meses hasta que canceles.</span>
+ Próxima entrega hacia el: <span id="sum-next"></span>.
+ </div>
+ </div>
 
-        <button type="submit" class="btn btn--primary btn--block">Enviar pedido</button>
-        <p style="font-size:12px; color:var(--ink-soft); text-align:center; margin-top:12px;">
-          🧾 Paga contra factura · 14 días de desistimiento · Sin permanencia
-        </p>
-      </form>
-    </div>
+ <button type="submit" class="btn btn--primary btn--block">Enviar pedido</button>
+ <p style="font-size:12px; color:var(--ink-soft); text-align:center; margin-top:12px;">
+ 🧾 Paga contra factura · 14 días de desistimiento · Sin permanencia
+ </p>
+ </form>
+ </div>
 
-    <!-- PASO 2: CONFIRMACIÓN -->
-    <div class="checkout-card confirm" id="confirmView" style="display:none;">
-      <div class="big">📬</div>
-      <h2>¡Gracias por tu pedido!</h2>
-      <p style="color:var(--ink-soft);">Tu primera caja de <strong id="c-product">Immun+</strong> está en camino —
-      llegará a tu buzón en 1–3 días laborables.</p>
-      <div class="next-info">
-        <strong>Bueno saber:</strong>
-        <ul style="margin: 8px 0 0 18px;">
-          <li>La confirmación del pedido llega a tu correo. La factura de 99 kr viene con la caja.</li>
-          <li>Tu suscripción continúa automáticamente: una caja con tres dosis mensuales cada tres meses, factura de 1 197 kr + 59 kr de envío. Próxima entrega hacia el <span id="c-next"></span>.</li>
-          <li>Siempre recibirás un recordatorio por correo antes del próximo envío.</li>
-          <li>Cancela cuando quieras por correo o teléfono — tarda menos de un minuto. Atención en español.</li>
-        </ul>
-      </div>
-      <a href="index.html" class="btn btn--ghost">Ir a la página de inicio</a>
-    </div>
-  </div>
+ <!-- PASO 2: CONFIRMACIÓN -->
+ <div class="checkout-card confirm" id="confirmView" style="display:none;">
+ <div class="big">📬</div>
+ <h2>¡Gracias por tu pedido!</h2>
+ <p style="color:var(--ink-soft);">Tu primera caja de <strong id="c-product">Immun+</strong> está en camino —
+ llegará a tu buzón en 1–3 días laborables.</p>
+ <div class="next-info">
+ <strong>Bueno saber:</strong>
+ <ul style="margin: 8px 0 0 18px;">
+ <li>La confirmación del pedido llega a tu correo. La factura viene con la caja.</li>
+ <li>Tu suscripción continúa automáticamente: una caja con tres dosis mensuales cada tres meses, factura de 1 197 kr + 59 kr de envío. Próxima entrega hacia el <span id="c-next"></span>.</li>
+ <li>Siempre recibirás un recordatorio por correo antes del próximo envío.</li>
+ <li>Cancela por correo o teléfono — al menos 14 días antes del próximo envío.</li>
+ </ul>
+ </div>
+ <a href="index.html" class="btn btn--ghost">Ir a la página de inicio</a>
+ </div>
+ </div>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__bottom" style="border-top:0; padding-top:0;">
-        © 2026 Vivanord AB · <a href="index.html">Inicio</a> · Los suplementos no sustituyen una dieta variada.
-      </div>
-    </div>
-  </footer>
+ <!-- FOOTER -->
+ <footer class="footer">
+ <div class="container">
+ <div class="footer__bottom" style="border-top:0; padding-top:0;">
+ © 2026 Vivanord AB · <a href="index.html">Inicio</a> · Los suplementos no sustituyen una dieta variada.
+ </div>
+ </div>
+ </footer>
 
-  <script src="../supabase-config.js"></script>
-  <script src="../cookies.js"></script>
-  <script src="../main.js"></script>
+ <script src="../supabase-config.js"></script>
+ <script src="../cookies.js"></script>
+ <script src="../pixel.js"></script>
+ <script src="../main.js"></script>
 </body>
 </html>

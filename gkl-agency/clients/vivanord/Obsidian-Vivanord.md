@@ -21,13 +21,18 @@ taggar: [vivanord, klient, kosttillskott, meta-ads, medvital, d2c]
 - **Intäkt 2:** leadlistan säljs **per lead** (endast leads med telefonsamtycke). Pris
   räknas i admin-portalens Leadkalkyl-flik (golv: självkostnad + 50 %; riktmärke 25–75 kr/lead).
 - Medvital sköter **allt** juridiskt säljansvar, leverans, fakturering, kundservice, ångerrätt.
-- **Vi äger leadsen.** Leads med telefonsamtycke **överlåts** till Medvital (GDPR-korrekt samtycke).
+- **Vi äger leadsen.** Leads med telefonsamtycke **överlåts** till **Rojdix Telemarketing** —
+  det är de som ringer, inte Medvital. Ändrat 2026-07-16; se [[rojdix-leadmottagare]].
+  ⚠️ Rojdix org.nr saknas — blockerar lansering.
 - Kritisera **aldrig** Medvital i något material — de är uppdragsgivaren.
 
 ## 💰 Priser (mot kund)
-- Första månaden **99 kr** → därefter **399 kr/mån**, en låda med tre månadsdoser **var 3:e månad**
-  (faktureras ~1 197 kr + 59 kr frakt/leverans). Ingen bindningstid. Betalning **mot faktura**.
-- ⚠️ Kvartalsfakturans exakta belopp + de tre obekräftade produkterna bekräftas på Medvital-mötet.
+- **Speglar medvital.se exakt** (rå HTML 2026-07-16). Fem produkter: 399 kr första leveransen
+  + 59 kr frakt, sedan 1 197 kr + 59 kr **var 3:e månad**. **Absorb+:** 199 kr första månaden
+  (50 % rabatt, tidsbegränsat), sedan 399 kr **var 4:e vecka**.
+- **99 kr fanns aldrig hos Medvital** — vår egen konstruktion, borttagen ur hela sajten.
+  Vi är återförsäljare: hitta aldrig på ett pris. Ingen bindningstid, men uppsägning **senast
+  14 dagar före nästa leverans**.
 
 ## 🎁 Hälsoklubben (leadmotorn)
 - Fristående tävlingssida: 4 kunskapsfrågor → formulär med separata samtycken.

@@ -1,55 +1,100 @@
-# DEPLOY.md — Publicera vivanord.se (Vercel)
+# DEPLOY.md — publicera Vivanord (Vercel)
 
-Domänen är köpt. Så här får du upp sajten på Vercel — och så här undviker du
-de två misstag som skulle läcka intern information.
+> **Omskriven 2026-07-17.** Det är **två** Vercel-projekt nu, inte ett: dropship-sajten och
+> Hälsoklubben på egen subdomän. Se [[halsoklubben-subdoman]] för varför.
 
-## ⚠️ Två saker att ALDRIG göra
+## ⚠️ Tre saker att ALDRIG göra
+
 1. **Peka aldrig vivanord.se på hela command center-repot.** Repot innehåller konfidentiellt
    material: kundbriefer, marknadsplaner, partnervillkor (400 kr/avtal!), leadkalkyler.
-   Endast mappen `gkl-agency/deliverables/websites/vivanord/` får bli publik.
-2. **Lansera inte admin-mappen mot riktiga kunder som den är.** `admin/` är en prototyp
-   (PIN 1234 är kosmetisk, data ligger i webbläsarens localStorage). Innan riktig trafik:
-   koppla sajt + admin till Supabase med riktig inloggning (se SUPABASE.md). Admin ligger
-   på `/admin` och är `noindex`, men skydda den med Supabase Auth före lansering.
+   Endast sajtmapparna får bli publika. Det är därför **Root Directory** är det viktigaste
+   steget nedan.
+2. **Lansera inte utan Rojdix organisationsnummer.** Samtyckesrutan säger
+   `[org.nr XXXXXX-XXXX]`. Ett överlåtelsesamtycke är bara giltigt om mottagaren namnges —
+   utan det får Rojdix inte ringa ett enda lead. Se [[rojdix-leadmottagare]].
+3. **Länka aldrig ihop sajten och Hälsoklubben.** De är avsiktligt separerade. Ingen
+   tävlingsflik i sajtens meny, ingen "gå till sajten"-meny på tävlingen.
 
-## Vercel — steg för steg (~15 minuter)
+---
 
-Nyckeln är **Root Directory** — den gör att bara sajtmappen publiceras, inte hela repot.
+## Projekt 1 — dropship-sajten → vivanord.se
 
-1. Gå till **vercel.com** → logga in med GitHub → **Add New… → Project**
+1. **vercel.com** → logga in med GitHub → **Add New… → Project**
 2. Välj repot **`gkl-command-center`** → Import
-3. Konfigurera projektet:
+3. Konfigurera:
    - **Framework Preset:** `Other` (ren statisk HTML)
-   - **Root Directory:** klicka **Edit** och välj
-     `gkl-agency/deliverables/websites/vivanord` ← *detta är det viktiga steget*
-   - **Build Command:** lämna tom
-   - **Output Directory:** lämna tom (Vercel serverar filerna direkt)
-   - **Install Command:** lämna tom
-4. **Deploy** → du får en adress typ `vivanord-xxxx.vercel.app`. Kontrollera att allt ser rätt ut.
-5. **Koppla domänen:** Project → **Settings → Domains** → lägg till `vivanord.se`
-   (och `www.vivanord.se`). Vercel visar exakt vilka DNS-poster du ska sätta.
-6. **Hos din domänregistrar** (där du köpte domänen), sätt DNS enligt det Vercel visar —
-   normalt:
-   - `vivanord.se` → **A-post** till `76.76.21.21`
-   - `www.vivanord.se` → **CNAME** till `cname.vercel-dns.com`
-   *(Använd alltid de exakta värden Vercel visar för ditt projekt — de kan skilja sig.)*
-7. HTTPS-certifikat ordnas automatiskt när DNS slagit igenom (kan ta upp till 24 h,
-   ofta mycket snabbare).
+   - **Root Directory:** klicka **Edit** → `gkl-agency/deliverables/websites/vivanord`
+     ← *detta är det som skyddar resten av repot*
+   - **Build / Output / Install Command:** lämna alla tomma
+4. **Deploy** → du får `vivanord-xxxx.vercel.app`. **Testa hela funneln här innan domänen
+   kopplas** — du behöver inte vänta på .se-registret för att verifiera att allt fungerar.
+5. **Settings → Domains** → lägg till `vivanord.se` + `www.vivanord.se`
+6. DNS hos registraren enligt det Vercel visar — normalt:
+   - `vivanord.se` → **A** → `76.76.21.21`
+   - `www` → **CNAME** → `cname.vercel-dns.com`
+7. HTTPS ordnas automatiskt när DNS slagit igenom (upp till 24 h, oftast mycket snabbare)
 
-Varje push till branchen deployar sedan sajten automatiskt. Peka Vercel på `main`
-(merga branchen först) eller på arbetsbranchen `claude/new-customer-website-marketing-mn8fl9`.
+## Projekt 2 — Hälsoklubben → halsoklubben.vivanord.se
 
-### Bra att veta om Vercel + Root Directory
-- Sökvägar på sajten är relativa (`styles.css`, `es/index.html`, `admin/`), så allt
-  fungerar direkt när mappen blir sajtens rot — inga ändringar behövs i koden.
-- Vill du lägga en `vercel.json` i sajtmappen senare (t.ex. för redirects eller
-  security headers) går det bra, men behövs inte för att komma igång.
+Samma repo, **annan Root Directory**. Skapa ett nytt projekt:
 
-## Checklista före riktig trafik (annonser)
-- [ ] Sajten live på https://vivanord.se med grönt hänglås
-- [ ] `admin/` skyddad med Supabase Auth (inte bara PIN) — se SUPABASE.md
-- [ ] Formulären kopplade till Supabase (leads/ordrar får inte bara ligga i besökarens webbläsare!)
-- [ ] Meta-pixel + cookiebanner installerade
-- [x] Köpvillkor, integritetspolicy och tävlingsvillkor publicerade *(sidorna finns — kräver
-      juristgranskning + ifyllda [hakparenteser] innan skarp lansering)*
-- [ ] Medvitals produktdata ifylld (se medvital-katalog.md)
+- **Root Directory:** `gkl-agency/deliverables/websites/vivanord-halsoklubben`
+- **Domains:** `halsoklubben.vivanord.se`
+- DNS: `halsoklubben` → **CNAME** → `cname.vercel-dns.com`
+
+Funneln är `index.html` (quizet) + `tavlingsvillkor.html`, med `es/` för spanska.
+Landningssidan ligger på roten, så annonslänken blir ren:
+`halsoklubben.vivanord.se/?utm_source=facebook&utm_campaign=halsoklubben`
+
+> **Varför två projekt:** tävlingen ska inte synas på dropship-sajten och sajten ska inte
+> synas i tävlingsfunneln. Delade filer (`styles.css`, `main.js`, `cookies.js`, `pixel.js`)
+> finns i **båda** mapparna som kopior — ändrar du en delad fil måste du ändra båda.
+> Det är priset för separationen och det är medvetet.
+
+---
+
+## Meta-pixel (efter deploy)
+
+`pixel.js` finns redan på alla sidor i båda projekten, gatead av cookiebannern.
+Den gör **ingenting** förrän ID:t är ifyllt — sajten kan alltså deployas innan du har pixeln.
+
+1. Events Manager → skapa pixel "Vivanord" → kopiera ID:t (15–16 siffror)
+2. Sök-och-ersätt `__PIXEL_ID__` i **båda** `pixel.js` (vivanord/ och vivanord-halsoklubben/)
+3. **Samma ID i båda** — annars kan du inte retargeta tävlingsbesökare med säljannonser
+4. Domänverifiering: meta-taggen från Brand Safety → Domains läggs i `<head>` på `index.html`
+   i båda mapparna. Verifiera **båda** domänerna.
+
+Events är redan inkopplade: `Lead` på tävlingsformuläret, `Purchase` i kassan med produktens
+faktiska förstapris (399, eller 199 för Absorb+).
+
+---
+
+## Checklista före riktig trafik
+
+**Blockerande — annonser får inte starta utan dessa:**
+- [ ] **Rojdix org.nr ifyllt** (8 ställen, SV + ES) — annars är leadsamtycket ogiltigt
+- [ ] **Vivanord AB org.nr ifyllt** (6 ställen) — villkoren påstår redan att bolaget finns
+- [ ] **Supabase admin-användare skapad** — Authentication → Users → Add user (Auto Confirm).
+      Kontrollerat 2026-07-17: `auth.users` är **tom**, admin går inte att logga in i
+- [ ] Sajten live med grönt hänglås på båda domänerna
+- [ ] Formulären skriver till Supabase (inte bara localStorage!)
+- [ ] Meta-pixel + domänverifiering på båda domänerna
+- [ ] Juristgranskning av villkor, integritetspolicy och tävlingsvillkor
+- [ ] Kundservice-kanal bestämd och ifylld (er adress eller Medvitals nummer)
+
+**Klart:**
+- [x] Priser speglar medvital.se exakt (verifierat mot rå HTML 2026-07-16) — se [[medvital-katalog]]
+- [x] Uppsägningstexten rättad till 14 dagars varsel, SV + ES — se [[villkor-avvikelser]]
+- [x] Hela sortimentet (6 produkter) på sajten med riktiga namn och innehåll
+- [x] Rojdix inlagd som leadmottagare i samtyckeskedjan (org.nr saknas dock)
+- [x] Tävlingen avlänkad från dropship-sajten + flyttad till eget projekt
+- [x] Cookiebanner som gatear pixeln
+- [x] `pixel.js` förberedd med Lead/Purchase-events
+
+**Bekräfta med Medvital innan skarp trafik:**
+- [ ] 14-dagarsregeln — deras produktsidor och köpvillkor säger fortfarande olika
+- [ ] Hur länge Absorb+ 199 kr gäller ("tidsbegränsat erbjudande")
+- [ ] Om 59 kr frakt läggs på 199 kr-ordern
+
+*Relaterat: [[halsoklubben-subdoman]] · [[rojdix-leadmottagare]] · [[villkor-avvikelser]] ·
+[[medvital-katalog]] · [[SUPABASE]] · [[STATUS]]*

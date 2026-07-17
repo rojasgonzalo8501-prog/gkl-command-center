@@ -14,7 +14,7 @@ direktförsäljning. Allt nedan är copy-paste-klart för Ads Manager. Total sta
 
 1. **business.facebook.com** → Skapa Business Manager "Vivanord" (kräver din FB-profil)
 2. Skapa **Facebook-sida** "Vivanord" + **Instagram-konto** @vivanord.se — ladda upp logga
-   (grön V-symbol räcker), omslagsbild, bio: "Kosttillskott utan krångel 🇸🇪 Prova för 99 kr"
+   (grön V-symbol räcker), omslagsbild, bio: "Kosttillskott utan krångel 🇸🇪 Betala mot faktura"
 3. **Events Manager** → skapa Pixel "Vivanord" → jag installerar pixelkoden på sajten
    när du ger mig pixel-ID:t (16 siffror)
 4. Annons­konto i SEK, betalkort kopplat
@@ -58,33 +58,48 @@ direktförsäljning. Allt nedan är copy-paste-klart för Ads Manager. Total sta
 
 ## KAMPANJ 2 🇸🇪 — "Direktköp Sverige" (200 kr/dag)
 
+> **OMSKRIVEN 2026-07-16.** Gamla copyn sålde "99 kr första månaden" — ett pris som aldrig
+> fanns hos Medvital och som nu är borta från sajten. Den sålde också "avsluta när du vill med
+> ett mejl", vilket är fel: uppsägning kräver 14 dagars varsel. Och 2C lovade "fri leverans",
+> men frakten är 59 kr på varje leverans. Tre felaktiga påståenden i tre annonser.
+>
+> **Ny vinkel: Absorb+ är ingångsprodukten.** Det är den enda produkten med ett riktigt
+> introduktionspris (199 kr, 50 % rabatt). Övriga fem kostar 399 kr + 59 kr frakt från första
+> lådan — det är ingen krok att bygga en kallmålgruppsannons på.
+>
+> ⚠️ Medvital märker 199 kr som *"tidsbegränsat erbjudande"*. Bekräfta hur länge det gäller
+> innan du lägger budget bakom det — se [[medvital-mote]] punkt 6.
+
 | Inställning | Värde |
 |---|---|
 | Mål | Försäljning — optimera mot Purchase |
 | Budget | 200 kr/dag |
 | Målgrupp v.1–2 | Bred: Sverige · 40–65+ · intressen hälsa/kosttillskott |
 | Målgrupp v.3+ | + Retargeting: sajtbesökare 30 dgr som ej köpt (egen annonsgrupp, 50 kr/dag av budgeten) |
-| Destination | vivanord.se/bestall.html?utm_source=facebook&utm_campaign=direktkop |
+| Destination | vivanord.se/bestall.html?produkt=mage&utm_source=facebook&utm_campaign=direktkop |
 
 **Annons 2A — Erbjudandet (bild: produktlåda vid brevlåda):**
-> **Primärtext:** Prova Vivanord i en hel månad för 99 kr. 📬 Levereras direkt i brevlådan,
-> betala mot faktura — ingen bindningstid, avsluta när du vill med ett mejl.
-> Därefter 399 kr/mån om du väljer att fortsätta. Inga dolda villkor, det lovar vi.
-> **Rubrik:** Första månaden 99 kr
+> **Primärtext:** Prova Absorb+ första månaden för 199 kr — halva priset. 📬 Levereras direkt
+> i brevlådan, betala mot faktura. Därefter 399 kr + 59 kr frakt var fjärde vecka om du väljer
+> att fortsätta. Ingen bindningstid: säg upp senast 14 dagar före nästa leverans, så uteblir den.
+> **Rubrik:** Absorb+ första månaden 199 kr
 > **Beskrivning:** Ingen bindningstid · Faktura · I brevlådan
 > **Knapp:** Beställ nu
 
 **Annons 2B — Transparensvinkeln (talking head-video eller textgrafik):**
-> **Primärtext:** Prenumerationer med dolda villkor har gett branschen dåligt rykte.
-> Vivanord är byggt tvärtom: priset står överallt (99 kr första månaden, sen 399 kr/mån),
-> fakturan kommer med lådan, och uppsägningen tar en minut via mejl. Enkelt att testa —
-> och lika enkelt att avsluta.
+> **Primärtext:** Prenumerationer med dolda villkor har gett branschen dåligt rykte. Vivanord
+> är byggt tvärtom: priset står överallt, fakturan kommer med lådan, och uppsägningsregeln är
+> utskriven i klartext — säg upp senast 14 dagar före nästa leverans, så uteblir den. Inga
+> asterisker, ingen finstil.
 > **Rubrik:** Kosttillskott utan fula trick
 > **Knapp:** Läs mer
+>
+> *Denna annons säljer på att vi är ärliga. Den får därför aldrig innehålla ett påstående som
+> inte håller — det var precis vad den gjorde före 2026-07-16.*
 
 **Annons 2C — Bekvämlighet (video: lådan dimper ner i brevlådan, 10 sek):**
-> **Primärtext:** Aldrig mer glömma vitaminerna. Din månadsdos landar i brevlådan —
-> första lådan 99 kr, fri leverans hem, betala i efterhand mot faktura.
+> **Primärtext:** Aldrig mer glömma vitaminerna. Din dos landar i brevlådan — första lådan
+> Absorb+ för 199 kr plus 59 kr frakt, betala i efterhand mot faktura.
 > **Rubrik:** Vitaminerna sköter sig själva
 > **Knapp:** Beställ nu
 
@@ -97,20 +112,22 @@ direktförsäljning. Allt nedan är copy-paste-klart för Ads Manager. Total sta
 | Mål | Försäljning — optimera mot Purchase |
 | Budget | 100 kr/dag (egen kampanj = ren jämförelse mot den svenska) |
 | Målgrupp | Sverige · 30–65+ · **språk: Spanish (all)** — inga intressefilter (gruppen är redan smal) |
-| Destination | vivanord.se/es/pedido.html?utm_source=facebook&utm_campaign=compra_es |
+| Destination | vivanord.se/es/pedido.html?produkt=mage&utm_source=facebook&utm_campaign=compra_es |
 
 **Annons 3A — Erbjudandet:**
 > **Primärtext:** Suplementos suecos de calidad — ahora con atención en español. 🇸🇪
-> Prueba tu primer mes por 99 kr: llega a tu buzón, pagas contra factura y puedes
-> cancelar cuando quieras con un simple correo. Sin permanencia, sin letra pequeña.
-> **Rubrik:** Primer mes por 99 kr
+> Prueba Absorb+ el primer mes por 199 kr, la mitad de precio: llega a tu buzón y pagas contra
+> factura. Después 399 kr + 59 kr de envío cada cuatro semanas. Sin permanencia: cancela al
+> menos 14 días antes del próximo envío y no se realizará.
+> **Rubrik:** Absorb+ el primer mes por 199 kr
 > **Beskrivning:** Sin permanencia · Factura · En tu buzón
 > **Knapp:** Pedir ahora
 
 **Annons 3B — Förtroendevinkeln:**
-> **Primärtext:** Vivanord es una marca sueca de suplementos con página web, proceso de
-> pedido y atención al cliente disponibles en español. Primer mes 99 kr, después
-> 399 kr/mes — sin permanencia, con cancelación en un minuto por correo.
+> **Primärtext:** Vivanord es una marca sueca de suplementos con página web, proceso de pedido
+> y atención al cliente disponibles en español. El precio está siempre a la vista y la regla de
+> cancelación está escrita con claridad: cancela al menos 14 días antes del próximo envío.
+> Sin permanencia, sin letra pequeña.
 > **Rubrik:** Calidad sueca, atención en español
 > **Knapp:** Más información
 
@@ -125,11 +142,14 @@ den prövats mot:
 |---|---|---|
 | 1A, 1C | Tävlingsannonser: får inte antyda Meta-koppling, villkor måste finnas på landningssidan | ✅ Villkor + Meta-friskrivning finns på kampanjsidan; ingen Meta-logga i kreativen |
 | 1B | "Om du kan svaret" — kunskapsfråga, inte personligt attribut | ✅ OK (quiz om allmänbildning, inget om personen) |
-| 2A, 2C | Prenumerationsupplägg (negative option): villkoren måste anges tydligt | ✅ Både 99 kr OCH 399 kr/mån står i själva annonstexten |
+| 2A, 2C | Prenumerationsupplägg (negative option): villkoren måste anges tydligt | ✅ Både 199 kr OCH 399 kr var 4:e vecka står i annonstexten |
 | 2B | Omskriven: "Trött på...? Vi med." (du-fråga om upplevelse) → neutral konstaterande-form | ✅ Åtgärdad |
 | 3A | "tu buzón" = leveransbeskrivning, inte attribut | ✅ OK |
 | 3B | Omskriven: "¿...en tu idioma?" antydde kännedom om språklig/etnisk identitet (förbjudet personligt attribut) → beskriver nu bara vår tjänst | ✅ Åtgärdad |
 | Alla | Hälsopåståenden | ✅ Ingen annons påstår någon hälsoeffekt alls — bara pris, leverans, villkor och tävling |
+| **2A, 2B, 2C, 3A, 3B** | **Prisuppgiften stämmer med landningssidan** | ✅ Åtgärdad 2026-07-16 — sålde 99 kr som aldrig funnits hos Medvital |
+| **2A, 2B, 3A, 3B** | **Uppsägningsuppgiften stämmer med köpvillkoren** | ✅ Åtgärdad 2026-07-16 — sa "avsluta när du vill med ett mejl", verkligheten är 14 dagars varsel |
+| **2C** | **Fraktuppgiften** | ✅ Åtgärdad 2026-07-16 — lovade "fri leverans hem", frakten är 59 kr per leverans |
 
 ### Absoluta regler när ny copy skrivs (bryts någon = annonsen avvisas, upprepat = kontot stängs)
 - ❌ **Personliga attribut:** aldrig påstå/antyda något om mottagarens hälsa, ålder, ekonomi,
@@ -140,10 +160,15 @@ den prövats mot:
 - ❌ Inga orealistiska löften eller resultatgarantier; inga "GRATIS!!!"-versaler, clickbait
   eller falsk brådska ("bara idag!") — triggar låg kvalitet-klassning
 - ❌ Ingen Meta/Facebook/Instagram-logga eller formulering som antyder att Meta står bakom tävlingen
-- ✅ Prenumerationsvillkoren (99 kr → 399 kr/mån) i varje sälj-annons — Metas krav för
-  negative option-erbjudanden och vårt bästa skydd mot anmälningar
+- ✅ Prenumerationsvillkoren (199 kr → 399 kr var 4:e vecka för Absorb+) i varje sälj-annons —
+  Metas krav för negative option-erbjudanden och vårt bästa skydd mot anmälningar
 - ✅ Landningssidan måste matcha annonsen (samma erbjudande, samma pris) — mismatch är
   en vanlig avvisningsorsak
+- ✅ **Varje sifferuppgift ska gå att verifiera mot medvital.se.** Vi är återförsäljare: pris,
+  frakt, leveransintervall och uppsägningsregel är deras, inte våra. Hittar du på ett tal —
+  som 99 kr, som fanns i denna fil fram till 2026-07-16 — blir annonsen ett felaktigt påstående
+  om ett abonnemang. Det är den kategori Meta stänger konton för, och den kategori
+  Konsumentverket bötfäller.
 
 ### Kontoskydd (gör detta i Business Manager)
 1. **Tvåfaktorsautentisering** på alla admin-profiler + lägg till en reservadmin

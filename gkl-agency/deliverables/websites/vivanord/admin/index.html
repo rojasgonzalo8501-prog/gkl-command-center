@@ -6,161 +6,161 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Vivanord Admin — Back office</title>
 <style>
-  :root {
-    --bg: #0f1614; --panel: #18211e; --panel-2: #1d2925; --border: #2a3833;
-    --ink: #e8efec; --soft: #8fa39c; --faint: #5c6f68;
-    --sv: #5aa348; --es: #3f97e6; --gold: #d9a441; --red: #c0564b;
-    --accent: #7fb069;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scrollbar-color: var(--border) transparent; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--ink); font-size: 14px; line-height: 1.5; }
-  button { font-family: inherit; }
-  button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+ :root {
+ --bg: #0f1614; --panel: #18211e; --panel-2: #1d2925; --border: #2a3833;
+ --ink: #e8efec; --soft: #8fa39c; --faint: #5c6f68;
+ --sv: #5aa348; --es: #3f97e6; --gold: #d9a441; --red: #c0564b;
+ --accent: #7fb069;
+ }
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ html { scrollbar-color: var(--border) transparent; }
+ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--ink); font-size: 14px; line-height: 1.5; }
+ button { font-family: inherit; }
+ button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-  /* ---------- Layout: sidomeny + innehåll ---------- */
-  .app { display: grid; grid-template-columns: 218px 1fr; min-height: 100vh; }
-  .side { background: var(--panel); border-right: 1px solid var(--border); padding: 20px 12px; display: flex; flex-direction: column; gap: 4px; position: sticky; top: 0; height: 100vh; }
-  .side .logo { font-weight: 800; font-size: 17px; padding: 4px 12px 18px; letter-spacing: -.2px; }
-  .side .logo span { color: var(--accent); }
-  .side .logo .sub { display: block; font-size: 10.5px; font-weight: 600; color: var(--faint); letter-spacing: .12em; text-transform: uppercase; margin-top: 2px; }
-  .navbtn {
-    display: flex; align-items: center; gap: 11px; width: 100%; text-align: left;
-    background: none; border: 0; color: var(--soft); font-size: 14px; font-weight: 600;
-    padding: 10px 12px; border-radius: 9px; cursor: pointer; transition: background .12s, color .12s;
-  }
-  .navbtn:hover { background: var(--panel-2); color: var(--ink); }
-  .navbtn.active { background: var(--panel-2); color: var(--ink); box-shadow: inset 3px 0 0 var(--accent); }
-  .navbtn .ic { width: 20px; text-align: center; }
-  .navbtn .badge { margin-left: auto; background: var(--gold); color: #1c1607; font-size: 11px; font-weight: 800; border-radius: 999px; padding: 1px 8px; }
-  .navbtn .badge:empty { display: none; }
-  .side .foot { margin-top: auto; font-size: 11px; color: var(--faint); padding: 12px; border-top: 1px solid var(--border); }
+ /* ---------- Layout: sidomeny + innehåll ---------- */
+ .app { display: grid; grid-template-columns: 218px 1fr; min-height: 100vh; }
+ .side { background: var(--panel); border-right: 1px solid var(--border); padding: 20px 12px; display: flex; flex-direction: column; gap: 4px; position: sticky; top: 0; height: 100vh; }
+ .side .logo { font-weight: 800; font-size: 17px; padding: 4px 12px 18px; letter-spacing: -.2px; }
+ .side .logo span { color: var(--accent); }
+ .side .logo .sub { display: block; font-size: 10.5px; font-weight: 600; color: var(--faint); letter-spacing: .12em; text-transform: uppercase; margin-top: 2px; }
+ .navbtn {
+ display: flex; align-items: center; gap: 11px; width: 100%; text-align: left;
+ background: none; border: 0; color: var(--soft); font-size: 14px; font-weight: 600;
+ padding: 10px 12px; border-radius: 9px; cursor: pointer; transition: background .12s, color .12s;
+ }
+ .navbtn:hover { background: var(--panel-2); color: var(--ink); }
+ .navbtn.active { background: var(--panel-2); color: var(--ink); box-shadow: inset 3px 0 0 var(--accent); }
+ .navbtn .ic { width: 20px; text-align: center; }
+ .navbtn .badge { margin-left: auto; background: var(--gold); color: #1c1607; font-size: 11px; font-weight: 800; border-radius: 999px; padding: 1px 8px; }
+ .navbtn .badge:empty { display: none; }
+ .side .foot { margin-top: auto; font-size: 11px; color: var(--faint); padding: 12px; border-top: 1px solid var(--border); }
 
-  .maincol { min-width: 0; }
-  .topbar { display: flex; align-items: center; gap: 12px; padding: 16px 26px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(15,22,20,.92); backdrop-filter: blur(8px); z-index: 5; }
-  .topbar h1 { font-size: 17px; font-weight: 800; }
-  .topbar .actions { margin-left: auto; display: flex; gap: 8px; }
-  main { padding: 24px 26px 70px; max-width: 1160px; }
+ .maincol { min-width: 0; }
+ .topbar { display: flex; align-items: center; gap: 12px; padding: 16px 26px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(15,22,20,.92); backdrop-filter: blur(8px); z-index: 5; }
+ .topbar h1 { font-size: 17px; font-weight: 800; }
+ .topbar .actions { margin-left: auto; display: flex; gap: 8px; }
+ main { padding: 24px 26px 70px; max-width: 1160px; }
 
-  .btn { background: var(--panel); border: 1px solid var(--border); color: var(--ink); border-radius: 8px; padding: 8px 14px; cursor: pointer; font-size: 13px; font-weight: 600; transition: border-color .12s; }
-  .btn:hover { border-color: var(--accent); }
-  .btn.primary { background: var(--accent); border-color: var(--accent); color: #0f1614; }
-  .btn.danger:hover { border-color: var(--red); color: var(--red); }
-  .btn.sm { padding: 5px 10px; font-size: 12px; }
+ .btn { background: var(--panel); border: 1px solid var(--border); color: var(--ink); border-radius: 8px; padding: 8px 14px; cursor: pointer; font-size: 13px; font-weight: 600; transition: border-color .12s; }
+ .btn:hover { border-color: var(--accent); }
+ .btn.primary { background: var(--accent); border-color: var(--accent); color: #0f1614; }
+ .btn.danger:hover { border-color: var(--red); color: var(--red); }
+ .btn.sm { padding: 5px 10px; font-size: 12px; }
 
-  /* ---------- Paneler & statkort ---------- */
-  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px, 1fr)); gap: 12px; margin-bottom: 20px; }
-  .stat { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 15px 16px 13px; }
-  .stat .v { font-size: 25px; font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
-  .stat .l { font-size: 11.5px; color: var(--soft); margin-top: 2px; }
-  .stat .d { font-size: 11px; color: var(--faint); margin-top: 4px; }
-  .stat.gold .v { color: var(--gold); }
-  .stat.green .v { color: var(--accent); }
+ /* ---------- Paneler & statkort ---------- */
+ .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px, 1fr)); gap: 12px; margin-bottom: 20px; }
+ .stat { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 15px 16px 13px; }
+ .stat .v { font-size: 25px; font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+ .stat .l { font-size: 11.5px; color: var(--soft); margin-top: 2px; }
+ .stat .d { font-size: 11px; color: var(--faint); margin-top: 4px; }
+ .stat.gold .v { color: var(--gold); }
+ .stat.green .v { color: var(--accent); }
 
-  .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; }
-  .panel h2 { font-size: 13px; font-weight: 700; color: var(--soft); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 14px; }
-  .panel-row { display: grid; grid-template-columns: 1.6fr 1fr; gap: 14px; margin-top: 14px; }
-  @media (max-width: 900px) { .panel-row { grid-template-columns: 1fr; } }
+ .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; }
+ .panel h2 { font-size: 13px; font-weight: 700; color: var(--soft); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 14px; }
+ .panel-row { display: grid; grid-template-columns: 1.6fr 1fr; gap: 14px; margin-top: 14px; }
+ @media (max-width: 900px) { .panel-row { grid-template-columns: 1fr; } }
 
-  /* ---------- Diagram ---------- */
-  .chart-wrap { position: relative; }
-  .chart-wrap svg { width: 100%; height: auto; display: block; }
-  .bar { fill: var(--sv); cursor: pointer; }
-  .bar:hover { fill: var(--accent); }
-  .gridline { stroke: var(--border); stroke-width: 1; }
-  .axis-label { fill: var(--faint); font-size: 10px; font-family: inherit; }
-  .chart-tip {
-    position: fixed; z-index: 50; pointer-events: none; background: var(--panel-2);
-    border: 1px solid var(--border); border-radius: 8px; padding: 7px 11px; font-size: 12.5px;
-    box-shadow: 0 8px 24px rgba(0,0,0,.45); display: none; white-space: nowrap;
-  }
-  .chart-tip strong { font-variant-numeric: tabular-nums; }
+ /* ---------- Diagram ---------- */
+ .chart-wrap { position: relative; }
+ .chart-wrap svg { width: 100%; height: auto; display: block; }
+ .bar { fill: var(--sv); cursor: pointer; }
+ .bar:hover { fill: var(--accent); }
+ .gridline { stroke: var(--border); stroke-width: 1; }
+ .axis-label { fill: var(--faint); font-size: 10px; font-family: inherit; }
+ .chart-tip {
+ position: fixed; z-index: 50; pointer-events: none; background: var(--panel-2);
+ border: 1px solid var(--border); border-radius: 8px; padding: 7px 11px; font-size: 12.5px;
+ box-shadow: 0 8px 24px rgba(0,0,0,.45); display: none; white-space: nowrap;
+ }
+ .chart-tip strong { font-variant-numeric: tabular-nums; }
 
-  .langbar { display: flex; height: 26px; border-radius: 7px; overflow: hidden; gap: 2px; margin: 6px 0 10px; background: var(--bg); }
-  .langbar div { display: flex; align-items: center; justify-content: center; font-size: 11.5px; font-weight: 800; color: #0f1614; min-width: 34px; }
-  .langbar .sv { background: var(--sv); }
-  .langbar .es { background: var(--es); }
-  .legend { display: flex; gap: 16px; font-size: 12px; color: var(--soft); }
-  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+ .langbar { display: flex; height: 26px; border-radius: 7px; overflow: hidden; gap: 2px; margin: 6px 0 10px; background: var(--bg); }
+ .langbar div { display: flex; align-items: center; justify-content: center; font-size: 11.5px; font-weight: 800; color: #0f1614; min-width: 34px; }
+ .langbar .sv { background: var(--sv); }
+ .langbar .es { background: var(--es); }
+ .legend { display: flex; gap: 16px; font-size: 12px; color: var(--soft); }
+ .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
 
-  .feed { list-style: none; display: grid; gap: 8px; }
-  .feed li { display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: var(--panel-2); border-radius: 9px; font-size: 13px; }
-  .feed .when { margin-left: auto; color: var(--faint); font-size: 11.5px; white-space: nowrap; font-variant-numeric: tabular-nums; }
-  .feed .ic { font-size: 16px; }
+ .feed { list-style: none; display: grid; gap: 8px; }
+ .feed li { display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: var(--panel-2); border-radius: 9px; font-size: 13px; }
+ .feed .when { margin-left: auto; color: var(--faint); font-size: 11.5px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+ .feed .ic { font-size: 16px; }
 
-  /* ---------- Verktygsrad, chips, tabeller ---------- */
-  .toolbar { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; align-items: center; }
-  .toolbar input[type="search"], .toolbar select { background: var(--panel); border: 1px solid var(--border); color: var(--ink); border-radius: 8px; padding: 8px 12px; font-size: 13px; font-family: inherit; }
-  .toolbar input[type="search"] { flex: 1; min-width: 150px; }
-  .chips { display: flex; gap: 6px; }
-  .chip { background: var(--panel); border: 1px solid var(--border); color: var(--soft); border-radius: 999px; padding: 6px 14px; font-size: 12.5px; font-weight: 700; cursor: pointer; }
-  .chip:hover { color: var(--ink); }
-  .chip.on { border-color: var(--accent); color: var(--ink); background: var(--panel-2); }
-  .chip .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+ /* ---------- Verktygsrad, chips, tabeller ---------- */
+ .toolbar { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; align-items: center; }
+ .toolbar input[type="search"], .toolbar select { background: var(--panel); border: 1px solid var(--border); color: var(--ink); border-radius: 8px; padding: 8px 12px; font-size: 13px; font-family: inherit; }
+ .toolbar input[type="search"] { flex: 1; min-width: 150px; }
+ .chips { display: flex; gap: 6px; }
+ .chip { background: var(--panel); border: 1px solid var(--border); color: var(--soft); border-radius: 999px; padding: 6px 14px; font-size: 12.5px; font-weight: 700; cursor: pointer; }
+ .chip:hover { color: var(--ink); }
+ .chip.on { border-color: var(--accent); color: var(--ink); background: var(--panel-2); }
+ .chip .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
 
-  .table-wrap { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; overflow-x: auto; }
-  table { width: 100%; border-collapse: collapse; min-width: 780px; }
-  th { text-align: left; padding: 10px 14px; font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--faint); border-bottom: 1px solid var(--border); }
-  td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
-  tbody tr.row { cursor: pointer; transition: background .1s; }
-  tbody tr.row:hover { background: var(--panel-2); }
-  tr:last-child td { border-bottom: 0; }
-  td select { background: var(--bg); border: 1px solid var(--border); color: var(--ink); border-radius: 6px; padding: 5px 8px; font-size: 12.5px; font-family: inherit; }
-  .lang-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 800; }
-  .lang-pill i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
-  .pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 700; }
-  .pill.ja { background: rgba(90,163,72,.16); color: #8ecb7e; }
-  .pill.nej { background: rgba(143,163,156,.12); color: var(--soft); }
-  tr.detail td { background: var(--panel-2); padding: 14px 18px; }
-  .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px 22px; font-size: 13px; }
-  .detail-grid .k { color: var(--faint); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
-  .empty { text-align: center; padding: 46px 20px; color: var(--soft); }
-  .empty .big { font-size: 30px; margin-bottom: 8px; }
+ .table-wrap { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; overflow-x: auto; }
+ table { width: 100%; border-collapse: collapse; min-width: 780px; }
+ th { text-align: left; padding: 10px 14px; font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--faint); border-bottom: 1px solid var(--border); }
+ td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+ tbody tr.row { cursor: pointer; transition: background .1s; }
+ tbody tr.row:hover { background: var(--panel-2); }
+ tr:last-child td { border-bottom: 0; }
+ td select { background: var(--bg); border: 1px solid var(--border); color: var(--ink); border-radius: 6px; padding: 5px 8px; font-size: 12.5px; font-family: inherit; }
+ .lang-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 800; }
+ .lang-pill i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+ .pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 700; }
+ .pill.ja { background: rgba(90,163,72,.16); color: #8ecb7e; }
+ .pill.nej { background: rgba(143,163,156,.12); color: var(--soft); }
+ tr.detail td { background: var(--panel-2); padding: 14px 18px; }
+ .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px 22px; font-size: 13px; }
+ .detail-grid .k { color: var(--faint); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+ .empty { text-align: center; padding: 46px 20px; color: var(--soft); }
+ .empty .big { font-size: 30px; margin-bottom: 8px; }
 
-  /* ---------- Kalkyl ---------- */
-  .calc { display: grid; grid-template-columns: 1fr 1.2fr; gap: 22px; }
-  @media (max-width: 820px) { .calc { grid-template-columns: 1fr; } }
-  .calc-field { margin-bottom: 12px; }
-  .calc-field label { display: block; font-size: 12px; color: var(--soft); margin-bottom: 4px; }
-  .calc-field input { width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--ink); border-radius: 8px; padding: 9px 12px; font-size: 15px; font-family: inherit; font-variant-numeric: tabular-nums; }
-  .calc-out { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 15px; margin-bottom: 12px; }
-  .calc-out .row { display: flex; justify-content: space-between; padding: 5px 0; font-variant-numeric: tabular-nums; }
-  .calc-out .row.big { font-size: 16.5px; font-weight: 800; border-top: 1px solid var(--border); margin-top: 6px; padding-top: 10px; }
-  .calc-out .row.big span:last-child { color: var(--gold); }
-  .price-table { width: 100%; border-collapse: collapse; }
-  .price-table th, .price-table td { padding: 8px 10px; font-size: 13px; border-bottom: 1px solid var(--border); text-align: right; font-variant-numeric: tabular-nums; }
-  .price-table th:first-child, .price-table td:first-child { text-align: left; }
-  .price-table .rec td { color: var(--accent); font-weight: 800; }
-  .note { font-size: 12px; color: var(--soft); line-height: 1.6; }
-  .note strong { color: var(--gold); }
+ /* ---------- Kalkyl ---------- */
+ .calc { display: grid; grid-template-columns: 1fr 1.2fr; gap: 22px; }
+ @media (max-width: 820px) { .calc { grid-template-columns: 1fr; } }
+ .calc-field { margin-bottom: 12px; }
+ .calc-field label { display: block; font-size: 12px; color: var(--soft); margin-bottom: 4px; }
+ .calc-field input { width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--ink); border-radius: 8px; padding: 9px 12px; font-size: 15px; font-family: inherit; font-variant-numeric: tabular-nums; }
+ .calc-out { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 15px; margin-bottom: 12px; }
+ .calc-out .row { display: flex; justify-content: space-between; padding: 5px 0; font-variant-numeric: tabular-nums; }
+ .calc-out .row.big { font-size: 16.5px; font-weight: 800; border-top: 1px solid var(--border); margin-top: 6px; padding-top: 10px; }
+ .calc-out .row.big span:last-child { color: var(--gold); }
+ .price-table { width: 100%; border-collapse: collapse; }
+ .price-table th, .price-table td { padding: 8px 10px; font-size: 13px; border-bottom: 1px solid var(--border); text-align: right; font-variant-numeric: tabular-nums; }
+ .price-table th:first-child, .price-table td:first-child { text-align: left; }
+ .price-table .rec td { color: var(--accent); font-weight: 800; }
+ .note { font-size: 12px; color: var(--soft); line-height: 1.6; }
+ .note strong { color: var(--gold); }
 
-  /* ---------- Toast, låsskärm ---------- */
-  #toasts { position: fixed; bottom: 20px; right: 20px; display: grid; gap: 8px; z-index: 100; }
-  .toast { background: var(--panel-2); border: 1px solid var(--accent); border-radius: 10px; padding: 11px 16px; font-size: 13px; font-weight: 600; box-shadow: 0 10px 30px rgba(0,0,0,.5); animation: pop .18s ease-out; }
-  @keyframes pop { from { transform: translateY(8px); opacity: 0; } }
-  @media (prefers-reduced-motion: reduce) { .toast { animation: none; } .navbtn, .btn, tbody tr.row { transition: none; } }
+ /* ---------- Toast, låsskärm ---------- */
+ #toasts { position: fixed; bottom: 20px; right: 20px; display: grid; gap: 8px; z-index: 100; }
+ .toast { background: var(--panel-2); border: 1px solid var(--accent); border-radius: 10px; padding: 11px 16px; font-size: 13px; font-weight: 600; box-shadow: 0 10px 30px rgba(0,0,0,.5); animation: pop .18s ease-out; }
+ @keyframes pop { from { transform: translateY(8px); opacity: 0; } }
+ @media (prefers-reduced-motion: reduce) { .toast { animation: none; } .navbtn, .btn, tbody tr.row { transition: none; } }
 
-  #lockScreen { position: fixed; inset: 0; background: var(--bg); display: flex; align-items: center; justify-content: center; z-index: 200; }
-  .lock-card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 36px; width: 320px; text-align: center; }
-  .lock-card h1 { font-size: 18px; margin: 10px 0 4px; }
-  .lock-card p { color: var(--soft); font-size: 13px; margin-bottom: 18px; }
-  .lock-card input { width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--ink); border-radius: 8px; padding: 11px; font-size: 16px; text-align: center; letter-spacing: 6px; margin-bottom: 12px; font-family: inherit; }
-  .hidden { display: none !important; }
-  .lock-card input[type="email"], .lock-card input[type="password"].pw { text-align: left; letter-spacing: normal; font-size: 14px; }
-  .lock-err { color: var(--red); font-size: 12.5px; margin-top: 8px; min-height: 16px; }
-  .mode-tag { font-size: 10.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; border-radius: 999px; padding: 3px 10px; border: 1px solid var(--border); color: var(--soft); }
-  .mode-tag.live { color: var(--accent); border-color: var(--accent); }
+ #lockScreen { position: fixed; inset: 0; background: var(--bg); display: flex; align-items: center; justify-content: center; z-index: 200; }
+ .lock-card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 36px; width: 320px; text-align: center; }
+ .lock-card h1 { font-size: 18px; margin: 10px 0 4px; }
+ .lock-card p { color: var(--soft); font-size: 13px; margin-bottom: 18px; }
+ .lock-card input { width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--ink); border-radius: 8px; padding: 11px; font-size: 16px; text-align: center; letter-spacing: 6px; margin-bottom: 12px; font-family: inherit; }
+ .hidden { display: none !important; }
+ .lock-card input[type="email"], .lock-card input[type="password"].pw { text-align: left; letter-spacing: normal; font-size: 14px; }
+ .lock-err { color: var(--red); font-size: 12.5px; margin-top: 8px; min-height: 16px; }
+ .mode-tag { font-size: 10.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; border-radius: 999px; padding: 3px 10px; border: 1px solid var(--border); color: var(--soft); }
+ .mode-tag.live { color: var(--accent); border-color: var(--accent); }
 
-  /* ---------- Mobil ---------- */
-  @media (max-width: 760px) {
-    .app { grid-template-columns: 1fr; }
-    .side { position: static; height: auto; flex-direction: row; align-items: center; overflow-x: auto; padding: 10px 12px; gap: 6px; }
-    .side .logo { padding: 0 10px 0 2px; white-space: nowrap; } .side .logo .sub { display: none; }
-    .navbtn { width: auto; white-space: nowrap; padding: 8px 12px; }
-    .navbtn.active { box-shadow: inset 0 -3px 0 var(--accent); }
-    .side .foot { display: none; }
-    .topbar { padding: 12px 16px; flex-wrap: wrap; } main { padding: 16px 16px 60px; }
-  }
+ /* ---------- Mobil ---------- */
+ @media (max-width: 760px) {
+ .app { grid-template-columns: 1fr; }
+ .side { position: static; height: auto; flex-direction: row; align-items: center; overflow-x: auto; padding: 10px 12px; gap: 6px; }
+ .side .logo { padding: 0 10px 0 2px; white-space: nowrap; } .side .logo .sub { display: none; }
+ .navbtn { width: auto; white-space: nowrap; padding: 8px 12px; }
+ .navbtn.active { box-shadow: inset 0 -3px 0 var(--accent); }
+ .side .foot { display: none; }
+ .topbar { padding: 12px 16px; flex-wrap: wrap; } main { padding: 16px 16px 60px; }
+ }
 </style>
 <script src="../supabase-config.js"></script>
 </head>
@@ -168,41 +168,41 @@
 
 <!-- Inloggning: Supabase Auth när konfigurerat (supabase-config.js), annars PIN-prototyp -->
 <div id="lockScreen">
-  <div class="lock-card">
-    <div style="font-size:34px;">🔐</div>
-    <h1>Vivanord Admin</h1>
-    <p id="lockHint">Ange PIN-kod (prototyp: 1234)</p>
-    <input type="password" id="pin" inputmode="numeric" maxlength="4" autofocus />
-    <input type="email" id="sb-email" class="hidden" placeholder="E-postadress" autocomplete="username" />
-    <input type="password" id="sb-pass" class="pw hidden" placeholder="Lösenord" autocomplete="current-password" />
-    <button class="btn primary" style="width:100%;" onclick="unlock()">Logga in</button>
-    <div class="lock-err" id="lockErr"></div>
-  </div>
+ <div class="lock-card">
+ <div style="font-size:34px;">🔐</div>
+ <h1>Vivanord Admin</h1>
+ <p id="lockHint">Ange PIN-kod (prototyp: 1234)</p>
+ <input type="password" id="pin" inputmode="numeric" maxlength="4" autofocus />
+ <input type="email" id="sb-email" class="hidden" placeholder="E-postadress" autocomplete="username" />
+ <input type="password" id="sb-pass" class="pw hidden" placeholder="Lösenord" autocomplete="current-password" />
+ <button class="btn primary" style="width:100%;" onclick="unlock()">Logga in</button>
+ <div class="lock-err" id="lockErr"></div>
+ </div>
 </div>
 
 <div class="app">
-  <aside class="side">
-    <div class="logo">Viva<span>nord</span><span class="sub">Back office</span></div>
-    <button class="navbtn active" data-view="oversikt" onclick="switchView('oversikt')"><span class="ic">📊</span> Översikt</button>
-    <button class="navbtn" data-view="leads" onclick="switchView('leads')"><span class="ic">📋</span> Leads <span class="badge" id="leadsBadge"></span></button>
-    <button class="navbtn" data-view="ordrar" onclick="switchView('ordrar')"><span class="ic">📦</span> Ordrar</button>
-    <button class="navbtn" data-view="kalkyl" onclick="switchView('kalkyl')"><span class="ic">🧮</span> Leadkalkyl</button>
-    <div class="foot">Prototyp — data lagras lokalt i denna webbläsare. Kopplas till riktig databas före lansering.</div>
-  </aside>
+ <aside class="side">
+ <div class="logo">Viva<span>nord</span><span class="sub">Back office</span></div>
+ <button class="navbtn active" data-view="oversikt" onclick="switchView('oversikt')"><span class="ic">📊</span> Översikt</button>
+ <button class="navbtn" data-view="leads" onclick="switchView('leads')"><span class="ic">📋</span> Leads <span class="badge" id="leadsBadge"></span></button>
+ <button class="navbtn" data-view="ordrar" onclick="switchView('ordrar')"><span class="ic">📦</span> Ordrar</button>
+ <button class="navbtn" data-view="kalkyl" onclick="switchView('kalkyl')"><span class="ic">🧮</span> Leadkalkyl</button>
+ <div class="foot">Prototyp — data lagras lokalt i denna webbläsare. Kopplas till riktig databas före lansering.</div>
+ </aside>
 
-  <div class="maincol">
-    <header class="topbar">
-      <h1 id="viewTitle">Översikt</h1>
-      <span class="mode-tag" id="modeTag">Prototyp</span>
-      <div class="actions">
-        <button class="btn sm hidden" id="refreshBtn" onclick="refresh()">↻ Uppdatera</button>
-        <button class="btn sm" id="demoBtn" onclick="seedDemo()">Ladda demodata</button>
-        <button class="btn sm" id="exportBtn" onclick="exportCSV()">Exportera CSV</button>
-        <button class="btn sm danger" id="clearBtn" onclick="clearAll()">Rensa allt</button>
-      </div>
-    </header>
-    <main id="viewHost"></main>
-  </div>
+ <div class="maincol">
+ <header class="topbar">
+ <h1 id="viewTitle">Översikt</h1>
+ <span class="mode-tag" id="modeTag">Prototyp</span>
+ <div class="actions">
+ <button class="btn sm hidden" id="refreshBtn" onclick="refresh()">↻ Uppdatera</button>
+ <button class="btn sm" id="demoBtn" onclick="seedDemo()">Ladda demodata</button>
+ <button class="btn sm" id="exportBtn" onclick="exportCSV()">Exportera CSV</button>
+ <button class="btn sm danger" id="clearBtn" onclick="clearAll()">Rensa allt</button>
+ </div>
+ </header>
+ <main id="viewHost"></main>
+ </div>
 </div>
 
 <div class="chart-tip" id="chartTip"></div>
@@ -227,330 +227,330 @@ const lsSave = (k, v) => localStorage.setItem(k, JSON.stringify(v));
 const load = (k) => CACHE[k];
 
 function sbFetch(path, opts = {}) {
-  const token = sessionStorage.getItem('nv_sb_token') || SB.anonKey;
-  return fetch(SB.url + path, Object.assign({}, opts, {
-    headers: Object.assign({
-      apikey: SB.anonKey,
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    }, opts.headers || {}),
-  }));
+ const token = sessionStorage.getItem('nv_sb_token') || SB.anonKey;
+ return fetch(SB.url + path, Object.assign({}, opts, {
+ headers: Object.assign({
+ apikey: SB.anonKey,
+ Authorization: `Bearer ${token}`,
+ 'Content-Type': 'application/json',
+ }, opts.headers || {}),
+ }));
 }
 
 async function refresh(silent) {
-  if (!SB) {
-    CACHE.nv_leads = lsLoad('nv_leads');
-    CACHE.nv_ordrar = lsLoad('nv_ordrar');
-    render();
-    return;
-  }
-  try {
-    for (const k of ['nv_leads', 'nv_ordrar']) {
-      const res = await sbFetch(`/rest/v1/${TABLE[k]}?select=*&order=tid.desc`);
-      if (res.status === 401) { logout(); return; }
-      if (res.ok) CACHE[k] = await res.json();
-    }
-    render();
-    if (!silent) toast('Uppdaterat från databasen');
-  } catch (e) {
-    if (!silent) toast('Kunde inte nå databasen — försök igen');
-  }
+ if (!SB) {
+ CACHE.nv_leads = lsLoad('nv_leads');
+ CACHE.nv_ordrar = lsLoad('nv_ordrar');
+ render();
+ return;
+ }
+ try {
+ for (const k of ['nv_leads', 'nv_ordrar']) {
+ const res = await sbFetch(`/rest/v1/${TABLE[k]}?select=*&order=tid.desc`);
+ if (res.status === 401) { logout(); return; }
+ if (res.ok) CACHE[k] = await res.json();
+ }
+ render();
+ if (!silent) toast('Uppdaterat från databasen');
+ } catch (e) {
+ if (!silent) toast('Kunde inte nå databasen — försök igen');
+ }
 }
 
 /* ---------- Inloggning: Supabase Auth eller PIN-prototyp ---------- */
 function setupLock() {
-  if (SB) {
-    document.getElementById('lockHint').textContent = 'Logga in med ditt admin-konto';
-    document.getElementById('pin').classList.add('hidden');
-    document.getElementById('sb-email').classList.remove('hidden');
-    document.getElementById('sb-pass').classList.remove('hidden');
-    document.getElementById('modeTag').textContent = 'Live · Supabase';
-    document.getElementById('modeTag').classList.add('live');
-    document.getElementById('refreshBtn').classList.remove('hidden');
-    // Demodata/rensning avstängt i live-läge — riktig data hanteras i databasen
-    document.getElementById('demoBtn').classList.add('hidden');
-    document.getElementById('clearBtn').classList.add('hidden');
-    if (sessionStorage.getItem('nv_sb_token')) enter();
-  } else if (sessionStorage.getItem('nv_admin') === '1') {
-    enter();
-  }
+ if (SB) {
+ document.getElementById('lockHint').textContent = 'Logga in med ditt admin-konto';
+ document.getElementById('pin').classList.add('hidden');
+ document.getElementById('sb-email').classList.remove('hidden');
+ document.getElementById('sb-pass').classList.remove('hidden');
+ document.getElementById('modeTag').textContent = 'Live · Supabase';
+ document.getElementById('modeTag').classList.add('live');
+ document.getElementById('refreshBtn').classList.remove('hidden');
+ // Demodata/rensning avstängt i live-läge — riktig data hanteras i databasen
+ document.getElementById('demoBtn').classList.add('hidden');
+ document.getElementById('clearBtn').classList.add('hidden');
+ if (sessionStorage.getItem('nv_sb_token')) enter();
+ } else if (sessionStorage.getItem('nv_admin') === '1') {
+ enter();
+ }
 }
 
 async function unlock() {
-  const err = document.getElementById('lockErr');
-  err.textContent = '';
-  if (!SB) {
-    if (document.getElementById('pin').value === '1234') {
-      sessionStorage.setItem('nv_admin', '1');
-      enter();
-    } else {
-      const p = document.getElementById('pin');
-      p.value = ''; p.placeholder = 'Fel kod';
-    }
-    return;
-  }
-  try {
-    const res = await fetch(`${SB.url}/auth/v1/token?grant_type=password`, {
-      method: 'POST',
-      headers: { apikey: SB.anonKey, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: document.getElementById('sb-email').value.trim(),
-        password: document.getElementById('sb-pass').value,
-      }),
-    });
-    const data = await res.json();
-    if (!res.ok || !data.access_token) {
-      err.textContent = 'Fel e-post eller lösenord.';
-      return;
-    }
-    sessionStorage.setItem('nv_sb_token', data.access_token);
-    enter();
-  } catch (e) {
-    err.textContent = 'Kunde inte nå databasen — kontrollera anslutningen.';
-  }
+ const err = document.getElementById('lockErr');
+ err.textContent = '';
+ if (!SB) {
+ if (document.getElementById('pin').value === '1234') {
+ sessionStorage.setItem('nv_admin', '1');
+ enter();
+ } else {
+ const p = document.getElementById('pin');
+ p.value = ''; p.placeholder = 'Fel kod';
+ }
+ return;
+ }
+ try {
+ const res = await fetch(`${SB.url}/auth/v1/token?grant_type=password`, {
+ method: 'POST',
+ headers: { apikey: SB.anonKey, 'Content-Type': 'application/json' },
+ body: JSON.stringify({
+ email: document.getElementById('sb-email').value.trim(),
+ password: document.getElementById('sb-pass').value,
+ }),
+ });
+ const data = await res.json();
+ if (!res.ok || !data.access_token) {
+ err.textContent = 'Fel e-post eller lösenord.';
+ return;
+ }
+ sessionStorage.setItem('nv_sb_token', data.access_token);
+ enter();
+ } catch (e) {
+ err.textContent = 'Kunde inte nå databasen — kontrollera anslutningen.';
+ }
 }
 
 function logout() {
-  sessionStorage.removeItem('nv_sb_token');
-  sessionStorage.removeItem('nv_admin');
-  document.getElementById('lockScreen').classList.remove('hidden');
+ sessionStorage.removeItem('nv_sb_token');
+ sessionStorage.removeItem('nv_admin');
+ document.getElementById('lockScreen').classList.remove('hidden');
 }
 
 function enter() {
-  document.getElementById('lockScreen').classList.add('hidden');
-  refresh(true);
-  if (SB) setInterval(() => refresh(true), 60000); // auto-uppdatera varje minut i live-läge
+ document.getElementById('lockScreen').classList.add('hidden');
+ refresh(true);
+ if (SB) setInterval(() => refresh(true), 60000); // auto-uppdatera varje minut i live-läge
 }
 
 ['pin', 'sb-pass'].forEach((id) =>
-  document.getElementById(id).addEventListener('keydown', (e) => { if (e.key === 'Enter') unlock(); }));
+ document.getElementById(id).addEventListener('keydown', (e) => { if (e.key === 'Enter') unlock(); }));
 const langOf = (r) => (r.kalla || '').includes('ES') ? 'ES' : 'SV';
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmtDate = (iso) => new Date(iso).toLocaleString('sv-SE', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
 const kr = (n) => n.toLocaleString('sv-SE') + ' kr';
 
 function toast(msg) {
-  const el = document.createElement('div');
-  el.className = 'toast'; el.textContent = msg;
-  document.getElementById('toasts').appendChild(el);
-  setTimeout(() => el.remove(), 2600);
+ const el = document.createElement('div');
+ el.className = 'toast'; el.textContent = msg;
+ document.getElementById('toasts').appendChild(el);
+ setTimeout(() => el.remove(), 2600);
 }
 
 function counts() {
-  const leads = load('nv_leads'), ordrar = load('nv_ordrar');
-  const today = new Date().toDateString();
-  const bekraftade = leads.filter((l) => l.status === 'bekräftad').length + ordrar.filter((o) => o.status === 'bekräftad').length;
-  return {
-    leads, ordrar,
-    leadsIdag: leads.filter((l) => new Date(l.tid).toDateString() === today).length,
-    telAndel: leads.length ? Math.round(100 * leads.filter((l) => l.samtyckeTelefon).length / leads.length) : 0,
-    oringda: leads.filter((l) => l.status === 'ny').length,
-    bekraftade,
-    intjanat: bekraftade * ERSATTNING,
-    es: leads.filter((l) => langOf(l) === 'ES').length,
-  };
+ const leads = load('nv_leads'), ordrar = load('nv_ordrar');
+ const today = new Date().toDateString();
+ const bekraftade = leads.filter((l) => l.status === 'bekräftad').length + ordrar.filter((o) => o.status === 'bekräftad').length;
+ return {
+ leads, ordrar,
+ leadsIdag: leads.filter((l) => new Date(l.tid).toDateString() === today).length,
+ telAndel: leads.length ? Math.round(100 * leads.filter((l) => l.samtyckeTelefon).length / leads.length) : 0,
+ oringda: leads.filter((l) => l.status === 'ny').length,
+ bekraftade,
+ intjanat: bekraftade * ERSATTNING,
+ es: leads.filter((l) => langOf(l) === 'ES').length,
+ };
 }
 
 /* ---------- Navigering ---------- */
 const TITLES = { oversikt: 'Översikt', leads: 'Leads', ordrar: 'Ordrar', kalkyl: 'Leadkalkyl — prissätt leadlistan' };
 function switchView(v) {
-  view = v; expanded = null;
-  filters = { q: '', status: '', lang: '' };
-  document.querySelectorAll('.navbtn').forEach((b) => b.classList.toggle('active', b.dataset.view === v));
-  document.getElementById('viewTitle').textContent = TITLES[v];
-  document.getElementById('exportBtn').style.display = (v === 'leads' || v === 'ordrar') ? '' : 'none';
-  render();
+ view = v; expanded = null;
+ filters = { q: '', status: '', lang: '' };
+ document.querySelectorAll('.navbtn').forEach((b) => b.classList.toggle('active', b.dataset.view === v));
+ document.getElementById('viewTitle').textContent = TITLES[v];
+ document.getElementById('exportBtn').style.display = (v === 'leads' || v === 'ordrar') ? '' : 'none';
+ render();
 }
 
 function render() {
-  document.getElementById('leadsBadge').textContent = counts().oringda || '';
-  const host = document.getElementById('viewHost');
-  if (view === 'oversikt') { host.innerHTML = renderOversikt(); wireChart(); }
-  else if (view === 'kalkyl') host.innerHTML = renderCalc();
-  else host.innerHTML = renderTableView();
+ document.getElementById('leadsBadge').textContent = counts().oringda || '';
+ const host = document.getElementById('viewHost');
+ if (view === 'oversikt') { host.innerHTML = renderOversikt(); wireChart(); }
+ else if (view === 'kalkyl') host.innerHTML = renderCalc();
+ else host.innerHTML = renderTableView();
 }
 
 /* ---------- Översikt ---------- */
 function renderOversikt() {
-  const c = counts();
-  const tiles = `
-    <div class="stats">
-      <div class="stat"><div class="v">${c.leads.length}</div><div class="l">Leads totalt</div><div class="d">${c.leadsIdag} idag</div></div>
-      <div class="stat"><div class="v">${c.telAndel} %</div><div class="l">Telefonsamtycke</div><div class="d">säljbara till Medvital</div></div>
-      <div class="stat ${c.oringda ? 'gold' : ''}"><div class="v">${c.oringda}</div><div class="l">Oringda leads</div><div class="d">överlåt inom 72 h!</div></div>
-      <div class="stat"><div class="v">${c.ordrar.length}</div><div class="l">Ordrar via sajten</div><div class="d">skickas till Medvital</div></div>
-      <div class="stat green"><div class="v">${c.bekraftade}</div><div class="l">Bekräftade avtal</div><div class="d">à ${ERSATTNING} kr</div></div>
-      <div class="stat green"><div class="v">${kr(c.intjanat)}</div><div class="l">Intjänat</div><div class="d">+ leadlistan tillkommer</div></div>
-    </div>`;
+ const c = counts();
+ const tiles = `
+ <div class="stats">
+ <div class="stat"><div class="v">${c.leads.length}</div><div class="l">Leads totalt</div><div class="d">${c.leadsIdag} idag</div></div>
+ <div class="stat"><div class="v">${c.telAndel} %</div><div class="l">Telefonsamtycke</div><div class="d">säljbara till Medvital</div></div>
+ <div class="stat ${c.oringda ? 'gold' : ''}"><div class="v">${c.oringda}</div><div class="l">Oringda leads</div><div class="d">överlåt inom 72 h!</div></div>
+ <div class="stat"><div class="v">${c.ordrar.length}</div><div class="l">Ordrar via sajten</div><div class="d">skickas till Medvital</div></div>
+ <div class="stat green"><div class="v">${c.bekraftade}</div><div class="l">Bekräftade avtal</div><div class="d">à ${ERSATTNING} kr</div></div>
+ <div class="stat green"><div class="v">${kr(c.intjanat)}</div><div class="l">Intjänat</div><div class="d">+ leadlistan tillkommer</div></div>
+ </div>`;
 
-  const chart = `<div class="panel"><h2>Nya leads per dag — senaste 14 dagarna</h2><div class="chart-wrap" id="chartHost">${buildChart(c.leads)}</div></div>`;
+ const chart = `<div class="panel"><h2>Nya leads per dag — senaste 14 dagarna</h2><div class="chart-wrap" id="chartHost">${buildChart(c.leads)}</div></div>`;
 
-  const sv = c.leads.length - c.es, tot = Math.max(c.leads.length, 1);
-  const langPanel = `
-    <div class="panel">
-      <h2>Språkfördelning leads</h2>
-      ${c.leads.length ? `
-      <div class="langbar">
-        ${sv ? `<div class="sv" style="flex:${sv}">${sv}</div>` : ''}
-        ${c.es ? `<div class="es" style="flex:${c.es}">${c.es}</div>` : ''}
-      </div>
-      <div class="legend"><span><i style="background:var(--sv)"></i>Svenska (${Math.round(100 * sv / tot)} %)</span><span><i style="background:var(--es)"></i>Spanska (${Math.round(100 * c.es / tot)} %)</span></div>
-      <p class="note" style="margin-top:12px;">ES-leads kräver spansktalande säljare hos Medvital — överlåt dem som separat lista.</p>`
-      : '<div class="empty">Inga leads ännu</div>'}
-    </div>`;
+ const sv = c.leads.length - c.es, tot = Math.max(c.leads.length, 1);
+ const langPanel = `
+ <div class="panel">
+ <h2>Språkfördelning leads</h2>
+ ${c.leads.length ? `
+ <div class="langbar">
+ ${sv ? `<div class="sv" style="flex:${sv}">${sv}</div>` : ''}
+ ${c.es ? `<div class="es" style="flex:${c.es}">${c.es}</div>` : ''}
+ </div>
+ <div class="legend"><span><i style="background:var(--sv)"></i>Svenska (${Math.round(100 * sv / tot)} %)</span><span><i style="background:var(--es)"></i>Spanska (${Math.round(100 * c.es / tot)} %)</span></div>
+ <p class="note" style="margin-top:12px;">ES-leads kräver spansktalande säljare hos Medvital — överlåt dem som separat lista.</p>`
+ : '<div class="empty">Inga leads ännu</div>'}
+ </div>`;
 
-  const events = [...c.leads.map((l) => ({ ...l, typ: 'lead' })), ...c.ordrar.map((o) => ({ ...o, typ: 'order' }))]
-    .sort((a, b) => b.tid.localeCompare(a.tid)).slice(0, 7);
-  const feed = `
-    <div class="panel">
-      <h2>Senaste aktivitet</h2>
-      ${events.length ? `<ul class="feed">${events.map((e) => `
-        <li><span class="ic">${e.typ === 'order' ? '📦' : '📋'}</span>
-          <span><strong>${esc(e.namn)}</strong> — ${e.typ === 'order' ? esc(e.produkt) : 'tävlingslead'}
-          <span class="lang-pill"><i style="background:var(--${langOf(e) === 'ES' ? 'es' : 'sv'})"></i>${langOf(e)}</span></span>
-          <span class="when">${fmtDate(e.tid)}</span></li>`).join('')}</ul>`
-      : '<div class="empty"><div class="big">📭</div>Inget ännu — skicka ett formulär på sajten eller ladda demodata.</div>'}
-    </div>`;
+ const events = [...c.leads.map((l) => ({ ...l, typ: 'lead' })), ...c.ordrar.map((o) => ({ ...o, typ: 'order' }))]
+ .sort((a, b) => b.tid.localeCompare(a.tid)).slice(0, 7);
+ const feed = `
+ <div class="panel">
+ <h2>Senaste aktivitet</h2>
+ ${events.length ? `<ul class="feed">${events.map((e) => `
+ <li><span class="ic">${e.typ === 'order' ? '📦' : '📋'}</span>
+ <span><strong>${esc(e.namn)}</strong> — ${e.typ === 'order' ? esc(e.produkt) : 'tävlingslead'}
+ <span class="lang-pill"><i style="background:var(--${langOf(e) === 'ES' ? 'es' : 'sv'})"></i>${langOf(e)}</span></span>
+ <span class="when">${fmtDate(e.tid)}</span></li>`).join('')}</ul>`
+ : '<div class="empty"><div class="big">📭</div>Inget ännu — skicka ett formulär på sajten eller ladda demodata.</div>'}
+ </div>`;
 
-  return tiles + chart + `<div class="panel-row">${feed}${langPanel}</div>`;
+ return tiles + chart + `<div class="panel-row">${feed}${langPanel}</div>`;
 }
 
 function buildChart(leads) {
-  const days = [];
-  for (let i = 13; i >= 0; i--) {
-    const d = new Date(); d.setDate(d.getDate() - i);
-    days.push({ key: d.toDateString(), label: d.toLocaleDateString('sv-SE', { day: 'numeric', month: 'short' }), n: 0 });
-  }
-  leads.forEach((l) => {
-    const day = days.find((d) => d.key === new Date(l.tid).toDateString());
-    if (day) day.n++;
-  });
-  const max = Math.max(...days.map((d) => d.n), 4);
-  const W = 580, H = 150, pad = { l: 24, r: 4, t: 8, b: 20 };
-  const iw = (W - pad.l - pad.r) / 14;
-  const y = (n) => pad.t + (H - pad.t - pad.b) * (1 - n / max);
-  let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Nya leads per dag, senaste 14 dagarna">`;
-  [0, Math.ceil(max / 2), max].forEach((v) => {
-    svg += `<line class="gridline" x1="${pad.l}" x2="${W - pad.r}" y1="${y(v)}" y2="${y(v)}"/>` +
-           `<text class="axis-label" x="${pad.l - 5}" y="${y(v) + 3}" text-anchor="end">${v}</text>`;
-  });
-  days.forEach((d, i) => {
-    const bw = Math.min(iw - 6, 22);
-    const x = pad.l + i * iw + (iw - bw) / 2;
-    const h = Math.max((H - pad.t - pad.b) * d.n / max, d.n ? 3 : 0);
-    if (d.n) svg += `<rect class="bar" x="${x.toFixed(1)}" y="${(H - pad.b - h).toFixed(1)}" width="${bw.toFixed(1)}" height="${h.toFixed(1)}" rx="4" data-label="${d.label}" data-n="${d.n}"/>`;
-    if (i % 2 === 1) svg += `<text class="axis-label" x="${(pad.l + i * iw + iw / 2).toFixed(1)}" y="${H - 6}" text-anchor="middle">${d.label}</text>`;
-  });
-  svg += `<line class="gridline" x1="${pad.l}" x2="${W - pad.r}" y1="${H - pad.b}" y2="${H - pad.b}"/></svg>`;
-  return svg;
+ const days = [];
+ for (let i = 13; i >= 0; i--) {
+ const d = new Date(); d.setDate(d.getDate() - i);
+ days.push({ key: d.toDateString(), label: d.toLocaleDateString('sv-SE', { day: 'numeric', month: 'short' }), n: 0 });
+ }
+ leads.forEach((l) => {
+ const day = days.find((d) => d.key === new Date(l.tid).toDateString());
+ if (day) day.n++;
+ });
+ const max = Math.max(...days.map((d) => d.n), 4);
+ const W = 580, H = 150, pad = { l: 24, r: 4, t: 8, b: 20 };
+ const iw = (W - pad.l - pad.r) / 14;
+ const y = (n) => pad.t + (H - pad.t - pad.b) * (1 - n / max);
+ let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Nya leads per dag, senaste 14 dagarna">`;
+ [0, Math.ceil(max / 2), max].forEach((v) => {
+ svg += `<line class="gridline" x1="${pad.l}" x2="${W - pad.r}" y1="${y(v)}" y2="${y(v)}"/>` +
+ `<text class="axis-label" x="${pad.l - 5}" y="${y(v) + 3}" text-anchor="end">${v}</text>`;
+ });
+ days.forEach((d, i) => {
+ const bw = Math.min(iw - 6, 22);
+ const x = pad.l + i * iw + (iw - bw) / 2;
+ const h = Math.max((H - pad.t - pad.b) * d.n / max, d.n ? 3 : 0);
+ if (d.n) svg += `<rect class="bar" x="${x.toFixed(1)}" y="${(H - pad.b - h).toFixed(1)}" width="${bw.toFixed(1)}" height="${h.toFixed(1)}" rx="4" data-label="${d.label}" data-n="${d.n}"/>`;
+ if (i % 2 === 1) svg += `<text class="axis-label" x="${(pad.l + i * iw + iw / 2).toFixed(1)}" y="${H - 6}" text-anchor="middle">${d.label}</text>`;
+ });
+ svg += `<line class="gridline" x1="${pad.l}" x2="${W - pad.r}" y1="${H - pad.b}" y2="${H - pad.b}"/></svg>`;
+ return svg;
 }
 
 function wireChart() {
-  const tip = document.getElementById('chartTip');
-  document.querySelectorAll('#chartHost .bar').forEach((bar) => {
-    bar.addEventListener('pointerenter', () => {
-      tip.innerHTML = `${bar.dataset.label} · <strong>${bar.dataset.n}</strong> leads`;
-      const r = bar.getBoundingClientRect();
-      tip.style.display = 'block';
-      tip.style.left = Math.min(r.left + r.width / 2 - 40, window.innerWidth - 140) + 'px';
-      tip.style.top = (r.top - 40) + 'px';
-    });
-    bar.addEventListener('pointerleave', () => { tip.style.display = 'none'; });
-  });
+ const tip = document.getElementById('chartTip');
+ document.querySelectorAll('#chartHost .bar').forEach((bar) => {
+ bar.addEventListener('pointerenter', () => {
+ tip.innerHTML = `${bar.dataset.label} · <strong>${bar.dataset.n}</strong> leads`;
+ const r = bar.getBoundingClientRect();
+ tip.style.display = 'block';
+ tip.style.left = Math.min(r.left + r.width / 2 - 40, window.innerWidth - 140) + 'px';
+ tip.style.top = (r.top - 40) + 'px';
+ });
+ bar.addEventListener('pointerleave', () => { tip.style.display = 'none'; });
+ });
 }
 
 /* ---------- Leads & Ordrar ---------- */
 function renderTableView() {
-  const isLeads = view === 'leads';
-  const statuses = isLeads ? LEAD_STATUSES : ORDER_STATUSES;
-  const key = isLeads ? 'nv_leads' : 'nv_ordrar';
-  const rows = load(key).filter((r) =>
-    (!filters.q || JSON.stringify(r).toLowerCase().includes(filters.q)) &&
-    (!filters.status || r.status === filters.status) &&
-    (!filters.lang || langOf(r) === filters.lang));
+ const isLeads = view === 'leads';
+ const statuses = isLeads ? LEAD_STATUSES : ORDER_STATUSES;
+ const key = isLeads ? 'nv_leads' : 'nv_ordrar';
+ const rows = load(key).filter((r) =>
+ (!filters.q || JSON.stringify(r).toLowerCase().includes(filters.q)) &&
+ (!filters.status || r.status === filters.status) &&
+ (!filters.lang || langOf(r) === filters.lang));
 
-  const toolbar = `
-    <div class="toolbar">
-      <input type="search" placeholder="Sök namn, e-post, telefon..." value="${esc(filters.q)}"
-        oninput="filters.q=this.value.toLowerCase(); rerenderKeepFocus(this)" />
-      <div class="chips">
-        <button class="chip ${filters.lang === '' ? 'on' : ''}" onclick="filters.lang=''; render()">Alla</button>
-        <button class="chip ${filters.lang === 'SV' ? 'on' : ''}" onclick="filters.lang='SV'; render()"><span class="dot" style="background:var(--sv)"></span>Svenska</button>
-        <button class="chip ${filters.lang === 'ES' ? 'on' : ''}" onclick="filters.lang='ES'; render()"><span class="dot" style="background:var(--es)"></span>Spanska</button>
-      </div>
-      <select onchange="filters.status=this.value; render()">
-        <option value="">Alla statusar</option>
-        ${statuses.map((s) => `<option ${filters.status === s ? 'selected' : ''}>${s}</option>`).join('')}
-      </select>
-    </div>`;
+ const toolbar = `
+ <div class="toolbar">
+ <input type="search" placeholder="Sök namn, e-post, telefon..." value="${esc(filters.q)}"
+ oninput="filters.q=this.value.toLowerCase(); rerenderKeepFocus(this)" />
+ <div class="chips">
+ <button class="chip ${filters.lang === '' ? 'on' : ''}" onclick="filters.lang=''; render()">Alla</button>
+ <button class="chip ${filters.lang === 'SV' ? 'on' : ''}" onclick="filters.lang='SV'; render()"><span class="dot" style="background:var(--sv)"></span>Svenska</button>
+ <button class="chip ${filters.lang === 'ES' ? 'on' : ''}" onclick="filters.lang='ES'; render()"><span class="dot" style="background:var(--es)"></span>Spanska</button>
+ </div>
+ <select onchange="filters.status=this.value; render()">
+ <option value="">Alla statusar</option>
+ ${statuses.map((s) => `<option ${filters.status === s ? 'selected' : ''}>${s}</option>`).join('')}
+ </select>
+ </div>`;
 
-  if (!rows.length) {
-    return toolbar + `<div class="table-wrap"><div class="empty"><div class="big">🔍</div>Inga ${isLeads ? 'leads' : 'ordrar'}${load(key).length ? ' matchar filtren' : ' ännu — skicka ett formulär på sajten eller ladda demodata'}.</div></div>`;
-  }
+ if (!rows.length) {
+ return toolbar + `<div class="table-wrap"><div class="empty"><div class="big">🔍</div>Inga ${isLeads ? 'leads' : 'ordrar'}${load(key).length ? ' matchar filtren' : ' ännu — skicka ett formulär på sajten eller ladda demodata'}.</div></div>`;
+ }
 
-  const statusSel = (r) => `<select onclick="event.stopPropagation()" onchange="setStatus('${key}','${r.id}',this.value)">` +
-    statuses.map((s) => `<option ${s === r.status ? 'selected' : ''}>${s}</option>`).join('') + '</select>';
-  const langPill = (r) => `<span class="lang-pill"><i style="background:var(--${langOf(r) === 'ES' ? 'es' : 'sv'})"></i>${langOf(r)}</span>`;
-  const pill = (ok, t) => `<span class="pill ${ok ? 'ja' : 'nej'}">${t}</span>`;
+ const statusSel = (r) => `<select onclick="event.stopPropagation()" onchange="setStatus('${key}','${r.id}',this.value)">` +
+ statuses.map((s) => `<option ${s === r.status ? 'selected' : ''}>${s}</option>`).join('') + '</select>';
+ const langPill = (r) => `<span class="lang-pill"><i style="background:var(--${langOf(r) === 'ES' ? 'es' : 'sv'})"></i>${langOf(r)}</span>`;
+ const pill = (ok, t) => `<span class="pill ${ok ? 'ja' : 'nej'}">${t}</span>`;
 
-  const head = isLeads
-    ? '<th>Tid</th><th>Namn</th><th>Kontakt</th><th>Samtycken</th><th>Språk</th><th>Källa</th><th>Status</th>'
-    : '<th>Tid</th><th>Order</th><th>Produkt</th><th>Kund</th><th>Språk</th><th>Status</th>';
+ const head = isLeads
+ ? '<th>Tid</th><th>Namn</th><th>Kontakt</th><th>Samtycken</th><th>Språk</th><th>Källa</th><th>Status</th>'
+ : '<th>Tid</th><th>Order</th><th>Produkt</th><th>Kund</th><th>Språk</th><th>Status</th>';
 
-  const body = rows.map((r) => {
-    const main = isLeads
-      ? `<tr class="row" onclick="toggleDetail('${r.id}')"><td>${fmtDate(r.tid)}</td><td><strong>${esc(r.namn)}</strong></td>
-         <td>${esc(r.epost)}<br>${esc(r.telefon) || '<span style="color:var(--faint)">—</span>'}</td>
-         <td>${pill(r.samtyckeEpost, 'e-post')} ${pill(r.samtyckeTelefon, 'telefon')}</td>
-         <td>${langPill(r)}</td><td>${esc((r.kalla || '').replace(' · ES', ''))}</td><td>${statusSel(r)}</td></tr>`
-      : `<tr class="row" onclick="toggleDetail('${r.id}')"><td>${fmtDate(r.tid)}</td><td><strong>${esc(r.id)}</strong></td><td>${esc(r.produkt)}</td>
-         <td>${esc(r.namn)}<br>${esc(r.epost)}</td><td>${langPill(r)}</td><td>${statusSel(r)}</td></tr>`;
-    if (expanded !== r.id) return main;
-    const fields = isLeads
-      ? [['ID', r.id], ['E-post', r.epost], ['Telefon', r.telefon || '—'], ['Källa', r.kalla],
-         ['Samtycke e-post', r.samtyckeEpost ? 'Ja' : 'Nej'], ['Samtycke telefon (överlåtelse)', r.samtyckeTelefon ? 'Ja' : 'Nej'],
-         ['Registrerad', new Date(r.tid).toLocaleString('sv-SE')]]
-      : [['Order', r.id], ['Produkt', r.produkt], ['E-post', r.epost], ['Telefon', r.telefon || '—'],
-         ['Leveransadress', r.adress], ['Källa', r.kalla], ['Lagd', new Date(r.tid).toLocaleString('sv-SE')]];
-    return main + `<tr class="detail"><td colspan="7"><div class="detail-grid">${fields.map(([k, v]) =>
-      `<div><div class="k">${esc(k)}</div><div>${esc(v)}</div></div>`).join('')}</div></td></tr>`;
-  }).join('');
+ const body = rows.map((r) => {
+ const main = isLeads
+ ? `<tr class="row" onclick="toggleDetail('${r.id}')"><td>${fmtDate(r.tid)}</td><td><strong>${esc(r.namn)}</strong></td>
+ <td>${esc(r.epost)}<br>${esc(r.telefon) || '<span style="color:var(--faint)">—</span>'}</td>
+ <td>${pill(r.samtyckeEpost, 'e-post')} ${pill(r.samtyckeTelefon, 'telefon')}</td>
+ <td>${langPill(r)}</td><td>${esc((r.kalla || '').replace(' · ES', ''))}</td><td>${statusSel(r)}</td></tr>`
+ : `<tr class="row" onclick="toggleDetail('${r.id}')"><td>${fmtDate(r.tid)}</td><td><strong>${esc(r.id)}</strong></td><td>${esc(r.produkt)}</td>
+ <td>${esc(r.namn)}<br>${esc(r.epost)}</td><td>${langPill(r)}</td><td>${statusSel(r)}</td></tr>`;
+ if (expanded !== r.id) return main;
+ const fields = isLeads
+ ? [['ID', r.id], ['E-post', r.epost], ['Telefon', r.telefon || '—'], ['Källa', r.kalla],
+ ['Samtycke e-post', r.samtyckeEpost ? 'Ja' : 'Nej'], ['Samtycke telefon (överlåtelse)', r.samtyckeTelefon ? 'Ja' : 'Nej'],
+ ['Registrerad', new Date(r.tid).toLocaleString('sv-SE')]]
+ : [['Order', r.id], ['Produkt', r.produkt], ['E-post', r.epost], ['Telefon', r.telefon || '—'],
+ ['Leveransadress', r.adress], ['Källa', r.kalla], ['Lagd', new Date(r.tid).toLocaleString('sv-SE')]];
+ return main + `<tr class="detail"><td colspan="7"><div class="detail-grid">${fields.map(([k, v]) =>
+ `<div><div class="k">${esc(k)}</div><div>${esc(v)}</div></div>`).join('')}</div></td></tr>`;
+ }).join('');
 
-  return toolbar + `<div class="table-wrap"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>
-    <p class="note" style="margin-top:12px;">Klicka på en rad för alla detaljer. Statusflöde leads: <em>ny → ringd → bekräftad / nej / ånger</em> — varje <em>bekräftad</em> = ${ERSATTNING} kr från Medvital.</p>`;
+ return toolbar + `<div class="table-wrap"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>
+ <p class="note" style="margin-top:12px;">Klicka på en rad för alla detaljer. Statusflöde leads: <em>ny → ringd → bekräftad / nej / ånger</em> — varje <em>bekräftad</em> = ${ERSATTNING} kr från Medvital.</p>`;
 }
 
 function rerenderKeepFocus(inputEl) {
-  const pos = inputEl.selectionStart;
-  render();
-  const el = document.querySelector('.toolbar input[type="search"]');
-  if (el) { el.focus(); try { el.setSelectionRange(pos, pos); } catch (e) {} }
+ const pos = inputEl.selectionStart;
+ render();
+ const el = document.querySelector('.toolbar input[type="search"]');
+ if (el) { el.focus(); try { el.setSelectionRange(pos, pos); } catch (e) {} }
 }
 
 function toggleDetail(id) { expanded = expanded === id ? null : id; render(); }
 
 async function setStatus(key, id, status) {
-  const item = CACHE[key].find((x) => x.id === id);
-  if (!item) return;
-  const prev = item.status;
-  item.status = status;
-  render();
-  if (SB) {
-    const res = await sbFetch(`/rest/v1/${TABLE[key]}?id=eq.${encodeURIComponent(id)}`, {
-      method: 'PATCH',
-      headers: { Prefer: 'return=minimal' },
-      body: JSON.stringify({ status }),
-    }).catch(() => null);
-    if (!res || !res.ok) {
-      item.status = prev;
-      render();
-      toast('Kunde inte spara statusändringen — försök igen');
-      return;
-    }
-  } else {
-    lsSave(key, CACHE[key]);
-  }
-  toast(`Status uppdaterad: ${status}`);
+ const item = CACHE[key].find((x) => x.id === id);
+ if (!item) return;
+ const prev = item.status;
+ item.status = status;
+ render();
+ if (SB) {
+ const res = await sbFetch(`/rest/v1/${TABLE[key]}?id=eq.${encodeURIComponent(id)}`, {
+ method: 'PATCH',
+ headers: { Prefer: 'return=minimal' },
+ body: JSON.stringify({ status }),
+ }).catch(() => null);
+ if (!res || !res.ok) {
+ item.status = prev;
+ render();
+ toast('Kunde inte spara statusändringen — försök igen');
+ return;
+ }
+ } else {
+ lsSave(key, CACHE[key]);
+ }
+ toast(`Status uppdaterad: ${status}`);
 }
 
 /* ---------- Leadkalkyl ---------- */
@@ -558,126 +558,126 @@ const CALC_DEFAULTS = { annons: 3000, leads: 200, ovrigt: 500, tidTim: 5, timkos
 const calcInputs = () => JSON.parse(localStorage.getItem('nv_kalkyl') || JSON.stringify(CALC_DEFAULTS));
 
 function renderCalc() {
-  const c = calcInputs();
-  const leads = load('nv_leads');
-  const liveAndel = leads.length >= 10 ? Math.round(100 * leads.filter((l) => l.samtyckeTelefon).length / leads.length) : null;
-  const totalCost = c.annons + c.ovrigt + c.tidTim * c.timkostnad;
-  const perLead = c.leads ? totalCost / c.leads : 0;
-  const saljbara = Math.round(c.leads * c.telAndel / 100);
-  const perSaljbar = saljbara ? totalCost / saljbara : 0;
-  const priceRow = (label, m, rec) => {
-    const pris = Math.ceil(perSaljbar * (1 + m / 100));
-    return `<tr class="${rec ? 'rec' : ''}"><td>${label}</td><td>${pris} kr</td><td>${(pris - perSaljbar).toFixed(0)} kr</td><td>${((pris - perSaljbar) * saljbara).toLocaleString('sv-SE')} kr</td></tr>`;
-  };
-  const f = (id, label, val) => `<div class="calc-field"><label for="${id}">${label}</label><input type="number" id="${id}" value="${val}" oninput="saveCalc()" /></div>`;
-  return `<div class="panel"><div class="calc">
-    <div>
-      <h2>Våra kostnader (per månad/kampanj)</h2>
-      ${f('k-annons', 'Annonskostnad Meta (kr)', c.annons)}
-      ${f('k-leads', 'Antal insamlade leads', c.leads)}
-      ${f('k-ovrigt', 'Övriga kostnader — verktyg, domän, e-post (kr)', c.ovrigt)}
-      ${f('k-tid', 'Egen arbetstid (timmar)', c.tidTim)}
-      ${f('k-timkostnad', 'Värde per arbetstimme (kr)', c.timkostnad)}
-      ${f('k-tel', `Andel med telefonsamtycke (%)${liveAndel !== null ? ` — live: ${liveAndel} %` : ''}`, c.telAndel)}
-    </div>
-    <div>
-      <h2>Vad kostar en lead oss?</h2>
-      <div class="calc-out">
-        <div class="row"><span>Total kostnad</span><span>${totalCost.toLocaleString('sv-SE')} kr</span></div>
-        <div class="row"><span>Kostnad per lead (alla)</span><span>${perLead.toFixed(2)} kr</span></div>
-        <div class="row"><span>Säljbara leads (telefonsamtycke)</span><span>${saljbara} st</span></div>
-        <div class="row big"><span>Självkostnad per säljbart lead</span><span>${perSaljbar.toFixed(2)} kr</span></div>
-      </div>
-      <h2>Prisförslag till Medvital (per lead)</h2>
-      <table class="price-table">
-        <tr><th>Marginal</th><th>Pris/lead</th><th>Vinst/lead</th><th>Vinst totalt</th></tr>
-        ${priceRow('+50 %', 50, false)}
-        ${priceRow('+100 % (rekommenderat golv)', 100, true)}
-        ${priceRow('+150 %', 150, false)}
-      </table>
-      <p class="note" style="margin-top:12px;">
-        Riktmärke: färska, exklusiva telefonsamtyckes-leads inom hälsa säljs för <strong>25–75 kr/st</strong>.
-        Ta extra betalt för exklusivitet och färskhet (&lt; 72 h). Sälj aldrig under självkostnad —
-        och bekräftade avtal ger ${ERSATTNING} kr styck ovanpå leadpriset.
-      </p>
-    </div>
-  </div></div>`;
+ const c = calcInputs();
+ const leads = load('nv_leads');
+ const liveAndel = leads.length >= 10 ? Math.round(100 * leads.filter((l) => l.samtyckeTelefon).length / leads.length) : null;
+ const totalCost = c.annons + c.ovrigt + c.tidTim * c.timkostnad;
+ const perLead = c.leads ? totalCost / c.leads : 0;
+ const saljbara = Math.round(c.leads * c.telAndel / 100);
+ const perSaljbar = saljbara ? totalCost / saljbara : 0;
+ const priceRow = (label, m, rec) => {
+ const pris = Math.ceil(perSaljbar * (1 + m / 100));
+ return `<tr class="${rec ? 'rec' : ''}"><td>${label}</td><td>${pris} kr</td><td>${(pris - perSaljbar).toFixed(0)} kr</td><td>${((pris - perSaljbar) * saljbara).toLocaleString('sv-SE')} kr</td></tr>`;
+ };
+ const f = (id, label, val) => `<div class="calc-field"><label for="${id}">${label}</label><input type="number" id="${id}" value="${val}" oninput="saveCalc()" /></div>`;
+ return `<div class="panel"><div class="calc">
+ <div>
+ <h2>Våra kostnader (per månad/kampanj)</h2>
+ ${f('k-annons', 'Annonskostnad Meta (kr)', c.annons)}
+ ${f('k-leads', 'Antal insamlade leads', c.leads)}
+ ${f('k-ovrigt', 'Övriga kostnader — verktyg, domän, e-post (kr)', c.ovrigt)}
+ ${f('k-tid', 'Egen arbetstid (timmar)', c.tidTim)}
+ ${f('k-timkostnad', 'Värde per arbetstimme (kr)', c.timkostnad)}
+ ${f('k-tel', `Andel med telefonsamtycke (%)${liveAndel !== null ? ` — live: ${liveAndel} %` : ''}`, c.telAndel)}
+ </div>
+ <div>
+ <h2>Vad kostar en lead oss?</h2>
+ <div class="calc-out">
+ <div class="row"><span>Total kostnad</span><span>${totalCost.toLocaleString('sv-SE')} kr</span></div>
+ <div class="row"><span>Kostnad per lead (alla)</span><span>${perLead.toFixed(2)} kr</span></div>
+ <div class="row"><span>Säljbara leads (telefonsamtycke)</span><span>${saljbara} st</span></div>
+ <div class="row big"><span>Självkostnad per säljbart lead</span><span>${perSaljbar.toFixed(2)} kr</span></div>
+ </div>
+ <h2>Prisförslag till Medvital (per lead)</h2>
+ <table class="price-table">
+ <tr><th>Marginal</th><th>Pris/lead</th><th>Vinst/lead</th><th>Vinst totalt</th></tr>
+ ${priceRow('+50 %', 50, false)}
+ ${priceRow('+100 % (rekommenderat golv)', 100, true)}
+ ${priceRow('+150 %', 150, false)}
+ </table>
+ <p class="note" style="margin-top:12px;">
+ Riktmärke: färska, exklusiva telefonsamtyckes-leads inom hälsa säljs för <strong>25–75 kr/st</strong>.
+ Ta extra betalt för exklusivitet och färskhet (&lt; 72 h). Sälj aldrig under självkostnad —
+ och bekräftade avtal ger ${ERSATTNING} kr styck ovanpå leadpriset.
+ </p>
+ </div>
+ </div></div>`;
 }
 
 function saveCalc() {
-  localStorage.setItem('nv_kalkyl', JSON.stringify({
-    annons: +document.getElementById('k-annons').value || 0,
-    leads: +document.getElementById('k-leads').value || 0,
-    ovrigt: +document.getElementById('k-ovrigt').value || 0,
-    tidTim: +document.getElementById('k-tid').value || 0,
-    timkostnad: +document.getElementById('k-timkostnad').value || 0,
-    telAndel: Math.min(100, +document.getElementById('k-tel').value || 0),
-  }));
-  const focused = document.activeElement && document.activeElement.id;
-  render();
-  if (focused) { const el = document.getElementById(focused); if (el) el.focus(); }
+ localStorage.setItem('nv_kalkyl', JSON.stringify({
+ annons: +document.getElementById('k-annons').value || 0,
+ leads: +document.getElementById('k-leads').value || 0,
+ ovrigt: +document.getElementById('k-ovrigt').value || 0,
+ tidTim: +document.getElementById('k-tid').value || 0,
+ timkostnad: +document.getElementById('k-timkostnad').value || 0,
+ telAndel: Math.min(100, +document.getElementById('k-tel').value || 0),
+ }));
+ const focused = document.activeElement && document.activeElement.id;
+ render();
+ if (focused) { const el = document.getElementById(focused); if (el) el.focus(); }
 }
 
 /* ---------- Åtgärder ---------- */
 function exportCSV() {
-  if (view !== 'leads' && view !== 'ordrar') return;
-  const key = view === 'leads' ? 'nv_leads' : 'nv_ordrar';
-  const rows = load(key);
-  if (!rows.length) return toast('Inget att exportera.');
-  const cols = Object.keys(rows[0]);
-  const csv = [cols.join(';')].concat(rows.map((r) => cols.map((c) => `"${String(r[c] ?? '').replace(/"/g, '""')}"`).join(';'))).join('\n');
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' }));
-  a.download = `vivanord-${view}-${new Date().toISOString().slice(0, 10)}.csv`;
-  a.click();
-  toast(`${rows.length} ${view} exporterade`);
+ if (view !== 'leads' && view !== 'ordrar') return;
+ const key = view === 'leads' ? 'nv_leads' : 'nv_ordrar';
+ const rows = load(key);
+ if (!rows.length) return toast('Inget att exportera.');
+ const cols = Object.keys(rows[0]);
+ const csv = [cols.join(';')].concat(rows.map((r) => cols.map((c) => `"${String(r[c] ?? '').replace(/"/g, '""')}"`).join(';'))).join('\n');
+ const a = document.createElement('a');
+ a.href = URL.createObjectURL(new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' }));
+ a.download = `vivanord-${view}-${new Date().toISOString().slice(0, 10)}.csv`;
+ a.click();
+ toast(`${rows.length} ${view} exporterade`);
 }
 
 function clearAll() {
-  if (SB) return; // avstängt i live-läge
-  if (confirm('Rensa ALLA leads och ordrar i den här webbläsaren?')) {
-    localStorage.removeItem('nv_leads');
-    localStorage.removeItem('nv_ordrar');
-    CACHE.nv_leads = []; CACHE.nv_ordrar = [];
-    toast('Allt rensat');
-    render();
-  }
+ if (SB) return; // avstängt i live-läge
+ if (confirm('Rensa ALLA leads och ordrar i den här webbläsaren?')) {
+ localStorage.removeItem('nv_leads');
+ localStorage.removeItem('nv_ordrar');
+ CACHE.nv_leads = []; CACHE.nv_ordrar = [];
+ toast('Allt rensat');
+ render();
+ }
 }
 
 function seedDemo() {
-  if (SB) return; // avstängt i live-läge
-  const now = Date.now(), h = 3600e3, d = 24 * h;
-  const demoLeads = [
-    ['Anna Lindqvist', 'anna.l@example.com', '070-1234567', true, true, 'facebook', 'ny', 2 * h],
-    ['Erik Sandberg', 'erik.s@example.com', '073-9876543', true, false, 'facebook', 'ny', 5 * h],
-    ['María González', 'maria.g@example.com', '076-5551234', true, true, 'facebook · ES', 'ny', 7 * h],
-    ['Karin Ek', 'karin.e@example.com', '', true, false, 'instagram', 'ringd', 1 * d],
-    ['Carlos Herrera', 'carlos.h@example.com', '072-8887766', true, true, 'instagram · ES', 'ringd', 2 * d],
-    ['Lars Nyström', 'lars.n@example.com', '070-4443322', false, true, 'facebook', 'bekräftad', 3 * d],
-    ['Lucía Fernández', 'lucia.f@example.com', '073-2221100', true, true, 'facebook · ES', 'bekräftad', 4 * d],
-    ['Bengt Åström', 'bengt.a@example.com', '070-6665544', true, false, 'facebook', 'nej', 5 * d],
-    ['Eva Holm', 'eva.h@example.com', '076-1112233', true, true, 'instagram', 'ny', 6 * d],
-    ['Sofia Berg', 'sofia.b@example.com', '073-3334455', true, true, 'facebook', 'ringd', 8 * d],
-    ['Diego Morales', 'diego.m@example.com', '070-9990011', true, true, 'facebook · ES', 'bekräftad', 10 * d],
-    ['Gunnel Sten', 'gunnel.s@example.com', '', true, false, 'facebook', 'nej', 12 * d],
-  ].map(([namn, epost, telefon, se, st, kalla, status, ago], i) => ({
-    id: 'VN-DEMO-L' + i, tid: new Date(now - ago).toISOString(),
-    namn, epost, telefon, samtyckeEpost: se, samtyckeTelefon: st, kalla, status,
-  }));
-  const demoOrdrar = [
-    ['Immun+', 'Peter Holm', 'peter.h@example.com', '070-1112233', 'Storgatan 4, 111 22 Stockholm', 'direkt', 'bekräftad', 26 * h],
-    ['Flex+', 'Rosa Martínez', 'rosa.m@example.com', '073-4445566', 'Parkvägen 2, 214 20 Malmö', 'facebook · ES', 'skickad till partner', 9 * h],
-    ['Magbalans', 'Sofia Berg', 'sofia.b@example.com', '073-3334455', 'Kyrkvägen 9, 856 33 Sundsvall', 'direkt', 'skickad till partner', 3 * d],
-  ].map(([produkt, namn, epost, telefon, adress, kalla, status, ago], i) => ({
-    id: 'VN-DEMO-O' + i, tid: new Date(now - ago).toISOString(),
-    produkt, namn, epost, telefon, adress, kalla, status,
-  }));
-  CACHE.nv_leads = demoLeads.concat(lsLoad('nv_leads').filter((l) => !String(l.id).startsWith('VN-DEMO')));
-  CACHE.nv_ordrar = demoOrdrar.concat(lsLoad('nv_ordrar').filter((o) => !String(o.id).startsWith('VN-DEMO')));
-  lsSave('nv_leads', CACHE.nv_leads);
-  lsSave('nv_ordrar', CACHE.nv_ordrar);
-  toast('Demodata laddad');
-  render();
+ if (SB) return; // avstängt i live-läge
+ const now = Date.now(), h = 3600e3, d = 24 * h;
+ const demoLeads = [
+ ['Anna Lindqvist', 'anna.l@example.com', '070-1234567', true, true, 'facebook', 'ny', 2 * h],
+ ['Erik Sandberg', 'erik.s@example.com', '073-9876543', true, false, 'facebook', 'ny', 5 * h],
+ ['María González', 'maria.g@example.com', '076-5551234', true, true, 'facebook · ES', 'ny', 7 * h],
+ ['Karin Ek', 'karin.e@example.com', '', true, false, 'instagram', 'ringd', 1 * d],
+ ['Carlos Herrera', 'carlos.h@example.com', '072-8887766', true, true, 'instagram · ES', 'ringd', 2 * d],
+ ['Lars Nyström', 'lars.n@example.com', '070-4443322', false, true, 'facebook', 'bekräftad', 3 * d],
+ ['Lucía Fernández', 'lucia.f@example.com', '073-2221100', true, true, 'facebook · ES', 'bekräftad', 4 * d],
+ ['Bengt Åström', 'bengt.a@example.com', '070-6665544', true, false, 'facebook', 'nej', 5 * d],
+ ['Eva Holm', 'eva.h@example.com', '076-1112233', true, true, 'instagram', 'ny', 6 * d],
+ ['Sofia Berg', 'sofia.b@example.com', '073-3334455', true, true, 'facebook', 'ringd', 8 * d],
+ ['Diego Morales', 'diego.m@example.com', '070-9990011', true, true, 'facebook · ES', 'bekräftad', 10 * d],
+ ['Gunnel Sten', 'gunnel.s@example.com', '', true, false, 'facebook', 'nej', 12 * d],
+ ].map(([namn, epost, telefon, se, st, kalla, status, ago], i) => ({
+ id: 'VN-DEMO-L' + i, tid: new Date(now - ago).toISOString(),
+ namn, epost, telefon, samtyckeEpost: se, samtyckeTelefon: st, kalla, status,
+ }));
+ const demoOrdrar = [
+ ['Immun+', 'Peter Holm', 'peter.h@example.com', '070-1112233', 'Storgatan 4, 111 22 Stockholm', 'direkt', 'bekräftad', 26 * h],
+ ['Flex+', 'Rosa Martínez', 'rosa.m@example.com', '073-4445566', 'Parkvägen 2, 214 20 Malmö', 'facebook · ES', 'skickad till partner', 9 * h],
+ ['Absorb+', 'Sofia Berg', 'sofia.b@example.com', '073-3334455', 'Kyrkvägen 9, 856 33 Sundsvall', 'direkt', 'skickad till partner', 3 * d],
+ ].map(([produkt, namn, epost, telefon, adress, kalla, status, ago], i) => ({
+ id: 'VN-DEMO-O' + i, tid: new Date(now - ago).toISOString(),
+ produkt, namn, epost, telefon, adress, kalla, status,
+ }));
+ CACHE.nv_leads = demoLeads.concat(lsLoad('nv_leads').filter((l) => !String(l.id).startsWith('VN-DEMO')));
+ CACHE.nv_ordrar = demoOrdrar.concat(lsLoad('nv_ordrar').filter((o) => !String(o.id).startsWith('VN-DEMO')));
+ lsSave('nv_leads', CACHE.nv_leads);
+ lsSave('nv_ordrar', CACHE.nv_ordrar);
+ toast('Demodata laddad');
+ render();
 }
 
 setupLock();

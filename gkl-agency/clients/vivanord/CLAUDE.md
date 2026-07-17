@@ -23,10 +23,12 @@ Skriv aldrig in kortbetalning/Klarna i sajt eller copy — betalning sker alltid
 Två varumärken, ett system:
 - **Hälsoklubben** (kampanj.html) — fristående leadgen-sida: tävling/quiz som samlar leads
   med separata samtycken för e-post respektive telefon/SMS
-- **Vivanord** (vivanord.se) — huvudvarumärket: produkter, villkor, FAQ, Mina sidor
+- **Vivanord** (vivanord.se) — huvudvarumärket: produkter, villkor, FAQ, kassa mot faktura
 
-Flödet: FB/IG-annonser → Hälsoklubben → leads med telefonsamtycke **överlåts till Medvital,
-som ringer i eget namn och säljer** → vi får betalt per lead + 400 kr per bekräftat avtal.
+Flödet: FB/IG-annonser → Hälsoklubben → leads med telefonsamtycke **överlåts till Rojdix
+Telemarketing, som ringer i eget namn och säljer** → vi får betalt per lead + 400 kr per
+bekräftat avtal. 🔴 Rojdix — inte Medvital — är leadmottagaren (ändrat 2026-07-16, se
+rojdix-leadmottagare.md). Medvital är juridisk säljare: levererar, fakturerar, kundservice.
 Leads utan telefonsamtycke stannar hos oss för e-post/SMS-flöden och Meta-retargeting mot
 produktsidan (direktordrar skickas till Medvital som dropship-ordrar).
 

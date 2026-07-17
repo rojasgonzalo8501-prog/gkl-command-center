@@ -13,21 +13,23 @@ admin-portalens Leadkalkyl-flik (golv: självkostnad + 50 %; riktmärke 25–75 
 
 ## 1. Systemet i helhet
 
-Två varumärken, ett system — vi är återförsäljare åt Medvital Sverige AB, som tar emot både ordrar och den överlåtna leadlistan:
+Två varumärken, ett system. Vi är återförsäljare åt Medvital Sverige AB, som tar emot ordrarna
+och levererar/fakturerar. Leadlistan överlåts i stället till **Rojdix Telemarketing**, som ringer.
+⚠️ Vem vi fakturerar per lead är en öppen fråga — se [[rojdix-leadmottagare]].
 
 ```
 ┌─────────────────────────────┐        ┌──────────────────────────────┐
 │  HÄLSOKLUBBEN (leadmotor)   │        │  VIVANORD (huvudvarumärke)  │
 │  Fristående kampanjsida     │        │  vivanord.se                │
 │  Tävling: 4 frågor + vinst  │        │  Produkter, villkor, FAQ,    │
-│  Samlar: namn, e-post,      │        │  Mina sidor, köp direkt      │
+│  Samlar: namn, e-post,      │        │  köp direkt mot faktura      │
 │  telefon + SAMTYCKEN        │        │                              │
 └──────────┬──────────────────┘        └───────▲──────────▲───────────┘
            │ leads (med tel-samtycke)          │          │
            ▼                                   │          │
-   ┌───────────────────┐   säljer provmånad    │          │
+   ┌───────────────────┐   säljer erbjudandet  │          │
    │  TELEMARKETING    ├───────────────────────┘          │
-   │  (huvudsäljkanal) │                                  │
+   │  (ROJDIX)         │                                  │
    └───────────────────┘                                  │
            │ leads utan köp / e-postsamtycke              │
            ▼                                              │
@@ -46,7 +48,7 @@ Vivanord AB står alltid som arrangör i villkoren (lagkrav) — men annonsestet
 
 **Mekanik:** FB/IG-annons → "Svara på 4 frågor, tävla om presentkort 10 000 kr" → kunskapsquiz →
 formulär (namn, e-post, telefon) med **tre separata samtyckesrutor**: villkor (obligatorisk),
-e-postmarknadsföring, **telefonkontakt** → tack-sida med direkterbjudande (99 kr provmånad).
+e-postmarknadsföring, **telefonkontakt** → tack-sida med direkterbjudande (Absorb+ 199 kr första månaden).
 
 **Nyckeltal:**
 | Steg | Mål |
@@ -65,32 +67,54 @@ publicerade villkor + arrangör angiven + 18-årsgräns. Vinstskatt betalas av v
 
 ---
 
-## 3. Telemarketing — huvudsäljkanalen (UTFÖRS AV MEDVITAL)
+## 3. Telemarketing — huvudsäljkanalen (UTFÖRS AV ROJDIX)
 
-**Rollfördelning:** leadsen överlåts till Medvital som ringer i eget namn med egna säljare.
+**Rollfördelning:** leadsen överlåts till **Rojdix Telemarketing**, som ringer i eget namn med egna
+säljare. Rojdix är självständigt personuppgiftsansvarig för sina samtal — se
+[[rojdix-leadmottagare]]. (Medvital är juridisk säljare och sköter leverans, fakturering och
+kundservice, men ringer inte.)
 Manus, kodex och nyckeltal nedan är **vår rekommendation och våra kvalitetskrav** — skriv in dem
 i partneravtalet. Dåliga samtal på våra leads bränner vårt varumärke och sänker värdet på hela
 leadaffären; bra samtal höjer avslutsgraden och därmed våra 400 kr-utbetalningar.
 
-### Upplägg (rekommendation till Medvital)
+### Upplägg (rekommendation till Rojdix)
 - **Ringtider:** vardagar 09–20, lördag 10–15. Max 3 kontaktförsök per lead, sedan retur till oss
   för e-postflöde.
 - **Färskhet:** leads ska ringas inom 72 h från överlåtelse — kontaktgraden halveras efter en vecka
-- **Erbjudande i samtal:** Medvitals aktuella kampanjpris (synka med deras katalog)
+- **Erbjudande i samtal:** Medvitals aktuella priser (synka med [[medvital-katalog]] — vi är
+  återförsäljare och får aldrig ange ett annat pris än deras)
+
+> [!bug] Manuset var omskrivet 2026-07-16 — det innehöll fyra felaktiga påståenden
+> Det sa att **Medvital** ringer (det är [[rojdix-leadmottagare|Rojdix]]), att första månaden
+> kostar **99 kr** (fanns aldrig), att man **"avslutar med ett klick på Mina sidor"** (det finns
+> ingen Mina sidor — uppsägning sker via kundtjänst med **14 dagars varsel**), och att man kan
+> **"pausa eller hoppa över leveranser när du vill"** (samma 14-dagarsfrist gäller).
+> Ett manus är det enda i hela projektet som sägs **högt till en kund**. Fel här blir en
+> muntlig utfästelse — och den som ringer får ta smällen.
 
 ### Samtalsmanus (grundflöde)
-1. **Öppning:** "Hej [namn]! Jag ringer från Medvital — du deltog i Hälsoklubbens tävling om
-   presentkortet på 10 000 kr och tackade ja till att vi fick höras. Har du en minut?"
-   *(Alltid: vem, varför, varifrån samtycket kommer. Respektera ett nej direkt.)*
+1. **Öppning:** "Hej [namn]! Jag ringer från Rojdix Telemarketing, på uppdrag av Vivanord — du
+   deltog i Hälsoklubbens tävling om presentkortet på 10 000 kr och tackade ja till att vi fick
+   höras. Har du en minut?"
+   *(Alltid: vem, varför, varifrån samtycket kommer. Respektera ett nej direkt. Säg aldrig att
+   du ringer från Medvital — det är inte sant, och samtycket avser Rojdix.)*
 2. **Kvalificering:** "Kul! Du svarade rätt på frågorna — får jag fråga, tar du några vitaminer
-   eller tillskott idag?" *(lyssna, anteckna behov: energi/immun/leder/skönhet)*
-3. **Pitch (matcha behov):** "Då tror jag [produkt] passar dig. Det funkar så här: första månaden
-   99 kr, direkt i brevlådan. Sen 399 kr i månaden plus 59 kr frakt — men helt utan bindningstid,
-   du avslutar med ett klick på Mina sidor om det inte känns rätt."
+   eller tillskott idag?" *(lyssna, anteckna behov: leder/immun/skönhet/mage/hormon)*
+3. **Pitch (matcha behov):** "Då tror jag [produkt] passar dig. Det funkar så här: första
+   leveransen 399 kr plus 59 kr frakt, direkt i brevlådan. Sen kommer en låda med tre
+   månadsdoser var tredje månad, 1 197 kr plus frakt. Ingen bindningstid — vill du sluta säger
+   du bara till senast 14 dagar före nästa leverans, så uteblir den."
+   *(Absorb+: "199 kr första månaden, halva priset — sen 399 kr var fjärde vecka."
+   Kolla priset mot [[medvital-katalog]] innan du ringer; hitta aldrig på ett tal.)*
 4. **Invändningar:**
-   - "Jag måste tänka" → "Absolut. Provmånaden finns just för det — testa 30 dagar för 99 kr, avsluta med ett klick om det inte passar."
-   - "Är det en sån där prenumerationsfälla?" → "Nej, och jag förstår frågan — branschen har förtjänat den. Hos oss: inget avtal förrän du bekräftat skriftligt, påminnelse-mejl före varje debitering, uppsägning med ett klick."
-   - "För dyrt" → "399 kr är ungefär 13 kr om dagen, och du kan pausa eller hoppa över leveranser när du vill."
+   - "Jag måste tänka" → "Självklart. Du behöver inte bestämma dig nu — jag skickar erbjudandet
+     skriftligt så får du läsa i lugn och ro. Det gäller först när du själv bekräftar."
+   - "Är det en sån där prenumerationsfälla?" → "Nej, och jag förstår frågan — branschen har
+     förtjänat den. Hos oss: inget avtal förrän du bekräftat skriftligt, påminnelse-mejl före
+     varje leverans, och uppsägningsregeln säger jag rakt ut — senast 14 dagar före nästa
+     leverans, så stoppas den."
+   - "För dyrt" → "399 kr är ungefär 13 kr om dagen. Och du sitter inte fast: säg till senast
+     14 dagar före nästa leverans så uteblir den."
 5. **Avslut — SKRIFTLIGHETSKRAVET (lagkrav, se §6):** "Då skickar jag ett SMS nu med en länk där
    du ser hela erbjudandet och bekräftar med ett klick. Beställningen gäller först när du bekräftat."
 6. **Efter samtal:** obekräftade avslut får 1 påminnelse-SMS efter 24 h, sedan e-postflödet.
@@ -98,7 +122,8 @@ leadaffären; bra samtal höjer avslutsgraden och därmed våra 400 kr-utbetalni
 ### Schysst säljkodex (varumärkesskydd — branschens Trustpilot-rykte är varningen, och vår schyssta profil är precis det partnern köper av oss)
 - Ett nej respekteras omedelbart och loggas — personen rings aldrig igen
 - Ingen press på personer som verkar osäkra eller förvirrade; misstänkt förvirring = avbryt artigt
-- Aldrig mörka priset efter provmånaden — säg alltid "sen 399 kr i månaden plus frakt" oombett
+- Aldrig mörka det löpande priset — säg alltid "sen 1 197 kr plus frakt var tredje månad"
+  (Absorb+: "399 kr plus frakt var fjärde vecka") oombett, innan kunden hinner fråga
 - Inga hälsopåståenden utanför EFSA-listan i samtal (säljare utbildas på tillåtna fraser, se §7)
 - Samtal spelas in (med upplysning) för kvalitet och tvistehantering
 
@@ -138,7 +163,7 @@ leadaffären; bra samtal höjer avslutsgraden och därmed våra 400 kr-utbetalni
 2. **Transparens:** "Kosttillskott på prenumeration — som du faktiskt kan avsluta med ett klick"
 3. **Bekvämlighet:** video där månadsdosen dimper ner i brevlådan — "aldrig mer glömma vitaminerna"
 4. **UGC-stil:** "5 saker jag kollar innan jag köper kosttillskott" (talande huvud, bygger trovärdighet)
-5. **Erbjudande:** "Prova första lådan för 99 kr. Ingen bindningstid."
+5. **Erbjudande:** "Absorb+ första månaden 199 kr — halva priset. Ingen bindningstid."
 
 ### Spansktalande målgrupp 🇪🇸 (egen kampanjgren — DIREKTKÖP FÖRST)
 Sajten finns på spanska (`/es/` — inicio, productos, pedido). **Strategi: driv trafiken direkt
@@ -167,10 +192,10 @@ Stories dagligen (omröstningar, quiz med tävlingsfrågorna, countdown till må
 ### Nya leads (utan köp) — 7-dagarsflöde
 | Dag | Kanal | Innehåll |
 |---|---|---|
-| 0 | E-post | Bekräfta tävlingsdeltagande (dubbel opt-in) + välkomstgåva 99 kr |
+| 0 | E-post | Bekräfta tävlingsdeltagande (dubbel opt-in) |
 | 1 | E-post | Varumärkesstory: "Kosttillskott utan fula trick" |
 | 3 | E-post | Utbildande: "Så vet du om ett kosttillskott är seriöst" |
-| 5 | SMS | "Din välkomstgåva går ut om 48 h — provmånad 99 kr" |
+| 5 | SMS | "Absorb+ 199 kr första månaden, halva priset" (ingen påhittad tidsgräns) |
 | 7 | E-post | Sista chansen + recensioner + "avsluta med ett klick"-demo |
 
 ### Kunder (retention — churn är hela affären!)
@@ -220,9 +245,9 @@ Stories dagligen (omröstningar, quiz med tävlingsfrågorna, countdown till må
 | Produkt | Säg så här | Säg ALDRIG |
 |---|---|---|
 | Immun+ | "Vitamin C, D, zink och selen bidrar till immunsystemets normala funktion" | "skyddar mot förkylning/sjukdom" |
-| Skönhet Inifrån | "Biotin bidrar till att bibehålla normalt hår och normal hud" | "ger tjockare hår", "tar bort rynkor" |
-| Flex Leder | "Vitamin C bidrar till normal kollagenbildning, viktig för brosket" | "tar bort ledvärk", "reparerar leder" |
-| Energi & Balans | "Magnesium och B6 bidrar till att minska trötthet och utmattning" | "botar utmattning", "ger energi som kaffe" |
+| Beauty+ | "Biotin bidrar till att bibehålla normalt hår och normal hud" | "ger tjockare hår", "tar bort rynkor" |
+| Flex+ | "Vitamin C bidrar till normal kollagenbildning, viktig för brosket" | "tar bort ledvärk", "reparerar leder" |
+| Absorb+ | "Magnesium bidrar till att minska trötthet och utmattning" | "botar utmattning", "ger energi som kaffe" |
 
 ---
 
