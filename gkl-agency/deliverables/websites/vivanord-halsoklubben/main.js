@@ -59,9 +59,13 @@ function goToStep(n) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+// Profilsvar från quizet (ålder, hälsointresse) fångas och sparas på leadet — höjer
+// leadvärdet. Kunskapsfrågorna saknar data-field och registreras inte, bara profilfrågorna.
+const quizAnswers = {};
 document.querySelectorAll('.quiz-option[data-next]').forEach((opt) => {
   opt.addEventListener('click', () => {
     opt.classList.add('selected');
+    if (opt.dataset.field) quizAnswers[opt.dataset.field] = opt.dataset.value || opt.textContent.trim();
     const current = Number(opt.closest('.quiz-step').dataset.step);
     setTimeout(() => goToStep(current + 1), 250);
   });
@@ -76,6 +80,8 @@ if (leadForm) {
       namn: document.getElementById('name').value,
       epost: document.getElementById('email').value,
       telefon: document.getElementById('phone').value,
+      alder: quizAnswers.alder || '',
+      intresse: quizAnswers.intresse || '',
       samtyckeEpost: leadForm.querySelector('input[name="consent_email"]').checked,
       samtyckeTelefon: leadForm.querySelector('input[name="consent_phone"]').checked,
     });

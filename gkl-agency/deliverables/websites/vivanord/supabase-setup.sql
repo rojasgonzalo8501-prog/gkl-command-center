@@ -12,6 +12,8 @@ create table if not exists leads (
   namn text not null,
   epost text not null,
   telefon text,
+  alder text,        -- åldersspann från Hälsoklubben-quizet (profildata, höjer leadvärdet)
+  intresse text,     -- hälsoområde kunden vill ha stöd med (mappar mot produkt)
   "samtyckeEpost" boolean not null default false,
   "samtyckeTelefon" boolean not null default false,
   kalla text not null default 'direkt',

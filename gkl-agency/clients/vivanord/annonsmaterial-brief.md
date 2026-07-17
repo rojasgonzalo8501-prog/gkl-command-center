@@ -42,6 +42,25 @@ Video: MP4, H.264, **textad** (majoriteten ser utan ljud), max 15 sek om inget a
 
 ## KAMPANJ 1 🇸🇪 — Hälsoklubben (startar först, dag 1–4 ensam)
 
+### ⭐ 1D — UGC-video (PRIORITET — kopiera konkurrentens format, bättre)
+
+> Baserad på referensvideon köparen/sparklubben använder (se [[sparklubben-teardown]]). Deras
+> video konverterar för att den är **äkta** — ingen produktion, ser ut som en vän som filmar sig
+> själv. Vi gör samma sak men hälsovinklad, vilket kvalificerar leadet. Detta är den kreativ som
+> mest sannolikt slår dem.
+
+- **Format:** 9:16, 10–15 sek, filmad på **telefon** i en matbutik. Ingen polering, inga effekter.
+- **Person:** vardaglig och trovärdig — inte modell, inte "reklamröst". Håller upp ett presentkort
+  (eller en tydlig "10 000 kr"-rekvisita) mot kameran, precis som referensvideon.
+- **Manus (talat — texta för ljud-av, men inga tunga grafiska överlägg):**
+  > "Visste du att du kan vinna 10 000 kr till matkassen? Gå in på Hälsoklubben, svara på fyra
+  > snabba frågor om hälsa — tar en minut — så är du med i månadens dragning. Länken finns här."
+- **Varför den slår deras:** (a) "fyra frågor om **hälsa**" self-selectar hälsointresserade →
+  värdefullare lead, (b) "frågor" signalerar kunskapsmomentet (juridiskt tryggare än deras
+  åsiktsquiz), (c) samma äkthet, men tydlig destination (`halsoklubben.vivanord.se`).
+- **Destination:** halsoklubben.vivanord.se/?utm_source=facebook&utm_campaign=halsoklubben
+- ❌ Ingen Meta-logga · inga hälsopåståenden · skriv aldrig om personen, bara om tävlingen.
+
 ### 1A — Tävlingen · **stillbild**
 - **I bild:** matkasse eller presentkort, gul badge med "10 000 kr"
 - **Känsla:** vardaglig matglädje, inte lyx. Svensk matbutik, igenkänningsbart.

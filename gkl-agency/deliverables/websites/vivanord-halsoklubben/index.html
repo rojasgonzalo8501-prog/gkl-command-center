@@ -28,7 +28,10 @@
  <div class="quiz-card">
  <div class="quiz-progress"><div class="quiz-progress__bar" id="progressBar"></div></div>
 
- <!-- Steg 1–4: kunskapsfrågor (gör tävlingen laglig utan lotterilicens) -->
+ <!-- Fråga 1 + 4 = kunskapsfrågor (skicklighetsmoment → laglig utan lotterilicens).
+      Fråga 2 + 3 = profilfrågor: svaren fångas (data-field) och sparas på leadet, vilket
+      höjer leadvärdet. Hälsoområdet mappar dessutom mot produkt så telefonsäljaren vet vad
+      hen ska pitcha. Se clients/vivanord/sparklubben-teardown.md. -->
  <div class="quiz-step active" data-step="1">
  <h2>Fråga 1 av 4</h2>
  <p class="quiz-hint">Vilket vitamin bildar kroppen när huden träffas av solljus?</p>
@@ -41,16 +44,29 @@
 
  <div class="quiz-step" data-step="2">
  <h2>Fråga 2 av 4</h2>
- <p class="quiz-hint">Hur många timmars sömn rekommenderas oftast för vuxna?</p>
+ <p class="quiz-hint">Hur gammal är du?</p>
  <div class="quiz-options">
- <button class="quiz-option" data-next>7–9 timmar</button>
- <button class="quiz-option" data-next>4–5 timmar</button>
- <button class="quiz-option" data-next>Minst 11 timmar</button>
+ <button class="quiz-option" data-next data-field="alder" data-value="18–29">18–29 år</button>
+ <button class="quiz-option" data-next data-field="alder" data-value="30–49">30–49 år</button>
+ <button class="quiz-option" data-next data-field="alder" data-value="50–64">50–64 år</button>
+ <button class="quiz-option" data-next data-field="alder" data-value="65+">65+ år</button>
  </div>
  </div>
 
  <div class="quiz-step" data-step="3">
  <h2>Fråga 3 av 4</h2>
+ <p class="quiz-hint">Vad vill du helst få stöd med?</p>
+ <div class="quiz-options">
+ <button class="quiz-option" data-next data-field="intresse" data-value="Leder & rörlighet">Leder &amp; rörlighet</button>
+ <button class="quiz-option" data-next data-field="intresse" data-value="Immunförsvar">Immunförsvar</button>
+ <button class="quiz-option" data-next data-field="intresse" data-value="Energi & sömn">Energi &amp; sömn</button>
+ <button class="quiz-option" data-next data-field="intresse" data-value="Skönhet & hud">Skönhet &amp; hud</button>
+ <button class="quiz-option" data-next data-field="intresse" data-value="Mage & tarm">Mage &amp; tarm</button>
+ </div>
+ </div>
+
+ <div class="quiz-step" data-step="4">
+ <h2>Fråga 4 av 4</h2>
  <p class="quiz-hint">Vilket mineral förknippas med att minska trötthet och utmattning?</p>
  <div class="quiz-options">
  <button class="quiz-option" data-next>Magnesium</button>
@@ -59,20 +75,10 @@
  </div>
  </div>
 
- <div class="quiz-step" data-step="4">
- <h2>Fråga 4 av 4</h2>
- <p class="quiz-hint">Vad av detta beskriver bäst vad ett kosttillskott är?</p>
- <div class="quiz-options">
- <button class="quiz-option" data-next>Ett komplement till en varierad kost</button>
- <button class="quiz-option" data-next>En ersättning för mat</button>
- <button class="quiz-option" data-next>Ett läkemedel</button>
- </div>
- </div>
-
  <!-- Steg 5: kontaktuppgifter + samtycke -->
  <div class="quiz-step" data-step="5">
- <h2>Snyggt jobbat! 🎉</h2>
- <p class="quiz-hint">Fyll i dina uppgifter för att delta i månadens dragning.</p>
+ <h2>Grattis! Du har kvalificerat dig 🎉</h2>
+ <p class="quiz-hint">Vi kollade dina svar — du är med i månadens dragning så snart du fyllt i uppgifterna nedan.</p>
  <form id="leadForm">
  <div class="form-field">
  <label for="name">Förnamn</label>
@@ -127,6 +133,21 @@
  <a href="https://vivanord.se/" style="font-size:14px; color:var(--ink-soft);">Nej tack, ta mig till startsidan</a>
  </div>
  </div>
+ </div>
+
+ <!-- TROVÄRDIGHET — socialt bevis, ärlig version. INGEN påhittad vinnare (jfr sparklubbens
+      "Karl-Bertil från Bromölla"). Riktig namngiven vinnare läggs in efter första dragningen.
+      Se clients/vivanord/sparklubben-teardown.md. -->
+ <div style="max-width:560px; margin:4px auto 0; padding:0 20px;">
+ <div style="display:flex; gap:8px 18px; flex-wrap:wrap; justify-content:center; font-size:14px; font-weight:600; color:var(--ink);">
+ <span>🎁 Riktig vinst: 10 000 kr</span>
+ <span>📅 Ny vinnare varje månad</span>
+ <span>📧 Levereras via e-post</span>
+ <span>✅ Utbetalas av Medvital</span>
+ </div>
+ <p style="font-size:12px; color:var(--ink-soft); text-align:center; margin-top:10px;">
+ Vinnaren publiceras här efter varje månads dragning.
+ </p>
  </div>
 
  <!-- TÄVLINGSVILLKOR -->
