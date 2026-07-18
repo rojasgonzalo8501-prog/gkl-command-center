@@ -60,6 +60,7 @@ Video: MP4, H.264, **textad** (majoriteten ser utan ljud), max 15 sek om inget a
   åsiktsquiz), (c) samma äkthet, men tydlig destination (`halsoklubben.vivanord.se`).
 - **Destination:** halsoklubben.vivanord.se/?utm_source=facebook&utm_campaign=halsoklubben
 - ❌ Ingen Meta-logga · inga hälsopåståenden · skriv aldrig om personen, bara om tävlingen.
+- **📝 Fyra färdiga manus att A/B-testa:** [[ugc-videomanus]] — direkt, frågekrok, skeptiker, enkelhet.
 
 ### 1A — Tävlingen · **stillbild**
 - **I bild:** matkasse eller presentkort, gul badge med "10 000 kr"
