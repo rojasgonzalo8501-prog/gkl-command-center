@@ -1,55 +1,60 @@
-# Videokreativ — Hälsoklubben Reel (9:16)
+# Videokreativ — Hälsoklubben (9:16 Reels/Stories)
 
-`halsoklubben_reel_9x16.mp4` — 1080 × 1920 · 12 sek · H.264/MP4 · ljudlös (textad för muted
-autoplay) · ~1,5 MB. Klar att ladda upp som Reels-/Stories-annons i Kampanj 1.
+Animerade motion-graphics-videor (1080 × 1920, H.264/MP4, textade för muted autoplay, ljudlösa),
+renderade från kod. **Inga AI-avatarer / inga syntetiska personer** — se avsnittet längst ner om varför.
+Alla utom `_UTKAST` är klara att ladda upp i Kampanj 1 (Hälsoklubben).
 
-`poster.png` — thumbnail (hook-bilden) om du vill sätta en egen omslagsbild.
+## Filerna
 
-## Vad det är — och varför ingen avatar
-Detta är en **animerad motion-graphics-video** (kinetisk typografi + en simulerad quiz-genomgång
-i en telefon), renderad från kod. Det är **ingen digital människa/avatar**, och det är ett medvetet val:
+| Fil | Koncept | Längd | Pris | Status |
+|---|---|---|---|---|
+| `halsoklubben_reel_9x16.mp4` | Quiz-demo i telefon (hook → quiz → kvalificerad → CTA) | 12 s | 10 000 kr presentkort | ✅ Klar |
+| `halsoklubben_skraplott_9x16.mp4` | Digital **skraplott** som skrapas fram och avslöjar vinsten | 10 s | 10 000 kr presentkort | ✅ Klar |
+| `halsoklubben_enfraga_9x16.mp4` | **En fråga** fullskärm (magnesium) → rätt → du är med | 9 s | 10 000 kr presentkort | ✅ Klar |
+| `halsoklubben_utbetalning_9x16.mp4` | **Trygghet/bevis**: "+10 000 kr utbetalt av Medvital" | 10 s | 10 000 kr presentkort | ✅ Klar |
+| `halsoklubben_odometer_9x16.mp4` | **Räkneverk** rullar till 10 000 kr · "varje månad" | 9 s | 10 000 kr presentkort | ✅ Klar |
+| `halsoklubben_dromresa_9x16_UTKAST.mp4` | **Drömresa** ✈️ "vinn en resa värd 10 000 kr" | 10 s | **resa** värd 10 000 kr | 🔴 UTKAST |
 
-- En **AI-genererad "person"** som ger UGC-liknande vittnesmål för en hälso-leadgentävling måste
-  enligt Metas policy **märkas som AI**, och en omärkt syntetisk person som intygar en riktig
-  pengatävling i en reglerad bransch är precis den *vilseledande*-kategori som stänger annonskonton.
-- UGC-vinkelns hela värde är **äkthet** (se `sparklubben-teardown.md`). En fejkad person underminerar
-  det. En ärlig animerad video har inget att dölja och inget att deklarera.
+Varje video har en `poster_*.png` (omslagsbild) om du vill sätta en egen thumbnail.
 
-Vill du ändå ha en **riktig UGC-video med en människa**, är det rätta spåret att spela in en av de
-fyra manusen i [`../../../clients/vivanord/ugc-videomanus.md`](../../../clients/vivanord/ugc-videomanus.md)
-med en verklig person (telefon, matbutik) — det slår fortfarande allt annat i den här kanalen.
-Om du väljer ett AI-avatarverktyg (HeyGen, Synthesia, Arcads, Creatify): kör samma manus, men
-**slå på AI-märkningen** i Meta och undvik formuleringar som påstår personlig erfarenhet av en produkt.
+## 🔴 Läs innan du rör drömrese-videon (`_UTKAST`)
+Den får **inte** publiceras som den är. En annons måste matcha vad landningssidan faktiskt lottar ut —
+det är regel nr 1 för att inte få kontot stängt (se `meta-lansering.md`). Idag lottar Hälsoklubben ut
+ett **presentkort på 10 000 kr**, inte en resa. Innan drömrese-videon kan gå live krävs:
+1. En **tävlingssida + tävlingsvillkor** som uttryckligen har en resa (värd 10 000 kr) som vinst.
+2. **Medvital bekräftar skriftligt** att de tillhandahåller och betalar ut resepriset.
 
-## Storyboard (12 sek)
-| Tid | Scen | På skärmen |
-|---|---|---|
-| 0–3 s | Hook | "Vinn **10 000 kr** till matkassen" |
-| 3–7,5 s | Quiz | Telefon visar frågan "Vilket vitamin bildar kroppen av solljus?", svaret Vitamin D tappas, 4 frågor betas av |
-| 7,5–9,5 s | Kvalificering | "Du har kvalificerat dig!" + konfetti |
-| 9,5–12 s | CTA | "4 frågor · 1 minut · Gratis" + halsoklubben.vivanord.se |
+Säg till så bygger jag rese-tävlingssidan (egen variant av halsoklubben-sidan + villkor) så att videon
+får något att matcha. Tills dess: behåll den som idé/utkast, kör den inte mot den nuvarande tävlingen.
 
-Textremsa i botten hela tiden (majoriteten ser utan ljud).
+## Så A/B-testar du
+Lägg de klara videorna som **separata annonser i samma annonsgrupp** (Hälsoklubben, 250 kr/dag) och låt
+Meta fördela budgeten. Rör ingenting de första 3–4 dagarna (inlärningsfasen). Läs av CTR (>1,2 %) och
+CPL (<15 kr) enligt `meta-lansering.md`; behåll topp-2, spela in fler varianter på vinnarens vinkel.
 
-## Så använder du den
 - **Placering:** Reels + Stories (Advantage+ tar 9:16 automatiskt)
 - **Destination:** `https://halsoklubben.vivanord.se/?utm_source=facebook&utm_campaign=halsoklubben`
-- **Annonstext:** återanvänd 1B (quizvinkeln) eller 1A från
-  [`../README.md`](../README.md) — videon matchar quiz-/tävlingsvinkeln.
-- Lägg den som **egen annons i samma annonsgrupp** som de statiska 1A/1B/1C och låt Meta testa.
+- **Annonstext:** återanvänd 1A/1B från [`../README.md`](../README.md) — vinkeln matchar tävlingen.
 
-## Compliance (inbyggt)
-Inga hälsopåståenden · inget om mottagaren · ingen Meta-logga · ingen falsk brådska · inget syntetiskt
-vittnesmål. Quizfrågan är allmänbildning (godkänd vinkel 1B). Landningssidan matchar videon.
+## Compliance (inbyggt i alla)
+Inga hälsopåståenden · inget om mottagaren · ingen Meta-logga · ingen falsk brådska · **inga syntetiska
+personer/vittnesmål**. Quizfrågorna är allmänbildning. Alla priser utom `_UTKAST` matchar landningssidan.
+
+## Varför ingen digital avatar / AI-person
+En AI-genererad "person" som ger UGC-liknande vittnesmål för en hälso-leadgentävling måste enligt Metas
+policy **märkas som AI**, och en omärkt syntetisk person som intygar en riktig pengatävling i en reglerad
+bransch är precis den *vilseledande*-kategori som stänger annonskonton. UGC-vinkelns värde är dessutom
+**äkthet** — en fejkperson underminerar det. Vill du ändå ha en människa i bild: spela in ett av manusen i
+[`../../../clients/vivanord/ugc-videomanus.md`](../../../clients/vivanord/ugc-videomanus.md) med en riktig
+person. Väljer du ett AI-avatarverktyg (HeyGen/Synthesia/Arcads): kör samma manus men **slå på AI-märkningen**.
 
 ## Regenerera / redigera
 Kräver Node + Chromium (Playwright) + ffmpeg med libx264.
 ```bash
 cd source
-cp ../../source/inter-embed.css .          # eller kör ../../source/fetch-fonts.sh
-node render-video.mjs                        # renderar 360 PNG-frames till source/frames/
-ffmpeg -y -framerate 30 -i frames/f%04d.png \
-  -c:v libx264 -preset slow -crf 19 -pix_fmt yuv420p -movflags +faststart \
-  ../halsoklubben_reel_9x16.mp4
+cp ../../source/inter-embed.css .        # eller kör ../../source/fetch-fonts.sh
+node render-all.mjs                        # renderar frames för alla 5 scener (scene-a..e)
+bash encode-all.sh                         # encodar varje scen till out/*.mp4
 ```
-All text, timing och färg ligger i `scene.html` (tidslinjen är funktionen `render(t)`).
+Tidslinjen för varje scen är funktionen `render(t)` i `scene-a.html` … `scene-e.html`.
+Delade helpers i `anim.js`, färg/typografi i `base.css`. Originalvideon: `scene.html` + `render-video.mjs`.

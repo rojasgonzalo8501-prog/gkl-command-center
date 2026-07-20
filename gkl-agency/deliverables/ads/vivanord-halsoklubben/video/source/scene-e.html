@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="sv"><head><meta charset="UTF-8">
+<link rel="stylesheet" href="inter-embed.css"><link rel="stylesheet" href="base.css">
+<style>
+#sky{position:absolute;top:360px;left:0;right:0;height:400px;will-change:opacity}
+#sky svg{width:1080px;height:400px;display:block}
+#plane{position:absolute;left:0;top:0;font-size:96px;line-height:1;will-change:transform;filter:drop-shadow(0 8px 16px rgba(0,0,0,.25))}
+#tt{position:absolute;left:70px;right:70px;top:820px;text-align:center}
+#tt .l1{font-weight:800;font-size:92px;letter-spacing:-.02em;color:var(--cream);line-height:1;will-change:transform,opacity}
+#tt .l2{font-weight:900;font-size:114px;letter-spacing:-.03em;color:var(--gold);line-height:1;margin-top:14px;will-change:transform,opacity}
+#chipE{display:inline-flex;align-items:center;gap:16px;margin-top:52px;background:rgba(250,247,242,.10);
+  border:1.5px solid rgba(250,247,242,.24);border-radius:999px;padding:22px 40px;font-weight:700;font-size:40px;color:var(--cream);
+  opacity:0;will-change:transform,opacity}
+#urlE{position:absolute;left:0;right:0;top:1320px;text-align:center;opacity:0;will-change:transform,opacity}
+</style></head>
+<body>
+<div id="stage">
+  <div class="glow" id="gA"></div><div class="glow" id="gB"></div>
+  <div id="brand"></div>
+
+  <div id="sky">
+    <svg viewBox="0 0 1080 400" fill="none">
+      <g id="sun" transform="translate(880 96)">
+        <g stroke="#ecc063" stroke-width="7" stroke-linecap="round" opacity=".9">
+          <line x1="0" y1="-86" x2="0" y2="-66"/><line x1="0" y1="86" x2="0" y2="66"/>
+          <line x1="-86" y1="0" x2="-66" y2="0"/><line x1="86" y1="0" x2="66" y2="0"/>
+          <line x1="-61" y1="-61" x2="-47" y2="-47"/><line x1="61" y1="61" x2="47" y2="47"/>
+          <line x1="-61" y1="61" x2="-47" y2="47"/><line x1="61" y1="-61" x2="47" y2="-47"/></g>
+        <circle cx="0" cy="0" r="52" fill="#ecc063"/>
+      </g>
+      <path d="M120 300 Q540 130 960 300" stroke="#faf7f2" stroke-opacity=".35" stroke-width="5"
+        stroke-linecap="round" stroke-dasharray="4 22"/>
+    </svg>
+    <div id="plane">✈️</div>
+  </div>
+
+  <div id="tt">
+    <div class="l1">Vinn en drömresa</div>
+    <div class="l2">värd 10&thinsp;000 kr</div>
+    <div><span id="chipE">✈️ Svara på 4 frågor – var med i dragningen</span></div>
+  </div>
+
+  <div id="urlE"><span class="urlpill"><span class="ar">→</span>halsoklubben.vivanord.se</span></div>
+
+  <div id="cap">
+    <div class="capline" id="c0">Tänk om resan var gratis ✈️</div>
+    <div class="capline" id="c1">Vinn en resa värd <b>10 000 kr</b></div>
+    <div class="capline" id="c2">Svara på 4 frågor · gratis att delta</div>
+  </div>
+</div>
+<script src="anim.js"></script>
+<script>
+const DUR=10000;
+$('#brand').innerHTML=BRAND_SVG+'<div><div class="bn">Hälsoklubben</div><div class="bs">Månadens dragning</div></div>';
+function render(t){
+  glowDrift(t);brandIn(t);
+  $('#sky').style.opacity=eOut(p(t,400,1200));
+  // plane along arc (sky-local coords: path y+ offset since svg top=360)
+  const u=eInOut(p(t,700,4600));
+  const x=lerp(120,960,u), y=300-Math.sin(u*Math.PI)*150;
+  const ang=-Math.cos(u*Math.PI)*16;
+  const pl=$('#plane');pl.style.opacity=eOut(p(t,700,1100));
+  pl.style.transform=`translate(${x-48}px,${y-48}px) rotate(${ang}deg)`;
+  const i1=eOut(p(t,1400,2100));
+  $('#tt .l1').style.opacity=i1;$('#tt .l1').style.transform=`translateY(${lerp(30,0,i1)}px)`;
+  const i2=eBack(p(t,2000,2800));
+  $('#tt .l2').style.opacity=clamp(i2);$('#tt .l2').style.transform=`scale(${lerp(.7,1,i2)})`;
+  const ci=eOut(p(t,3200,3900));
+  const c=$('#chipE');c.style.opacity=ci;c.style.transform=`translateY(${lerp(24,0,ci)}px)`;
+  const ui=eOut(p(t,5200,5900));
+  const u2=$('#urlE');u2.style.opacity=ui;u2.style.transform=`translateY(${lerp(30,0,ui)}px) scale(${lerp(.9,1,ui)})`;
+  capFade('#c0',t,300,3200);capFade('#c1',t,3250,6600);capFade('#c2',t,6700,10000);
+}
+window.__seek=t=>render(Math.max(0,Math.min(DUR,t)));window.__duration=DUR;render(0);
+</script>
+</body></html>

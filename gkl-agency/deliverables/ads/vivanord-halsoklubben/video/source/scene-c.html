@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="sv"><head><meta charset="UTF-8">
+<link rel="stylesheet" href="inter-embed.css"><link rel="stylesheet" href="base.css">
+<style>
+#notif{position:absolute;top:372px;left:50%;display:flex;align-items:center;gap:20px;
+  background:rgba(250,247,242,.12);border:1.5px solid rgba(250,247,242,.24);border-radius:28px;padding:26px 36px;
+  font-weight:700;font-size:33px;color:var(--cream);white-space:nowrap;opacity:0;will-change:transform,opacity}
+#notif .bell{font-size:40px}
+#pcard{position:absolute;left:96px;right:96px;top:620px;background:var(--cream);border-radius:44px;
+  box-shadow:0 42px 96px rgba(0,0,0,.42);padding:70px 56px 60px;text-align:center;opacity:0;will-change:transform,opacity}
+#pcard .chk{width:132px;height:132px;margin:0 auto 26px;display:block}
+#pcard .plus{font-weight:900;font-size:132px;color:var(--green-deep);letter-spacing:-.04em;line-height:1}
+#pcard .lbl{font-weight:800;font-size:42px;color:var(--ink);margin-top:16px}
+#pcard .by{font-weight:600;font-size:28px;color:#5a6b65;margin-top:20px}
+#urlC{position:absolute;left:0;right:0;top:1330px;text-align:center;opacity:0;will-change:transform,opacity}
+</style></head>
+<body>
+<div id="stage">
+  <div class="glow" id="gA"></div><div class="glow" id="gB"></div>
+  <div id="brand"></div>
+
+  <div id="notif"><span class="bell">🔔</span>Månadens vinnare är dragen</div>
+
+  <div id="pcard">
+    <svg class="chk" viewBox="0 0 132 132"><circle cx="66" cy="66" r="66" fill="#7fb069"/>
+      <path id="chkpath" d="M40 68 L58 86 L94 46" stroke="#fff" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="plus" id="plus">+ 0 kr</div>
+    <div class="lbl">Presentkort · utbetalt</div>
+    <div class="by">Utbetalas av Medvital Sverige AB</div>
+  </div>
+
+  <div id="urlC"><span class="urlpill"><span class="ar">→</span>halsoklubben.vivanord.se</span></div>
+
+  <div id="cap">
+    <div class="capline" id="c0">Månadens vinnare är dragen 🔔</div>
+    <div class="capline" id="c1"><b>10 000 kr</b> – utbetalt på riktigt</div>
+    <div class="capline" id="c2">Ny dragning varje månad · svara på 4 frågor</div>
+  </div>
+</div>
+<script src="anim.js"></script>
+<script>
+const DUR=10000;
+$('#brand').innerHTML=BRAND_SVG+'<div><div class="bn">Hälsoklubben</div><div class="bs">Trygg tävling</div></div>';
+const fmt=v=>String(v).replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+function render(t){
+  glowDrift(t);brandIn(t);
+  const ni=eOut(p(t,600,1400));
+  const nb=Math.sin(Math.max(0,t-1400)/700)*4;
+  const n=$('#notif');n.style.opacity=ni;
+  n.style.transform=`translateX(-50%) translateY(${lerp(-26,0,ni)+nb}px)`;
+  const pin=eOut(p(t,1600,2500));
+  const pc=$('#pcard');pc.style.opacity=pin;pc.style.transform=`translateY(${lerp(64,0,pin)}px) scale(${lerp(.94,1,pin)})`;
+  const val=Math.floor(lerp(0,10000,eOut(p(t,2500,3900))));
+  $('#plus').textContent=`+ ${fmt(val)} kr`;
+  const cd=1-p(t,2400,3050);
+  $('#chkpath').style.strokeDasharray='120';$('#chkpath').style.strokeDashoffset=String(120*cd);
+  const ui=eOut(p(t,4900,5600));
+  const u=$('#urlC');u.style.opacity=ui;u.style.transform=`translateY(${lerp(30,0,ui)}px) scale(${lerp(.9,1,ui)})`;
+  capFade('#c0',t,300,3200);capFade('#c1',t,3250,6600);capFade('#c2',t,6700,10000);
+}
+window.__seek=t=>render(Math.max(0,Math.min(DUR,t)));window.__duration=DUR;render(0);
+</script>
+</body></html>

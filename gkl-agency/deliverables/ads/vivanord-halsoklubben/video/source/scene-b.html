@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="sv"><head><meta charset="UTF-8">
+<link rel="stylesheet" href="inter-embed.css"><link rel="stylesheet" href="base.css">
+<style>
+#qwrap{position:absolute;left:70px;right:70px;top:430px;text-align:center;will-change:opacity}
+.kick{font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:30px;color:var(--green-sage);margin-bottom:30px;will-change:transform,opacity}
+.qq{font-weight:900;font-size:74px;letter-spacing:-.02em;line-height:1.1;color:var(--cream);margin-bottom:58px;will-change:transform,opacity}
+.obar{display:flex;align-items:center;gap:26px;background:rgba(250,247,242,.08);border:2.5px solid rgba(250,247,242,.18);
+  border-radius:26px;padding:32px 36px;font-size:46px;font-weight:700;color:var(--cream);margin:0 0 24px;position:relative;
+  text-align:left;will-change:transform,opacity}
+.obar .k{width:64px;height:64px;flex:none;border-radius:16px;background:rgba(250,247,242,.14);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:32px}
+.obar.sel{background:#f2f8f0;color:var(--ink);border-color:var(--green-sage)}
+.obar.sel .k{background:#e5f0e2;color:var(--green-deep)}
+.obar .chk{position:absolute;right:30px;width:58px;height:58px;opacity:0}
+#stamp{position:absolute;left:0;right:0;top:1250px;text-align:center;opacity:0;will-change:transform,opacity}
+#stamp span{display:inline-flex;align-items:center;gap:18px;background:var(--green-sage);color:var(--green-dark);
+  font-weight:900;font-size:44px;padding:22px 40px;border-radius:999px}
+#prizeB{position:absolute;left:0;right:0;top:620px;text-align:center;opacity:0;will-change:transform,opacity}
+#prizeB .pv{font-weight:800;font-size:68px;color:var(--cream)}
+#prizeB .pa{font-weight:900;font-size:158px;color:var(--gold);letter-spacing:-.04em;line-height:1;margin:6px 0}
+#prizeB .ps{font-weight:600;font-size:38px;color:rgba(250,247,242,.85)}
+#prizeB .u{margin-top:54px}
+</style></head>
+<body>
+<div id="stage">
+  <div class="glow" id="gA"></div><div class="glow" id="gB"></div>
+  <div id="brand"></div>
+
+  <div id="qwrap">
+    <div class="kick">1 fråga · kan du svaret?</div>
+    <div class="qq">Vilket mineral kopplas till minskad trötthet?</div>
+    <div class="obar" id="b0"><span class="k">A</span>Magnesium
+      <svg class="chk" id="chk0" viewBox="0 0 58 58"><circle cx="29" cy="29" r="29" fill="#7fb069"/>
+        <path d="M17 30 L26 39 L42 20" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div class="obar" id="b1"><span class="k">B</span>Bly</div>
+    <div class="obar" id="b2"><span class="k">C</span>Kvicksilver</div>
+  </div>
+
+  <div id="stamp"><span>✓ Rätt – du är med!</span></div>
+
+  <div id="prizeB">
+    <div class="pv">Vinn</div>
+    <div class="pa">10&thinsp;000 kr</div>
+    <div class="ps">i presentkort · gratis att delta</div>
+    <div class="u"><span class="urlpill"><span class="ar">→</span>halsoklubben.vivanord.se</span></div>
+  </div>
+
+  <div id="cap">
+    <div class="capline" id="c0">Kan du frågan? 🤔</div>
+    <div class="capline" id="c1">Rätt svar = du är med i dragningen</div>
+    <div class="capline" id="c2">Gratis att delta · <b>vinn 10 000 kr</b></div>
+  </div>
+</div>
+<script src="anim.js"></script>
+<script>
+const DUR=9000;
+$('#brand').innerHTML=BRAND_SVG+'<div><div class="bn">Hälsoklubben</div><div class="bs">Månadens dragning</div></div>';
+function inEl(sel,t,a,b,dy=26){const e=$(sel);const k=eOut(p(t,a,b));e.style.opacity=k;e.style.transform=`translateY(${lerp(dy,0,k)}px)`;}
+function render(t){
+  glowDrift(t);brandIn(t);
+  const quizOut=eIn(p(t,5900,6400));
+  $('#qwrap').style.opacity=clamp(1-quizOut);
+  inEl('.kick',t,350,1050);
+  inEl('.qq',t,500,1250,34);
+  ['#b0','#b1','#b2'].forEach((s,i)=>inEl(s,t,1050+i*220,1750+i*220,30));
+  // select
+  const sel=t>3600;
+  $('#b0').classList.toggle('sel',sel);
+  $('#chk0').style.opacity=eOut(p(t,3600,4100));
+  $('#b1').style.filter=$('#b2').style.filter=t>3700?`opacity(${lerp(1,.4,p(t,3700,4100))})`:'none';
+  // stamp
+  const st=$('#stamp');const si=eBack(p(t,4250,5050));const so=eIn(p(t,5900,6300));
+  st.style.opacity=clamp(si-so);st.style.transform=`translateY(${lerp(24,0,si)}px) scale(${lerp(.8,1,si)})`;
+  // prize
+  const pin=eOut(p(t,6150,6900));
+  const pb=$('#prizeB');pb.style.opacity=pin;pb.style.transform=`translateY(${lerp(40,0,pin)}px)`;
+  $('#prizeB .pa').style.transform=`scale(${lerp(.7,1,eBack(p(t,6300,7100)))})`;
+  capFade('#c0',t,300,3600);capFade('#c1',t,3650,5950);capFade('#c2',t,6150,9000);
+}
+window.__seek=t=>render(Math.max(0,Math.min(DUR,t)));window.__duration=DUR;render(0);
+</script>
+</body></html>

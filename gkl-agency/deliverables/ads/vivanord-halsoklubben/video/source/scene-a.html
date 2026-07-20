@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="sv"><head><meta charset="UTF-8">
+<link rel="stylesheet" href="inter-embed.css"><link rel="stylesheet" href="base.css">
+<style>
+#cardwrap{position:absolute;left:0;right:0;top:452px;display:flex;justify-content:center}
+#card{position:relative;width:648px;height:812px;border-radius:48px;background:var(--cream);
+  box-shadow:0 42px 92px rgba(0,0,0,.38);overflow:hidden;will-change:transform,opacity}
+#card .ct{position:absolute;top:52px;left:0;right:0;text-align:center;font-weight:800;font-size:36px;color:var(--green-deep)}
+#prize{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+#prize .amt{font-weight:900;font-size:124px;letter-spacing:-.04em;color:var(--gold);line-height:.92;will-change:transform}
+#prize .pk{font-weight:800;font-size:42px;color:var(--ink)}
+#prize .sub2{font-weight:600;font-size:29px;color:#5a6b65;margin-top:2px}
+#foil{position:absolute;inset:0;background:linear-gradient(135deg,#ecc063,#d9a441 46%,#c08a2a);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;overflow:hidden;will-change:clip-path,opacity}
+#foil .fl{font-weight:900;font-size:56px;color:#5b3d0e}
+#foil .fh{font-weight:700;font-size:30px;color:#7a5410;letter-spacing:.02em}
+#foil .tex{position:absolute;inset:0;opacity:.14;
+  background:repeating-linear-gradient(135deg,#000 0 3px,transparent 3px 11px)}
+#shine{position:absolute;top:0;bottom:0;width:220px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);will-change:transform;opacity:0}
+#flecks{position:absolute;inset:0;pointer-events:none}
+.fleck{position:absolute;width:18px;height:18px;border-radius:4px;background:#d9a441;will-change:transform,opacity;opacity:0}
+#urlA{position:absolute;left:0;right:0;top:1316px;text-align:center;opacity:0;will-change:transform,opacity}
+</style></head>
+<body>
+<div id="stage">
+  <div class="glow" id="gA"></div><div class="glow" id="gB"></div>
+  <div id="brand"></div>
+
+  <div id="cardwrap"><div id="card">
+    <div class="ct">Månadens skraplott</div>
+    <div id="prize">
+      <div class="amt">10&thinsp;000 kr</div>
+      <div class="pk">i presentkort</div>
+      <div class="sub2">till valfri matbutik</div>
+    </div>
+    <div id="foil">
+      <div class="tex"></div>
+      <div class="fl">Skrapa här</div>
+      <div class="fh">✨ månadens vinst ✨</div>
+    </div>
+    <div id="shine"></div>
+    <div id="flecks"></div>
+  </div></div>
+
+  <div id="urlA"><span class="urlpill"><span class="ar">→</span>halsoklubben.vivanord.se</span></div>
+
+  <div id="cap">
+    <div class="capline" id="c0">Månadens skraplott ✨</div>
+    <div class="capline" id="c1">Vinn ett presentkort på <b>10 000 kr</b></div>
+    <div class="capline" id="c2">Svara på 4 frågor på Hälsoklubben</div>
+  </div>
+</div>
+<script src="anim.js"></script>
+<script>
+const DUR=10000;
+$('#brand').innerHTML=BRAND_SVG+'<div><div class="bn">Hälsoklubben</div><div class="bs">Månadens dragning</div></div>';
+const fl=$('#flecks');const FL=[];
+for(let i=0;i<20;i++){const e=document.createElement('div');e.className='fleck';
+  e.style.background=['#d9a441','#ecc063','#7fb069','#fff'][i%4];fl.appendChild(e);
+  FL.push({e,x:180+ (i*83)%300,dx:((i%5)-2)*70,dy:200+(i%4)*70,rot:(i%2?1:-1)*260,d:(i%6)*70});}
+function render(t){
+  glowDrift(t);brandIn(t);
+  const cin=eOut(p(t,300,1150));
+  const card=$('#card');card.style.opacity=cin;card.style.transform=`translateY(${lerp(40,0,cin)}px) scale(${lerp(.92,1,cin)})`;
+  // shine sweep before scratch
+  const sh=$('#shine');
+  if(t<2550){const q=((t-400)%1500)/1500;sh.style.opacity=t>400?.9:0;sh.style.transform=`translateX(${lerp(-240,660,clamp(q))}px) skewX(-12deg)`;}
+  else sh.style.opacity=0;
+  // scratch wipe
+  const w=eInOut(p(t,2600,4300));
+  const foil=$('#foil');foil.style.clipPath=`inset(0 0 0 ${w*100}%)`;
+  foil.style.opacity=w>0.96?lerp(1,0,p(t,4200,4500)):1;
+  // flecks during scratch
+  FL.forEach(o=>{const cp=p(t,2600+o.d,4600);
+    if(cp<=0){o.e.style.opacity=0;return;}
+    o.e.style.opacity=cp<.85?1:lerp(1,0,(cp-.85)/.15);
+    o.e.style.left=(o.x+w*220)+'px';o.e.style.top='360px';
+    o.e.style.transform=`translate(${o.dx*eOut(cp)}px,${o.dy*eOut(cp)}px) rotate(${o.rot*cp}deg)`;});
+  // prize amount pop after reveal
+  const pop=eBack(p(t,4250,5050));
+  $('#prize .amt').style.transform=`scale(${lerp(.5,1,pop)})`;
+  // url
+  const uin=eOut(p(t,6600,7300));
+  const u=$('#urlA');u.style.opacity=uin;u.style.transform=`translateY(${lerp(30,0,uin)}px) scale(${lerp(.9,1,uin)})`;
+  capFade('#c0',t,300,2600);capFade('#c1',t,2650,6500);capFade('#c2',t,6600,10000);
+}
+window.__seek=t=>render(Math.max(0,Math.min(DUR,t)));window.__duration=DUR;render(0);
+</script>
+</body></html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="sv"><head><meta charset="UTF-8">
+<link rel="stylesheet" href="inter-embed.css"><link rel="stylesheet" href="base.css">
+<style>
+#odwrap{position:absolute;left:0;right:0;top:600px;text-align:center;will-change:opacity}
+.kick{font-weight:700;letter-spacing:.15em;text-transform:uppercase;font-size:32px;color:var(--green-sage);margin-bottom:40px;will-change:transform,opacity}
+#reels{display:flex;justify-content:center;align-items:center;gap:2px;height:190px}
+.reel{width:116px;height:190px;overflow:hidden;position:relative}
+.reel .strip{position:absolute;left:0;top:0;width:100%;will-change:transform}
+.reel .d{height:190px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:180px;color:var(--gold);letter-spacing:-.03em;line-height:1}
+.krtxt{font-weight:900;font-size:150px;color:var(--gold);margin-left:22px;line-height:1;opacity:0}
+.gap{width:40px;flex:none}
+#chipD{display:inline-flex;align-items:center;gap:16px;margin-top:56px;background:rgba(127,176,105,.18);
+  border:1.5px solid rgba(127,176,105,.5);border-radius:999px;padding:22px 40px;font-weight:800;font-size:44px;color:var(--cream);
+  opacity:0;will-change:transform,opacity}
+#subD{font-weight:600;font-size:38px;color:rgba(250,247,242,.85);margin-top:30px;opacity:0;will-change:transform,opacity}
+#urlD{position:absolute;left:0;right:0;top:1310px;text-align:center;opacity:0;will-change:transform,opacity}
+</style></head>
+<body>
+<div id="stage">
+  <div class="glow" id="gA"></div><div class="glow" id="gB"></div>
+  <div id="brand"></div>
+
+  <div id="odwrap">
+    <div class="kick">Månadens dragning</div>
+    <div id="reels">
+      <div class="reel"><div class="strip"></div></div>
+      <div class="reel"><div class="strip"></div></div>
+      <div class="gap"></div>
+      <div class="reel"><div class="strip"></div></div>
+      <div class="reel"><div class="strip"></div></div>
+      <div class="reel"><div class="strip"></div></div>
+      <span class="krtxt">kr</span>
+    </div>
+    <div><span id="chipD">🏆 Ny vinnare varje månad</span></div>
+    <div id="subD">i presentkort till valfri matbutik</div>
+  </div>
+
+  <div id="urlD"><span class="urlpill"><span class="ar">→</span>halsoklubben.vivanord.se</span></div>
+
+  <div id="cap">
+    <div class="capline" id="c0">Varje månad delar vi ut <b>10 000 kr</b></div>
+    <div class="capline" id="c1">Ny vinnare · ny chans 🏆</div>
+    <div class="capline" id="c2">Svara på 4 frågor på Hälsoklubben</div>
+  </div>
+</div>
+<script src="anim.js"></script>
+<script>
+const DUR=9000;
+$('#brand').innerHTML=BRAND_SVG+'<div><div class="bn">Hälsoklubben</div><div class="bs">Månadens dragning</div></div>';
+const targets=[1,0,0,0,0];
+const strips=$$('.reel .strip');
+strips.forEach(s=>{let h='';for(let c=0;c<30;c++)h+=`<div class="d">${c%10}</div>`;s.innerHTML=h;});
+function render(t){
+  glowDrift(t);brandIn(t);
+  const oin=eOut(p(t,600,1200));
+  $('#reels').style.opacity=oin;
+  strips.forEach((s,r)=>{const a=800+r*170,b=2250+r*170;const pr=eOut(p(t,a,b));
+    const tgt=20+targets[r];s.style.transform=`translateY(${-pr*tgt*190}px)`;});
+  $('.krtxt').style.opacity=eOut(p(t,1900,2600));
+  const ci=eBack(p(t,2800,3550));
+  const c=$('#chipD');c.style.opacity=clamp(ci);c.style.transform=`translateY(${lerp(24,0,ci)}px) scale(${lerp(.85,1,ci)})`;
+  const si=eOut(p(t,3100,3700));
+  $('#subD').style.opacity=si;$('#subD').style.transform=`translateY(${lerp(20,0,si)}px)`;
+  const ui=eOut(p(t,5200,5900));
+  const u=$('#urlD');u.style.opacity=ui;u.style.transform=`translateY(${lerp(30,0,ui)}px) scale(${lerp(.9,1,ui)})`;
+  capFade('#c0',t,300,3200);capFade('#c1',t,3250,5800);capFade('#c2',t,5900,9000);
+}
+window.__seek=t=>render(Math.max(0,Math.min(DUR,t)));window.__duration=DUR;render(0);
+</script>
+</body></html>
