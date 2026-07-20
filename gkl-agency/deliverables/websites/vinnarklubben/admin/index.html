@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>Vinnarklubben — Broker-admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --navy-deep:#101c34;--navy:#17264a;--gold:#f6b93b;--gold-dark:#e39f1c;--mint:#22c9a3;--mint-dark:#14a184;
+  --paper:#f6f8fc;--paper-dark:#e7ecf5;--ink:#15213c;--ink-soft:#5c6b86;--white:#fff;--danger:#d64550;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+a{color:var(--navy)}
+
+/* Lås */
+#lock{position:fixed;inset:0;background:linear-gradient(155deg,var(--navy),var(--navy-deep));display:flex;align-items:center;justify-content:center;z-index:1000}
+.lockcard{background:#fff;border-radius:16px;padding:34px 30px;width:340px;max-width:90vw;box-shadow:0 20px 60px rgba(0,0,0,.3);text-align:center}
+.lockcard h1{font-size:22px;color:var(--navy);margin-bottom:6px}
+.lockcard p{font-size:13px;color:var(--ink-soft);margin-bottom:18px}
+.lockcard input{width:100%;padding:12px 14px;border:2px solid var(--paper-dark);border-radius:10px;font-family:inherit;font-size:15px;margin-bottom:10px}
+.lockcard input:focus{outline:none;border-color:var(--mint)}
+.lockcard button{width:100%;padding:12px;border:0;border-radius:40px;background:var(--navy);color:#fff;font-family:inherit;font-weight:700;font-size:15px;cursor:pointer}
+.lockcard .err{color:var(--danger);font-size:13px;min-height:18px;margin-top:8px}
+
+/* Layout */
+.app{display:none;min-height:100vh}
+.side{position:fixed;top:0;left:0;bottom:0;width:230px;background:var(--navy);color:#fff;padding:24px 16px;display:flex;flex-direction:column}
+.side__logo{font-size:19px;font-weight:800;margin-bottom:4px}.side__logo span{color:var(--gold)}
+.side__tag{font-size:11px;color:rgba(255,255,255,.55);margin-bottom:26px}
+.side__nav{display:flex;flex-direction:column;gap:4px;flex:1}
+.side__nav button{display:flex;align-items:center;gap:10px;background:none;border:0;color:rgba(255,255,255,.8);font-family:inherit;font-size:14px;font-weight:600;padding:11px 14px;border-radius:10px;cursor:pointer;text-align:left}
+.side__nav button:hover{background:rgba(255,255,255,.08);color:#fff}
+.side__nav button.active{background:var(--gold);color:var(--navy-deep)}
+.side__foot{font-size:11px;color:rgba(255,255,255,.5)}
+.side__foot button{background:none;border:0;color:rgba(255,255,255,.7);font-family:inherit;font-size:12px;cursor:pointer;text-decoration:underline;padding:0;margin-top:8px}
+.side__mode{font-size:11px;padding:5px 9px;border-radius:20px;display:inline-block;margin-bottom:14px;font-weight:700}
+.mode-live{background:var(--mint);color:#053d31}.mode-proto{background:rgba(255,255,255,.14);color:#fff}
+
+.main{margin-left:230px;padding:30px 34px;max-width:1200px}
+.main h2.view-title{font-size:24px;color:var(--navy);margin-bottom:20px}
+
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:26px}
+.kpi{background:#fff;border:1px solid var(--paper-dark);border-radius:14px;padding:18px 20px}
+.kpi__label{font-size:12px;color:var(--ink-soft);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.kpi__val{font-size:30px;font-weight:800;color:var(--navy);margin-top:6px}
+.kpi__val.gold{color:var(--gold-dark)}
+
+.panel{background:#fff;border:1px solid var(--paper-dark);border-radius:14px;padding:22px;margin-bottom:22px}
+.panel h3{font-size:15px;color:var(--navy);margin-bottom:16px}
+
+/* Bars */
+.bar-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;font-size:13px}
+.bar-row .lbl{width:150px;flex-shrink:0;font-weight:600}
+.bar-row .track{flex:1;background:var(--paper);border-radius:8px;height:22px;overflow:hidden}
+.bar-row .fill{height:100%;background:var(--navy);border-radius:8px}
+.bar-row .num{width:38px;text-align:right;font-weight:700;color:var(--ink-soft)}
+
+/* Filters */
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+.filters select,.filters input{padding:9px 12px;border:2px solid var(--paper-dark);border-radius:10px;font-family:inherit;font-size:14px;background:#fff}
+.filters input{min-width:180px}
+.filters .spacer{flex:1}
+.btn{padding:9px 16px;border:2px solid var(--navy);border-radius:40px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;background:#fff;color:var(--navy)}
+.btn--solid{background:var(--navy);color:#fff}
+.btn--gold{background:var(--gold);border-color:var(--gold);color:var(--navy-deep)}
+.btn--ghost{border-color:var(--paper-dark);color:var(--ink-soft)}
+
+/* Table */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;padding:10px 12px;color:var(--ink-soft);font-size:11px;text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid var(--paper-dark)}
+td{padding:11px 12px;border-bottom:1px solid var(--paper-dark);vertical-align:top}
+tr.lead-row{cursor:pointer}
+tr.lead-row:hover{background:var(--paper)}
+.pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
+.pill.ny{background:#e6efff;color:#1e4bb8}
+.pill.reserverad{background:#fff3d6;color:#8a6206}
+.pill.sald{background:#d9f6ec;color:#0a6b52}
+.pill.levererad{background:#d9f6ec;color:#0a6b52}
+.pill.ogiltig{background:#f3e0e2;color:#9a2530}
+.tag{display:inline-block;padding:2px 8px;border-radius:6px;background:var(--paper);font-size:11px;font-weight:600;color:var(--ink-soft);margin:1px 2px 1px 0}
+.consent-y{color:var(--mint-dark);font-weight:700}.consent-n{color:var(--ink-soft)}
+.detail{background:var(--paper)}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:6px 4px}
+.detail-grid .k{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--ink-soft);font-weight:700;margin-bottom:3px}
+.detail-grid .v{font-size:14px;margin-bottom:12px}
+.editrow{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;padding:12px 4px 4px;border-top:1px dashed var(--paper-dark);margin-top:8px}
+.editrow label{font-size:11px;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:4px}
+.editrow select,.editrow input{padding:8px 11px;border:2px solid var(--paper-dark);border-radius:9px;font-family:inherit;font-size:13px}
+.empty{text-align:center;color:var(--ink-soft);padding:40px;font-size:14px}
+
+/* Calc */
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:640px}
+.calc-grid label{font-size:12px;font-weight:700;color:var(--ink-soft);display:block;margin-bottom:5px}
+.calc-grid input{width:100%;padding:10px 12px;border:2px solid var(--paper-dark);border-radius:10px;font-family:inherit;font-size:15px}
+.calc-out{background:var(--navy);color:#fff;border-radius:14px;padding:22px;margin-top:20px;max-width:640px}
+.calc-out .row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:14px}
+.calc-out .row:last-child{border-bottom:0;font-size:18px;font-weight:800;color:var(--gold)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:12px 22px;border-radius:40px;font-size:14px;font-weight:600;opacity:0;transition:opacity .2s;z-index:2000;pointer-events:none}
+.toast.show{opacity:1}
+.hint{font-size:12px;color:var(--ink-soft);margin-top:6px}
+@media(max-width:820px){.side{position:static;width:auto}.main{margin-left:0;padding:20px}.detail-grid,.calc-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- LÅS -->
+<div id="lock">
+ <div class="lockcard">
+ <h1>🏆 Broker-admin</h1>
+ <p id="lockHint">Ange PIN-kod (prototyp: 1234)</p>
+ <div id="pinBox"><input type="password" id="pin" placeholder="PIN" autocomplete="off" /></div>
+ <div id="authBox" style="display:none">
+ <input type="email" id="authEmail" placeholder="E-post" autocomplete="username" />
+ <input type="password" id="authPass" placeholder="Lösenord" autocomplete="current-password" />
+ </div>
+ <button id="unlockBtn" type="button">Logga in</button>
+ <div class="err" id="lockErr"></div>
+ </div>
+</div>
+
+<!-- APP -->
+<div class="app" id="app">
+ <aside class="side">
+ <div class="side__logo">🏆 Vinnar<span>klubben</span></div>
+ <div class="side__tag">Broker-admin</div>
+ <span class="side__mode" id="modeBadge"></span>
+ <nav class="side__nav" id="nav">
+ <button data-view="oversikt" class="active">📊 Översikt</button>
+ <button data-view="leads">📇 Leads</button>
+ <button data-view="kalkyl">🧮 Leadkalkyl</button>
+ </nav>
+ <div class="side__foot">
+ Data uppdateras vid inloggning.
+ <button id="refreshBtn" type="button">↻ Uppdatera</button><br/>
+ <button id="logoutBtn" type="button">Logga ut</button>
+ </div>
+ </aside>
+
+ <main class="main" id="main"></main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../supabase-config.js"></script>
+<script src="../kampanjer.js"></script>
+<script>
+/* ---------- Datalager: Supabase (live) eller localStorage (prototyp) ---------- */
+const SB = (window.VK_SUPABASE && window.VK_SUPABASE.url && window.VK_SUPABASE.anonKey) ? window.VK_SUPABASE : null;
+const TABLE = (SB && SB.table) || 'vk_leads';
+let leads = [];
+let expanded = null;
+
+const VERTIKALER = (window.VK_KAMPANJER || []).map(k => k.vertikal).filter((v,i,a)=>a.indexOf(v)===i);
+const STATUSAR = ['ny','reserverad','sald','levererad','ogiltig'];
+const STATUS_LBL = {ny:'Ny',reserverad:'Reserverad',sald:'Såld',levererad:'Levererad',ogiltig:'Ogiltig'};
+
+const lsLoad = () => JSON.parse(localStorage.getItem('vk_leads') || '[]');
+const lsSave = (v) => localStorage.setItem('vk_leads', JSON.stringify(v));
+
+function sbToken(){ return sessionStorage.getItem('vk_sb_token'); }
+function sbFetch(path, opts={}){
+  return fetch(SB.url + path, Object.assign({}, opts, {
+    headers: Object.assign({
+      apikey: SB.anonKey,
+      Authorization: `Bearer ${sbToken()}`,
+      'Content-Type':'application/json',
+    }, opts.headers||{}),
+  }));
+}
+
+async function refresh(silent){
+  if (SB){
+    try{
+      const res = await sbFetch(`/rest/v1/${TABLE}?select=*&order=tid.desc`);
+      if(!res.ok) throw new Error(res.status);
+      leads = await res.json();
+    }catch(e){ toast('Kunde inte hämta från Supabase'); leads = lsLoad(); }
+  } else {
+    leads = lsLoad();
+  }
+  if(!silent) render();
+  else render();
+}
+
+/* ---------- Inloggning ---------- */
+function setupLock(){
+  if (SB){
+    document.getElementById('lockHint').textContent = 'Logga in med ditt Supabase-konto';
+    document.getElementById('pinBox').style.display = 'none';
+    document.getElementById('authBox').style.display = 'block';
+  }
+  document.getElementById('unlockBtn').addEventListener('click', unlock);
+  document.querySelectorAll('#lock input').forEach(i=>i.addEventListener('keydown',e=>{ if(e.key==='Enter') unlock(); }));
+  // Redan inloggad denna session?
+  if (SB && sbToken()) enter();
+}
+
+async function unlock(){
+  const err = document.getElementById('lockErr'); err.textContent='';
+  if (!SB){
+    if (document.getElementById('pin').value === '1234'){ enter(); }
+    else err.textContent = 'Fel PIN.';
+    return;
+  }
+  try{
+    const res = await fetch(`${SB.url}/auth/v1/token?grant_type=password`, {
+      method:'POST',
+      headers:{ apikey: SB.anonKey, 'Content-Type':'application/json' },
+      body: JSON.stringify({ email: document.getElementById('authEmail').value, password: document.getElementById('authPass').value }),
+    });
+    const data = await res.json();
+    if(!res.ok || !data.access_token){ err.textContent = 'Fel e-post eller lösenord.'; return; }
+    sessionStorage.setItem('vk_sb_token', data.access_token);
+    enter();
+  }catch(e){ err.textContent = 'Kunde inte nå Supabase.'; }
+}
+
+function enter(){
+  document.getElementById('lock').style.display='none';
+  document.getElementById('app').style.display='block';
+  const badge = document.getElementById('modeBadge');
+  badge.textContent = SB ? '● LIVE (Supabase)' : '● Prototyp (localStorage)';
+  badge.className = 'side__mode ' + (SB ? 'mode-live':'mode-proto');
+  refresh();
+}
+function logout(){
+  sessionStorage.removeItem('vk_sb_token');
+  location.reload();
+}
+
+/* ---------- Vyer ---------- */
+let currentView = 'oversikt';
+document.getElementById('nav').addEventListener('click', e=>{
+  const b = e.target.closest('button[data-view]'); if(!b) return;
+  currentView = b.dataset.view;
+  document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('active', x===b));
+  render();
+});
+document.getElementById('refreshBtn').addEventListener('click', ()=>refresh());
+document.getElementById('logoutBtn').addEventListener('click', logout);
+
+function render(){
+  const m = document.getElementById('main');
+  if(currentView==='oversikt') m.innerHTML = viewOversikt();
+  else if(currentView==='leads'){ m.innerHTML = viewLeads(); wireLeads(); }
+  else if(currentView==='kalkyl'){ m.innerHTML = viewKalkyl(); wireKalkyl(); }
+}
+
+/* ---------- Översikt ---------- */
+function viewOversikt(){
+  const total = leads.length;
+  const nya = leads.filter(l=>l.status==='ny').length;
+  const salda = leads.filter(l=>l.status==='sald'||l.status==='levererad').length;
+  const intakt = leads.reduce((s,l)=> s + (Number(l.pris)||0) * (l.status==='sald'||l.status==='levererad'?1:0), 0);
+
+  const perVert = {}; leads.forEach(l=>{ perVert[l.vertikal]=(perVert[l.vertikal]||0)+1; });
+  const perKalla = {}; leads.forEach(l=>{ perKalla[l.kalla||'direkt']=(perKalla[l.kalla||'direkt']||0)+1; });
+  const maxV = Math.max(1,...Object.values(perVert));
+  const maxK = Math.max(1,...Object.values(perKalla));
+
+  const bars = (obj,max)=> Object.entries(obj).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`
+    <div class="bar-row"><div class="lbl">${esc(k)}</div><div class="track"><div class="fill" style="width:${Math.round(v/max*100)}%"></div></div><div class="num">${v}</div></div>`).join('') || '<p class="empty">Inga leads ännu.</p>';
+
+  const senaste = leads.slice(0,8).map(l=>`
+    <tr><td>${fmtDate(l.tid)}</td><td><strong>${esc(l.namn||'')}</strong></td><td><span class="tag">${esc(l.vertikal||'')}</span></td><td><span class="pill ${l.status}">${STATUS_LBL[l.status]||l.status}</span></td></tr>`).join('') || '<tr><td colspan="4" class="empty">Inga leads ännu.</td></tr>';
+
+  return `
+  <h2 class="view-title">Översikt</h2>
+  <div class="kpis">
+    <div class="kpi"><div class="kpi__label">Totalt leads</div><div class="kpi__val">${total}</div></div>
+    <div class="kpi"><div class="kpi__label">Nya (osålda)</div><div class="kpi__val">${nya}</div></div>
+    <div class="kpi"><div class="kpi__label">Sålda</div><div class="kpi__val">${salda}</div></div>
+    <div class="kpi"><div class="kpi__label">Intäkt (sålda)</div><div class="kpi__val gold">${intakt.toLocaleString('sv-SE')} kr</div></div>
+  </div>
+  <div class="panel"><h3>Leads per vertikal</h3>${bars(perVert,maxV)}</div>
+  <div class="panel"><h3>Leads per källa</h3>${bars(perKalla,maxK)}</div>
+  <div class="panel"><h3>Senaste leads</h3><table><thead><tr><th>Tid</th><th>Namn</th><th>Vertikal</th><th>Status</th></tr></thead><tbody>${senaste}</tbody></table></div>`;
+}
+
+/* ---------- Leads ---------- */
+const F = { vertikal:'', status:'', samtycke:'', sok:'' };
+function filtered(){
+  return leads.filter(l=>{
+    if(F.vertikal && l.vertikal!==F.vertikal) return false;
+    if(F.status && l.status!==F.status) return false;
+    if(F.samtycke==='partner' && !l.samtyckePartner) return false;
+    if(F.samtycke==='epost' && !l.samtyckeEpost) return false;
+    if(F.sok){
+      const q = F.sok.toLowerCase();
+      const hay = [l.namn,l.epost,l.telefon,l.postnr,l.kopare,l.kalla,l.kampanj].join(' ').toLowerCase();
+      if(!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
+function viewLeads(){
+  const opts = (arr,cur,lbl)=> ['<option value="">'+lbl+'</option>'].concat(arr.map(v=>`<option value="${v}" ${v===cur?'selected':''}>${STATUS_LBL[v]||v}</option>`)).join('');
+  const rows = filtered().map(rowHtml).join('') || '<tr><td colspan="7" class="empty">Inga leads matchar filtret.</td></tr>';
+  return `
+  <h2 class="view-title">Leads <span style="font-size:14px;color:var(--ink-soft)">(${filtered().length} av ${leads.length})</span></h2>
+  <div class="filters">
+    <select id="fVert">${opts(VERTIKALER,F.vertikal,'Alla vertikaler')}</select>
+    <select id="fStatus">${opts(STATUSAR,F.status,'Alla statusar')}</select>
+    <select id="fSamt">
+      <option value="" ${F.samtycke===''?'selected':''}>Alla samtycken</option>
+      <option value="partner" ${F.samtycke==='partner'?'selected':''}>Har partnersamtycke</option>
+      <option value="epost" ${F.samtycke==='epost'?'selected':''}>Har e-postsamtycke</option>
+    </select>
+    <input id="fSok" placeholder="Sök namn, e-post, telefon…" value="${esc(F.sok)}" />
+    <div class="spacer"></div>
+    <button class="btn btn--gold" id="expBtn">⬇ Exportera urval (CSV)</button>
+    <button class="btn btn--ghost" id="seedBtn">＋ Demo-data</button>
+  </div>
+  <div class="panel" style="padding:6px 10px">
+  <table>
+    <thead><tr><th>Tid</th><th>Namn / kontakt</th><th>Vertikal / kampanj</th><th>Samtycke</th><th>Status</th><th>Köpare</th><th>Pris</th></tr></thead>
+    <tbody>${rows}</tbody>
+  </table></div>
+  <p class="hint">Klicka på ett lead för att se profilsvar och tilldela köpare/pris. Exporten följer det aktiva filtret — filtrera på en vertikal eller köpare för att exportera just den listan.</p>`;
+}
+function rowHtml(l){
+  const detail = expanded===l.id ? `<tr class="detail"><td colspan="7">${detailHtml(l)}</td></tr>` : '';
+  return `
+  <tr class="lead-row" data-id="${l.id}">
+    <td>${fmtDate(l.tid)}</td>
+    <td><strong>${esc(l.namn||'')}</strong><br/><span style="color:var(--ink-soft)">${esc(l.epost||'')}${l.telefon?' · '+esc(l.telefon):''}</span></td>
+    <td><span class="tag">${esc(l.vertikal||'')}</span><br/><span style="color:var(--ink-soft);font-size:11px">${esc(l.kampanj||'')}</span></td>
+    <td>${l.samtyckePartner?'<span class="consent-y">📞 Partner</span>':'<span class="consent-n">— telefon</span>'}<br/>${l.samtyckeEpost?'<span class="consent-y">✉ E-post</span>':'<span class="consent-n">— e-post</span>'}</td>
+    <td><span class="pill ${l.status}">${STATUS_LBL[l.status]||l.status}</span></td>
+    <td>${esc(l.kopare||'—')}</td>
+    <td>${l.pris?Number(l.pris).toLocaleString('sv-SE')+' kr':'—'}</td>
+  </tr>${detail}`;
+}
+function detailHtml(l){
+  const svar = l.svar && typeof l.svar==='object' ? l.svar : {};
+  const svarHtml = Object.keys(svar).length
+    ? Object.entries(svar).map(([k,v])=>`<span class="tag">${esc(k)}: <strong>${esc(String(v))}</strong></span>`).join('')
+    : '<span style="color:var(--ink-soft)">Inga profilsvar</span>';
+  const statusOpts = STATUSAR.map(s=>`<option value="${s}" ${l.status===s?'selected':''}>${STATUS_LBL[s]}</option>`).join('');
+  return `
+  <div class="detail-grid">
+    <div><div class="k">E-post</div><div class="v">${esc(l.epost||'—')}</div>
+         <div class="k">Telefon</div><div class="v">${esc(l.telefon||'—')}</div>
+         <div class="k">Postnummer</div><div class="v">${esc(l.postnr||'—')}</div></div>
+    <div><div class="k">Källa</div><div class="v">${esc(l.kalla||'direkt')}</div>
+         <div class="k">Lead-ID</div><div class="v">${esc(l.id)}</div>
+         <div class="k">Profilsvar (säljbara attribut)</div><div class="v">${svarHtml}</div></div>
+  </div>
+  <div class="editrow" data-id="${l.id}">
+    <div><label>Status</label><select class="e-status">${statusOpts}</select></div>
+    <div><label>Köpare (bolag)</label><input class="e-kopare" value="${esc(l.kopare||'')}" placeholder="t.ex. Solbolaget AB" /></div>
+    <div><label>Pris (kr)</label><input class="e-pris" type="number" min="0" value="${l.pris!=null?l.pris:''}" style="width:100px" /></div>
+    <button class="btn btn--solid e-save">Spara</button>
+  </div>`;
+}
+function wireLeads(){
+  const bind=(id,key)=>{ const el=document.getElementById(id); if(el) el.addEventListener('change',()=>{F[key]=el.value;render();}); };
+  bind('fVert','vertikal'); bind('fStatus','status'); bind('fSamt','samtycke');
+  const sok=document.getElementById('fSok'); if(sok){ sok.addEventListener('input',()=>{F.sok=sok.value;const v=sok.value;render();const el=document.getElementById('fSok');if(el){el.focus();el.setSelectionRange(v.length,v.length);}}); }
+  document.querySelectorAll('.lead-row').forEach(r=>r.addEventListener('click',e=>{
+    if(e.target.closest('.editrow')) return;
+    const id=r.dataset.id; expanded = expanded===id?null:id; render();
+  }));
+  document.querySelectorAll('.editrow').forEach(er=>{
+    er.querySelector('.e-save').addEventListener('click',()=>saveLead(er));
+  });
+  const exp=document.getElementById('expBtn'); if(exp) exp.addEventListener('click',exportCSV);
+  const seed=document.getElementById('seedBtn'); if(seed) seed.addEventListener('click',seedDemo);
+}
+async function saveLead(er){
+  const id=er.dataset.id;
+  const patch={
+    status: er.querySelector('.e-status').value,
+    kopare: er.querySelector('.e-kopare').value.trim() || null,
+    pris: er.querySelector('.e-pris').value!==''? Number(er.querySelector('.e-pris').value): null,
+  };
+  if (SB){
+    try{
+      const res = await sbFetch(`/rest/v1/${TABLE}?id=eq.${encodeURIComponent(id)}`, {
+        method:'PATCH', headers:{Prefer:'return=minimal'}, body: JSON.stringify(patch),
+      });
+      if(!res.ok) throw new Error(res.status);
+    }catch(e){ toast('Kunde inte spara till Supabase'); return; }
+  }
+  // uppdatera lokalt (och localStorage i prototypläge)
+  const l = leads.find(x=>x.id===id); if(l) Object.assign(l,patch);
+  if(!SB) lsSave(leads);
+  toast('Sparat ✓'); render();
+}
+
+/* ---------- Export ---------- */
+function exportCSV(){
+  const rows = filtered();
+  if(!rows.length){ toast('Inget att exportera'); return; }
+  const cols = ['id','tid','kampanj','vertikal','namn','epost','telefon','postnr','samtyckeEpost','samtyckePartner','kalla','status','kopare','pris','svar'];
+  const head = cols.join(';');
+  const body = rows.map(l=>cols.map(c=>{
+    let v = c==='svar' ? JSON.stringify(l.svar||{}) : l[c];
+    if(v==null) v='';
+    v = String(v).replace(/"/g,'""');
+    return /[";\n]/.test(v)?`"${v}"`:v;
+  }).join(';')).join('\n');
+  const csv = '﻿'+head+'\n'+body;
+  const blob = new Blob([csv],{type:'text/csv;charset=utf-8'});
+  const a=document.createElement('a');
+  const tag = (F.vertikal||F.status||'urval').toString().replace(/[^\wåäö]+/gi,'-').toLowerCase();
+  a.href=URL.createObjectURL(blob); a.download=`vinnarklubben-leads-${tag}-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click(); URL.revokeObjectURL(a.href);
+  toast(`Exporterade ${rows.length} leads`);
+}
+
+/* ---------- Demo-data (bara prototypläge) ---------- */
+function seedDemo(){
+  if(SB){ toast('Demo-data bara i prototypläge'); return; }
+  const h=3600e3;
+  const demo=[
+    ['Anna Lindqvist','anna.l@example.com','070-1234567','21120',{alder:'30–49',hushall:'3–4',intresse:'Ekologiskt'},'Dagligvaror','matkasse-10000',true,true,'facebook',2*h],
+    ['Johan Berg','johan.berg@example.com','073-9876543','43140',{boende:'Villa/radhus',agande:'Ja',tak:'Ja'},'Solceller & energi','solceller',true,true,'facebook',5*h],
+    ['Sara Nilsson','sara.n@example.com','076-5551212','11455',{typ:'Hem',alder:'30–49',boende:'Bostadsrätt'},'Försäkring','forsakring',true,false,'instagram',26*h],
+    ['Erik Ström','erik.strom@example.com','070-3334455','90325',{nuvarande:'Telia',behov:'Lägst pris',bindning:'Nej'},'Telefoni & bredband','telefoni-bredband',false,true,'tiktok',30*h],
+    ['Lena Ek','lena.ek@example.com','','58273',{alder:'50–64',intresse:'Leder & rörlighet'},'Hälsa & kosttillskott','halsa-halsoklubben',true,false,'facebook',52*h],
+  ];
+  const recs=demo.map((d,i)=>({
+    id:'VK-DEMO'+i, tid:new Date(Date.now()-d[10]).toISOString(),
+    namn:d[0],epost:d[1],telefon:d[2],postnr:d[3],svar:d[4],vertikal:d[5],kampanj:d[6],
+    samtyckeEpost:d[7],samtyckePartner:d[8],kalla:d[9],status:'ny',kopare:null,pris:null,
+  }));
+  lsSave(recs.concat(lsLoad())); refresh();
+  toast('Demo-data inlagd');
+}
+
+/* ---------- Leadkalkyl ---------- */
+const CALC_DEF={annons:3000,verktyg:500,timmar:5,timpris:300,leads:200,andel:60,paslag:100};
+const calcLoad=()=>Object.assign({},CALC_DEF,JSON.parse(localStorage.getItem('vk_kalkyl')||'{}'));
+function viewKalkyl(){
+  const c=calcLoad();
+  const f=(id,lbl,val,suf)=>`<div><label>${lbl}</label><input id="${id}" type="number" min="0" value="${val}" />${suf?`<div class="hint">${suf}</div>`:''}</div>`;
+  return `
+  <h2 class="view-title">Leadkalkyl</h2>
+  <div class="panel">
+  <p class="hint" style="margin-bottom:16px">Räkna självkostnad per <strong>säljbart</strong> lead (bara leads med partnersamtycke går att sälja till telemarketing) och sätt ett golvpris. Räkna aldrig på rå CPL.</p>
+  <div class="calc-grid">
+    ${f('cAnnons','Annonskostnad (kr)',c.annons)}
+    ${f('cVerktyg','Verktyg/övrigt (kr)',c.verktyg)}
+    ${f('cTimmar','Egen tid (timmar)',c.timmar)}
+    ${f('cTimpris','Timpris (kr)',c.timpris)}
+    ${f('cLeads','Antal leads',c.leads)}
+    ${f('cAndel','Andel med partnersamtycke (%)',c.andel,'Bara dessa är säljbara')}
+    ${f('cPaslag','Påslag på självkostnad (%)',c.paslag,'Golv: minst 50 %')}
+  </div>
+  <div class="calc-out" id="calcOut"></div>
+  <p class="hint" style="margin-top:14px">Riktmärke Sverige: färska, exklusiva leads med telefonsamtycke säljs ofta för 25–75 kr/st (mer i högvärdesnischer som solceller). Ta betalt för exklusivitet och färskhet (&lt; 72 h).</p>
+  </div>`;
+}
+function wireKalkyl(){
+  const ids=['cAnnons','cVerktyg','cTimmar','cTimpris','cLeads','cAndel','cPaslag'];
+  const calc=()=>{
+    const g=id=>Number(document.getElementById(id).value)||0;
+    const total=g('cAnnons')+g('cVerktyg')+g('cTimmar')*g('cTimpris');
+    const saljbara=Math.max(0, g('cLeads')*(g('cAndel')/100));
+    const sjalv= saljbara? total/saljbara : 0;
+    const pris= sjalv*(1+g('cPaslag')/100);
+    localStorage.setItem('vk_kalkyl',JSON.stringify({annons:g('cAnnons'),verktyg:g('cVerktyg'),timmar:g('cTimmar'),timpris:g('cTimpris'),leads:g('cLeads'),andel:g('cAndel'),paslag:g('cPaslag')}));
+    document.getElementById('calcOut').innerHTML=`
+      <div class="row"><span>Total kostnad</span><span>${Math.round(total).toLocaleString('sv-SE')} kr</span></div>
+      <div class="row"><span>Säljbara leads (med partnersamtycke)</span><span>${Math.round(saljbara)} st</span></div>
+      <div class="row"><span>Självkostnad per säljbart lead</span><span>${Math.round(sjalv).toLocaleString('sv-SE')} kr</span></div>
+      <div class="row"><span>Rekommenderat pris per lead</span><span>${Math.round(pris).toLocaleString('sv-SE')} kr</span></div>`;
+  };
+  ids.forEach(id=>document.getElementById(id).addEventListener('input',calc));
+  calc();
+}
+
+/* ---------- Hjälp ---------- */
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function fmtDate(t){ try{ return new Date(t).toLocaleString('sv-SE',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}); }catch(e){ return t||''; } }
+let toastTimer;
+function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),2200); }
+
+setupLock();
+</script>
+</body>
+</html>

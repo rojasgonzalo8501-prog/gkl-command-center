@@ -27,6 +27,7 @@ Always follow the WAT framework. Before starting any client job:
 | 📦 ExhalePLR | `clients/exhaleplr/` | Build phase | English |
 | 🏢 GKL Agency | `clients/gkl-agency/` | Own brand | English |
 | 💊 Vivanord | `clients/vivanord/` | Brand + website + FB/IG plan built | **Swedish** |
+| 🏆 Vinnarklubben | `clients/vinnarklubben/` | Egen leadplattform (broker) byggd | **Swedish** |
 
 > **Important:** Andasuthemma, Merca Skroten and Vivanord are Swedish-language clients. All content for them must be written in Swedish unless told otherwise.
 

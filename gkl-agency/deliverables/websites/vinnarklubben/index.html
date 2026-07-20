@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Vinnarklubben — Tävla gratis och vinn varje månad</title>
+ <meta name="description" content="Vinnarklubben samlar Sveriges roligaste tävlingar på ett ställe. Svara på några snabba frågor och tävla om presentkort, solceller, mobil och mer. Gratis att delta — ny vinnare varje månad." />
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+ <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
+ <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+ <!-- NAV -->
+ <nav class="nav">
+ <div class="container nav__inner">
+ <a href="index.html" class="nav__logo">🏆 Vinnar<span>klubben</span></a>
+ <ul class="nav__links" id="navLinks">
+ <li><a href="#tavlingar">Tävlingar</a></li>
+ <li><a href="#sa-funkar">Så funkar det</a></li>
+ <li><a href="#faq">Vanliga frågor</a></li>
+ <li><a href="tavling.html?k=matkasse-10000" class="btn btn--gold btn--sm">Delta nu</a></li>
+ </ul>
+ <button class="nav__burger" id="burger" aria-label="Meny"><span></span><span></span><span></span></button>
+ </div>
+ </nav>
+
+ <!-- HERO -->
+ <header class="hero">
+ <div class="container hero__inner">
+ <span class="hero__badge">🎁 Ny vinnare varje månad · Gratis att delta</span>
+ <h1>Sveriges tävlingar — <em>samlade på ett ställe</em></h1>
+ <p class="hero__sub">Svara på några snabba frågor och tävla om presentkort, solceller, mobilabonnemang och mer. Det är gratis, det tar en minut, och en ny vinnare dras varje månad.</p>
+ <div class="hero__cta">
+ <a href="#tavlingar" class="btn btn--gold">Se alla tävlingar →</a>
+ <a href="#sa-funkar" class="btn btn--ghost">Så funkar det</a>
+ </div>
+ </div>
+ </header>
+
+ <!-- TRYGGHETSRAD -->
+ <div class="trust-bar">
+ <div class="container trust-bar__inner">
+ <div class="trust-item"><span class="dot"></span> Gratis att delta</div>
+ <div class="trust-item"><span class="dot"></span> Riktiga vinster</div>
+ <div class="trust-item"><span class="dot"></span> Ny dragning varje månad</div>
+ <div class="trust-item"><span class="dot"></span> GDPR — du väljer själv</div>
+ </div>
+ </div>
+
+ <!-- TÄVLINGAR (rutnät fylls av main.js från kampanjer.js) -->
+ <section class="section section--white" id="tavlingar">
+ <div class="container">
+ <div class="section__head">
+ <div class="section__eyebrow">Aktiva tävlingar</div>
+ <h2>Välj en tävling och delta gratis</h2>
+ <p>Varje tävling har några snabba frågor. Svara rätt på kunskapsfrågan så är du med i dragningen.</p>
+ </div>
+ <div class="contest-grid" id="contestGrid"></div>
+ </div>
+ </section>
+
+ <!-- SÅ FUNKAR DET -->
+ <section class="section section--navy" id="sa-funkar">
+ <div class="container">
+ <div class="section__head">
+ <div class="section__eyebrow">Så funkar det</div>
+ <h2>Tre steg till att vara med</h2>
+ </div>
+ <div class="steps">
+ <div class="step"><div class="step__num">1</div><h3>Välj en tävling</h3><p>Bläddra bland våra tävlingar och välj den vinst du vill ha.</p></div>
+ <div class="step"><div class="step__num">2</div><h3>Svara på frågorna</h3><p>Några snabba frågor — inklusive en kunskapsfråga. Tar under en minut.</p></div>
+ <div class="step"><div class="step__num">3</div><h3>Du är med!</h3><p>Fyll i dina uppgifter så är du med i månadens dragning. Vi hör av oss om du vinner.</p></div>
+ </div>
+ </div>
+ </section>
+
+ <!-- FÖR FÖRETAG (kort, saklig — leadaffären) -->
+ <section class="section section--white" id="foretag">
+ <div class="container">
+ <div class="section__head">
+ <div class="section__eyebrow">För företag</div>
+ <h2>Vill ditt företag ha kvalificerade leads?</h2>
+ <p>Vinnarklubben samlar in intresseanmälningar med tydligt GDPR-samtycke, i flera branscher — dagligvaror, hälsa, solceller, telefoni och försäkring. Vill ni köpa leads inom er bransch? Hör av er.</p>
+ </div>
+ <div style="text-align:center;">
+ <a href="mailto:hej@vinnarklubben.se" class="btn btn--primary">Kontakta oss om leads →</a>
+ </div>
+ </div>
+ </section>
+
+ <!-- FAQ -->
+ <section class="section section--white" id="faq" style="padding-top:0;">
+ <div class="container">
+ <div class="section__head">
+ <div class="section__eyebrow">Vanliga frågor</div>
+ <h2>Bra att veta</h2>
+ </div>
+ <div class="faq">
+ <div class="faq__item"><button class="faq__q" type="button">Kostar det något att delta?</button><div class="faq__a">Nej. Alla tävlingar på Vinnarklubben är gratis att delta i.</div></div>
+ <div class="faq__item"><button class="faq__q" type="button">Hur vet jag om jag vunnit?</button><div class="faq__a">Vinnaren i varje månadsdragning meddelas via e-post till adressen du angav. Vinnaren publiceras också här på sidan efter dragningen.</div></div>
+ <div class="faq__item"><button class="faq__q" type="button">Vad händer med mina uppgifter?</button><div class="faq__a">Dina uppgifter används för att administrera tävlingen. Endast om du aktivt kryssar i en samtyckesruta används de för marknadsföring — och då bara på det sätt rutan beskriver. Du kan återkalla samtycket när som helst. Läs mer i vår <a href="integritetspolicy.html">integritetspolicy</a>.</div></div>
+ <div class="faq__item"><button class="faq__q" type="button">Måste jag tacka ja till erbjudanden för att vara med?</button><div class="faq__a">Nej. Du kan delta i tävlingen utan att kryssa i någon marknadsföringsruta. De rutorna är helt frivilliga.</div></div>
+ <div class="faq__item"><button class="faq__q" type="button">Vem står bakom Vinnarklubben?</button><div class="faq__a">Vinnarklubben drivs av GKL Agency. Tävlingarna har ingen koppling till Meta, Facebook eller Instagram.</div></div>
+ </div>
+ </div>
+ </section>
+
+ <!-- CTA -->
+ <section class="section section--navy">
+ <div class="container cta-banner">
+ <h2>Redo att vinna?</h2>
+ <p>Välj en tävling och var med i månadens dragning. Det tar en minut och det är gratis.</p>
+ <a href="#tavlingar" class="btn btn--gold">Se alla tävlingar →</a>
+ </div>
+ </section>
+
+ <!-- FOOTER -->
+ <footer class="footer">
+ <div class="container">
+ <div class="footer__grid">
+ <div>
+ <div class="footer__logo">🏆 Vinnar<span>klubben</span></div>
+ <p style="max-width:320px;">Sveriges tävlingar, samlade på ett ställe. Gratis att delta, ny vinnare varje månad. En tjänst från GKL Agency.</p>
+ </div>
+ <div>
+ <h4>Tävlingar</h4>
+ <ul>
+ <li><a href="tavling.html?k=matkasse-10000">Matkasseklubben</a></li>
+ <li><a href="tavling.html?k=halsa-halsoklubben">Hälsoklubben</a></li>
+ <li><a href="tavling.html?k=solceller">Energiklubben</a></li>
+ <li><a href="tavling.html?k=telefoni-bredband">Mobilklubben</a></li>
+ <li><a href="tavling.html?k=forsakring">Trygghetsklubben</a></li>
+ </ul>
+ </div>
+ <div>
+ <h4>Om oss</h4>
+ <ul>
+ <li><a href="#foretag">För företag</a></li>
+ <li><a href="tavlingsvillkor.html">Tävlingsvillkor</a></li>
+ <li><a href="integritetspolicy.html">Integritetspolicy</a></li>
+ <li><a href="mailto:hej@vinnarklubben.se">Kontakt</a></li>
+ </ul>
+ </div>
+ </div>
+ <div class="footer__bottom">
+ © 2026 Vinnarklubben — en tjänst från GKL Agency. Tävlingarna har ingen koppling till och stöds inte av Meta, Facebook eller Instagram.
+ </div>
+ </div>
+ </footer>
+
+ <script src="supabase-config.js"></script>
+ <script src="kampanjer.js"></script>
+ <script src="cookies.js"></script>
+ <script src="pixel.js"></script>
+ <script src="main.js"></script>
+</body>
+</html>

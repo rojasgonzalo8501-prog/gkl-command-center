@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Vinnarklubben — Tävla och vinn</title>
+ <meta name="description" content="Svara på fyra snabba frågor och tävla om månadens vinst. Gratis att delta. Ny vinnare varje månad." />
+ <meta name="robots" content="noindex" />
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+ <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
+ <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+ <!-- KAMPANJ-HERO (fylls av main.js från kampanjer.js) -->
+ <header class="camp-hero" id="campHero">
+ <div class="container camp-hero__inner">
+ <div class="camp-klubb" id="campKlubb"></div>
+ <div class="camp-prize" id="campPrize"></div>
+ <h1 id="campRubrik"></h1>
+ <p id="campSub"></p>
+ </div>
+ </header>
+
+ <!-- FUNNEL -->
+ <div class="quiz-wrap">
+ <div class="quiz-card">
+ <div class="quiz-progress"><div class="quiz-progress__bar" id="progressBar"></div></div>
+
+ <!-- Frågesteg injiceras här av main.js (kunskaps- + profilfrågor) -->
+ <div id="quizQuestions"></div>
+
+ <!-- Kvalificerad + kontaktformulär -->
+ <div class="quiz-step" id="formStep">
+ <h2>Grattis! Du har kvalificerat dig 🎉</h2>
+ <p class="quiz-hint">Vi kollade dina svar — du är med i månadens dragning så snart du fyllt i uppgifterna nedan.</p>
+ <form id="leadForm" novalidate>
+ <div class="form-field">
+ <label for="name">Förnamn</label>
+ <input type="text" id="name" name="name" required autocomplete="given-name" />
+ </div>
+ <div class="form-field">
+ <label for="email">E-postadress</label>
+ <input type="email" id="email" name="email" required autocomplete="email" />
+ </div>
+ <div class="form-field">
+ <label for="phone">Mobilnummer (så når vi dig snabbare om du vinner)</label>
+ <input type="tel" id="phone" name="phone" autocomplete="tel" />
+ </div>
+ <div class="form-field">
+ <label for="postnr">Postnummer</label>
+ <input type="text" id="postnr" name="postnr" inputmode="numeric" autocomplete="postal-code" />
+ </div>
+
+ <label class="consent">
+ <input type="checkbox" id="consentVillkor" required />
+ <span>Jag godkänner <a href="tavlingsvillkor.html" target="_blank">tävlingsvillkoren</a> och att arrangören behandlar mina uppgifter enligt <a href="integritetspolicy.html" target="_blank">integritetspolicyn</a>. <strong>(Obligatorisk)</strong></span>
+ </label>
+ <label class="consent">
+ <input type="checkbox" name="consent_email" id="consentEpost" />
+ <span id="epostText"></span>
+ </label>
+ <!-- Överlåtelsesamtycke: mottagaren MÅSTE namnges för att samtycket ska vara giltigt
+      (GDPR art. 4.11 + 7). partner.namn i kampanjer.js får inte stå kvar som [KÖPARE ...]
+      när du kör betald trafik. Se clients/vinnarklubben/README.md. -->
+ <label class="consent">
+ <input type="checkbox" name="consent_partner" id="consentPartner" />
+ <span id="partnerText"></span>
+ </label>
+
+ <button type="submit" class="btn btn--primary btn--block" style="margin-top:10px;">Delta i tävlingen →</button>
+ <p style="font-size:12px; color:var(--ink-soft); text-align:center; margin-top:12px;">
+ Gratis att delta. Du väljer själv vad du tackar ja till — dina uppgifter delas aldrig med någon annan än det du uttryckligen kryssat i ovan.
+ </p>
+ </form>
+ </div>
+
+ <!-- Tack -->
+ <div class="quiz-step quiz-thanks" id="thanksStep">
+ <div class="big">🎉</div>
+ <h2>Du är med i dragningen!</h2>
+ <p>Vi mejlar dig om du vinner. Håll utkik i inkorgen — där väntar också en bekräftelselänk.</p>
+ <div class="offer-box">
+ <strong>Fler chanser att vinna</strong>
+ <p style="margin:8px 0 14px;">Vinnarklubben har flera tävlingar igång just nu. Var med i fler dragningar — det är gratis.</p>
+ <a href="index.html" class="btn btn--gold btn--block">Se alla tävlingar →</a>
+ </div>
+ <a href="index.html" style="font-size:14px; color:var(--ink-soft);">Till startsidan</a>
+ </div>
+ </div>
+ </div>
+
+ <!-- TROVÄRDIGHET — ärlig. Ingen påhittad vinnare (jfr sparklubbens "Karl-Bertil").
+      Riktig namngiven vinnare läggs in efter första dragningen. -->
+ <div class="trust-strip">
+ <div class="trust-strip__row">
+ <span>🎁 Riktig vinst</span>
+ <span>📅 Ny vinnare varje månad</span>
+ <span>📧 Meddelas via e-post</span>
+ <span>🔒 GDPR — du väljer själv</span>
+ </div>
+ <small>Vinnaren publiceras efter varje månads dragning.</small>
+ </div>
+
+ <!-- TÄVLINGSVILLKOR (kort — full text på tavlingsvillkor.html) -->
+ <div class="camp-legal">
+ <h3>Tävlingsvillkor (sammanfattning)</h3>
+ <p id="legalSummary"></p>
+ <p style="margin-top:8px;">Fullständiga <a href="tavlingsvillkor.html">tävlingsvillkor</a> och <a href="integritetspolicy.html">integritetspolicy</a>. Tävlingen har ingen koppling till Meta, Facebook eller Instagram och sponsras, administreras eller stöds inte av dem.</p>
+ </div>
+
+ <!-- FOOTER -->
+ <footer class="footer">
+ <div class="container">
+ <div class="footer__bottom" style="border-top:0; padding-top:0;">
+ © 2026 Vinnarklubben — en tjänst från GKL Agency · <a href="index.html">Till startsidan</a>
+ </div>
+ </div>
+ </footer>
+
+ <script src="supabase-config.js"></script>
+ <script src="kampanjer.js"></script>
+ <script src="cookies.js"></script>
+ <script src="pixel.js"></script>
+ <script src="main.js"></script>
+</body>
+</html>
