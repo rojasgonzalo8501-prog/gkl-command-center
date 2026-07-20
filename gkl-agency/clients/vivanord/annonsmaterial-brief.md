@@ -1,8 +1,13 @@
 # Annonsmaterial — brief till designer
 
-> Copyn är redan skriven och policygranskad i [[meta-lansering]]. **Det som saknas är
-> kreativen.** Detta dokument är det du skickar till en designer/videoredigerare.
-> Uppdaterad 2026-07-16.
+> Copyn är redan skriven och policygranskad i [[meta-lansering]]. Detta dokument är det du
+> skickar till en designer/videoredigerare. Uppdaterad 2026-07-16.
+
+> [!success] ✅ 1A, 1B, 1C producerade (2026-07-20)
+> De tre statiska Hälsoklubben-kreativen (som inte kräver produktbild) är byggda och renderade
+> i alla tre format (1:1, 4:5, 9:16) — färdiga att ladda upp i Ads Manager. Se
+> `deliverables/ads/vivanord-halsoklubben/` (README parar ihop varje bild med rätt annonscopy).
+> **Kvar:** 1D UGC-video (filmas, manus i [[ugc-videomanus]]) samt 2A/2C som väntar på produktbilder.
 
 ## ⚠️ Läs detta först
 

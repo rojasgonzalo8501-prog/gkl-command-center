@@ -1,0 +1,27 @@
+:root{
+  --green-deep:#1d5c4d; --green-dark:#144238; --green-sage:#7fb069;
+  --cream:#faf7f2; --cream-dark:#f0e9de; --ink:#22302c; --ink-soft:#5a6b65;
+  --white:#ffffff; --gold:#d9a441; --gold-deep:#c08a2a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%}
+body{font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+.stage{width:100vw;height:100vh;overflow:hidden;position:relative;display:flex;flex-direction:column}
+
+/* ---- brand mark ---- */
+.brand{display:flex;align-items:center;gap:16px}
+.brand__mark{width:64px;height:64px;flex:none}
+.brand__name{font-weight:800;letter-spacing:-.01em;line-height:1}
+.brand__sub{font-weight:500;opacity:.72;margin-top:4px;line-height:1}
+
+/* ---- chips ---- */
+.chips{display:flex;flex-wrap:wrap;gap:14px}
+.chip{display:inline-flex;align-items:center;gap:10px;font-weight:600;border-radius:999px;
+  padding:14px 24px;line-height:1;white-space:nowrap}
+.chip__dot{width:9px;height:9px;border-radius:50%;background:var(--green-sage);flex:none}
+
+/* url line */
+.url{display:inline-flex;align-items:center;gap:14px;font-weight:700;letter-spacing:.01em}
+.url__arrow{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;font-weight:800}
+
+/* format-driven root sizing handled per-file */

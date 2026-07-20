@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="sv"><head><meta charset="UTF-8">
+<script>document.documentElement.dataset.fmt=new URLSearchParams(location.search).get('fmt')||'1x1';</script>
+<link rel="stylesheet" href="inter-embed.css"><link rel="stylesheet" href="shared.css">
+<style>
+.stage{background:var(--green-deep);color:var(--cream);padding:82px;justify-content:space-between}
+.bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.bg__glow{position:absolute;width:860px;height:860px;border-radius:50%;top:-340px;left:50%;transform:translateX(-50%);
+  background:radial-gradient(circle,rgba(217,164,65,.20) 0%,rgba(217,164,65,0) 66%)}
+.bg__glow2{position:absolute;width:760px;height:760px;border-radius:50%;bottom:-340px;right:-280px;
+  background:radial-gradient(circle,rgba(127,176,105,.30) 0%,rgba(127,176,105,0) 70%)}
+.stage>*{position:relative;z-index:1}
+.brand__mark{width:56px;height:56px}
+.brand__name{font-size:36px;color:var(--cream)}
+.brand__sub{font-size:21px;color:rgba(250,247,242,.7)}
+
+.mid{flex:1;display:flex;flex-direction:column;justify-content:center;gap:40px}
+.qlabel{display:inline-flex;align-self:flex-start;align-items:center;gap:12px;background:rgba(217,164,65,.16);
+  border:1.5px solid rgba(217,164,65,.5);color:var(--gold);font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;font-size:22px;padding:12px 22px;border-radius:999px}
+.q{font-size:66px;font-weight:800;letter-spacing:-.02em;line-height:1.08;color:var(--cream);max-width:900px}
+.opts{display:flex;flex-direction:column;gap:20px;margin-top:6px}
+.opt{display:flex;align-items:center;gap:22px;background:var(--cream);border-radius:18px;
+  padding:26px 30px;font-size:34px;font-weight:600;color:var(--ink)}
+.opt__k{width:52px;height:52px;flex:none;border-radius:12px;background:#eef5ee;color:var(--green-deep);
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:26px}
+.opt--hi{background:#fff;box-shadow:0 0 0 4px var(--green-sage)}
+
+.foot{display:flex;align-items:center;justify-content:space-between;gap:24px;
+  background:rgba(250,247,242,.10);border:1.5px solid rgba(250,247,242,.2);border-radius:20px;padding:26px 34px}
+.foot__l{font-size:29px;font-weight:700;color:var(--cream)}
+.foot__r{font-size:29px;font-weight:800;color:var(--gold);white-space:nowrap}
+
+html[data-fmt="4x5"] .q{font-size:74px}
+html[data-fmt="4x5"] .opt{font-size:37px;padding:29px 32px}
+html[data-fmt="4x5"] .mid{gap:50px}
+
+html[data-fmt="9x16"] .stage{padding:140px 88px}
+html[data-fmt="9x16"] .q{font-size:88px;max-width:100%}
+html[data-fmt="9x16"] .qlabel{font-size:26px}
+html[data-fmt="9x16"] .opt{font-size:42px;padding:34px 36px}
+html[data-fmt="9x16"] .opt__k{width:62px;height:62px;font-size:30px}
+html[data-fmt="9x16"] .mid{gap:64px}
+html[data-fmt="9x16"] .foot__l,html[data-fmt="9x16"] .foot__r{font-size:34px}
+html[data-fmt="9x16"] .brand__name{font-size:42px}
+</style></head>
+<body>
+<div class="stage">
+  <div class="bg"><div class="bg__glow"></div><div class="bg__glow2"></div></div>
+
+  <div class="brand">
+    <svg class="brand__mark" viewBox="0 0 64 64" fill="none">
+      <circle cx="32" cy="32" r="31" fill="#faf7f2"/>
+      <path d="M18 20 L32 46 L46 20" stroke="#1d5c4d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M40 15 C46 21 46 29 40 34" stroke="#7fb069" stroke-width="5" stroke-linecap="round" fill="none"/>
+    </svg>
+    <div><div class="brand__name">Hälsoklubben</div><div class="brand__sub">Fråga 1 av 4</div></div>
+  </div>
+
+  <div class="mid">
+    <span class="qlabel">Månadens quiz</span>
+    <div class="q">Vilket vitamin bildar kroppen av solljus? ☀️</div>
+    <div class="opts">
+      <div class="opt opt--hi"><span class="opt__k">A</span>Vitamin D</div>
+      <div class="opt"><span class="opt__k">B</span>Vitamin C</div>
+      <div class="opt"><span class="opt__k">C</span>Vitamin B12</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="foot__l">4 frågor · 1 minut · Gratis</div>
+    <div class="foot__r">Vinn 10&thinsp;000 kr →</div>
+  </div>
+</div>
+</body></html>
