@@ -17,6 +17,13 @@ Always follow the WAT framework. Before starting any client job:
 3. Use workflows in `workflows/` for SOPs
 4. Use tools in `tools/` for execution scripts
 
+### Social content: 1 agent, 4 roles
+For social batches, run the **one-agent-four-roles** model — Copywriter → Editor → Designer →
+Social Manager — per `workflows/social_media_content.md`. Publishing to every channel is handled
+by `workflows/blotato_setup.md` (Blotato MCP), and every batch ships a `blotato-manifest.json`.
+The packaged, sellable version of this service lives in
+`deliverables/gkl-agency/social-content-service/` (tiers, pricing, outreach).
+
 ## Active Clients
 
 | Client | Folder | Phase | Language |

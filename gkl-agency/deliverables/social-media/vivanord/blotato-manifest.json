@@ -1,0 +1,93 @@
+{
+  "client": "vivanord",
+  "batch": "post-warmup-2026-07",
+  "language": "sv",
+  "timezone": "Europe/Stockholm",
+  "status": "draft",
+  "compliance_gate": {
+    "must_pass_before_publish": true,
+    "rules": [
+      "Inga hälsopåståenden utöver de EFSA-godkända per produkt",
+      "Inga påståenden kopplade direkt till kollagen/hyaluronsyra/Q10",
+      "Nämn aldrig priset 99 kr",
+      "Skriv aldrig 'avsluta när du vill' — endast 'säg upp senast 14 dagar före nästa leverans'",
+      "Lova ingen spanskspråkig support förrän Medvital bekräftat",
+      "Nämn inget vinstbelopp för Hälsoklubben förrän skriftligt bekräftat",
+      "Kritisera aldrig Medvital"
+    ]
+  },
+  "posts": [
+    {
+      "id": "vn-01",
+      "platforms": ["facebook", "instagram"],
+      "type": "single_image",
+      "scheduled_for": "2026-07-21T09:00:00+02:00",
+      "caption_ref": "captions.md#vn-01",
+      "asset": "typografi, djupgrön botten #1d5c4d, logga i hörn",
+      "notes": "Varumärkeslöfte. Inga priser, ingen produkt."
+    },
+    {
+      "id": "vn-02",
+      "platforms": ["facebook", "instagram"],
+      "type": "single_image",
+      "scheduled_for": "2026-07-23T18:00:00+02:00",
+      "caption_ref": "captions.md#vn-02",
+      "asset": "Immun+ typografi, salvia accent, ingredienslista",
+      "notes": "Endast EFSA-påstående: C/D/zink/selen bidrar till immunsystemets normala funktion."
+    },
+    {
+      "id": "vn-03",
+      "platforms": ["instagram", "facebook"],
+      "type": "carousel",
+      "scheduled_for": "2026-07-25T10:00:00+02:00",
+      "caption_ref": "captions.md#vn-03",
+      "asset": "Blotato 'instagram carousel slideshow', 5 slides, se Designer-spec",
+      "notes": "Konsumentnytta/transparens. Inga produktpåståenden i slides."
+    },
+    {
+      "id": "vn-04",
+      "platforms": ["facebook", "instagram"],
+      "type": "single_image",
+      "scheduled_for": "2026-07-28T09:00:00+02:00",
+      "caption_ref": "captions.md#vn-04",
+      "asset": "typografi krämvit #faf7f2, rubrik djupgrön",
+      "notes": "Uppsägning = 14 dagar före nästa leverans. Aldrig 'avsluta när du vill'."
+    },
+    {
+      "id": "vn-05",
+      "platforms": ["instagram", "facebook"],
+      "type": "video",
+      "scheduled_for": "2026-07-30T18:00:00+02:00",
+      "caption_ref": "captions.md#vn-05",
+      "asset": "9:16 Reel, brevlåda-klipp, 2-raders overlay, se Editor-spec (safe zones)",
+      "notes": "Bekvämlighet. Inga hälsopåståenden i bild eller ljud."
+    },
+    {
+      "id": "vn-06",
+      "platforms": ["facebook", "instagram"],
+      "type": "single_image",
+      "scheduled_for": "2026-08-01T10:00:00+02:00",
+      "caption_ref": "captions.md#vn-06",
+      "asset": "Flex+ typografi, djupgrön botten, ingredienslista",
+      "notes": "Endast EFSA-påstående: vitamin C bidrar till normal kollagenbildning."
+    },
+    {
+      "id": "vn-07",
+      "platforms": ["facebook", "instagram"],
+      "type": "single_image",
+      "scheduled_for": "2026-08-04T09:00:00+02:00",
+      "caption_ref": "captions.md#vn-07",
+      "asset": "'4 frågor' salviagrön botten #7fb069",
+      "notes": "Hälsoklubben lead-nudge. INGET vinstbelopp. Länk i profilen."
+    },
+    {
+      "id": "vn-08",
+      "platforms": ["facebook", "instagram"],
+      "type": "single_image",
+      "scheduled_for": "2026-08-06T18:00:00+02:00",
+      "caption_ref": "captions.md#vn-08",
+      "asset": "tre Q&A-rader typografi krämvit",
+      "notes": "FAQ. Uppsägning/betalning/leverans — raka svar, inga påståenden."
+    }
+  ]
+}
