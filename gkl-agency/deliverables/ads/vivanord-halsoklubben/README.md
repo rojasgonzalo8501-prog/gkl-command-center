@@ -73,8 +73,14 @@ Fullständig policygenomgång: [`meta-lansering.md`](../../../clients/vivanord/m
 
 ---
 
+## Videokreativ (animerad, ingen avatar)
+**Fil:** [`video/halsoklubben_reel_9x16.mp4`](video/) — 1080×1920, 12 sek, textad, ljudlös.
+Animerad motion-graphics (hook → quiz-demo → "kvalificerat dig" → CTA), renderad från kod.
+Lägg som egen annons i samma annonsgrupp. Detaljer + varför det inte är en AI-avatar: [`video/README.md`](video/README.md).
+
 ## Fortfarande kvar (inte kreativ)
-- **1D UGC-video** — filmas på telefon i matbutik. Fyra manus i `ugc-videomanus.md`.
+- **1D UGC-video med riktig person** — filmas på telefon i matbutik. Fyra manus i `ugc-videomanus.md`.
+  (Den animerade videon ovan täcker video-behovet tills du spelar in en äkta person.)
 - **Kampanj 2 (2A, 2C)** — väntar på riktiga produktbilder från Medvital.
 - Innan skarp trafik: se checklistan i `clients/vivanord/LANSERING.md` (Meta-konto, pixel, Supabase).
 
