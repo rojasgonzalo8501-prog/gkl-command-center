@@ -18,14 +18,22 @@ Alla utom `_UTKAST` är klara att ladda upp i Kampanj 1 (Hälsoklubben).
 Varje video har en `poster_*.png` (omslagsbild) om du vill sätta en egen thumbnail.
 
 ## 🔴 Läs innan du rör drömrese-videon (`_UTKAST`)
-Den får **inte** publiceras som den är. En annons måste matcha vad landningssidan faktiskt lottar ut —
-det är regel nr 1 för att inte få kontot stängt (se `meta-lansering.md`). Idag lottar Hälsoklubben ut
-ett **presentkort på 10 000 kr**, inte en resa. Innan drömrese-videon kan gå live krävs:
-1. En **tävlingssida + tävlingsvillkor** som uttryckligen har en resa (värd 10 000 kr) som vinst.
-2. **Medvital bekräftar skriftligt** att de tillhandahåller och betalar ut resepriset.
+En annons måste matcha vad landningssidan faktiskt lottar ut — det är regel nr 1 för att inte få kontot
+stängt (se `meta-lansering.md`).
 
-Säg till så bygger jag rese-tävlingssidan (egen variant av halsoklubben-sidan + villkor) så att videon
-får något att matcha. Tills dess: behåll den som idé/utkast, kör den inte mot den nuvarande tävlingen.
+✅ **Matchande tävlingssida är nu byggd** (2026-07-21):
+`deliverables/websites/vivanord-halsoklubben/resa.html` + `resa-tavlingsvillkor.html` — samma funnel som
+presentkort-tävlingen (samma hälsoquiz = samma leadkvalitet), men vinsten är ett **resepresentkort värt
+10 000 kr**. Destinationslänk för annonsen:
+`https://halsoklubben.vivanord.se/resa.html?utm_source=facebook&utm_campaign=dromresa`
+
+🔴 **Kvar innan den får skarp trafik** (därför fortfarande `_UTKAST`):
+1. **Medvital bekräftar SKRIFTLIGT** att de tillhandahåller och betalar ut resepriset (precis som med
+   presentkortet). Utan det är vinsten inte täckt — lägg in det i Medvital-avtalet.
+2. Samma steg-0-krav som resten av sajten: Rojdix + Vivanord org.nr i samtycket, juristgranskning av
+   `resa-tavlingsvillkor.html`, pixel-ID. Se `clients/vivanord/LANSERING.md`.
+
+När 1 + 2 är klara: döp om filen (ta bort `_UTKAST`) och kör den som vilken annons som helst.
 
 ## Så A/B-testar du
 Lägg de klara videorna som **separata annonser i samma annonsgrupp** (Hälsoklubben, 250 kr/dag) och låt

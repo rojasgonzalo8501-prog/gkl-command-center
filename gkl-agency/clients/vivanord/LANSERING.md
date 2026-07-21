@@ -80,6 +80,14 @@ som direkt startar flera kampanjer flaggas oftare. Dag 5: slå på resten. Se [[
 
 **Kreativen** kan produceras nu — 1C, 1A, 1B och 2B kräver ingen produktbild. Se
 [[annonsmaterial-brief]]. 2A och 2C väntar på riktiga förpackningsbilder från Medvital.
+Statiska annonser (1A/1B/1C × 3 format) och sex animerade videoannonser är byggda och ligger i
+`deliverables/ads/vivanord-halsoklubben/` (README parar ihop varje fil med rätt copy).
+
+**Rese-tävling (variant).** En andra tävlingssida är byggd — `resa.html` +
+`resa-tavlingsvillkor.html` i halsoklubben-mappen — med vinsten *resepresentkort värt 10 000 kr*
+i stället för matbutik. Samma hälsoquiz och lead-flöde. 🔴 Får INTE skarp trafik förrän **Medvital
+skriftligen bekräftat att de tillhandahåller och betalar ut resepriset** (samma villkor som
+presentkortsvinsten — få in det i avtalet). Drömrese-videon (`_UTKAST`) hör ihop med denna sida.
 
 **Organiskt** ([[organiskt-innehall]]): lägg ut de första inläggen så fort FB/IG finns, så
 sidan inte är tom när annonstrafiken landar och folk klickar på sidnamnet.
