@@ -19,6 +19,16 @@
 #prizeB .pa{font-weight:900;font-size:158px;color:var(--gold);letter-spacing:-.04em;line-height:1;margin:6px 0}
 #prizeB .ps{font-weight:600;font-size:38px;color:rgba(250,247,242,.85)}
 #prizeB .u{margin-top:54px}
+/* 1:1 feed */
+html[data-ar="sq"],html[data-ar="sq"] body{height:1080px}
+html[data-ar="sq"] #qwrap{top:206px}
+html[data-ar="sq"] .qq{font-size:58px;margin-bottom:38px}
+html[data-ar="sq"] .obar{padding:23px 36px;font-size:39px;margin-bottom:17px}
+html[data-ar="sq"] .obar .k{width:54px;height:54px;font-size:27px}
+html[data-ar="sq"] #stamp{top:766px}
+html[data-ar="sq"] #prizeB{top:300px}
+html[data-ar="sq"] #prizeB .pa{font-size:148px}
+html[data-ar="sq"] #cap{bottom:64px;min-height:120px}
 </style></head>
 <body>
 <div id="stage">
@@ -53,6 +63,7 @@
 <script src="anim.js"></script>
 <script>
 const DUR=9000;
+document.documentElement.dataset.ar=new URLSearchParams(location.search).get('ar')||'';
 $('#brand').innerHTML=BRAND_SVG+'<div><div class="bn">Hälsoklubben</div><div class="bs">Månadens dragning</div></div>';
 function inEl(sel,t,a,b,dy=26){const e=$(sel);const k=eOut(p(t,a,b));e.style.opacity=k;e.style.transform=`translateY(${lerp(dy,0,k)}px)`;}
 function render(t){

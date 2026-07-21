@@ -17,6 +17,18 @@ Alla utom `_UTKAST` är klara att ladda upp i Kampanj 1 (Hälsoklubben).
 
 Varje video har en `poster_*.png` (omslagsbild) om du vill sätta en egen thumbnail.
 
+### 1:1 feed-versioner (för flödesplaceringar)
+Tre av koncepten finns även i **1080 × 1080** för feed (kvadrat), där 9:16 beskärs illa:
+
+| Fil | Koncept | Längd |
+|---|---|---|
+| `halsoklubben_enfraga_1x1.mp4` | En fråga | 9 s |
+| `halsoklubben_utbetalning_1x1.mp4` | Utbetalning/trygghet | 10 s |
+| `halsoklubben_odometer_1x1.mp4` | Räkneverk | 9 s |
+
+Ladda upp 9:16 **och** 1:1 på samma annons så tar Advantage+ rätt format per placering
+(9:16 → Reels/Stories, 1:1 → Feed). Källscenerna renderar 1:1 via `?ar=sq` (se nedan).
+
 ## 🔴 Läs innan du rör drömrese-videon (`_UTKAST`)
 En annons måste matcha vad landningssidan faktiskt lottar ut — det är regel nr 1 för att inte få kontot
 stängt (se `meta-lansering.md`).
@@ -61,8 +73,10 @@ Kräver Node + Chromium (Playwright) + ffmpeg med libx264.
 ```bash
 cd source
 cp ../../source/inter-embed.css .        # eller kör ../../source/fetch-fonts.sh
-node render-all.mjs                        # renderar frames för alla 5 scener (scene-a..e)
+node render-all.mjs                        # renderar frames för alla 5 scener (scene-a..e), 9:16
 bash encode-all.sh                         # encodar varje scen till out/*.mp4
+node render-sq.mjs                          # 1:1-frames för scen b/c/d (?ar=sq)
+bash encode-sq.sh                           # encodar 1:1-versionerna
 ```
 Tidslinjen för varje scen är funktionen `render(t)` i `scene-a.html` … `scene-e.html`.
 Delade helpers i `anim.js`, färg/typografi i `base.css`. Originalvideon: `scene.html` + `render-video.mjs`.

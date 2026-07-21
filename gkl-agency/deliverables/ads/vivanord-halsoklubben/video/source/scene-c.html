@@ -12,6 +12,16 @@
 #pcard .lbl{font-weight:800;font-size:42px;color:var(--ink);margin-top:16px}
 #pcard .by{font-weight:600;font-size:28px;color:#5a6b65;margin-top:20px}
 #urlC{position:absolute;left:0;right:0;top:1330px;text-align:center;opacity:0;will-change:transform,opacity}
+/* 1:1 feed */
+html[data-ar="sq"],html[data-ar="sq"] body{height:1080px}
+html[data-ar="sq"] #notif{top:190px}
+html[data-ar="sq"] #pcard{top:300px;padding:50px 52px 42px}
+html[data-ar="sq"] #pcard .chk{width:106px;height:106px;margin-bottom:18px}
+html[data-ar="sq"] #pcard .plus{font-size:112px}
+html[data-ar="sq"] #pcard .lbl{font-size:40px}
+html[data-ar="sq"] #pcard .by{margin-top:16px}
+html[data-ar="sq"] #urlC{top:770px}
+html[data-ar="sq"] #cap{bottom:78px;min-height:110px}
 </style></head>
 <body>
 <div id="stage">
@@ -39,6 +49,7 @@
 <script src="anim.js"></script>
 <script>
 const DUR=10000;
+document.documentElement.dataset.ar=new URLSearchParams(location.search).get('ar')||'';
 $('#brand').innerHTML=BRAND_SVG+'<div><div class="bn">Hälsoklubben</div><div class="bs">Trygg tävling</div></div>';
 const fmt=v=>String(v).replace(/\B(?=(\d{3})+(?!\d))/g,' ');
 function render(t){
