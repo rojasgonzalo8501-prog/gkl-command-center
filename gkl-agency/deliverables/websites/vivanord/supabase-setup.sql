@@ -12,6 +12,8 @@ create table if not exists leads (
   namn text not null,
   epost text not null,
   telefon text,
+  adress text,          -- leveransadress / för telefonteamet (tävlingsformuläret, obligatoriskt fält)
+  fodelsedatum text,    -- exakt födelsedatum dd/mm/åå från tävlingsformuläret (18+-koll + säljunderlag)
   alder text,        -- åldersspann från Hälsoklubben-quizet (profildata, höjer leadvärdet)
   intresse text,     -- hälsoområde kunden vill ha stöd med (mappar mot produkt)
   "samtyckeEpost" boolean not null default false,
@@ -20,6 +22,11 @@ create table if not exists leads (
   status text not null default 'ny'
     check (status in ('ny', 'ringd', 'bekräftad', 'nej', 'ånger'))
 );
+
+-- Redan skapad tabell? Kör dessa i Supabase SQL Editor för att lägga till de nya fälten
+-- utan att röra befintliga rader (körs säkert flera gånger):
+--   alter table leads add column if not exists adress text;
+--   alter table leads add column if not exists fodelsedatum text;
 
 create table if not exists ordrar (
   id text primary key,

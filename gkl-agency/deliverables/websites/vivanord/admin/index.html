@@ -507,7 +507,8 @@ function renderTableView() {
  <td>${esc(r.namn)}<br>${esc(r.epost)}</td><td>${langPill(r)}</td><td>${statusSel(r)}</td></tr>`;
  if (expanded !== r.id) return main;
  const fields = isLeads
- ? [['ID', r.id], ['E-post', r.epost], ['Telefon', r.telefon || '—'], ['Källa', r.kalla],
+ ? [['ID', r.id], ['E-post', r.epost], ['Telefon', r.telefon || '—'], ['Adress', r.adress || '—'],
+ ['Födelsedatum', r.fodelsedatum || '—'], ['Källa', r.kalla],
  ['Ålder', r.alder || '—'], ['Vill ha stöd med', r.intresse || '—'],
  ['Samtycke e-post', r.samtyckeEpost ? 'Ja' : 'Nej'], ['Samtycke telefon (överlåtelse)', r.samtyckeTelefon ? 'Ja' : 'Nej'],
  ['Registrerad', new Date(r.tid).toLocaleString('sv-SE')]]

@@ -80,6 +80,8 @@ if (leadForm) {
       namn: document.getElementById('name').value,
       epost: document.getElementById('email').value,
       telefon: document.getElementById('phone').value,
+      adress: document.getElementById('address') ? document.getElementById('address').value : '',
+      fodelsedatum: document.getElementById('dob') ? document.getElementById('dob').value : '',
       alder: quizAnswers.alder || '',
       intresse: quizAnswers.intresse || '',
       samtyckeEpost: leadForm.querySelector('input[name="consent_email"]').checked,
