@@ -49,8 +49,11 @@ Uppdateras löpande. ✅ = klart · 🔶 = byggt men kräver din åtgärd för a
 
 ## ☐ SAKNAS ÄNNU — beslut/frågor ingen äger just nu (du frågade "vad fattas?")
 
-1. **Bolagsfrågan**: sajtens villkor säger "Vivanord AB" — finns bolaget? Enskild firma,
-   nytt AB eller bifirma till befintligt bolag? Påverkar villkorstexterna och Medvital-avtalet.
+1. **Bolagsfrågan**: ✅ sajten påstår inte längre "Vivanord AB". Den juridiska avsändaren
+   (arrangör + personuppgiftsansvarig) är centraliserad till **en variabel** i `legal.js`
+   (`NV_LEGAL`), som defaultar till bara varumärket "Vivanord" — inget osant. Kvar: du bestämmer
+   bolagsform (enskild firma / AB), så sätts `entity` + `orgnr` på ett ställe. Beslutet påverkar
+   fortfarande Medvital-avtalet och ansvarsfrågan.
 2. **Kundservice-kanal**: sajten lovar svar via mejl/telefon — vilken adress och vilket
    nummer? (Medvital äger kundservicen enligt avtalet, men NÅGOT ska stå på er sajt.)
    Förslag: hej@vivanord.se som vidarebefordras.
