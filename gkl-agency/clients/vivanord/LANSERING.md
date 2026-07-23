@@ -28,14 +28,17 @@ konfidentiella docsen till ett separat privat repo så bara sajten någonsin kan
 
 | # | Vad | Tid | Varför det blockerar |
 |---|---|---|---|
-| 1 | **Rojdix org.nr + juridiskt bolagsnamn** | 2 min | Samtyckesrutan säger `[org.nr XXXXXX-XXXX]` på 8 ställen. Ett överlåtelsesamtycke är bara giltigt om mottagaren namnges (GDPR art. 4.11 + 7). Utan det får Rojdix **inte ringa ett enda lead** — oavsett vad avtalet säger. |
+| 1 | ✅ **Rojdix-mottagaren bekräftad** (2026-07-22) | klart | Leadmottagaren är **ROJDIX S.R.L. (Rumänien), reg.nr J40/6995/2023, CUI 47979950** — ifyllt i samtycket + villkoren + integritetspolicyn på alla sidor (SV + ES). EU/EES-transparensrad tillagd. ⚠️ Bekräfta mot Rojdix-avtalet att det är SRL:et (RO) och inte OÜ:t (EE) som är avtalspart/controller — namnger vi fel bolag blir samtycket ogiltigt. |
 | 2 | **Juridisk avsändare** (ditt namn / enskild firma + org.nr) | 2 min | ✅ Inte längre falskt: "Vivanord AB" är borttaget överallt — sajten säger nu bara varumärket **Vivanord** tills du sätter den riktiga avsändaren. Det görs på **ETT ställe**: `legal.js` (`window.NV_LEGAL = { entity, orgnr }`) i halsoklubben-mappen. Fyll i `orgnr` FÖRST när det är sant. Krävs före skarpa leads (någon måste vara personuppgiftsansvarig/arrangör). |
 | 3 | **Supabase admin-användare** | 30 sek | `auth.users` är tom. Admin-portalen går inte att logga in i. Authentication → Users → Add user, kryssa **Auto Confirm**. Steg-för-steg: [[SUPABASE]]. |
 | 3b | **Stäng av publik registrering i Supabase** 🔴 | 30 sek | Säkerhetskritiskt. Authentication → Email → **Enable Signups = OFF**. Annars kan vem som helst registrera sig, bli "inloggad" och läsa **alla kunders namn/e-post/telefon/adress** (GDPR-läcka). Verifierat via säkerhetsadvisorn 2026-07-18. Se [[SUPABASE]]. |
 
-⚠️ Jag hittade `rojdix.se` men bara ett **estniskt** ROJDIX INC OÜ (14200872) i register. Gissa
-inte — ta numret från avtalet. Är motparten estnisk behöver integritetspolicyns EU/EES-stycke
-ses över också.
+✅ Uppdaterat 2026-07-22: Rojdix-bolagen är uppslagna. Register visar **ROJDIX S.R.L.** (Rumänien,
+reg.nr J40/6995/2023, CUI 47979950) och **RojDix InC OÜ** (Estland, 14200872 — men med obetalda böter +
+icke-inlämnade årsredovisningar). Beslut: **det rumänska SRL:et** används som namngiven mottagare.
+Inget spanskt bolag hittades. EU/EES-transparensrad tillagd i integritetspolicyn (RO = EU, ingen
+tredjelandsöverföring). Se `rojdix-leadmottagare.md`. **Kvar: bekräfta mot avtalet att SRL:et är
+avtalspart/controller** (inte OÜ:t) innan skarpa telefonsamtyckesleads.
 
 > [!warning] Org.nr-platshållarna borttagna för förhandsvisningen (2026-07-17)
 > `[org.nr XXXXXX-XXXX]` togs bort från alla sidor så förhandsvisningen läser rent — men numren

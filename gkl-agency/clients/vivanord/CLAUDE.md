@@ -39,7 +39,8 @@ Vi är **återförsäljare åt Medvital** och säljer leadlistan till dem. Konse
 - Produkter/priser/villkor på sajten är PLATSHÅLLARE tills Medvitals riktiga katalog kommer
   (känt: Flex+ 399 kr/mån, leverans var 8:e vecka, uppsägning 14 dgr före leverans).
   Synka villkorstexterna mot Medvitals köpvillkor — de är juridisk säljare.
-- Telefonsamtycket på kampanj.html namnger nu Medvital som mottagare av överlåtna leads ✅
+- Telefonsamtycket namnger **ROJDIX S.R.L. (Rumänien, reg.nr J40/6995/2023, CUI 47979950)** som
+  mottagare av överlåtna leads ✅ (Rojdix — inte Medvital — ringer; se rojdix-leadmottagare.md)
 
 ## Positionering — VIKTIGT
 Branschen (inklusive partnern) har Trustpilot-klagomål om aggressiv telefonförsäljning.
@@ -77,8 +78,8 @@ Detta är en **reglerad bransch** (hälsa). Innan något publiceras:
   Partnern har allt juridiskt säljansvar, kundservice, ångerrätt, fakturering. **Vi äger leadsen.**
 - **Intäktsström 2: leadlistan säljs per lead** och **ÖVERLÅTS** till partnerbolaget som ringer
   i eget namn. Endast leads med telefonsamtycke är säljbara. Pris = självkostnad + minst 50 % —
-  räknas i admin-portalens Leadkalkyl-flik. Samtyckestexten på kampanj.html är skriven för
-  överlåtelse och namnger Medvital Sverige AB (org.nr 559421-2093) som mottagare ✅
+  räknas i admin-portalens Leadkalkyl-flik. Samtyckestexten är skriven för överlåtelse och namnger
+  **ROJDIX S.R.L. (Rumänien, reg.nr J40/6995/2023, CUI 47979950)** som mottagare ✅
 - Kvar att klargöra: ev. clawback vid ånger, orderformat, pris per lead — se brief.md
 
 ## Leveranser
